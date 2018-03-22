@@ -1,0 +1,39 @@
+{
+    "name": "budget-buddy-react-capstone",
+    "version": "1.0.0",
+    "description": "The purpose of this app is to create a recipe book that you can have with you wherever you go.",
+    "main": "server.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bgerardi20/budget-buddy-react-capstone.git"
+    },
+    "keywords": [
+        "budget"
+    ],
+    "author": "Brendan Gerardi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bgerardi20/budget-buddy-react-capstone/issues"
+    },
+    "homepage": "https://github.com/bgerardi20/budget-buddy-react-capstone#readme",
+    "dependencies": {
+        "bcryptjs": "^2.3.0",
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "mongodb": "^2.2.9",
+        "mongoose": "^4.5.10",
+        "morgan": "^1.9.0",
+        "nodemon": "^1.14.12",
+        "passport": "^0.3.2",
+        "passport-http": "^0.3.0",
+        "unirest": "^0.5.1"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-http": "^3.0.0",
+        "mocha": "^4.0.1"
+    }
+}

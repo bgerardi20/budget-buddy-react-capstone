@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Recipe Finder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Oswald:300|Lato:600" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="headerContainer">
+
+        <nav class="navContainer">
+
+            <div class="logoHolder">
+                <img class="navLogo" src="./website-images/my-recipies-logo.png">
+            </div>
+
+            <div class="navList">
+                <ul>
+                    <li class="navListItems"><a href="#" class="navContent jsMyLibrary">My Recipes</a></li>
+                    <li class="navListItems"><a href="#" class="navContent jsCreateRecipe">Create</a></li>
+                    <li class="navListItems"><a href="#" class="navContent jsAddRecipe">Add</a></li>
+                    <li class="navListItems"><a href="#" class="navContent jsLogout">Logout</a></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <main class="introScreen">
+
+        <h1 class="pageTitle"><img src="" alt="" class="titleLogo">My Recipes</h1>
+
+        <section class="introContainer">
+            <h2 id="welcome">Welcome to your recipe library</h2>
+            <div class="introInnerContainer">
+                <p class="introContent">With thousands of recipes to search through, updating that old recipe book has never been easier.</p>
+                <p class="introContent">If you want recipes to be stored for later, create an account and save them to your library, or login if you've already created an account.</p>
+                <p class="introContent">Enjoy!</p>
+            </div>
+
+            <div class="loginInnerContainer">
+                <img class="loginLogo" src="./website-images/my-recipies-logo.png">
+                <p class="loginIntro">Choose an option below to start searching recipes!</p>
+                <a class="loginOptions loginButtons jsSignInButton" href="#">Sign In</a>
+                <br>
+                <a class="loginOptions loginButtons jsRegisterButton" href="#">Create Account</a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <main class="signInScreen">
+
+        <section class="signInOutterContainer">
+            <div class="signInInnerContainer">
+                <img class="signInLogo" src="./website-images/my-recipies-logo.png">
+                <h2 class="signInMessage">Sign In</h2>
+
+                <form class="signInform" method="POST" autocomplete="off">
+                    <input class="signInInput" id="signInEmail" type="text" placeholder="Email Address" name="email" value="">
+                    <input class="signInInput" id="signInPassword" type="password" placeholder="Password" name="password" value="">
+                    <button class="signInButton " type="submit">Next</button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <main class="createUsernameScreen">
+
+        <section class="outerSignUpBox">
+            <div class="innerSignUpBox">
+                <!-- logo or fancy font -->
+                <img class="signInLogo" src="./website-images/my-recipies-logo.png">
+                <h2 class="signInMessage">Create Account</h2>
+
+                <form class="signUpForm" method="POST">
+                    <div class="formGroup">
+                        <label class="label" for="fullName">Name:</label>
+                        <input class="formControl" id="registerName" type="text" placeholder="Name" name="fullName">
+                    </div>
+                    <div class="formGroup">
+                        <label for="email">Email:</label>
+                        <input class="formControl" id="registerEmail" type="text" placeholder="Email Address" name="email">
+                    </div>
+                    <div class="formGroup">
+                        <label for="password">Password:</label>
+                        <input class="formControl" id="registerPassword" type="password" placeholder="Password" name="password">
+                    </div>
+                    <div class="formGroup">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword">
+                    </div>
+                    <button class="registerButton " type="submit">Sign Up</button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <main class="homeScreen">
+
+        <h1 class="pageTitle"><img src="" alt="" class="titleLogo">My Recipes</h1>
+
+        <section class="homeContainer recipeOutsideContainer" id="">
+            <div class="recipeSnippetContainer">
+                <ul class="recipeInsideContainer" id="">
+
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+
+    <main class="searchScreen">
+
+        <h1 class="pageTitle"><img src="" alt="" class="titleLogo">My Search</h1>
+
+        <div class="searchBarContainer">
+            <input class="search recipeSearchInput" type="text" name="search" placeholder="Search Recipes...">
+            <button class="searchSubmit" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div><br>
+
+        <section class="successScenario">
+            <ul class="resultsList">
+
+            </ul>
+
+        </section>
+    </main>
+
+    <main class="createRecipeScreen">
+
+        <h1 class="pageTitle"><img src="" alt="" class="titleLogo">Create Personal Recipe</h1>
+
+        <section class="createContainer">
+
+            <h2 class="createTitle">Create Your Own Recipe</h2>
+            <div class="createInstructions">
+                <h4 id="createSubTitle">This section is for uploading your own personal recipe to your library</h4>
+                <!--                <p class="createInfo">1. Just upload an image of your recipe(optional)</p>-->
+                <p class="createInfo">1. Give a title to your new recipe.</p>
+                <p class="createInfo">2. Add all the ingredients your recipe calls for</p>
+                <p class="createInfo">3. Add your directions needed for your recipe</p>
+                <p class="createInfo">4. Add any notes that you would like to be attributed with your recipe</p>
+            </div>
+
+            <form class="createForm" action="" method="POST">
+                <input class="loggedInUser" type="hidden" value=""><br>
+
+                <div class="createSections">
+                    <label class="createLabel" for="title">Recipe Title:</label><br>
+                    <input class="createInput" type="text" name="title" id="titleCreate" placeholder="Spaghetti" required><br>
+                </div>
+                <div class="createSections">
+                    <label class="createLabel" for="ingredients">Ingredients:</label><br>
+                    <textarea class="createInput" type="text" name="ingredients" id="ingredientsCreate" placeholder="1. 16 oz spaghetti" required></textarea><br>
+                </div>
+                <div class="createSections">
+                    <label class="createLabel" for="directions">Directions:</label><br>
+                    <textarea class="createInput" type="text" name="directions" id="createDirections" placeholder="1. Boil water"></textarea><br>
+                </div>
+                <div class="createSections">
+                    <label class="createLabel" for="notes">Notes:</label><br>
+                    <textarea class="createInput" type="text" name="notes" id="notesCreate" placeholder="My mothers secret recipe"></textarea>
+                </div>
+
+
+                <div class="createRecipeButton">
+                    <button type="submit" class="createButton green create" id="jsCreateSaveButton">Save</button>
+                    <button type="submit" class="createButton red create" id="jsCancelSaveButton">Cancel</button>
+                </div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <main class="addEdamamScreen">
+        <h1 class="pageTitle"><img src="" alt="" class="titleLogo">Add Recipe From Edamam</h1>
+
+        <form class="searchBarContainer">
+            <input class="search recipeSearchInput" type="text" name="search" placeholder="Search Recipes...">
+            <button class="searchSubmit" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form><br>
+
+        <section class="successScenario">
+            <ul class="resultsList">
+
+
+
+            </ul>
+
+        </section>
+    </main>
+
+    <footer>
+        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
+        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</a>
+        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script src="client.js"></script>
+</body>
+
+</html>

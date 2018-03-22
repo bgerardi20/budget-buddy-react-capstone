@@ -1,0 +1,1180 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-size: 100%;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    /*    background: url("website-images/cooking-class-background-image.jpg") no-repeat fixed center;*/
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("website-images/cooking-class-background-image.jpg") no-repeat fixed center;
+    background-size: cover;
+    text-align: center;
+    font-family: 'Josefin Slab', serif;
+}
+
+main {
+    background-attachment: fixed;
+    padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+section {
+    background-color: #DFCCAE;
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    opacity: 0.95;
+}
+
+form {
+    /*    width: 50%;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Oswald', sans-seri
+}
+
+h1 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 30px;
+}
+
+label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    display: block;
+}
+
+input,
+textarea {
+    border: 1px solid black;
+    text-align: center;
+    /*    margin-top: 5px;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*    margin-bottom: 10px;*/
+    cursor: pointer;
+    font-family: 'Josefin Slab', serif;
+    font-size: 20px;
+    text-shadow: rgba(255, 255, 255, 0.9) 0.5px 0.5px;
+    color: rgb(89, 89, 92);
+}
+
+p {
+    margin: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    border: 1px solid black;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+#welcome,
+.signInMessage {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.introScreen,
+.signInScreen,
+.createUsernameScreen {
+    margin-top: 150px;
+}
+
+.loginInnerContainer,
+.signInInnerContainer,
+.innerSignUpBox {
+    /*    border: 3px solid #291709;*/
+    padding: 40px;
+    margin: 30px;
+}
+
+.navContainer {
+    width: 100%;
+    display: inline-block;
+
+}
+
+.logoHolder {
+    text-align: left;
+    width: auto;
+    margin-top: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.headerContainer {
+    background-color: #DFCCAE;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* right: 0; */
+    /* padding-bottom: 30px; */
+    width: 100%;
+    z-index: 10000;
+    border-bottom: 4px solid #333;
+}
+
+.navLogo {
+    width: 25%;
+
+}
+
+.navList {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navListItems {
+    display: inline;
+    margin: 30px;
+}
+
+.navContent {
+    color: black;
+    /* text-shadow: 1px 1px black; */
+    font-size: 20px;
+}
+
+.loginLogo {
+    width: 40%;
+    margin-top: -20px;
+}
+
+.loginIntro {
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.signInLogo {
+    width: 30%;
+    margin-top: -20px;
+}
+
+.loginOptions,
+.signInInput,
+.formControl {
+    display: block;
+    width: 85%;
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: #d9d9d9;
+    text-shadow: .5px .5px rgba(255, 255, 255, 0.9);
+    color: rgb(89, 89, 92);
+    border: 1px solid #291709;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.introInnerContainer {
+    border: 4px solid black;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+.introContent {
+    margin-top: 10px;
+}
+
+.signInform,
+.signUpForm {
+    width: 75%;
+}
+
+.signInButton,
+.registerButton {
+    border-radius: 4px;
+    line-height: 40px;
+    width: 85%;
+    background-color: #787878;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.formGroup {
+    display: block;
+    /*    margin: 7px;*/
+}
+
+.dummyAccountScreen,
+.homeScreen,
+.searchScreen,
+.recipeScreen,
+.chosenFail,
+.recipeInfoScreen,
+.createRecipeScreen,
+.chosenSuccess,
+.introScreen,
+.signInScreen,
+.createUsernameScreen,
+.outerSignUpBox,
+.signInOutterContainer,
+.addEdamamScreen {
+    background-color: #DFCCAE;
+    width: 65%;
+    opacity: 0.95;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10rem;
+    max-width: 1000px;
+}
+
+.recipeOutsideContainer {
+    margin-top: 2rem;
+}
+
+.dummyRecipeSnippetContainer,
+.recipeSnippetContainer,
+.successScenario,
+.homeContainer,
+.createContainer,
+.failScenario,
+.introContainer,
+.recipeOutsideContainer {
+    width: 90%;
+    opacity: 0.95;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recipeLink,
+.recipeResultsLink {
+    width: 44%;
+    display: inline-block;
+    padding: 10px;
+    /* margin: 10px 15px 10px 15px; */
+    margin-left: 26px;
+    margin-right: 26px;
+    background-clip: padding-box;
+}
+
+.recipeResultOption {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    margin: 20px;
+}
+
+.recipeImgContainer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.successResultsImgContainer {
+    width: 100%;
+}
+
+.recipeTitle {
+    font-size: 25px;
+    color: black;
+    margin-top: 1rem;
+}
+
+.recipeImg {
+    width: 70%;
+    padding: 7px;
+    margin: 10px;
+    object-fit: cover;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.resultsList {
+    width: 100%;
+}
+
+.searchRecipeResultOption {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.resultsTitle {
+    /* margin-bottom: 15px; */
+    font-size: 20px;
+    color: black;
+    height: 70px;
+    overflow-y: hidden;
+}
+
+.data {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+    /*    display: inline-flex;*/
+    width: 100%;
+}
+
+.cal {
+    border-right: 1px solid black;
+    padding-right: 10px;
+    width: 49%;
+    display: inline-block;
+
+}
+
+.ing {
+    border-left: 1px solid black;
+    padding-left: 10px;
+    width: 49%;
+    display: inline-block;
+}
+
+.num,
+.info {
+    color: black;
+    display: block;
+    padding: 2px;
+}
+
+.searchRecipeImg {
+    background-color: white;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 75%;
+}
+
+.searchBarContainer {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+    display: inline-block;
+}
+
+.search {
+    width: 75%;
+    text-align: left;
+    padding: 7px;
+    background-color: #d9d9d9;
+    font-size: 20px;
+    line-height: 40px;
+    vertical-align: top;
+    border-right: none;
+}
+
+.searchSubmit,
+.dummySearchSubmit {
+    width: 12%;
+    line-height: 40px;
+    background-color: #787878;
+    padding: 7px;
+    vertical-align: top;
+    margin-left: -5px;
+}
+
+.fa-search {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 30px;
+}
+
+.chosenTitle {
+    font-size: 40px;
+    margin-top: -20px;
+}
+
+.modsList {
+    cursor: pointer;
+    font-family: 'Josefin Slab', serif;
+    font-size: 20px;
+    text-shadow: rgba(255, 255, 255, 0.9) 0.5px 0.5px;
+    color: rgb(89, 89, 92);
+}
+
+
+.chosenList,
+.modsList {
+    background-color: #d9d9d9;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ingredTitle {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.chosenIngr {
+    list-style-type: decimal;
+    list-style-position: inside;
+    text-shadow: rgba(255, 255, 255, 0.9) 0.5px 0.5px;
+    color: rgb(89, 89, 92)
+}
+
+.successButton,
+#modifyAnchor,
+#directionsAnchor,
+.recipeButton,
+.createButton {
+    width: 20%;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    border: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+#add,
+.addSuccessButton,
+#back,
+#view,
+#saveAnchor,
+#deleteAnchor,
+.create {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.failMessageContainer {
+    /*    border: 3px solid black;*/
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.frownyFace {
+    width: 20%;
+}
+
+.searchRecipeImgFail {
+    background-color: white;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#failButton {
+    width: 10%;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: green;
+    border: 0;
+    color: white;
+}
+
+#modifyAnchor,
+#directionsAnchor {
+    background-color: #787878;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.addRemove {
+    display: inline-block;
+}
+
+.fa-plus-circle,
+.fa-minus-circle {
+    font-size: 30px;
+    color: #787878;
+    padding: 5px;
+    vertical-align: text-bottom;
+}
+
+.ingredients {
+    font-size: 20px;
+    line-height: 25px;
+    width: 47%;
+    padding: 5px;
+    vertical-align: text-bottom;
+    background-color: #d9d9d9;
+}
+
+.ingredientsLabel {
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.mods {
+    background-color: #d9d9d9;
+    border: 1px solid black;
+    margin-top: 15px;
+    padding: 10px;
+    font-family: 'Josefin Slab', serif;
+    width: 85%;
+}
+
+.createInstructions {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: 15px auto 15px auto;
+    padding: 10px;
+}
+
+.createTitle {
+    font-size: 40px;
+}
+
+.createForm {
+    width: 100%;
+    padding: 10px;
+    margin: 20px auto 20px auto;
+}
+
+.createLabel {
+    font-size: 25px;
+    padding: 10px 0 10px 0;
+}
+
+#createSubTitle {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.createSections {
+    margin: 30px auto 30px auto;
+}
+
+.createInput {
+    background-color: #d9d9d9;
+    border: 1px solid gray;
+    width: 70%;
+    text-align: center;
+    line-height: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#ingredientsCreate,
+#createDirections,
+#notes {
+    line-height: 40px;
+}
+
+#image,
+#title {
+    line-height: 40px
+}
+
+.footer {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 20px;
+    position: relative;
+}
+
+.addButton {
+    margin-top: 15px;
+}
+
+.addSuccessButton {
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    width: 30%;
+}
+
+.recipeInsideContainer {
+    border-bottom: 2px solid #ddd;
+}
+
+
+/*psuedo*/
+
+.navContent:hover {
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.loginOptions:hover {
+    background-color: #787878;
+    color: black;
+    text-shadow: none;
+}
+
+
+
+
+
+/*media queries*/
+
+@media only screen and (max-width: 1024px) {
+    .loginOptions,
+    .signInInput,
+    .formControl {
+        width: 100%;
+        padding: 7px;
+    }
+
+    .signInButton,
+    .registerButton {
+        width: 100%;
+        padding: 7px;
+    }
+
+    .searchSubmit,
+    .dummySearchSubmit {
+        width: 15%;
+    }
+
+    .search {
+        width: 83%;
+    }
+
+    .dummyAccountScreen,
+    .homeScreen,
+    .searchScreen,
+    .recipeScreen,
+    .chosenFail,
+    .recipeInfoScreen,
+    .createRecipeScreen,
+    .recipeOutsideContainer,
+    .chosenSuccess,
+    .introScreen,
+    .signInScreen,
+    .createUsernameScreen,
+    .outerSignUpBox,
+    .signInOutterContainer,
+    .dummyRecipeSnippetContainer,
+    .successScenario,
+    .homeContainer,
+    .createContainer,
+    .failScenario,
+    .introContainer {
+        width: 85%;
+    }
+
+    .recipeSnippetContainer {
+        width: 100%;
+    }
+
+    .searchBarContainer {
+        width: 70%;
+    }
+
+    .loginButtons {
+        width: 75%;
+    }
+
+    .searchRecipeResultOption {
+        width: 29%;
+    }
+
+    .data {
+        font-size: 15.2px;
+    }
+
+    .cal {
+        padding-right: 3px;
+
+    }
+
+    .ing {
+        padding-left: 3px;
+    }
+
+    .addSuccessButton {
+        width: 25%;
+        font-size: 13px;
+    }
+
+    .addEdamamScreen {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .introInnerContainer {
+        width: 75%;
+    }
+
+    .searchRecipeResultOption {
+        width: 45%;
+    }
+
+    .signInform,
+    .signUpForm,
+    .loginButtons {
+        width: 100%;
+    }
+
+    .signInLogo {
+        width: 50%;
+        margin-top: -50px;
+    }
+
+    #welcome,
+    .signInMessage {
+        font-size: 35px;
+    }
+
+    .loginLogo {
+        width: 50%;
+    }
+
+    .searchBarContainer {
+        width: 90%;
+    }
+
+    .recipeLink,
+    .recipeResultsLink {
+        width: 43%;
+    }
+
+    .recipeTitle {
+        font-size: 20px;
+        margin-top: 0rem;
+    }
+
+    .data {
+        font-size: 15px;
+    }
+
+    .cal {
+        padding-right: 5px;
+    }
+
+    .ing {
+        padding-left: 5px;
+    }
+
+    .searchRecipeResultOption {
+        width: 41%;
+    }
+
+    .failMessageContainer {
+        width: 70%;
+    }
+
+    #failButton {
+        width: 15%;
+    }
+
+    .successButton,
+    #modify,
+    #directions,
+    .recipeButton,
+    .createButton {
+        font-size: 18px;
+        width: 30%;
+    }
+
+    .createInstructions {
+        width: 100%;
+    }
+
+    .footer {
+        font-size: 17px
+    }
+
+    .logoHolder {
+        width: 49%;
+        display: inline-block;
+    }
+
+    .navList {
+        width: 49%;
+        display: inline-block;
+    }
+
+    .navContent {
+        font-size: 19px;
+    }
+
+    .navListItems {
+        margin: 15px;
+    }
+
+    .navContainer {
+        width: 100%;
+    }
+
+    .navLogo {
+        width: 19%;
+    }
+
+    .recipeImg {
+        width: 85%;
+    }
+
+    .createInput {
+        width: 85%;
+    }
+
+    .search {
+        width: 85%;
+    }
+
+    .addSuccessButton {
+        width: 27%;
+        font-size: 14px;
+    }
+
+
+}
+
+@media only screen and (max-width: 480px) {
+    main {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 21px;
+    }
+
+    button {
+        font-size: 17px;
+    }
+
+    input {
+        font-size: 17px;
+        line-height: 35px;
+    }
+
+    .navListItems {
+        margin: 5px;
+    }
+
+    .navContent {
+        font-size: 14px;
+    }
+
+    .navLogo {
+        width: 28%;
+    }
+
+    .dummyAccountScreen,
+    .homeScreen,
+    .searchScreen,
+    .recipeScreen,
+    .chosenFail,
+    .recipeInfoScreen,
+    .createRecipeScreen,
+    .recipeOutsideContainer,
+    .chosenSuccess,
+    .introScreen,
+    .signInScreen,
+    .createUsernameScreen,
+    .outerSignUpBox,
+    .signInOutterContainer,
+    .dummyRecipeSnippetContainer,
+    .successScenario,
+    .homeContainer,
+    .createContainer,
+    .failScenario,
+    .introContainer {
+        width: 95%;
+    }
+
+    .loginIntro {
+        padding: 5px 0 10px 0;
+    }
+
+    .signInLogo,
+    .loginLogo {
+        width: 60%;
+    }
+
+    .loginOptions,
+    .signInInput,
+    .formControl {
+        font-size: 17px;
+        line-height: 35px;
+    }
+
+    .signInButton,
+    .registerButton {
+        line-height: 35px;
+    }
+
+    .introInnerContainer {
+        width: 80%;
+    }
+
+    .searchBarContainer {
+        width: 100%;
+    }
+
+    .search {
+        line-height: 35px;
+        font-size: 17px;
+        width: 85%;
+    }
+
+    .fa-search {
+        font-size: 25px;
+    }
+
+    .searchSubmit,
+    .dummySearchSubmit {
+        line-height: 35px;
+    }
+
+    .recipeLink,
+    .recipeResultsLink {
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .recipeImgContainer {
+        width: 90%;
+    }
+
+    .recipeImg {
+        width: 80%;
+        margin: 10px 0 10px 0;
+    }
+
+    .searchRecipeResultOption {
+        width: 43%;
+        vertical-align: text-bottom;
+    }
+
+    .searchRecipeImg {
+        width: 100%;
+    }
+
+    .ing {
+        display: block;
+        border-top: 1px solid black;
+        border-left: none;
+        padding-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cal {
+        display: block;
+        border-bottom: 1px solid black;
+        border-right: none;
+        padding-bottom: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .data {
+        border: none;
+        padding-top: 0;
+        font-size: 17px;
+    }
+
+    .addSuccessButton {
+        width: 45%;
+        font-size: 17px;
+    }
+
+    .addButton {
+        margin-top: 5px;
+    }
+
+    .successButton,
+    #modify,
+    #directions,
+    .recipeButton,
+    .createButton {
+        font-size: 18px;
+        width: 32%;
+    }
+
+    .ingredients {
+        width: 54%;
+    }
+
+    .chosenList,
+    .modsList {
+        font-size: 17px;
+        width: 75%;
+    }
+
+    .createInstructions {
+        margin: 25px auto 20px auto;
+    }
+
+    .createInput {
+        width: 85%;
+    }
+
+    #image,
+    #title {
+        line-height: 35px;
+    }
+
+    .fa-plus-circle,
+    .fa-minus-circle {
+        font-size: 33px;
+    }
+
+    .failMessage {
+        font-size: 20px;
+    }
+
+    .num,
+    .info {
+        color: black;
+        padding: 2px;
+        display: inline-block;
+    }
+
+    .resultsTitle {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .navLogo {
+        width: 75%;
+    }
+
+    .logoHolder {
+        width: 28%;
+    }
+
+    .navList {
+        width: 70%;
+    }
+
+    .navListItems {
+        margin: 3px;
+    }
+
+    .signInLogo,
+    .loginLogo {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .introInnerContainer {
+        width: 95%;
+    }
+
+    .loginInnerContainer,
+    .signInInnerContainer,
+    .innerSignUpBox {
+        padding: 10px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .searchBarContainer {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        display: inline;
+    }
+
+    .search {
+        width: 78%;
+        margin-left: -43px;
+        margin-top: 40px;
+    }
+
+    .searchRecipeResultOption {
+        width: 80%;
+        border-bottom: 2px solid black;
+    }
+
+    .frownyFace {
+        width: 50%;
+    }
+
+    #failButton {
+        width: 30%;
+    }
+
+    .chosenList,
+    .modsList {
+        font-size: 17px;
+        width: 90%;
+    }
+
+    .successButton,
+    #modify,
+    #directions,
+    .recipeButton,
+    .createButton {
+        width: 43%;
+        font-size: 17px;
+    }
+
+    .ingredients {
+        width: 70%;
+    }
+
+    p {
+        font-size: 19px;
+    }
+
+    .createInput {
+        width: 90%;
+    }
+
+    input,
+    textarea,
+    button {
+        font-size: 17px;
+    }
+
+    .footer {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .searchSubmit {
+        margin-top: 40px;
+    }
+
+
+
+
+
+}
