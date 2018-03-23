@@ -14,9 +14,9 @@ var list = require('../models/list.js');
 var should = chai.should();
 
 chai.use(chaiHttp);
-describe('shopping-list-full-stack-capstone', function () {
+describe('', function () {
     //    it('Should ', function () {});
-    it('should add a recipe on POST', function (done) {
+    it('should add a  on POST', function (done) {
         chai.request(app)
             .post('/add-recipe-db/')
             .send({
@@ -35,7 +35,7 @@ describe('shopping-list-full-stack-capstone', function () {
             done();
         });
     });
-    it('Should Delete an ingredient', function () {
+    it('Should Delete ', function () {
         chai.request(app)
             .delete('/deletering/')
             .then(function (res) {
@@ -43,7 +43,7 @@ describe('shopping-list-full-stack-capstone', function () {
         })
     });
 
-    it('Should Delete all recipes', function () {
+    it('Should Delete all', function () {
 
         chai.request(app)
             .delete('/deleterec/')
@@ -52,7 +52,7 @@ describe('shopping-list-full-stack-capstone', function () {
         })
 
     });
-    it('Should Delete all ingredients', function () {
+    it('Should Delete all ', function () {
         const killmsg = {
             id: 'killAll'
         };

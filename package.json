@@ -1,7 +1,7 @@
 {
     "name": "budget-buddy-react-capstone",
     "version": "1.0.0",
-    "description": "The purpose of this app is to create a recipe book that you can have with you wherever you go.",
+    "description": "The purpose of this app is to make budgeting fun, by helping the user plan their financial goals, and track their expenses in order to meet those goals.",
     "main": "server.js",
     "scripts": {
         "test": "mocha"
@@ -11,7 +11,8 @@
         "url": "git+https://github.com/bgerardi20/budget-buddy-react-capstone.git"
     },
     "keywords": [
-        "budget"
+        "budget",
+        "buddy"
     ],
     "author": "Brendan Gerardi",
     "license": "ISC",
@@ -23,10 +24,11 @@
         "bcryptjs": "^2.3.0",
         "body-parser": "^1.15.2",
         "express": "^4.14.0",
+        "mongod": "^2.0.0",
         "mongodb": "^2.2.9",
         "mongoose": "^4.5.10",
         "morgan": "^1.9.0",
-        "nodemon": "^1.14.12",
+        "nodemon": "^1.17.2",
         "passport": "^0.3.2",
         "passport-http": "^0.3.0",
         "unirest": "^0.5.1"

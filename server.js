@@ -52,36 +52,36 @@ function closeServer() {
 }
 
 // external API call
-var getFromEdamam = function (searchTerm) {
-    var emitter = new events.EventEmitter();
-    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
-        .header("Accept", "application/json")
-        .end(function (result) {
-            //success scenario
-            if (result.ok) {
-                emitter.emit('end', result.body);
-            }
-            //failure scenario
-            else {
-                emitter.emit('error', result.code);
-            }
-        });
-    return emitter;
-};
+//var getFromEdamam = function (searchTerm) {
+//    var emitter = new events.EventEmitter();
+//    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
+//        .header("Accept", "application/json")
+//        .end(function (result) {
+//            //success scenario
+//            if (result.ok) {
+//                emitter.emit('end', result.body);
+//            }
+//            //failure scenario
+//            else {
+//                emitter.emit('error', result.code);
+//            }
+//        });
+//    return emitter;
+//};
 
 // local API endpoints
-app.get('/get-recipes-from-edamam/:name', function (req, res) {
-    //    external api function call and response
-    var searchReq = getFromEdamam(req.params.name);
-    //get the data from the first api call
-    searchReq.on('end', function (item) {
-        res.json(item);
-    });
-    //error handling
-    searchReq.on('error', function (code) {
-        res.sendStatus(code);
-    });
-});
+//app.get('/get-recipes-from-edamam/:name', function (req, res) {
+//    //    external api function call and response
+//    var searchReq = getFromEdamam(req.params.name);
+//    //get the data from the first api call
+//    searchReq.on('end', function (item) {
+//        res.json(item);
+//    });
+//    //error handling
+//    searchReq.on('error', function (code) {
+//        res.sendStatus(code);
+//    });
+//});
 
 
 // ---------------USER ENDPOINTS-------------------------------------
@@ -168,14 +168,14 @@ app.post('/users/signin', function (req, res) {
         });
 });
 
-// creating a new recipe
-app.post('/recipes/create', (req, res) => {
-    let title = req.body.title;
-    let ingredients = req.body.ingredients;
-    let image = req.body.image;
-    let directions = req.body.directions;
-    let notes = req.body.notes;
-    let userId = req.body.userId;
+// creating a new
+app.post('', (req, res) => {
+    let  = req.body.;
+    let  = req.body.;
+    let  = req.body.;
+    let  = req.body.;
+    let  = req.body.;
+    let  = req.body.;
 
     Recipe.create({
         title,
@@ -199,9 +199,9 @@ app.post('/recipes/create', (req, res) => {
 // PUT --------------------------------------
 
 // update recipe
-app.put('/recipes/:id', function (req, res) {
+app.put('', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['ingredients', 'directions', 'notes'];
+    let updateableFields = ['', '', ''];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
@@ -222,7 +222,7 @@ app.put('/recipes/:id', function (req, res) {
 // GET ------------------------------------
 
 // get recipes saved to username
-app.get('/recipes/:userId', function (req, res) {
+app.get('', function (req, res) {
     Recipe
         .find({
             userId: req.params.userId
@@ -244,7 +244,7 @@ app.get('/recipes/:userId', function (req, res) {
 // DELETE ----------------------------------------
 
 //delete recipe from library
-app.delete('/recipes/:id', function (req, res) {
+app.delete('', function (req, res) {
     Recipe.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
         return res.status(204).end();
     }).catch(function (err) {
