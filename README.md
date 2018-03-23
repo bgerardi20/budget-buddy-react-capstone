@@ -2,18 +2,19 @@
 The purpose of this app is to make budgeting fun, by helping the user plan their financial goals, and track their expenses in order to meet those goals.
 
 # MVP workflow
-###
+
+### Intro Screen
 * -->
 * ---->
 * ------>
-###
+### Home Screen
 * -->
 * ---->
 * ------>
 * -------->
 * ---------->
 * ------------>
-###
+###  Budget Screen
 * -->
 * ---->
 * ------>
@@ -30,13 +31,13 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 
 # User Stories
 * As a user I want to
-![Use Case]()
+![Use Case](./github-images/intro-screen.JPG)
 
 * As a user I want to
-![Use Case]()
+![Use Case](./github-images/home-screen.JPG)
 
 * As a user I want to
-![Use Case]()
+![Use Case](./github-images/budget-screen.JPG)
 
 * As a user I want to
 ![Use Case]()
