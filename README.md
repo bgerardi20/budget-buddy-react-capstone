@@ -21,30 +21,17 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 * -------->
 * ---------->
 * ------------>
-###
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
+
 
 # User Stories
-* As a user I want to
+* As a user I want to have a clear understanding of the sites purpose in order to create some financial goals, and be able to achieve those goals by budgeting and tracking expenses.
 ![Use Case](./github-images/intro-screen.JPG)
 
-* As a user I want to
+* As a user I want to be able to view my finaces in a clear and organzied way.
 ![Use Case](./github-images/home-screen.JPG)
 
-* As a user I want to
+* As a user I want to be able to create a budget for the month, to help keep me on track when trying to save money.
 ![Use Case](./github-images/budget-screen.JPG)
-
-* As a user I want to
-![Use Case]()
-
-* As a user I want to
-![Use Case]()
-
 
 
 # Screenshots
