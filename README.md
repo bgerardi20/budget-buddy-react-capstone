@@ -54,9 +54,9 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 Find a working prototype with Node at https://budget-buddy-react-capstone.herokuapp.com/
 
 # Functionality
-* When the user brings up the
-* The user then
-* The user can
+* When the user brings up the landing page it explains the pupose of the app.
+* The user then creates a profile with their email(logs in if already created), or uses the demo account.
+* The user can add a monthly budget, that includes all expenses and
 * The user can
 * The user can
 * The user can
@@ -97,7 +97,7 @@ The app is responsive and optimized for both desktop and mobile viewing and use.
 ### Planned additional features and improvements will allow users to:
 
 ####
-*
+*add an option to save expenses for the budget for each month
 
 ####
 *
