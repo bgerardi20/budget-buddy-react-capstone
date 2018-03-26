@@ -25,7 +25,7 @@
                     <li class="navOptions">Budgets</li>
                     <li class="navOptions">Track</li>
                     <li class="navOptions">Goals</li>
-                    <li class="navOptions">Log Out</li>
+                    <li class="navOptions">Logout</li>
                 </ul>
             </div>
 
@@ -36,11 +36,11 @@
     <main class="introScreen">
 
         <div class="welcomeContainer">
-            <img class="logInLogo" src="">
+            <img class="loginLogo" src="">
             <h1 id="firstWelcomeMessage">Trouble Sticking To a Budget?</h1>
             <h2 id="secondWelcomeMessage">Meet your New Buddy..</h2>
 
-            <button class="logInButton" type="submit">Login/Sign-Up</button>
+            <button class="loginButton" type="submit">Login/Register</button>
         </div>
 
         <div class="quickViewContainer">
@@ -62,26 +62,32 @@
     </main>
 
 
-    <main class="logInScreen">
+    <main class="loginScreen">
 
-        <section class="logInOutterContainer">
-            <div class="logInInnerContainer">
-                <img class="logInLogo" src="">
+        <section class="loginOutterContainer">
+            <div class="loginInnerContainer">
+                <img class="loginLogo" src="">
 
                 <div class="introButtonsContainer">
-                    <button class="introButton" type="submit">Sign Up</button>
+                    <button class="introButton" type="submit">Register</button>
                     <button class="introButton" type="submit">Login</button>
                 </div>
 
-                <h3 class="logInMessage">Demo Login:</h3>
-                <h4 class="logInMessage">First Name: Demo</h4>
-                <h4 class="logInMessage">Password: user123</h4>
+                <h3 class="loginMessage">Demo Login:</h3>
+                <h4 class="loginMessage">First Name: Demo</h4>
+                <h4 class="loginMessage">Password: user123</h4>
 
-                <h2 class="logInMessage">Welcome Back Buddy!</h2>
-                <form class="logInform" method="POST" autocomplete="off">
-                    <input class="logInInput" id="logInFirstName" type="text" placeholder="First Name" name="fName" value="">
-                    <input class="logInInput" id="logInPassword" type="password" placeholder="Password" name="password" value="">
-                    <button class="logInButton" type="submit">Login</button>
+                <h2 class="loginMessage">Welcome Back Buddy!</h2>
+                <form class="loginform" method="POST" autocomplete="off">
+                    <div class="formGroup">
+                        <label class="label" for="firstName">First Name</label>
+                        <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="">
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="password">Password</label>
+                        <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="">
+                    </div>
+                    <button class="loginButton" type="submit">Login</button>
                 </form>
             </div>
         </section>
@@ -89,31 +95,34 @@
     </main>
 
 
-    <main class="signUpScreen">
+    <main class="registerScreen">
 
-        <section class="outerSignUpBox">
-            <div class="innerSignUpBox">
-                <img class="logInLogo" src="">
+        <section class="outerRegisterBox">
+            <div class="innerRegisterBox">
+                <img class="loginLogo" src="">
 
                 <div class="introButtonsContainer">
-                    <button class="introButton" type="submit">Sign Up</button>
+                    <button class="introButton" type="submit">Register</button>
                     <button class="introButton" type="submit">Login</button>
                 </div>
 
-                <h4 class="logInMessage">Choose "Login" for demo</h4>
-                <h2 class="logInMessage">Sign Up</h2>
+                <h4 class="loginMessage">Choose "Login" for demo version</h4>
+                <h2 class="loginMessage">Register</h2>
 
-                <form class="signUpForm" method="POST">
+                <form class="registerForm" method="POST">
                     <div class="formGroup">
-                        <input class="formControl" id="registerName" type="text" placeholder="First Name" name="firstName">
+                        <label class="label" for="firstName">First Name</label>
+                        <input class="formControl" id="registerName" type="text" placeholder="First Name" name="firstName" value="">
                     </div>
                     <div class="formGroup">
-                        <input class="formControl" id="registerPassword" type="password" placeholder="Password" name="password">
+                        <label class="label" for="password">Password</label>
+                        <input class="formControl" id="registerPassword" type="password" placeholder="Password" name="password" value="">
                     </div>
                     <div class="formGroup">
-                        <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword">
+                        <label class="label" for="confirmPassword">Confirm Password</label>
+                        <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" value="">
                     </div>
-                    <button class="signUpButton " type="submit">Sign Up</button>
+                    <button class="registerButton " type="submit">Register</button>
                 </form>
 
             </div>
@@ -125,7 +134,7 @@
 
         <section class="upperHomeContainer">
             <div class="welcomeContainer">
-                <img class="logInLogo" src="">
+                <img class="loginLogo" src="">
                 <h1 id="firstWelcomeMessage">Buddy In The Bank!</h1>
 
                <div class="homeGoals">
@@ -168,9 +177,32 @@
                                         <div class="cell">2018</div>
                                         <div class="cell">+ $260.00</div>
                                     </div>
+                                    <div class="row">
+                                        <div class="cell">April</div>
+                                        <div class="cell">2018</div>
+                                        <div class="cell">+ $0.00</div>
+                                    </div>
                                 </div>
-
+<!--this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income-->
                                 <button class="homeSectionsButton" type="submit">Add Budget</button>
+
+                                <!-------------------------- form for starting a new budget/ will stay empty until they manually add an expense/income from the form in the budget section  --------------------------------->
+                                <form class="optionsForm" method="POST">
+                                    <!-------------------------- drop down with the 12 months  --------------------------------->
+                                    <div class="formGroup">
+                                        <label class="label" for="month">Month</label>
+                                        <input class="formControl" id="month" type="text" placeholder="December" name="month">
+                                    </div>
+                                    <div class="formGroup">
+                                        <label class="label" for="year">Year</label>
+                                        <input class="formControl" id="year" type="number" placeholder="2018" name="year">
+                                    </div>
+
+                                    <div class="formButtonsContainer">
+                                        <button class="formButton" type="submit">Create Budget</button>
+                                        <button class="formButton" type="submit">Cancel</button>
+                                    </div>
+                                </form>
 
                             </div>
                         </li>
@@ -235,9 +267,9 @@
 
                                 <div class="homeSectionsTable">
                                     <div class="row">
-                                        <div class="cell cellTitle">Goal</div>
+                                        <div class="cell cellTitle">Goal  Description</div>
                                         <div class="cell cellTitle">Amount Saved</div>
-                                        <div class="cell cellTitle">Amount Goal</div>
+                                        <div class="cell cellTitle">Goal Amount</div>
                                         <div class="cell cellTitle">Acheived?</div>
                                     </div>
                                     <div class="row">
@@ -307,49 +339,89 @@
                     <div class="expenseContainer">
                         <div class="table">
                             <div class="row">
-                                <div class="cell">expenses</div>
-                                <div class="cell">budgeted</div>
-                                <div class="cell">actual</div>
-                                <div class="cell">save?</div>
+                                <div class="cell cellTitle">Expenses</div>
+                                <div class="cell cellTitle">Budgeted</div>
+                                <div class="cell cellTitle">Actual</div>
+                                <div class="cell cellTitle">Save?</div>
                             </div>
                             <div class="row">
                                 <div class="cell">value1</div>
                                 <div class="cell">value2</div>
                                 <div class="cell">value3</div>
-                                <div class="cell">value3</div>
+                                <div class="cell">value4</div>
                             </div>
                             <div class="row">
                                 <div class="cell">value1</div>
                                 <div class="cell">value2</div>
                                 <div class="cell">value3</div>
+                                <div class="cell">value4</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">value1</div>
+                                <div class="cell">value2</div>
                                 <div class="cell">value3</div>
+                                <div class="cell">value4</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell">value1</div>
+                                <div class="cell">value2</div>
+                                <div class="cell">value3</div>
+                                <div class="cell">value4</div>
                             </div>
                         </div>
+
+                        <div class="budgetTotalContainer">
+                            <div class="row">
+                                <div class="cell">budgetedTotal</div>
+                                <div class="cell">actualTotal</div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="incomeContainer">
                         <div class="table">
                             <div class="table">
                                 <div class="row">
-                                    <div class="cell">expenses</div>
-                                    <div class="cell">budgeted</div>
-                                    <div class="cell">actual</div>
-                                    <div class="cell">save?</div>
+                                    <div class="cell cellTitle">Income</div>
+                                    <div class="cell cellTitle">Budgeted</div>
+                                    <div class="cell cellTitle">Actual</div>
+                                    <div class="cell cellTitle">Save?</div>
                                 </div>
                                 <div class="row">
                                     <div class="cell">value1</div>
                                     <div class="cell">value2</div>
                                     <div class="cell">value3</div>
-                                    <div class="cell">value3</div>
+                                    <div class="cell">value4</div>
                                 </div>
                                 <div class="row">
                                     <div class="cell">value1</div>
                                     <div class="cell">value2</div>
                                     <div class="cell">value3</div>
+                                    <div class="cell">value4</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">value1</div>
+                                    <div class="cell">value2</div>
                                     <div class="cell">value3</div>
+                                    <div class="cell">value4</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">value1</div>
+                                    <div class="cell">value2</div>
+                                    <div class="cell">value3</div>
+                                    <div class="cell">value4</div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="budgetTotalContainer">
+                            <div class="row">
+                                <div class="cell">budgetedTotal</div>
+                                <div class="cell">actualTotal</div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <button class="introButton" type="submit">Add</button>
@@ -371,15 +443,15 @@
                 <!-------------------------- Hidden Until "add" button is clicked --------------------------------->
                 <div class="budgetForms">
 
-                    <div class="introButtonsContainer">
-                        <button class="introButton" type="submit">Expense</button>
-                        <button class="introButton" type="submit">Income</button>
-                    </div>
-
                     <form class="optionsForm" method="POST">
+                        <!-------------------------- drop down with "expense" or "income"  --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="expense">Expense</label>
-                            <input class="formControl" id="expense" type="text" placeholder="Wedding" name="expense">
+                            <label class="label" for="type">Type</label>
+                            <input class="formControl" id="type" type="text" placeholder="expense" name="type">
+                        </div>
+                        <div class="formGroup">
+                            <label class="label" for="description">Description</label>
+                            <input class="formControl" id="description" type="text" placeholder="Wedding" name="description">
                         </div>
                         <!-------------------------- number increment --------------------------------->
                         <div class="formGroup">
@@ -393,40 +465,15 @@
                         </div>
                         <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="Save">Save</label>
+                            <label class="label" for="Save">Save?</label>
                             <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
                         </div>
                         <div class="formButtonsContainer">
-                            <button class="introButton" type="submit">Add Expense</button>
+                            <button class="introButton" type="submit">Add</button>
                             <button class="introButton" type="submit">Cancel</button>
                         </div>
                     </form>
 
-                    <form class="optionsForm" method="POST">
-                        <div class="formGroup">
-                            <label class="label" for="income">Income</label>
-                            <input class="formControl" id="income" type="text" placeholder="Paycheck" name="income">
-                        </div>
-                        <!-------------------------- number increment --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="budgeted">Budgeted</label>
-                            <input class="formControl" id="budgeted" type="number" placeholder="$200.00" name="budgeted">
-                        </div>
-                        <!-------------------------- number increment --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="Actual">Actual</label>
-                            <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
-                        </div>
-                        <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="Save">Save</label>
-                            <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
-                        </div>
-                        <div class="formButtonsContainer">
-                            <button class="formButton" type="submit">Add Income</button>
-                            <button class="formButton" type="submit">Cancel</button>
-                        </div>
-                    </form>
                 </div>
 
             </div>
@@ -454,7 +501,7 @@
                     </div>
                     <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
                     <div class="formGroup">
-                        <label class="label" for="type">Expense/Income</label>
+                        <label class="label" for="type">Type</label>
                         <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
                     </div>
                     <div class="formButtonsContainer">
@@ -474,12 +521,12 @@
 
                 <form class="optionsForm" method="POST">
                     <div class="formGroup">
-                        <label class="label" for="description">Description</label>
+                        <label class="label" for="description">Goal Description</label>
                         <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description">
                     </div>
                     <!-------------------------- number increment --------------------------------->
                     <div class="formGroup">
-                        <label class="label" for="totalSaved">Total Saved</label>
+                        <label class="label" for="totalSaved">Amount Saved</label>
                         <input class="formControl" id="goalSaved" type="number" placeholder="$100.00" name="totalSaved">
                     </div>
                     <!-------------------------- number increment --------------------------------->
