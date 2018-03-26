@@ -17,14 +17,15 @@
         <nav class="navContainer">
 
             <div class="logoHolder">
-                <img class="navLogo" src="">
+                <h2>Budget Buddy</h2>
             </div>
 
             <div class="navList">
                 <ul>
-                    <li class="navOptions"></li>
-                    <li class="navOptions"></li>
-                    <li class="navOptions"></li>
+                    <li class="navOptions">Budgets</li>
+                    <li class="navOptions">Track</li>
+                    <li class="navOptions">Goals</li>
+                    <li class="navOptions">Log Out</li>
                 </ul>
             </div>
 
@@ -32,23 +33,55 @@
 
     </header>
 
-    <main class="">
+    <main class="introScreen">
 
+        <div class="welcomeContainer">
+            <img class="logInLogo" src="">
+            <h1 id="firstWelcomeMessage">Trouble Sticking To a Budget?</h1>
+            <h2 id="secondWelcomeMessage">Meet your New Buddy..</h2>
+
+            <button class="logInButton" type="submit">Login/Sign-Up</button>
+        </div>
+
+        <div class="quickViewContainer">
+
+           <ul class="quickViewList">
+                <li class="quickViewOptions">
+                Set Monthly Budgets
+                </li>
+                <li class="quickViewOptions">
+                Track Transactions
+                </li>
+                <li class="quickViewOptions">
+                Set Financial Goals
+                </li>
+            </ul>
+
+        </div>
 
     </main>
 
 
-    <main class="signInScreen">
+    <main class="logInScreen">
 
-        <section class="signInOutterContainer">
-            <div class="signInInnerContainer">
-                <img class="signInLogo" src="">
-                <h2 class="signInMessage">Sign In</h2>
+        <section class="logInOutterContainer">
+            <div class="logInInnerContainer">
+                <img class="logInLogo" src="">
 
-                <form class="signInform" method="POST" autocomplete="off">
-                    <input class="signInInput" id="signInEmail" type="text" placeholder="Email Address" name="email" value="">
-                    <input class="signInInput" id="signInPassword" type="password" placeholder="Password" name="password" value="">
-                    <button class="signInButton " type="submit">Next</button>
+                <div class="introButtonsContainer">
+                    <button class="introButton" type="submit">Sign Up</button>
+                    <button class="introButton" type="submit">Login</button>
+                </div>
+
+                <h3 class="logInMessage">Demo Login:</h3>
+                <h4 class="logInMessage">First Name: Demo</h4>
+                <h4 class="logInMessage">Password: user123</h4>
+
+                <h2 class="logInMessage">Welcome Back Buddy!</h2>
+                <form class="logInform" method="POST" autocomplete="off">
+                    <input class="logInInput" id="logInFirstName" type="text" placeholder="First Name" name="fName" value="">
+                    <input class="logInInput" id="logInPassword" type="password" placeholder="Password" name="password" value="">
+                    <button class="logInButton" type="submit">Login</button>
                 </form>
             </div>
         </section>
@@ -56,31 +89,31 @@
     </main>
 
 
-    <main class="createUsernameScreen">
+    <main class="signUpScreen">
 
         <section class="outerSignUpBox">
             <div class="innerSignUpBox">
-                <img class="signInLogo" src="">
-                <h2 class="signInMessage">Create Account</h2>
+                <img class="logInLogo" src="">
+
+                <div class="introButtonsContainer">
+                    <button class="introButton" type="submit">Sign Up</button>
+                    <button class="introButton" type="submit">Login</button>
+                </div>
+
+                <h4 class="logInMessage">Choose "Login" for demo</h4>
+                <h2 class="logInMessage">Sign Up</h2>
 
                 <form class="signUpForm" method="POST">
                     <div class="formGroup">
-                        <label class="label" for="fullName">First Name:</label>
-                        <input class="formControl" id="registerName" type="text" placeholder="Name" name="fullName">
+                        <input class="formControl" id="registerName" type="text" placeholder="First Name" name="firstName">
                     </div>
                     <div class="formGroup">
-                        <label for="email">Email:</label>
-                        <input class="formControl" id="registerEmail" type="text" placeholder="Email Address" name="email">
-                    </div>
-                    <div class="formGroup">
-                        <label for="password">Password:</label>
                         <input class="formControl" id="registerPassword" type="password" placeholder="Password" name="password">
                     </div>
                     <div class="formGroup">
-                        <label for="confirmPassword">Confirm Password:</label>
                         <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword">
                     </div>
-                    <button class="registerButton " type="submit">Sign Up</button>
+                    <button class="signUpButton " type="submit">Sign Up</button>
                 </form>
 
             </div>
@@ -88,9 +121,184 @@
 
     </main>
 
-    <main class="">
+    <main class="homeScreen">
+
+        <section class="upperHomeContainer">
+            <div class="welcomeContainer">
+                <img class="logInLogo" src="">
+                <h1 id="firstWelcomeMessage">Buddy In The Bank!</h1>
+
+               <div class="homeGoals">
+                   <p class="goalMessage">You have acheived these goals:</p>
+                   <h3 class="acheivedGoal">Goal</h3>
+                   <h3 class="acheivedGoal">Goal2</h3>
+               </div>
 
 
+            </div>
+        </section>
+
+        <section class="monthlyBudgets">
+            <div class="budgetOutterContainer">
+
+                <header>
+                    <h1>March's Budget</h1>
+<!-------------------------- Add DropDown Window To Change Month --------------------------------->
+                    <div>*Total from budget*</div>
+                </header>
+
+                <div class="budgetInnerContainer">
+
+                    <div class="expenseContainer">
+
+                    </div>
+
+                    <div class="incomeContainer">
+
+                    </div>
+
+                    <button class="introButton" type="submit">Add</button>
+
+                </div>
+
+
+                <div class="resultOutterContainer">
+<!-------------------------- Conditional based off total from budget --------------------------------->
+                    <div class="resultInnerContainer">
+                        <h2 class="resultTitle">You Are...</h2>
+                        <h3 class="resultMessage">Under Budget</h3>
+                        <h3 class="resultMessage">Over Budget</h3>
+                        <h3 class="resultMessage">At 0</h3>
+                    </div>
+
+                </div>
+
+<!-------------------------- Hidden Until "add" button is clicked --------------------------------->
+                <div class="budgetForms">
+                    <div class="introButtonsContainer">
+                        <button class="introButton" type="submit">Expense</button>
+                        <button class="introButton" type="submit">Income</button>
+                    </div>
+
+                    <form class="optionsForm" method="POST">
+                        <div class="formGroup">
+                            <label class="label" for="expense">Expense</label>
+                            <input class="formControl" id="expense" type="text" placeholder="Wedding" name="expense">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="budgeted">Budgeted</label>
+                            <input class="formControl" id="budgeted" type="number" placeholder="$200.00" name="budgeted">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="Actual">Actual</label>
+                            <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
+                        </div>
+                        <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="Save">Save</label>
+                            <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
+                        </div>
+                        <div class="formButtonsContainer">
+                            <button class="introButton" type="submit">Add Expense</button>
+                            <button class="introButton" type="submit">Cancel</button>
+                        </div>
+                    </form>
+
+                    <form class="optionsForm" method="POST">
+                        <div class="formGroup">
+                            <label class="label" for="income">Income</label>
+                            <input class="formControl" id="income" type="text" placeholder="Paycheck" name="income">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="budgeted">Budgeted</label>
+                            <input class="formControl" id="budgeted" type="number" placeholder="$200.00" name="budgeted">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="Actual">Actual</label>
+                            <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
+                        </div>
+                        <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="Save">Save</label>
+                            <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
+                        </div>
+                        <div class="formButtonsContainer">
+                            <button class="formButton" type="submit">Add Income</button>
+                            <button class="formButton" type="submit">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="transactionTracker">
+            <div class="transactionOutterContainer">
+
+                <form class="optionsForm" method="POST">
+                    <div class="formGroup">
+                        <label class="label" for="description">Description</label>
+                        <input class="formControl" id="transactionDescription" type="text" placeholder="groceries" name="description">
+                    </div>
+                    <!-------------------------- number increment --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="amount">Amount</label>
+                        <input class="formControl" id="transactionAmount" type="number" placeholder="$20.00" name="amount">
+                    </div>
+                    <!-------------------------- Possibly have a calender option --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="date">Date</label>
+                        <input class="formControl" id="transactionDate" type="number" placeholder="03/08/18" name="date">
+                    </div>
+                    <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="type">Expense/Income</label>
+                        <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
+                    </div>
+                    <div class="formButtonsContainer">
+                        <button class="formButton" type="submit">Add Transaction</button>
+                        <button class="formButton" type="submit">Cancel</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+        <section class="financialGoals">
+            <div class="goalsOutterContainer">
+
+                <form class="optionsForm" method="POST">
+                    <div class="formGroup">
+                        <label class="label" for="description">Description</label>
+                        <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description">
+                    </div>
+                    <!-------------------------- number increment --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="totalSaved">Total Saved</label>
+                        <input class="formControl" id="goalSaved" type="number" placeholder="$100.00" name="totalSaved">
+                    </div>
+                    <!-------------------------- number increment --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="goalAmount">Goal Amount</label>
+                        <input class="formControl" id="goalAmount" type="number" placeholder="$2,000.00" name="goalAmount">
+                    </div>
+                    <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
+                    <div class="formGroup">
+                        <label class="label" for="acheived">Acheived?</label>
+                        <input class="formControl" id="goalAchieved" type="text" placeholder="no" name="acheived">
+                    </div>
+                    <div class="formButtonsContainer">
+                        <button class="formButton" type="submit">Add Goal</button>
+                        <button class="formButton" type="submit">Cancel</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
 
     </main>
 

@@ -52,36 +52,36 @@ function closeServer() {
 }
 
 // external API call
-//var getFromEdamam = function (searchTerm) {
-//    var emitter = new events.EventEmitter();
-//    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
-//        .header("Accept", "application/json")
-//        .end(function (result) {
-//            //success scenario
-//            if (result.ok) {
-//                emitter.emit('end', result.body);
-//            }
-//            //failure scenario
-//            else {
-//                emitter.emit('error', result.code);
-//            }
-//        });
-//    return emitter;
-//};
+var getFromEdamam = function (searchTerm) {
+    var emitter = new events.EventEmitter();
+    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
+        .header("Accept", "application/json")
+        .end(function (result) {
+        //success scenario
+        if (result.ok) {
+            emitter.emit('end', result.body);
+        }
+        //failure scenario
+        else {
+            emitter.emit('error', result.code);
+        }
+    });
+    return emitter;
+};
 
 // local API endpoints
-//app.get('/get-recipes-from-edamam/:name', function (req, res) {
-//    //    external api function call and response
-//    var searchReq = getFromEdamam(req.params.name);
-//    //get the data from the first api call
-//    searchReq.on('end', function (item) {
-//        res.json(item);
-//    });
-//    //error handling
-//    searchReq.on('error', function (code) {
-//        res.sendStatus(code);
-//    });
-//});
+app.get('/get-recipes-from-edamam/:name', function (req, res) {
+    //    external api function call and response
+    var searchReq = getFromEdamam(req.params.name);
+    //get the data from the first api call
+    searchReq.on('end', function (item) {
+        res.json(item);
+    });
+    //error handling
+    searchReq.on('error', function (code) {
+        res.sendStatus(code);
+    });
+});
 
 
 // ---------------USER ENDPOINTS-------------------------------------
@@ -138,44 +138,44 @@ app.post('/users/signin', function (req, res) {
     const password = req.body.password;
     User
         .findOne({
-            email: req.body.email
-        }, function (err, items) {
-            if (err) {
-                return res.status(500).json({
-                    message: "Internal server error"
-                });
-            }
-            if (!items) {
-                // bad username
-                return res.status(401).json({
-                    message: "Not found!"
-                });
-            } else {
-                items.validatePassword(req.body.password, function (err, isValid) {
-                    if (err) {
-                        console.log('There was an error validating the password.');
-                    }
-                    if (!isValid) {
-                        return res.status(401).json({
-                            message: "Not found"
-                        });
-                    } else {
-                        var logInTime = new Date();
-                        return res.json(items);
-                    }
-                });
-            };
-        });
+        email: req.body.email
+    }, function (err, items) {
+        if (err) {
+            return res.status(500).json({
+                message: "Internal server error"
+            });
+        }
+        if (!items) {
+            // bad username
+            return res.status(401).json({
+                message: "Not found!"
+            });
+        } else {
+            items.validatePassword(req.body.password, function (err, isValid) {
+                if (err) {
+                    console.log('There was an error validating the password.');
+                }
+                if (!isValid) {
+                    return res.status(401).json({
+                        message: "Not found"
+                    });
+                } else {
+                    var logInTime = new Date();
+                    return res.json(items);
+                }
+            });
+        };
+    });
 });
 
-// creating a new
-app.post('', (req, res) => {
-    let  = req.body.;
-    let  = req.body.;
-    let  = req.body.;
-    let  = req.body.;
-    let  = req.body.;
-    let  = req.body.;
+// creating a new recipe
+app.post('/recipes/create', (req, res) => {
+    let title = req.body.title;
+    let ingredients = req.body.ingredients;
+    let image = req.body.image;
+    let directions = req.body.directions;
+    let notes = req.body.notes;
+    let userId = req.body.userId;
 
     Recipe.create({
         title,
@@ -199,9 +199,9 @@ app.post('', (req, res) => {
 // PUT --------------------------------------
 
 // update recipe
-app.put('', function (req, res) {
+app.put('/recipes/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['', '', ''];
+    let updateableFields = ['ingredients', 'directions', 'notes'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
@@ -209,42 +209,42 @@ app.put('', function (req, res) {
     });
     Recipe
         .findByIdAndUpdate(req.params.id, {
-            $set: toUpdate
-        }).exec().then(function (achievement) {
-            return res.status(204).end();
-        }).catch(function (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
+        $set: toUpdate
+    }).exec().then(function (achievement) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
         });
+    });
 });
 
 // GET ------------------------------------
 
 // get recipes saved to username
-app.get('', function (req, res) {
+app.get('/recipes/:userId', function (req, res) {
     Recipe
         .find({
-            userId: req.params.userId
-        })
+        userId: req.params.userId
+    })
         .then(function (recipes) {
-            res.json({
-                recipes
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
+        res.json({
+            recipes
         });
+    })
+        .catch(function (err) {
+        console.error(err);
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    });
 });
 
 
 // DELETE ----------------------------------------
 
 //delete recipe from library
-app.delete('', function (req, res) {
+app.delete('/recipes/:id', function (req, res) {
     Recipe.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
         return res.status(204).end();
     }).catch(function (err) {
