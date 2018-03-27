@@ -19,18 +19,24 @@ li {
 h1 {
     font-size: 4rem;
     color: #395D79;
+/*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 h2 {
     font-size: 2rem;
     color: #395D79;
+/*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 button {
     border: 1px solid black;
     width: 10%;
     line-height: 35px;
-    font-size: 18px;
+    background-color: #FFD1BF;
+    border: 1px solid #FFD1BF;
+    border-radius: 3px;
+    text-shadow: 1px 1px #B9C8D4;
+    color: #395D79;
 }
 
 main {
@@ -46,6 +52,7 @@ form {
     margin-right: auto;
     color: #BC6F51;
     padding: 5rem;
+}
 
 a {
     text-decoration: none;
@@ -58,6 +65,11 @@ nav {
 span {
     font-size: 10rem;
     color: #395D79;
+}
+
+i {
+    text-shadow: 1px 1px #88A0B2;
+    color: #E7A58B;
 }
 
 .introScreen{
@@ -114,7 +126,7 @@ span {
     margin: 1.5rem;
     margin-left: auto;
     margin-right: auto;
-    border-right: 2px solid #395D79;
+    border-right: 2px solid #FFD1BF;
     /* padding: 1rem; */
     padding-right: 0.7rem;
     padding-top: 0.5rem;
@@ -151,21 +163,43 @@ span {
 
 .quickViewOptions {
     margin: 6rem;
+    max-height: 333px;
 }
 
 .quickViewTitle {
     display: block;
     margin-bottom: 3rem;
+    color: #E7A58B;
+    text-shadow: 1px 1px #88A0B2;
 }
 
 #quickViewBudget {
-    background-image:
+    background-color: #214662;;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 #quickViewTrans {
-    background-image:
+    background-color: #5D7D94;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 #quickViewGoals {
-    background-image:
+    background-color: #88A0B2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+quickViewContainer {
+    max-height: 1000px;
 }
