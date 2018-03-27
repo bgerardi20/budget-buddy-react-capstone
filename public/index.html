@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Oswald:300|Lato:600" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -21,12 +21,26 @@
             </div>
 
             <div class="navList">
-                <ul>
-                    <li class="navOptions"><a href="">Budgets</a></li>
-                    <li class="navOptions"><a href="">Track</a></li>
-                    <li class="navOptions"><a href="">Goals</a></li>
-                    <li class="navOptions"><a href="">Logout</a></li>
-                </ul>
+                <a href="" class="navOptions">
+                    <h4>
+                        <i class="fas fa-balance-scale logos"></i> Budgets
+                    </h4>
+                </a>
+                <a href="" class="navOptions">
+                    <h4>
+                        <i class="far fa-credit-card logos"></i> Track
+                    </h4>
+                </a>
+                <a href="" class="navOptions">
+                    <h4>
+                        <i class="fas fa-tasks logos"></i> Goals
+                    </h4>
+                </a>
+                <a href="" class="navOptions">
+                    <h4>
+                        <i class="fas fa-sign-out-alt logos"></i> Logout
+                    </h4>
+                </a>
             </div>
 
         </nav>
@@ -40,27 +54,36 @@
             <div class="welcomeMessage">
                 <h1 id="firstWelcomeMessage">Trouble Sticking To a Budget?</h1>
                 <h2 id="secondWelcomeMessage">Meet your New Buddy..</h2>
-
-                <button class="loginButton" type="submit">Login/Register</button>
+                <div class="welcomeButtonContainer">
+                    <button class="loginButton" type="submit">Login</button>
+                    <button class="loginButton" type="submit">Register</button>
+                </div>
             </div>
 
-
         </div>
+    </main>
 
+    <main class="quickView">
         <div class="quickViewContainer">
 
             <ul class="quickViewList">
                 <li class="quickViewOptions">
                     <h2 class="quickViewTitle">Set Monthly Budgets</h2>
-                    <img class="quickViewLogo" src="https://d2zn0zevyumdo1.cloudfront.net/wp-content/uploads/2013/11/incomeInEnvelopes.png" alt="budget_logo">
+                    <span id="quickViewBudget">
+                        <i class="fas fa-balance-scale"></i>
+                    </span>
                 </li>
                 <li class="quickViewOptions">
                     <h2 class="quickViewTitle">Track Transactions</h2>
-                    <img class="quickViewLogo" src="https://conceptdraw.com/a1708c3/p20/preview/256/pict--credit-card-payment-currency-vector-stencils-library" alt="transaction_logo">
+                    <span id="quickViewTrans">
+                        <i class="far fa-credit-card"></i>
+                    </span>
                 </li>
                 <li class="quickViewOptions">
                     <h2 class="quickViewTitle">Set Financial Goals</h2>
-                    <img class="quickViewLogo" src="https://s3.envato.com/files/67688302/3d%20small%20people%20-%20installation%20of%20check%20marks%20pr.jpg" alt="goal_logo">
+                    <span id="quickViewGoals">
+                        <i class="fas fa-tasks"></i>
+                    </span>
                 </li>
             </ul>
 
@@ -578,9 +601,9 @@
     </main>
 
     <footer>
-        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a>
-        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</a>
-        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope-square"></i> Email</a>
+        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github"></i> Github</a>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
