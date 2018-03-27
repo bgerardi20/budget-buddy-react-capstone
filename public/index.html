@@ -45,15 +45,15 @@
 
         <div class="quickViewContainer">
 
-           <ul class="quickViewList">
+            <ul class="quickViewList">
                 <li class="quickViewOptions">
-                Set Monthly Budgets
+                    Set Monthly Budgets
                 </li>
                 <li class="quickViewOptions">
-                Track Transactions
+                    Track Transactions
                 </li>
                 <li class="quickViewOptions">
-                Set Financial Goals
+                    Set Financial Goals
                 </li>
             </ul>
 
@@ -137,11 +137,11 @@
                 <img class="loginLogo" src="">
                 <h1 id="firstWelcomeMessage">Buddy In The Bank!</h1>
 
-               <div class="homeGoals">
-                   <p class="goalMessage">You have acheived these goals:</p>
-                   <h3 class="acheivedGoal">Goal</h3>
-                   <h3 class="acheivedGoal">Goal2</h3>
-               </div>
+                <div class="homeGoals">
+                    <p class="goalMessage">You have acheived these goals:</p>
+                    <h3 class="acheivedGoal">Goal</h3>
+                    <h3 class="acheivedGoal">Goal2</h3>
+                </div>
 
                 <div class="homeSectionsOutterContainer">
                     <ul class="homeSectionsInnerContainer">
@@ -183,7 +183,7 @@
                                         <div class="cell">+ $0.00</div>
                                     </div>
                                 </div>
-<!--this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income-->
+                                <!--this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income-->
                                 <button class="homeSectionsButton" type="submit">Add Budget</button>
 
                                 <!-------------------------- form for starting a new budget/ will stay empty until they manually add an expense/income from the form in the budget section  --------------------------------->
@@ -267,7 +267,7 @@
 
                                 <div class="homeSectionsTable">
                                     <div class="row">
-                                        <div class="cell cellTitle">Goal  Description</div>
+                                        <div class="cell cellTitle">Goal Description</div>
                                         <div class="cell cellTitle">Amount Saved</div>
                                         <div class="cell cellTitle">Goal Amount</div>
                                         <div class="cell cellTitle">Acheived?</div>
@@ -329,9 +329,17 @@
             <div class="budgetOutterContainer">
 
                 <header>
-                    <h1>March's Budget</h1>
                     <!-------------------------- Add DropDown Window To Change Month --------------------------------->
-                    <div>*Total from budget*</div>
+                    <h1 id="budgetTitle">March's Budget</h1>
+
+                    <div id="budgetConditionalContainer">
+                        <h3 id="budgetConditionalTitle">You are..</h3>
+                        <h4 class="budgetConditionalOptions">Under Budget!</h4>
+                        <h4 class="budgetConditionalOptions">Over Budget!</h4>
+                        <h4 class="budgetConditionalOptions">Even!</h4>
+                    </div>
+
+                    <div id="budgetTotal">*Actual Total from budget below*</div>
                 </header>
 
                 <div class="budgetInnerContainer">
@@ -383,7 +391,7 @@
                         <div class="table">
                             <div class="table">
                                 <div class="row">
-                                    <div class="cell cellTitle">Income</div>
+                                    <div class="cell cellTitle">Description</div>
                                     <div class="cell cellTitle">Budgeted</div>
                                     <div class="cell cellTitle">Actual</div>
                                     <div class="cell cellTitle">Save?</div>
@@ -424,7 +432,33 @@
 
                     </div>
 
-                    <button class="introButton" type="submit">Add</button>
+                    <button class="introButton" type="submit">Add Expense/Income</button>
+
+                    <div class="budgetOutterCalc">
+
+                        <ul class="budgetInnerCalc">
+                            <li class="budgetCalcList">
+                                <div class="budgetedCalc">
+                                    <h2>Budgeted Totals</h2>
+                                    <div class="calcStats">budgetedIncomes</div>
+                                    <div class="calcStats">minus sign</div>
+                                    <div class="calcStats">budgetedExpenses</div>
+                                    <div class="calcStats"><strong>budgetedTotal</strong></div>
+                                </div>
+                            </li>
+
+                            <li class="budgetCalcList">
+                                <div class="actualCalc">
+                                    <h2>Actual Totals</h2>
+                                    <div class="calcStats">actualIncomes</div>
+                                    <div class="calcStats">minus sign</div>
+                                    <div class="calcStats">actualExpenses</div>
+                                    <div class="calcStats"><strong>actualTotal</strong></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
 
                 </div>
 
@@ -505,7 +539,7 @@
                         <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
                     </div>
                     <div class="formButtonsContainer">
-                        <button class="formButton" type="submit">Add Transaction</button>
+                        <button class="formButton" type="submit">Add</button>
                         <button class="formButton" type="submit">Cancel</button>
                     </div>
                 </form>
@@ -534,13 +568,13 @@
                         <label class="label" for="goalAmount">Goal Amount</label>
                         <input class="formControl" id="goalAmount" type="number" placeholder="$2,000.00" name="goalAmount">
                     </div>
-                    <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
+                    <!-------------------------- Dropdown with "I did it!" or "not yet.." --------------------------------->
                     <div class="formGroup">
                         <label class="label" for="acheived">Acheived?</label>
-                        <input class="formControl" id="goalAchieved" type="text" placeholder="no" name="acheived">
+                        <input class="formControl" id="goalAchieved" type="text" placeholder="noy yet.." name="acheived">
                     </div>
                     <div class="formButtonsContainer">
-                        <button class="formButton" type="submit">Add Goal</button>
+                        <button class="formButton" type="submit">Add</button>
                         <button class="formButton" type="submit">Cancel</button>
                     </div>
                 </form>
