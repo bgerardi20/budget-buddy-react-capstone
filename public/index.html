@@ -36,7 +36,7 @@
     <main class="introScreen">
 
         <div class="welcomeContainer">
-            <img class="loginLogo" src="">
+            <img class="loginLogo" src="./website-images/finance-background.jpg">
             <h1 id="firstWelcomeMessage">Trouble Sticking To a Budget?</h1>
             <h2 id="secondWelcomeMessage">Meet your New Buddy..</h2>
 
@@ -87,6 +87,7 @@
                         <label class="label" for="password">Password</label>
                         <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="">
                     </div>
+
                     <button class="loginButton" type="submit">Login</button>
                 </form>
             </div>
@@ -122,6 +123,7 @@
                         <label class="label" for="confirmPassword">Confirm Password</label>
                         <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" value="">
                     </div>
+
                     <button class="registerButton " type="submit">Register</button>
                 </form>
 
@@ -136,12 +138,6 @@
             <div class="welcomeContainer">
                 <img class="loginLogo" src="">
                 <h1 id="firstWelcomeMessage">Buddy In The Bank!</h1>
-
-                <div class="homeGoals">
-                    <p class="goalMessage">You have acheived these goals:</p>
-                    <h3 class="acheivedGoal">Goal</h3>
-                    <h3 class="acheivedGoal">Goal2</h3>
-                </div>
 
                 <div class="homeSectionsOutterContainer">
                     <ul class="homeSectionsInnerContainer">
@@ -434,9 +430,14 @@
 
                     <button class="introButton" type="submit">Add Expense/Income</button>
 
-                    <div class="budgetOutterCalc">
+                </div>
 
-                        <ul class="budgetInnerCalc">
+
+                <div class="resultOutterContainer">
+
+                    <div class="budgetCalcOutter">
+
+                        <ul class="budgetCalcInner">
                             <li class="budgetCalcList">
                                 <div class="budgetedCalc">
                                     <h2>Budgeted Totals</h2>
@@ -458,18 +459,6 @@
                             </li>
                         </ul>
 
-                    </div>
-
-                </div>
-
-
-                <div class="resultOutterContainer">
-                    <!-------------------------- Conditional based off total from budget --------------------------------->
-                    <div class="resultInnerContainer">
-                        <h2 class="resultTitle">You Are...</h2>
-                        <h3 class="resultMessage">Under Budget</h3>
-                        <h3 class="resultMessage">Over Budget</h3>
-                        <h3 class="resultMessage">At 0</h3>
                     </div>
 
                 </div>
