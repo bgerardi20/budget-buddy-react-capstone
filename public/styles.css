@@ -87,6 +87,14 @@ form {
 .navOptions {
     display: inline;
     margin: 1.5rem;
+    border-right: 1px solid white;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.navOptions:last-child {
+    border-right: none;
 }
 
 .navContainer {
@@ -108,4 +116,8 @@ form {
 #firstWelcomeMessage, #secondWelcomeMessage {
     margin: 2rem;
     padding: 1rem;
+}
+
+.quickViewTitle {
+    display: block;
 }
