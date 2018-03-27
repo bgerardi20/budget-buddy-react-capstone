@@ -10,6 +10,7 @@ body {
     background-size: cover;
     text-align: center;
     background-color: #B9C8D4;
+    font-family: 'Poppins', sans-serif;
 }
 
 li {
@@ -19,12 +20,14 @@ li {
 h1 {
     font-size: 4rem;
     color: #395D79;
+    font-family: 'Roboto', sans-serif;
 /*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 h2 {
     font-size: 2rem;
     color: #395D79;
+    font-family: 'Roboto', sans-serif;
 /*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
@@ -42,12 +45,13 @@ button {
 main {
     width: 100%;
     display: block;
+    margin: 0 auto;
 }
 
 form {
     background-color: #FFF6DD;
     /* opacity: 0.9; */
-    width: 40%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     color: #BC6F51;
@@ -69,7 +73,11 @@ span {
 
 i {
     text-shadow: 1px 1px #88A0B2;
-    color: #E7A58B;
+    color: #FFD1BF;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
 }
 
 .introScreen{
@@ -119,6 +127,7 @@ i {
 
 .logos {
     display: inline;
+    color: #395D79;
 }
 
 .navOptions {
@@ -169,22 +178,25 @@ i {
 .quickViewTitle {
     display: block;
     margin-bottom: 3rem;
-    color: #E7A58B;
-    text-shadow: 1px 1px #88A0B2;
+    color: #FFD1BF;
+    text-shadow: 0.5px 0.5px #E4EAEF;
 }
 
 #quickViewBudget {
-    background-color: #214662;;
+    background-color: #214662;
     width: 100%;
+    margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
     padding-top: 3rem;
     padding-bottom: 3rem;
+
 }
 
 #quickViewTrans {
     background-color: #5D7D94;
     width: 100%;
+    margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
     padding-top: 3rem;
@@ -194,6 +206,7 @@ i {
 #quickViewGoals {
     background-color: #88A0B2;
     width: 100%;
+    margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
     padding-top: 3rem;
@@ -201,5 +214,11 @@ i {
 }
 
 quickViewContainer {
-    max-height: 1000px;
+   height: auto;
+}
+
+.loginInnerContainer, .innerRegisterBox, .budgetOutterContainer, .transactionOutterContainer, .goalsOutterContainer {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
 }
