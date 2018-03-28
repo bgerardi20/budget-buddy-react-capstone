@@ -504,33 +504,38 @@
                 <div class="budgetForms">
 
                     <form class="optionsForm" method="POST">
-                        <!-------------------------- drop down with "expense" or "income"  --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="type">Type</label>
-                            <input class="formControl" id="type" type="text" placeholder="expense" name="type">
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="description">Description</label>
-                            <input class="formControl" id="description" type="text" placeholder="Wedding" name="description">
-                        </div>
-                        <!-------------------------- number increment --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="budgeted">Budgeted</label>
-                            <input class="formControl" id="budgeted" type="number" placeholder="$200.00" name="budgeted">
-                        </div>
-                        <!-------------------------- number increment --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="Actual">Actual</label>
-                            <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
-                        </div>
-                        <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
-                        <div class="formGroup">
-                            <label class="label" for="Save">Save?</label>
-                            <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
-                        </div>
-                        <div class="formButtonsContainer">
-                            <button class="introButton" type="submit">Add</button>
-                            <button class="introButton" type="submit">Cancel</button>
+
+                        <h2 class="loginTitle">Add Expense/Income</h2>
+
+                        <div class="demoContainer">
+                            <!-------------------------- drop down with "expense" or "income"  --------------------------------->
+                            <div class="formGroup">
+                                <label class="label" for="type">Type</label>
+                                <input class="formControl" id="type" type="text" placeholder="expense" name="type">
+                            </div>
+                            <div class="formGroup">
+                                <label class="label" for="description">Description</label>
+                                <input class="formControl" id="description" type="text" placeholder="Wedding" name="description">
+                            </div>
+                            <!-------------------------- number increment --------------------------------->
+                            <div class="formGroup">
+                                <label class="label" for="budgeted">Budgeted</label>
+                                <input class="formControl" id="budgeted" type="number" placeholder="$200.00" name="budgeted">
+                            </div>
+                            <!-------------------------- number increment --------------------------------->
+                            <div class="formGroup">
+                                <label class="label" for="Actual">Actual</label>
+                                <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
+                            </div>
+                            <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
+                            <div class="formGroup">
+                                <label class="label" for="Save">Save?</label>
+                                <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
+                            </div>
+                            <div class="formButtonsContainer">
+                                <button class="formButton" type="submit">Add</button>
+                                <button class="formButton" type="submit">Cancel</button>
+                            </div>
                         </div>
                     </form>
 
@@ -545,28 +550,33 @@
             <div class="transactionOutterContainer">
 
                 <form class="optionsForm" method="POST">
-                    <div class="formGroup">
-                        <label class="label" for="description">Description</label>
-                        <input class="formControl" id="transactionDescription" type="text" placeholder="groceries" name="description">
-                    </div>
-                    <!-------------------------- number increment --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="amount">Amount</label>
-                        <input class="formControl" id="transactionAmount" type="number" placeholder="$20.00" name="amount">
-                    </div>
-                    <!-------------------------- Possibly have a calender option --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="date">Date</label>
-                        <input class="formControl" id="transactionDate" type="number" placeholder="03/08/18" name="date">
-                    </div>
-                    <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="type">Type</label>
-                        <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
-                    </div>
-                    <div class="formButtonsContainer">
-                        <button class="formButton" type="submit">Add</button>
-                        <button class="formButton" type="submit">Cancel</button>
+
+                    <h2 class="loginTitle">Add Transaction</h2>
+
+                    <div class="demoContainer">
+                        <div class="formGroup">
+                            <label class="label" for="description">Description</label>
+                            <input class="formControl" id="transactionDescription" type="text" placeholder="groceries" name="description">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="amount">Amount</label>
+                            <input class="formControl" id="transactionAmount" type="number" placeholder="$20.00" name="amount">
+                        </div>
+                        <!-------------------------- Possibly have a calender option --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="date">Date</label>
+                            <input class="formControl" id="transactionDate" type="number" placeholder="03/08/18" name="date">
+                        </div>
+                        <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="type">Type</label>
+                            <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
+                        </div>
+                        <div class="formButtonsContainer">
+                            <button class="formButton" type="submit">Add</button>
+                            <button class="formButton" type="submit">Cancel</button>
+                        </div>
                     </div>
                 </form>
 
@@ -580,28 +590,33 @@
             <div class="goalsOutterContainer">
 
                 <form class="optionsForm" method="POST">
-                    <div class="formGroup">
-                        <label class="label" for="description">Goal Description</label>
-                        <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description">
-                    </div>
-                    <!-------------------------- number increment --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="totalSaved">Amount Saved</label>
-                        <input class="formControl" id="goalSaved" type="number" placeholder="$100.00" name="totalSaved">
-                    </div>
-                    <!-------------------------- number increment --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="goalAmount">Goal Amount</label>
-                        <input class="formControl" id="goalAmount" type="number" placeholder="$2,000.00" name="goalAmount">
-                    </div>
-                    <!-------------------------- Dropdown with "I did it!" or "not yet.." --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="acheived">Acheived?</label>
-                        <input class="formControl" id="goalAchieved" type="text" placeholder="noy yet.." name="acheived">
-                    </div>
-                    <div class="formButtonsContainer">
-                        <button class="formButton" type="submit">Add</button>
-                        <button class="formButton" type="submit">Cancel</button>
+
+                    <h2 class="loginTitle">Add Goal</h2>
+
+                    <div class="demoContainer">
+                        <div class="formGroup">
+                            <label class="label" for="description">Goal Description</label>
+                            <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="totalSaved">Amount Saved</label>
+                            <input class="formControl" id="goalSaved" type="number" placeholder="$100.00" name="totalSaved">
+                        </div>
+                        <!-------------------------- number increment --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="goalAmount">Goal Amount</label>
+                            <input class="formControl" id="goalAmount" type="number" placeholder="$2,000.00" name="goalAmount">
+                        </div>
+                        <!-------------------------- Dropdown with "I did it!" or "not yet.." --------------------------------->
+                        <div class="formGroup">
+                            <label class="label" for="acheived">Acheived?</label>
+                            <input class="formControl" id="goalAchieved" type="text" placeholder="not yet.." name="acheived">
+                        </div>
+                        <div class="formButtonsContainer">
+                            <button class="formButton" type="submit">Add</button>
+                            <button class="formButton" type="submit">Cancel</button>
+                        </div>
                     </div>
                 </form>
 

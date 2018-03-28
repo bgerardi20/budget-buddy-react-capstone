@@ -34,18 +34,19 @@ h2 {
 button {
     border: 1px solid black;
     width: 10%;
-    line-height: 35px;
-    background-color: #FFD1BF;
-    border: 1px solid #FFD1BF;
+    line-height: 30px;
+    background-color: #395D79;
+    border: 1px solid #395D79;
     border-radius: 3px;
     text-shadow: 1px 1px #B9C8D4;
-    color: #395D79;
+    color: #FFD1BF;
+    font-size: 20px;
 }
 
 main {
     width: 100%;
     display: block;
-    margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 form,
@@ -96,6 +97,8 @@ input {
     padding: 1px;
     margin: 1px;
     border: 1px solid #395D79;
+    border-radius: 3px;
+    width: 80%;
 }
 
 input::placeholder {
@@ -138,11 +141,12 @@ strong {
 }
 
 .formButton {
-    width: 23%;
-    line-height: 28px;
+    width: 80%;
+    line-height: 30px;
+    font-size: 20px;
     padding: 1px;
     margin: 1px;
-    border: 1px solid #395D79;
+    border: 1px solid #E4EAEF;
     border-radius: 3px;
 }
 
@@ -166,6 +170,11 @@ strong {
     margin-top: -2rem;
     margin-bottom: 1rem;
     color: #395D79;
+}
+
+.registerScreen {
+    margin-top: 2rem;
+
 }
 
 .formGroup {
