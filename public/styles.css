@@ -127,6 +127,9 @@ strong {
     overflow-x: auto;
     border: 1px solid black
 }
+.homeScreen {
+    text-align: none;
+}
 
 .row {
     display: block;
@@ -181,10 +184,47 @@ strong {
     margin-bottom: 1rem;
 }
 
-.cells {
+.cellTitle {
+    font-size: 1.7rem;
+    color: #BC6F51;
+    border-right: none;
+}
+
+.cell {
     display: inline-block;
-    width: 25%;
+    width: 32%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
     border-right: 1px solid black;
+}s
+
+.cellTrans:last-child {
+    border-right: none;
+}
+
+.cell:last-child {
+    border-right: none;
+}
+
+.cellTrans {
+    width: 24%;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    border-right: 1px solid black;
+}
+
+.homeSectionsTitle {
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.homeSectionsButton {
+    margin: 2rem;
+    padding: 0.4rem;
+    font-size: 22px;
 }
 
 .logoHolder,
@@ -226,7 +266,6 @@ strong {
     margin-left: auto;
     margin-right: auto;
     border-right: 2px solid #FFD1BF;
-    /* padding: 1rem; */
     padding-right: 0.7rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -255,8 +294,8 @@ strong {
     position: relative;
 }
 
-#firstWelcomeMessage,
-#secondWelcomeMessage {
+.firstWelcomeMessage,
+.secondWelcomeMessage {
     margin: 2rem;
     padding: 1rem;
 }
@@ -314,6 +353,13 @@ quickViewContainer {
 .transactionOutterContainer,
 .goalsOutterContainer {
     width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeSections {
+    display: block;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
