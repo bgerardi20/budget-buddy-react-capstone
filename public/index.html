@@ -97,29 +97,31 @@
         <section class="loginOutterContainer">
             <div class="loginInnerContainer">
 
-                <h2 class="loginMessage">Welcome Back Buddy!</h2>
+                <form class="loginform" method="POST" autocomplete="off">
 
-               <form class="loginform" method="POST" autocomplete="off">
-
+                    <h2 class="loginTitle">Welcome Back Buddy!</h2>
+                    <!--
                     <div class="introButtonsContainer">
-                        <button class="introButton" type="submit">Register</button>
-                        <button class="introButton" type="submit">Login</button>
+                        <button class="introButton welcome" type="submit">Register</button>
+                        <button class="introButton welcome" type="submit">Login</button>
                     </div>
+-->
+                    <div class="demoContainer">
+                        <h3 class="loginSubTitle">Demo Login:</h3>
+                        <h4 class="loginMessage">First Name: <strong>Demo</strong></h4>
+                        <h4 class="loginMessage">Password: <strong>user123</strong></h4>
 
-                    <h3 class="loginMessage">Demo Login:</h3>
-                    <h4 class="loginMessage">First Name: Demo</h4>
-                    <h4 class="loginMessage">Password: user123</h4>
+                        <div class="formGroup">
+                            <label class="label" for="firstName">First Name</label>
+                            <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="">
+                        </div>
+                        <div class="formGroup">
+                            <label class="label" for="password">Password</label>
+                            <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="">
+                        </div>
 
-                    <div class="formGroup">
-                        <label class="label" for="firstName">First Name</label>
-                        <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="">
+                        <button class="formButton" type="submit">Login</button>
                     </div>
-                    <div class="formGroup">
-                        <label class="label" for="password">Password</label>
-                        <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="">
-                    </div>
-
-                    <button class="loginButton" type="submit">Login</button>
                 </form>
             </div>
         </section>
@@ -131,16 +133,18 @@
 
         <section class="outerRegisterBox">
             <div class="innerRegisterBox">
-
+                <!--
                 <div class="introButtonsContainer">
                     <button class="introButton" type="submit">Register</button>
                     <button class="introButton" type="submit">Login</button>
                 </div>
-
-                <h4 class="loginMessage">Choose "Login" for demo version</h4>
-                <h2 class="loginMessage">Register</h2>
-
+-->
                 <form class="registerForm" method="POST">
+
+                    <h2 class="loginTitle">Register</h2>
+                <div class="demoContainer">
+                    <h4 class="loginMessage">Choose <strong>"Login"</strong> for demo version</h4>
+
                     <div class="formGroup">
                         <label class="label" for="firstName">First Name</label>
                         <input class="formControl" id="registerName" type="text" placeholder="First Name" name="firstName" value="">
@@ -154,7 +158,8 @@
                         <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" value="">
                     </div>
 
-                    <button class="registerButton " type="submit">Register</button>
+                    <button class="formButton " type="submit">Register</button>
+                </div>
                 </form>
 
             </div>
@@ -212,7 +217,7 @@
                                 <!--this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income-->
                                 <button class="homeSectionsButton" type="submit">Add Budget</button>
 
-<!--
+                                <!--
 
                                 <form class="optionsForm" method="POST">
 
@@ -605,9 +610,9 @@
     </main>
 
     <footer>
-        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope-square"></i> Email</a>
-        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github"></i> Github</a>
+        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin footer"></i> LinkedIn</a>
+        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope-square footer"></i> Email</a>
+        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github footer"></i> Github</a>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

@@ -21,14 +21,14 @@ h1 {
     font-size: 4rem;
     color: #395D79;
     font-family: 'Roboto', sans-serif;
-/*    text-shadow: 1px 1px #E4EAEF;*/
+    /*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 h2 {
     font-size: 2rem;
     color: #395D79;
     font-family: 'Roboto', sans-serif;
-/*    text-shadow: 1px 1px #E4EAEF;*/
+    /*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 button {
@@ -48,7 +48,8 @@ main {
     margin: 0 auto;
 }
 
-form {
+form,
+.table {
     background-color: #FFF6DD;
     /* opacity: 0.9; */
     width: 100%;
@@ -78,9 +79,34 @@ i {
 
 label {
     font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 1px;
+    padding-bottom: 3px;
+
 }
 
-.introScreen{
+input {
+    background-color: #FFD5BF;
+    color: #395D79;
+    /* text-shadow: 0.2px 0.2px #395D79; */
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    padding: 1px;
+    margin: 1px;
+    border: 1px solid #395D79;
+}
+
+input::placeholder {
+    color: ##395D79;
+}
+
+strong {
+    color: #395D79;
+
+}
+.introScreen {
     background-color: transparent;
 }
 
@@ -92,7 +118,8 @@ label {
     border-bottom: 3px solid #FFFCF3;
 }
 
-.table, .homeSectionsTable {
+.table,
+.homeSectionsTable {
     width: 100%;
     overflow-x: auto;
     border: 1px solid black
@@ -103,13 +130,56 @@ label {
 
 }
 
+.loginTitle {
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+
+}
+
+.formButton {
+    width: 23%;
+    line-height: 28px;
+    padding: 1px;
+    margin: 1px;
+    border: 1px solid #395D79;
+    border-radius: 3px;
+}
+
+.demoContainer {
+    width: 70%;
+    /* margin: 0rem; */
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #395D79;
+    padding: 4rem;
+}
+
+.loginMessage {
+    margin-top: -10px;
+    margin-bottom: 21px;
+
+}
+
+.loginSubTitle {
+    font-size: 2rem;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    color: #395D79;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
 .cells {
     display: inline-block;
     width: 25%;
     border-right: 1px solid black;
 }
 
-.logoHolder, .navList {
+.logoHolder,
+.navList {
     display: inline-block;
     width: 49%;
 }
@@ -128,6 +198,17 @@ label {
 .logos {
     display: inline;
     color: #395D79;
+}
+
+.footer {
+    color: #395D79;
+    margin: 1rem;
+    text-decoration-line: underline;
+    text-decoration-color: #395D79;
+}
+
+.welcome {
+    width: 5rem;
 }
 
 .navOptions {
@@ -165,7 +246,8 @@ label {
     position: relative;
 }
 
-#firstWelcomeMessage, #secondWelcomeMessage {
+#firstWelcomeMessage,
+#secondWelcomeMessage {
     margin: 2rem;
     padding: 1rem;
 }
@@ -214,10 +296,14 @@ label {
 }
 
 quickViewContainer {
-   height: auto;
+    height: auto;
 }
 
-.loginInnerContainer, .innerRegisterBox, .budgetOutterContainer, .transactionOutterContainer, .goalsOutterContainer {
+.loginInnerContainer,
+.innerRegisterBox,
+.budgetOutterContainer,
+.transactionOutterContainer,
+.goalsOutterContainer {
     width: 35%;
     margin-left: auto;
     margin-right: auto;
