@@ -86,13 +86,15 @@ main {
     /* margin-bottom: 1rem; */
 }
 
-form,
-.table {
+form
+{
     background-color: #FFF6DD;
     /* opacity: 0.9; */
     width: 100%;
+    margin-top: 2rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2rem;
     color: #BC6F51;
     padding: 5rem;
 }
@@ -382,7 +384,6 @@ strong {
 
 .loginInnerContainer,
 .innerRegisterBox,
-.budgetOutterContainer,
 .transactionOutterContainer,
 .goalsOutterContainer {
     width: 35%;
@@ -395,4 +396,67 @@ strong {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+}
+
+
+
+.budgetInnerContainer {
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #FFF6DD;
+    width: 50%;
+}
+
+.homeScreenBudget {
+    margin-top: 1rem;
+}
+
+#budgetConditionalContainer {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#budgetTotal {
+    margin-bottom: 2rem;
+}
+
+.budgetCalcList {
+    width: 45%;
+    display: inline-block;
+}
+
+.budgetCalcInner {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+    background-color: #FFF6DD;
+}
+
+.calcBorder {
+    border-bottom: 1px solid black;
+    border-bottom-width: 3px;
+}
+
+.calcStats {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    margin-top: 1rem;
+}
+
+.budgetForms {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.resultTitle {
+    font-size: 3rem;
 }
