@@ -249,7 +249,7 @@ strong {
 }
 
 .cellTrans {
-    width: 24.5%;
+    width: 16.4%;
     display: inline-block;
     padding: 1rem;
     border-right: 1px solid black;
@@ -343,8 +343,10 @@ strong {
     padding: 1rem;
 }
 
-.quickViewOptions {
-
+.tableIcons {
+    display: inline;
+    color: #395D79;
+    padding: 0px 6px;
 }
 
 .quickViewTitle {
@@ -393,7 +395,7 @@ strong {
 
 .homeSections {
     display: block;
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -408,7 +410,7 @@ strong {
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #FFF6DD;
-    width: 50%;
+    width: 75%;
 }
 
 .homeScreenBudget {
@@ -458,5 +460,7 @@ strong {
 }
 
 .resultTitle {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
+
+

@@ -17,7 +17,7 @@
         <nav class="navContainer">
 
             <div class="logoHolder">
-                <h2>Budget Buddy</h2>
+                <h2 class="resultTitle">Budget Buddy</h2>
             </div>
 
             <div class="navList">
@@ -28,7 +28,7 @@
                 </a>
                 <a href="" class="navOptions">
                     <h4>
-                        <i class="far fa-credit-card logos"></i> Track
+                        <i class="fas fa-credit-card logos"></i> Track
                     </h4>
                 </a>
                 <a href="" class="navOptions">
@@ -175,6 +175,7 @@
             <div class="homeSectionsOutterContainer">
                 <ul class="homeSectionsInnerContainer">
 
+<!--
                     <li class="homeSections">
                         <div class="homeSectionsInfo">
 
@@ -215,11 +216,12 @@
                                     <div class="cell">+ $0.00</div>
                                 </div>
                             </div>
-                            <!--this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income-->
+                            this button will let you create a new budget for a month, to change/view an exisiting budget or add to it, then click a certain month and view it, and then theyll be a button there to add expense/income
                             <button class="homeSectionsButton" type="submit">Add</button>
 
                         </div>
                     </li>
+-->
 
                     <li class="homeSections">
                         <div class="homeSectionsInfo">
@@ -227,47 +229,61 @@
 
 
                             <div class="row">
-                                <div class="cellTitle cellTrans">Description</div>
-                                <div class="cellTitle cellTrans">Amount</div>
-                                <div class="cellTitle cellTrans">Date</div>
-                                <div class="cellTitle cellTrans">Type</div>
+                                <div class="cellTrans cellTitle">Descritpion</div>
+                                <div class="cellTrans cellTitle">Date</div>
+                                <div class="cellTrans cellTitle">Budgeted</div>
+                                <div class="cellTrans cellTitle">Actual</div>
+                                <div class="cellTrans cellTitle">Difference</div>
+                                <div class="cellTrans cellTitle">Action</div>
                             </div>
                             <div class="homeSectionsTable">
                                 <div class="row">
-                                    <div class="cellTrans">Date Night</div>
-                                    <div class="cellTrans">$60.00</div>
-                                    <div class="cellTrans">03/18/18</div>
-                                    <div class="cellTrans">expense</div>
+                                    <div class="cellTrans">Paycheck</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$200.00</div>
+                                    <div class="cellTrans">$200.00</div>
+                                    <div class="cellTrans">$0.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="cellTrans">Mowed Yard</div>
-                                    <div class="cellTrans">$20.00</div>
-                                    <div class="cellTrans">03/19/18</div>
-                                    <div class="cellTrans">income</div>
+                                    <div class="cellTrans">Gas Bill</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$90.00</div>
+                                    <div class="cellTrans">$100.00</div>
+                                    <div class="cellTrans">-$10.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class=" cellTrans">Paycheck from Work</div>
-                                    <div class=" cellTrans">$460.00</div>
-                                    <div class=" cellTrans">03/20/18</div>
-                                    <div class=" cellTrans">income</div>
+                                    <div class="cellTrans">Dog Food</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$50.00</div>
+                                    <div class="cellTrans">$45.00</div>
+                                    <div class="cellTrans">+$5.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class=" cellTrans">Groceries</div>
-                                    <div class=" cellTrans">$160.00</div>
-                                    <div class=" cellTrans">03/21/18</div>
-                                    <div class=" cellTrans">expense</div>
-                                </div>
-                                <div class="row">
-                                    <div class=" cellTrans">Book from Amazon</div>
-                                    <div class=" cellTrans">$40.00</div>
-                                    <div class=" cellTrans">03/22/18</div>
-                                    <div class=" cellTrans">expense</div>
-                                </div>
-                                <div class="row">
-                                    <div class=" cellTrans">Sold Clothes</div>
-                                    <div class=" cellTrans">$40.00</div>
-                                    <div class=" cellTrans">03/22/18</div>
-                                    <div class=" cellTrans">income</div>
+                                    <div class="cellTrans">Groceries</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$250.00</div>
+                                    <div class="cellTrans">$250.00</div>
+                                    <div class="cellTrans">$0.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                             </div>
 
@@ -281,47 +297,85 @@
                             <h2 class="homeSectionsTitle">Financial Goals</h2>
 
                             <div class="row">
-                                <div class="cellTrans cellTitle">Description</div>
-                                <div class="cellTrans cellTitle">Saved</div>
-                                <div class="cellTrans cellTitle">Goal</div>
-                                <div class="cellTrans cellTitle">Acheived?</div>
+                                <div class="cellTrans cellTitle">Descritpion</div>
+                                <div class="cellTrans cellTitle">Date</div>
+                                <div class="cellTrans cellTitle">Budgeted</div>
+                                <div class="cellTrans cellTitle">Actual</div>
+                                <div class="cellTrans cellTitle">Difference</div>
+                                <div class="cellTrans cellTitle">Action</div>
                             </div>
                             <div class="homeSectionsTable">
                                 <div class="row">
                                     <div class="cellTrans">Wedding Honeymoon</div>
-                                    <div class="cellTrans">$160.00</div>
-                                    <div class="cellTrans">$2,000.00</div>
-                                    <div class="cellTrans">not yet..</div>
-                                </div>
-                                <div class="row">
-                                    <div class="cellTrans">Summer Vacation</div>
-                                    <div class="cellTrans">$0.00</div>
-                                    <div class="cellTrans">$900.00</div>
-                                    <div class="cellTrans">not yet..</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$2000.00</div>
+                                    <div class="cellTrans">$200.00</div>
+                                    <div class="cellTrans">-$1800.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="cellTrans">Pay Off Debt</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$900.00</div>
+                                    <div class="cellTrans">$100.00</div>
+                                    <div class="cellTrans">-$800.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cellTrans">New Xbox Game</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$50.00</div>
+                                    <div class="cellTrans">$45.00</div>
+                                    <div class="cellTrans">-$5.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cellTrans">Summer Vacation</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$250.00</div>
+                                    <div class="cellTrans">$250.00</div>
                                     <div class="cellTrans">$0.00</div>
-                                    <div class="cellTrans">$4,000.00</div>
-                                    <div class="cellTrans">not yet..</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="cellTrans">Pay Back Friend</div>
-                                    <div class="cellTrans">$40.00</div>
-                                    <div class="cellTrans">$40.00</div>
-                                    <div class="cellTrans">I did it!</div>
+                                    <div class="cellTrans">Pay Back David</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$50.00</div>
+                                    <div class="cellTrans">$50.00</div>
+                                    <div class="cellTrans">$0.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="cellTrans">Buy a Dog</div>
-                                    <div class="cellTrans">$200.00</div>
-                                    <div class="cellTrans">$200.00</div>
-                                    <div class="cellTrans">I did it!</div>
-                                </div>
-                                <div class="row">
-                                    <div class="cellTrans">New Phone</div>
-                                    <div class="cellTrans">$900.00</div>
-                                    <div class="cellTrans">$900.00</div>
-                                    <div class="cellTrans">I did it!</div>
+                                    <div class="cellTrans">Dallas Cowboys Jersey</div>
+                                    <div class="cellTrans">03/01/18</div>
+                                    <div class="cellTrans">$110.00</div>
+                                    <div class="cellTrans">$110.00</div>
+                                    <div class="cellTrans">$0.00</div>
+                                    <div class="cellTrans">
+                                        <i class="fas fa-copy tableIcons"></i>
+                                        <i class="fas fa-trash-alt tableIcons"></i>
+                                        <i class="fas fa-pen-square tableIcons"></i>
+                                    </div>
                                 </div>
                             </div>
 
@@ -343,7 +397,22 @@
 
         <div class="budgetOutterContainer">
 
-            <h1 id="budgetTitle">March's Budget</h1>
+<!--
+            <h1 id="budgetTitle">Monthly Budgets</h1>
+            <select>
+                <option value="january">January 2018(+24.00)</option>
+                <option value="february">February 2018(+5.00)</option>
+                <option value="march">March 2018(+5.00)</option>
+                <option value="april">April 2018(+5.00)</option>
+                <option value="may">May 2018(+5.00)</option>
+                <option value="june">June 2018(+5.00)</option>
+                <option value="july">July 2018(+5.00)</option>
+                <option value="august">August 2018(+5.00)</option>
+                <option value="september">September 2018(+5.00)</option>
+                <option value="october">October 2018(+5.00)</option>
+                <option value="november">November 2018(+5.00)</option>
+                <option value="december">December 2018(+5.00)</option>
+            </select>
 
             <div id="budgetConditionalContainer">
                 <h2 id="budgetConditionalTitle">You are..</h2>
@@ -351,52 +420,104 @@
                 <h4 class="budgetConditionalOptions">Over Budget!</h4>
                 <h4 class="budgetConditionalOptions">Even!</h4>
             </div>
+-->
 
-            <div id="budgetTotal"><h2>*Actual Total from budget below*</h2></div>
+<!--            <div id="budgetTotal"><h2>*Actual Total from budget below*</h2></div>-->
 
 
             <div class="budgetInnerContainer">
 
+                <h1 id="budgetTitle">Monthly Budgets</h1>
+                <select>
+                    <option value="january">January 2018(+24.00)</option>
+                    <option value="february">February 2018(+5.00)</option>
+                    <option value="march">March 2018(+5.00)</option>
+                    <option value="april">April 2018(+5.00)</option>
+                    <option value="may">May 2018(+5.00)</option>
+                    <option value="june">June 2018(+5.00)</option>
+                    <option value="july">July 2018(+5.00)</option>
+                    <option value="august">August 2018(+5.00)</option>
+                    <option value="september">September 2018(+5.00)</option>
+                    <option value="october">October 2018(+5.00)</option>
+                    <option value="november">November 2018(+5.00)</option>
+                    <option value="december">December 2018(+5.00)</option>
+                </select>
+
+                <div id="budgetConditionalContainer">
+                    <h2 id="budgetConditionalTitle">You are..</h2>
+                    <h4 class="budgetConditionalOptions">Under Budget!</h4>
+                    <h4 class="budgetConditionalOptions">Over Budget!</h4>
+                    <h4 class="budgetConditionalOptions">Even!</h4>
+                </div>
+
+
                 <div class="row">
-                    <div class="cellTrans cellTitle">Expenses</div>
-                    <div class="cellTrans cellTitle">Save?</div>
+                    <div class="cellTrans cellTitle">Descritpion</div>
+                    <div class="cellTrans cellTitle">Date</div>
                     <div class="cellTrans cellTitle">Budgeted</div>
                     <div class="cellTrans cellTitle">Actual</div>
+                    <div class="cellTrans cellTitle">Difference</div>
+                    <div class="cellTrans cellTitle">Action</div>
                 </div>
                 <div class="expenseContainer">
                     <div class="table">
                         <div class="row">
-                            <div class="cellTrans">value1</div>
-                            <div class="cellTrans">value2</div>
-                            <div class="cellTrans">value3</div>
-                            <div class="cellTrans">value4</div>
+                            <div class="cellTrans">Paycheck</div>
+                            <div class="cellTrans">03/01/18</div>
+                            <div class="cellTrans">$200.00</div>
+                            <div class="cellTrans">$200.00</div>
+                            <div class="cellTrans">$0.00</div>
+                            <div class="cellTrans">
+                                <i class="fas fa-copy tableIcons"></i>
+                                <i class="fas fa-trash-alt tableIcons"></i>
+                                <i class="fas fa-pen-square tableIcons"></i>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">value1</div>
-                            <div class="cellTrans">value2</div>
-                            <div class="cellTrans">value3</div>
-                            <div class="cellTrans">value4</div>
+                            <div class="cellTrans">Gas Bill</div>
+                            <div class="cellTrans">03/01/18</div>
+                            <div class="cellTrans">$90.00</div>
+                            <div class="cellTrans">$100.00</div>
+                            <div class="cellTrans">-$10.00</div>
+                            <div class="cellTrans">
+                                <i class="fas fa-copy tableIcons"></i>
+                                <i class="fas fa-trash-alt tableIcons"></i>
+                                <i class="fas fa-pen-square tableIcons"></i>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">value1</div>
-                            <div class="cellTrans">value2</div>
-                            <div class="cellTrans">value3</div>
-                            <div class="cellTrans">value4</div>
+                            <div class="cellTrans">Dog Food</div>
+                            <div class="cellTrans">03/01/18</div>
+                            <div class="cellTrans">$50.00</div>
+                            <div class="cellTrans">$45.00</div>
+                            <div class="cellTrans">+$5.00</div>
+                            <div class="cellTrans">
+                                <i class="fas fa-copy tableIcons"></i>
+                                <i class="fas fa-trash-alt tableIcons"></i>
+                                <i class="fas fa-pen-square tableIcons"></i>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">value1</div>
-                            <div class="cellTrans">value2</div>
-                            <div class="cellTrans">value3</div>
-                            <div class="cellTrans">value4</div>
+                            <div class="cellTrans">Groceries</div>
+                            <div class="cellTrans">03/01/18</div>
+                            <div class="cellTrans">$250.00</div>
+                            <div class="cellTrans">$250.00</div>
+                            <div class="cellTrans">$0.00</div>
+                            <div class="cellTrans">
+                                <i class="fas fa-copy tableIcons"></i>
+                                <i class="fas fa-trash-alt tableIcons"></i>
+                                <i class="fas fa-pen-square tableIcons"></i>
+                            </div>
                         </div>
                     </div>
-
                     <div class="budgetTotalContainer">
                         <div class="row">
-                            <div class="cellTrans"></div>
-                            <div class="cellTrans"></div>
+                            <div class="cellTrans">Totals</div>
+                            <div class="cellTrans">-</div>
                             <div class="cellTrans">budgetedTotal</div>
                             <div class="cellTrans">actualTotal</div>
+                            <div class="cellTrans">differenceTotal</div>
+                            <div class="cellTrans">-</div>
                         </div>
                     </div>
 
@@ -406,6 +527,7 @@
 
             </div>
 
+<!--
             <div class="budgetInnerContainer">
                 <div class="row">
                     <div class="cellTrans cellTitle">Income</div>
@@ -456,12 +578,14 @@
                 <button class="homeSectionsButton" type="submit">Add </button>
 
             </div>
+-->
 
 
 
         </div>
 
 
+<!--
         <div class="resultOutterContainer">
 
             <div class="budgetCalcOutter">
@@ -491,6 +615,7 @@
             </div>
 
         </div>
+-->
 
         <!-------------------------- Hidden Until "add" button is clicked --------------------------------->
         <div class="budgetForms">
@@ -502,12 +627,12 @@
                 <div class="demoContainer">
                     <!-------------------------- drop down with "expense" or "income"  --------------------------------->
                     <div class="formGroup">
-                        <label class="label" for="type">Type</label>
-                        <input class="formControl" id="type" type="text" placeholder="expense" name="type">
-                    </div>
-                    <div class="formGroup">
                         <label class="label" for="description">Description</label>
                         <input class="formControl" id="description" type="text" placeholder="Wedding" name="description">
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="type">Date</label>
+                        <input class="formControl" id="type" type="text" placeholder="Expense" name="type">
                     </div>
                     <!-------------------------- number increment --------------------------------->
                     <div class="formGroup">
@@ -518,11 +643,6 @@
                     <div class="formGroup">
                         <label class="label" for="Actual">Actual</label>
                         <input class="formControl" id="actual" type="number" placeholder="Confirm Password" name="actual">
-                    </div>
-                    <!-------------------------- Dropdown with "yes" or "no" --------------------------------->
-                    <div class="formGroup">
-                        <label class="label" for="Save">Save?</label>
-                        <input class="formControl" id="save" type="text" placeholder="Confirm Password" name="save">
                     </div>
                     <div class="formButtonsContainer">
                         <button class="formButton" type="submit">Add</button>
@@ -546,21 +666,21 @@
                     <div class="demoContainer">
                         <div class="formGroup">
                             <label class="label" for="description">Description</label>
-                            <input class="formControl" id="transactionDescription" type="text" placeholder="groceries" name="description">
+                            <input class="formControl" id="transactionDescription" type="text" placeholder="Groceries" name="description">
                         </div>
                         <!-------------------------- number increment --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="amount">Amount</label>
+                            <label class="label" for="amount">Date</label>
                             <input class="formControl" id="transactionAmount" type="number" placeholder="$20.00" name="amount">
                         </div>
                         <!-------------------------- Possibly have a calender option --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="date">Date</label>
+                            <label class="label" for="date">Budgeted</label>
                             <input class="formControl" id="transactionDate" type="number" placeholder="03/08/18" name="date">
                         </div>
                         <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="type">Type</label>
+                            <label class="label" for="type">Actual</label>
                             <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
                         </div>
                         <div class="formButtonsContainer">
@@ -585,23 +705,23 @@
 
                     <div class="demoContainer">
                         <div class="formGroup">
-                            <label class="label" for="description">Goal Description</label>
+                            <label class="label" for="description">Description</label>
                             <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description">
                         </div>
                         <!-------------------------- number increment --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="totalSaved">Amount Saved</label>
+                            <label class="label" for="totalSaved">Date</label>
                             <input class="formControl" id="goalSaved" type="number" placeholder="$100.00" name="totalSaved">
                         </div>
                         <!-------------------------- number increment --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="goalAmount">Goal Amount</label>
+                            <label class="label" for="goalAmount">Budgeted</label>
                             <input class="formControl" id="goalAmount" type="number" placeholder="$2,000.00" name="goalAmount">
                         </div>
                         <!-------------------------- Dropdown with "I did it!" or "not yet.." --------------------------------->
                         <div class="formGroup">
-                            <label class="label" for="acheived">Acheived?</label>
-                            <input class="formControl" id="goalAchieved" type="text" placeholder="not yet.." name="acheived">
+                            <label class="label" for="acheived">Actual</label>
+                            <input class="formControl" id="goalAchieved" type="text" placeholder="Not yet.." name="acheived">
                         </div>
                         <div class="formButtonsContainer">
                             <button class="formButton" type="submit">Add</button>
@@ -615,9 +735,9 @@
     </main>
 
     <footer>
-        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin footer"></i> LinkedIn</a>
-        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope-square footer"></i> Email</a>
-        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github footer"></i> Github</a>
+        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin footer"></i>LinkedIn</a>
+        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope footer"></i>Email</a>
+        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github-square footer"></i>Github</a>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
