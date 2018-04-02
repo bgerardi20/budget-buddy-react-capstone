@@ -146,8 +146,14 @@ input::placeholder {
 
 strong {
     color: #395D79;
-
 }
+
+select {
+    border: 1px solid black;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
 .introScreen {
     background-color: transparent;
 }
@@ -193,18 +199,17 @@ strong {
 }
 
 .demoContainer {
-    width: 95%;
-    /* margin: 0rem; */
     margin-right: auto;
     margin-left: auto;
     border: 1px solid #395D79;
-    padding: 4rem;
+    padding: 1.5rem 4rem;
 }
 
 .homeSectionsInfo {
     background-color: #FFF6DD;
     padding-left: 1rem;
     padding-right: 1rem;
+    border-radius: 25px;
 }
 
 .loginMessage {
@@ -346,8 +351,24 @@ strong {
 .tableIcons {
     display: inline;
     color: #395D79;
-    padding: 0px 6px;
+    padding: 0px 10px;
+    font-size: 20px;
 }
+
+.typeIcon {
+    padding-left: 5px;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.positive {
+    color: #609E83;
+}
+
+.negative {
+    color: #BC5151;
+}
+
 
 .quickViewTitle {
     display: block;
@@ -411,6 +432,7 @@ strong {
     padding-right: 1rem;
     background-color: #FFF6DD;
     width: 75%;
+    border-radius: 25px;
 }
 
 .homeScreenBudget {
@@ -461,6 +483,14 @@ strong {
 
 .resultTitle {
     font-size: 2.5rem;
+}
+
+#budgets {
+
+}
+
+#goals {
+
 }
 
 

@@ -113,11 +113,11 @@
 
                         <div class="formGroup">
                             <label class="label" for="firstName">First Name</label>
-                            <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="">
+                            <input class="loginInput" id="loginFirstName" type="text" placeholder="Demo" name="firstName" value="">
                         </div>
                         <div class="formGroup">
                             <label class="label" for="password">Password</label>
-                            <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="">
+                            <input class="loginInput" id="loginPassword" type="password" placeholder="user123" name="password" value="">
                         </div>
 
                         <button class="formButton" type="submit">Login</button>
@@ -223,6 +223,7 @@
                     </li>
 -->
 
+<!--
                     <li class="homeSections">
                         <div class="homeSectionsInfo">
                             <h2 class="homeSectionsTitle">Transactions</h2>
@@ -291,10 +292,11 @@
 
                         </div>
                     </li>
+-->
 
                     <li class="homeSections">
                         <div class="homeSectionsInfo">
-                            <h2 class="homeSectionsTitle">Financial Goals</h2>
+                            <h2 class="homeSectionsTitle"><i class="fas fa-tasks logos" id="goals"></i> Financial Goals</h2>
 
                             <div class="row">
                                 <div class="cellTrans cellTitle">Descritpion</div>
@@ -427,7 +429,7 @@
 
             <div class="budgetInnerContainer">
 
-                <h1 id="budgetTitle">Monthly Budgets</h1>
+                <h1 id="budgetTitle"><i class="fas fa-balance-scale logos" id="budgets"></i> Monthly Budgets</h1>
                 <select>
                     <option value="january">January 2018(+24.00)</option>
                     <option value="february">February 2018(+5.00)</option>
@@ -462,11 +464,11 @@
                 <div class="expenseContainer">
                     <div class="table">
                         <div class="row">
-                            <div class="cellTrans">Paycheck</div>
+                            <div class="cellTrans">Paycheck <i class="fas fa-plus-square typeIcon positive"></i></div>
                             <div class="cellTrans">03/01/18</div>
                             <div class="cellTrans">$200.00</div>
                             <div class="cellTrans">$200.00</div>
-                            <div class="cellTrans">$0.00</div>
+                            <div class="cellTrans positive">$0.00</div>
                             <div class="cellTrans">
                                 <i class="fas fa-copy tableIcons"></i>
                                 <i class="fas fa-trash-alt tableIcons"></i>
@@ -474,11 +476,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">Gas Bill</div>
+                            <div class="cellTrans">Gas Bill <i class="fas fa-minus-square typeIcon negative"></i></div>
                             <div class="cellTrans">03/01/18</div>
                             <div class="cellTrans">$90.00</div>
                             <div class="cellTrans">$100.00</div>
-                            <div class="cellTrans">-$10.00</div>
+                            <div class="cellTrans negative">-$10.00</div>
                             <div class="cellTrans">
                                 <i class="fas fa-copy tableIcons"></i>
                                 <i class="fas fa-trash-alt tableIcons"></i>
@@ -486,11 +488,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">Dog Food</div>
+                            <div class="cellTrans">Dog Food <i class="fas fa-minus-square typeIcon negative"></i></div>
                             <div class="cellTrans">03/01/18</div>
                             <div class="cellTrans">$50.00</div>
                             <div class="cellTrans">$45.00</div>
-                            <div class="cellTrans">+$5.00</div>
+                            <div class="cellTrans positive">+$5.00</div>
                             <div class="cellTrans">
                                 <i class="fas fa-copy tableIcons"></i>
                                 <i class="fas fa-trash-alt tableIcons"></i>
@@ -498,11 +500,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="cellTrans">Groceries</div>
+                            <div class="cellTrans">Groceries <i class="fas fa-minus-square typeIcon negative"></i></div>
                             <div class="cellTrans">03/01/18</div>
                             <div class="cellTrans">$250.00</div>
                             <div class="cellTrans">$250.00</div>
-                            <div class="cellTrans">$0.00</div>
+                            <div class="cellTrans positive">$0.00</div>
                             <div class="cellTrans">
                                 <i class="fas fa-copy tableIcons"></i>
                                 <i class="fas fa-trash-alt tableIcons"></i>
@@ -514,9 +516,9 @@
                         <div class="row">
                             <div class="cellTrans">Totals</div>
                             <div class="cellTrans">-</div>
-                            <div class="cellTrans">budgetedTotal</div>
-                            <div class="cellTrans">actualTotal</div>
-                            <div class="cellTrans">differenceTotal</div>
+                            <div class="cellTrans">$590.00</div>
+                            <div class="cellTrans">$595.00</div>
+                            <div class="cellTrans negative">$-5.00</div>
                             <div class="cellTrans">-</div>
                         </div>
                     </div>
@@ -627,6 +629,10 @@
                 <div class="demoContainer">
                     <!-------------------------- drop down with "expense" or "income"  --------------------------------->
                     <div class="formGroup">
+                        <label class="label" for="description">Type</label>
+                        <input class="formControl" id="description" type="text" placeholder="Expense" name="description">
+                    </div>
+                     <div class="formGroup">
                         <label class="label" for="description">Description</label>
                         <input class="formControl" id="description" type="text" placeholder="Wedding" name="description">
                     </div>
@@ -655,6 +661,7 @@
 
     </main>
 
+<!--
     <main class="homeScreenTransactions">
         <section class="transactionTracker">
             <div class="transactionOutterContainer">
@@ -668,17 +675,17 @@
                             <label class="label" for="description">Description</label>
                             <input class="formControl" id="transactionDescription" type="text" placeholder="Groceries" name="description">
                         </div>
-                        <!-------------------------- number increment --------------------------------->
+
                         <div class="formGroup">
                             <label class="label" for="amount">Date</label>
                             <input class="formControl" id="transactionAmount" type="number" placeholder="$20.00" name="amount">
                         </div>
-                        <!-------------------------- Possibly have a calender option --------------------------------->
+
                         <div class="formGroup">
                             <label class="label" for="date">Budgeted</label>
                             <input class="formControl" id="transactionDate" type="number" placeholder="03/08/18" name="date">
                         </div>
-                        <!-------------------------- Dropdown with "expense" or "income" --------------------------------->
+
                         <div class="formGroup">
                             <label class="label" for="type">Actual</label>
                             <input class="formControl" id="transactionType" type="text" placeholder="Expense" name="type">
@@ -694,6 +701,7 @@
         </section>
 
     </main>
+-->
 
     <main class="homeScreenGoals">
         <section class="financialGoals">
