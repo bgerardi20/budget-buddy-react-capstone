@@ -24,17 +24,17 @@
             <div class="navList">
                 <a href="" class="navOptions">
                     <h4>
-                        <i class="fas fa-balance-scale logos"></i> Budgets
+                        <i class="fas fa-home logos"></i> Home
                     </h4>
                 </a>
                 <a href="" class="navOptions">
                     <h4>
-                        <i class="fas fa-credit-card logos"></i> Track
+                        <i class="fas fa-balance-scale logos"></i> Budget
                     </h4>
                 </a>
                 <a href="" class="navOptions">
                     <h4>
-                        <i class="fas fa-tasks logos"></i> Register
+                        <i class="fas fa-tasks logos"></i> Goal
                     </h4>
                 </a>
                 <a href="" class="navOptions">
@@ -294,14 +294,15 @@
 
                 <div id="budgetConditionalContainer">
                     <h2 id="budgetConditionalTitle">You are..</h2>
-                    <h4 class="budgetConditionalOptions"><i class="fas fa-smile faces"></i>Under Budget!</h4>
-                    <h4 class="budgetConditionalOptions"><i class="fas fa-frown faces"></i>Over Budget! </h4>
-                    <h4 class="budgetConditionalOptions"><i class="fas fa-meh faces"></i>Even! </h4>
+                    <h4 class="budgetConditionalOptions positive">UNDER BUDGET</h4>
+<!---------------------------take out style attribute before release!------------------------------------------>
+                    <h4 class="budgetConditionalOptions negative">OVER BUDGET</h4>
+                    <h4 class="budgetConditionalOptions middle">EVEN</h4>
                 </div>
 
 
                 <div class="expenseContainer">
-                   <div class="table">
+                    <div class="table">
                         <div class="row rowTitle">
                             <div class="cellTrans">Descritpion</div>
                             <div class="cellTrans">Date</div>
@@ -358,14 +359,14 @@
                                 <a href=""><i class="fas fa-pen-square tableIcons"></i></a>
                             </div>
                         </div>
-                       <div class="row budgetTotalContainer">
-                           <div class="cellTrans">Totals</div>
-                           <div class="cellTrans"> </div>
-                           <div class="cellTrans">$590.00</div>
-                           <div class="cellTrans">$595.00</div>
-                           <div class="cellTrans negative">$-5.00</div>
-                           <div class="cellTrans"> </div>
-                       </div>
+                        <div class="row budgetTotalContainer">
+                            <div class="cellTrans">Totals</div>
+                            <div class="cellTrans"> </div>
+                            <div class="cellTrans">$590.00</div>
+                            <div class="cellTrans">$595.00</div>
+                            <div class="cellTrans negative">$-5.00</div>
+                            <div class="cellTrans"> </div>
+                        </div>
                     </div>
                 </div>
 
@@ -381,7 +382,7 @@
 
             <form class="optionsForm" method="POST">
 
-                <h2 class="loginTitle">Add Expense/Income</h2>
+                <h2 class="loginTitle">Expense/Income</h2>
 
                 <div class="demoContainer">
                     <div class="formGroup">
@@ -425,7 +426,7 @@
 
                 <form class="optionsForm" method="POST">
 
-                    <h2 class="loginTitle">Add Goal</h2>
+                    <h2 class="loginTitle">Goal</h2>
 
                     <div class="demoContainer">
                         <div class="formGroup">
@@ -456,14 +457,14 @@
     </main>
 
     <footer>
-        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin footer"></i>LinkedIn</a>
-        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope footer"></i>Email</a>
-        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github-square footer"></i>Github</a>
+        <a class="footer" href="https://www.linkedin.com/in/brendan-gerardi-45b11111b/" target="_blank"><i class="fab fa-linkedin footerIcon"></i>LinkedIn</a>
+        <a class="footer" href="mailto:brendan.gerardi@gmail.com" target="_blank"><i class="fas fa-envelope footerIcon"></i>Email</a>
+        <a class="footer" href="https://github.com/bgerardi20" target="_blank"><i class="fab fa-github-square footerIcon"></i>Github</a>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-<!--    <script src="client.js"></script>-->
+    <!--    <script src="client.js"></script>-->
 </body>
 
 </html>

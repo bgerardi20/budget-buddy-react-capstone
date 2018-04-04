@@ -69,14 +69,14 @@ h2 {
 }
 
 button {
-    width: 10%;
+    width: 13%;
     line-height: 30px;
     background-color: #395D79;
     border: 1px solid #4E4E4E;
     border-radius: 3px;
     text-shadow: 0.5px 0.5px #B9C8D4;
     color: #FFD1BF;
-    font-size: 20px;
+    font-size: 23px;
     padding: 3px;
     margin: 3px;
 }
@@ -122,11 +122,10 @@ label {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     display: block;
-    margin-left: 3rem;
+    margin-left: 1.8rem;
     margin-bottom: 1px;
     padding-bottom: 3px;
     text-align: left;
-
 }
 
 input {
@@ -140,7 +139,7 @@ input {
     margin: 1px;
     border: 1px solid #395D79;
     border-radius: 3px;
-    width: 80%;
+    width: 85%;
 }
 
 input::placeholder {
@@ -155,6 +154,10 @@ select {
     border: 1px solid black;
     font-size: 1.5rem;
     margin-top: 10px;
+}
+
+footer {
+    padding: 1rem;
 }
 
 .loginLogo {
@@ -176,21 +179,20 @@ select {
 
 .row {
     display: table-row;
-    font-size: 12px;
+    font-size: 15px;
     width: 100%;
 }
 
 .rowTitle {
-    font-size: 17px;
+    font-size: 20px;
     color: #BC6F51;
     /* border-bottom: 0px solid black; */
 }
 
+/*
 .cell {
     display: inline-block;
     width: 33%;
-    /* margin-top: 1rem; */
-    /* margin-bottom: 1rem; */
     padding: 1rem;
     border-right: 1px solid black;
 }
@@ -198,10 +200,10 @@ select {
 .cell:last-child {
     border-right: none;
 }
+*/
 
 .cellTrans {
-    width: 16.4%;
-    display: inline-block;
+    width: 18.65%;
     padding: 1rem;
     border-right: 1px solid black;
     vertical-align: middle;
@@ -232,7 +234,7 @@ select {
 }
 
 .formButton {
-    width: 80%;
+    width: 85%;
 }
 
 .demoContainer {
@@ -313,8 +315,17 @@ select {
 .footer {
     color: #395D79;
     margin: 1rem;
-    text-decoration-line: underline;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+/*    text-decoration-line: underline;*/
     text-decoration-color: #395D79;
+    font-size: 20px;
+}
+
+.footerIcon {
+    color: #395D79;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .welcome {
@@ -345,7 +356,7 @@ select {
 
 .welcomeMessage {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -366,8 +377,8 @@ select {
 .tableIcons {
     display: block;
     color: #395D79;
-    padding: 3px 3px;
-    font-size: 15px;
+    padding: 1px 2px;
+    font-size: 16.5px;
 }
 
 .typeIcon {
@@ -435,7 +446,7 @@ select {
     margin: 1px;
     border: 1px solid #395D79;
     border-radius: 3px;
-    width: 80%;
+    width: 85%;
 }
 
 #budgetType::placeholder {
@@ -450,8 +461,13 @@ select {
 
 .budgetConditionalOptions {
     font-size: 3rem;
-    color: #214662;
+/*    color: #214662;*/
 }
+
+.middle {
+    color: orange;
+}
+
 
 .loginInnerContainer,
 .innerRegisterBox,
@@ -504,24 +520,21 @@ select {
 @media only screen and (max-width: 1024px) {
 
     label {
-        margin-left: 1.3rem;
+        margin-left: 0.6rem;
     }
 
     input {
-        width: 90%;
+        width: 95%;
     }
 
     button {
-        width: 19%;
+        width: 23%;
     }
 
-    .formButton {
-        width: 90%;
+    .formButton, #budgetType {
+        width: 95%;
     }
 
-    #budgetType {
-        width: 90%;
-    }
 
     .loginInnerContainer,
     .innerRegisterBox,
@@ -541,7 +554,7 @@ select {
     }
 
     .cellTrans {
-        width: 16%;
+        width: 20%;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         border-right: 0.5px solid black;
@@ -558,7 +571,7 @@ select {
     }
 
     .navOptions {
-        width: 19%;
+        width: 23%;
     }
 
 }
@@ -580,7 +593,7 @@ select {
     }
 
     button {
-        width: 25%;
+        width: 30%;
     }
 
     .formButton, #budgetType {
@@ -593,7 +606,8 @@ select {
 
     .navOptions {
         padding-right: 0.5rem;
-        width: 24%;
+        width: 21%;
+        font-size: 18px;
     }
 
     .loginInnerContainer,
@@ -601,15 +615,43 @@ select {
     .transactionOutterContainer,
     .goalsOutterContainer,
     .budgetForms {
-        width: 70%;
+        width: 75%;
     }
 
     .cellTrans {
         width: 16%;
         border-right: 0.5px solid black;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
+
+    .logoHolder {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .navContainer {
+        border-bottom: 3px solid white;
+        line-height: normal;
+        padding-top: 1rem;
+    }
+
+    .navList {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .demoContainer {
+        padding: 1.5rem 2rem;
+    }
+
+    .homeSections, .budgetInnerContainer {
+        width: 95%;
+    }
+
+
 
 }
 
@@ -618,12 +660,32 @@ select {
 
 @media only screen and (max-width: 480px) {
 
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
     button {
-        width: 35%;
+        width: 39%;
     }
 
     form {
         padding: 3.5rem;
+    }
+
+    span {
+        font-size: 4rem;
+    }
+
+    label {
+        margin-left: 0.5rem;
+    }
+
+    select {
+        font-size: 1.35rem;
     }
 
     .logoHolder, .navList {
@@ -637,6 +699,7 @@ select {
 
     .navOptions {
         width: 24%;
+        font-size: 17px
     }
 
     .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
@@ -644,11 +707,62 @@ select {
     }
 
     .demoContainer {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 1rem;
     }
 
     .loginTitle {
         margin-top: 0rem;
+        margin-bottom: 2rem;
+        font-size: 1.9rem;
+
+    }
+
+    .navContainer {
+        border-bottom: 3px solid white;
+        line-height: 0px;
+        padding-top: 1rem;
+    }
+
+    .quickViewList {
+        font-size: 0;
+        width: 100%;
+    }
+
+
+    #quickViewBudget, #quickViewTrans, #quickViewGoals {
+        width: 33.3%;
+        display: inline-block;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+
+    .quickViewContainer {
+        margin-top: -.5rem;
+    }
+
+    .footer {
+        font-size: 18px;
+    }
+
+    .homeSectionsButton {
+        width: 50%;
+    }
+
+    .row {
+        font-size: 15px;
+    }
+
+    .tableIcons {
+        padding: 1px;
+        font-size: 13.1px;
+    }
+
+    #budgetTitle, .homeSectionsTitle {
+        font-size: 2.5rem;
+    }
+
+    .budgetConditionalOptions {
         font-size: 2rem;
     }
 
@@ -662,7 +776,19 @@ select {
 @media only screen and (max-width: 320px) {
 
     button {
-        width: 45%;
+        width: 40%;
+        line-height: 27px;
+        font-size: 18px;
+        padding: 2px;
+        margin: 1px;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 1rem;
     }
 
     form {
@@ -671,18 +797,31 @@ select {
 
     input {
         width: 100%;
+        font-size: 18px;
+        line-height: 27px;
+        padding: 2px;
     }
 
     label {
         margin-left: 0.1rem;
+        font-size: 18px;
+    }
+
+    span {
+        font-size: 3.5rem;
+    }
+
+    select {
+        font-size: 1.1rem;
     }
 
     .navOptions {
-        width: 20%;
+        width: 23%;
+        font-size: 12px;
     }
 
     .logos {
-        display: block;
+        display: inline;
         margin-bottom: 10px;
     }
 
@@ -691,13 +830,74 @@ select {
     }
 
     .footer {
-        margin: 0.5rem;
-        font-size: 16px;
+        margin: 0rem;
+        font-size: 15px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
         width: 90%;
     }
+
+    .firstWelcomeMessage, .secondWelcomeMessage {
+        margin: 0rem;
+    }
+
+    .loginLogo {
+        width: 100%;
+        height: 400px;
+        opacity: 0.3;
+    }
+
+    #quickViewBudget, #quickViewTrans, #quickViewGoals {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .row {
+        font-size: 15px;
+    }
+
+    .tableIcons {
+        padding: 0.2px;
+        font-size: 13px;
+    }
+
+    .homeSectionsTitle {
+        margin: 0px;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        padding-top: 1rem;
+        padding: 0px;
+        font-size: 2rem;
+    }
+
+    #budgetTitle {
+        margin: -10px;
+        margin-bottom: 0.05rem;
+        padding-top: 1rem;
+        padding: 0px;
+        font-size: 1.9rem;
+    }
+
+    #budgetConditionalTitle {
+        font-size: 1.3rem;
+    }
+
+    .budgetConditionalOptions {
+        font-size: 1.7rem;
+    }
+
+    .homeSectionsButton {
+        width: 65%;
+    }
+
+    .footerIcon {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
 
 }
 
