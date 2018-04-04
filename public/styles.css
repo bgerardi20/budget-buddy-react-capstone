@@ -163,6 +163,10 @@ select {
     opacity: 0.3;
 }
 
+.homeScreen {
+    text-align: none;
+}
+
 .table,
 .homeSectionsTable {
     width: 100%;
@@ -170,13 +174,54 @@ select {
     border: 1px solid black
 }
 
-.homeScreen {
-    text-align: none;
+.row {
+    display: table-row;
+    font-size: 12px;
+    width: 100%;
 }
 
-.row {
-    display: block;
+.rowTitle {
+    font-size: 17px;
+    color: #BC6F51;
+    /* border-bottom: 0px solid black; */
+}
 
+.cell {
+    display: inline-block;
+    width: 33%;
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1rem; */
+    padding: 1rem;
+    border-right: 1px solid black;
+}
+
+.cell:last-child {
+    border-right: none;
+}
+
+.cellTrans {
+    width: 16.4%;
+    display: inline-block;
+    padding: 1rem;
+    border-right: 1px solid black;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.cellTrans:last-child {
+    border-right: none;
+}
+
+.rowTitle .cellTrans {
+    border-bottom: 1px solid black;
+}
+
+.budgetTotalContainer .cellTrans {
+    border-top: 1px solid black;
+}
+
+.cellTrans a {
+    display: inline-block;
 }
 
 .loginTitle {
@@ -226,35 +271,8 @@ select {
     margin-bottom: 1rem;
 }
 
-.cellTitle {
-    font-size: 1.7rem;
-    color: #BC6F51;
-    border-right: none;
-}
 
-.cell {
-    display: inline-block;
-    width: 33%;
-    /* margin-top: 1rem; */
-    /* margin-bottom: 1rem; */
-    padding: 1rem;
-    border-right: 1px solid black;
-}
 
-.cell:last-child {
-    border-right: none;
-}
-
-.cellTrans {
-    width: 16.4%;
-    display: inline-block;
-    padding: 1rem;
-    border-right: 1px solid black;
-}
-
-.cellTrans:last-child {
-    border-right: none;
-}
 
 .homeSectionsTitle {
     margin: 2rem;
@@ -333,10 +351,6 @@ select {
     width: 100%;
 }
 
-.welcomeContainer {
-    position: relative;
-}
-
 .firstWelcomeMessage,
 .secondWelcomeMessage {
     margin: 2rem;
@@ -350,17 +364,16 @@ select {
 
 
 .tableIcons {
-    display: inline;
+    display: block;
     color: #395D79;
-    padding: 5px 10px;
-    border: 2px solid #515354;
-    background-color: #E4EAEF;
+    padding: 3px 3px;
+    font-size: 15px;
 }
 
 .typeIcon {
-    padding-left: 5px;
+    padding-right: 5px;
     font-size: 12px;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .positive {
@@ -488,11 +501,7 @@ select {
 
 /*media queries*/
 
-@media only screen and (max-device-width: 1024px) {
-
-    body {
-        background-color: blue;
-    }
+@media only screen and (max-width: 1024px) {
 
     label {
         margin-left: 1.3rem;
@@ -535,7 +544,6 @@ select {
         width: 16%;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        font-size: 13px;
         border-right: 0.5px solid black;
     }
 
@@ -552,37 +560,145 @@ select {
     .navOptions {
         width: 19%;
     }
+
 }
 
 
 /*ipad potrait*/
 
-@media only screen and (max-device-width: 768px) {
-
-    body {
-        color: red;
-        background-color: red;
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
     }
+
+    input {
+        width: 95%;
+    }
+
+    label {
+        margin-left: 0.6rem;
+    }
+
+    button {
+        width: 25%;
+    }
+
+    .formButton, #budgetType {
+        width: 95%;
+    }
+
+    .footer {
+        font-size: 20px;
+    }
+
+    .navOptions {
+        padding-right: 0.5rem;
+        width: 24%;
+    }
+
+    .loginInnerContainer,
+    .innerRegisterBox,
+    .transactionOutterContainer,
+    .goalsOutterContainer,
+    .budgetForms {
+        width: 70%;
+    }
+
+    .cellTrans {
+        width: 16%;
+        border-right: 0.5px solid black;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
 }
 
 
 /*iPhone landscape*/
 
 @media only screen and (max-width: 480px) {
-    body {
-        color: green;
-        background-color: green;
+
+    button {
+        width: 35%;
     }
+
+    form {
+        padding: 3.5rem;
+    }
+
+    .logoHolder, .navList {
+        width: 100%;
+    }
+
+    .logoHolder {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .navOptions {
+        width: 24%;
+    }
+
+    .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
+        width: 85%;
+    }
+
+    .demoContainer {
+        padding: 1.5rem 2rem;
+    }
+
+    .loginTitle {
+        margin-top: 0rem;
+        font-size: 2rem;
+    }
+
+
+
 }
 
 
 /*iPhone portrait*/
 
 @media only screen and (max-width: 320px) {
-    body {
-        color: purple;
-        background-color: purple;
+
+    button {
+        width: 45%;
     }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    label {
+        margin-left: 0.1rem;
+    }
+
+    .navOptions {
+        width: 20%;
+    }
+
+    .logos {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .formButton, #budgetType {
+        width: 100%;
+    }
+
+    .footer {
+        margin: 0.5rem;
+        font-size: 16px;
+    }
+
+    .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
+        width: 90%;
+    }
+
 }
 
 
