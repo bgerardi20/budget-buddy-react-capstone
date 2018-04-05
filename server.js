@@ -92,10 +92,8 @@ app.get('/get-recipes-from-edamam/:name', function (req, res) {
 app.post('/users/create', (req, res) => {
     //get name,email,password from the body object
     let name = req.body.name;
-    let email = req.body.email;
     let password = req.body.password;
     //exludes spaces from email and passwords
-    email = email.trim();
     password = password.trim();
     //generate encryption key
     bcrypt.genSalt(10, (err, salt) => {
@@ -114,7 +112,6 @@ app.post('/users/create', (req, res) => {
             //using the details above and encrpyed password, send them to mongo schema(user.js)
             User.create({
                 name,
-                email,
                 password: hash,
             }, (err, item) => {
                 //if theres an error saving user to db

@@ -108,10 +108,6 @@ nav {
     background-color: #FFF6DD;
 }
 
-span {
-    font-size: 10rem;
-    color: #395D79;
-}
 
 i {
     text-shadow: 1px 1px #88A0B2;
@@ -500,6 +496,11 @@ footer {
 
 .resultTitle {
     font-size: 2.5rem;
+}
+
+.quickView span {
+    font-size: 10rem;
+    color: #395D79;
 }
 
 

@@ -1,3 +1,9 @@
+function titleCase(str) {
+    return str.split(' ').map(function(val){
+        return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
+    }).join(' ');
+}
+
 //define objects variables functions
 let loginUserName = "";
 let loginUserId = "";
@@ -176,10 +182,15 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
         })
         //if sign in is successful
             .done(function (result) {
+            console.log(result);
             loginUserName = result.name;
+            $(".resultTitle span").text(titleCase(result.name) + "'s ");
+            $(".loginUserId").val(result._id);
+            $(".loginUserName").val(result.name);
             loginUserId = result._id;
+            loginUserName = result.name;
             displayBudgets(loginUserId);
-            $(".introScreen").show();
+            $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
             $(".registerScreen").hide();
@@ -588,7 +599,7 @@ $(document).on("click", ".jsSuccessButton", function (event) {
 
 });
 
-$(document).on("click", "#jsCancelSaveButton", function (event) {
+$(document).on("click", ".jsSelectMonth", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
     $(".quickView").show();
