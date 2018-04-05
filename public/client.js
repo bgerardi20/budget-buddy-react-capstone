@@ -489,29 +489,34 @@ $(document).on("click", "#saveBudgetForm", function (event) {
 //    });
 //});
 
-$(document).on("click", "#jsCreateSaveButton", function (event) {
+$(document).on("click", "#saveBudgetForm", function (event) {
     event.preventDefault();
     //get input from the user//
-    let title = $('#titleCreate').val();
-    let ingredients = $('#ingredientsCreate').val();
-    let directions = $('#createDirections').val();
-    let notes = $('#notesCreate').val();
+    let description = $('#budgetDescription').val();
+    let date = $('#budgetDate').val();
+    let budgeted = $('#budgetBudgeted').val();
+    let actual = $('#budgetActual').val();
+    let type = $('#budgetType').val();
     let userIdHidden = $('.loggedInUser').val();
     //validate the input//
-    if (title.length == 0) {
-        alert('Please add title!');
-    } else if (ingredients.length == 0) {
-        alert('Please add ingredients!');
-    } else if (directions.length == 0) {
-        alert('Please add directions!');
+    if (description.length == 0) {
+        alert('Please add a description!');
+    } else if (date.length == 0) {
+        alert('Please add a date!');
+    } else if (budgeted.length == 0) {
+        alert('Please add a budget amount!');
+    } else if (actual.length == 0) {
+        alert('Please add an actual amount!');
+    } else if (type.length == 0) {
+        alert('Please add a type!');
     } else {
         //if input is valid; create the new recipe//
-        const newRecipeObject = {
-            title: title,
-            ingredients: ingredients,
-            image: "website-images/no-image-available.png",
-            directions: directions,
-            notes: notes,
+        const newBudgetObject = {
+            description: description,
+            date: date,
+            budgeted: budgeted,
+            actual: actual,
+            type: type,
             userId: userIdHidden
         };
         // create ajax call to create the new recipe//
@@ -519,17 +524,17 @@ $(document).on("click", "#jsCreateSaveButton", function (event) {
             type: 'POST',
             url: '/recipes/create',
             dataType: 'json',
-            data: JSON.stringify(newRecipeObject),
+            data: JSON.stringify(newBudgetObject),
             contentType: 'application/json'
         })
-        //if recipe creation is successful
+        //if budget creation is successful
             .done(function (result) {
             displayBudgets(userIdHidden);
-            $(".introScreen").hide();
-            $(".quickView").show();
+            $(".introScreen").show();
+            $(".quickView").hide();
             $(".loginScreen").hide();
             $(".registerScreen").hide();
-            $(".homeScreen").hide();
+            $(".homeScreen").show();
             $(".homeScreenBudget").hide();
             $(".homeScreenGoals").hide();
         })
