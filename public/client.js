@@ -4,6 +4,8 @@ function titleCase(str) {
     }).join(' ');
 }
 
+
+
 //define objects variables functions
 let loginUserName = "";
 let loginUserId = "";
@@ -11,7 +13,7 @@ let loginUserId = "";
 function displayBudgets(userId) {
     $.ajax({
         type: "GET",
-        url: '/recipes/' + userId,
+        url: '/budgets/' + userId,
         dataType: 'json',
     })
         .done(function (dataOutput) {
@@ -182,14 +184,13 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
         })
         //if sign in is successful
             .done(function (result) {
-            console.log(result);
             loginUserName = result.name;
-            $(".resultTitle span").text(titleCase(result.name) + "'s ");
-            $(".loginUserId").val(result._id);
-            $(".loginUserName").val(result.name);
             loginUserId = result._id;
-            loginUserName = result.name;
             displayBudgets(loginUserId);
+            $(".resultTitle span").text(titleCase(result.name) + "'s ");
+            $(".loginUserId").val(loginUserId);
+            $(".loginUserName").val(loginUserName);
+            console.log(loginUserId);
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
@@ -214,6 +215,12 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     let name = $('#registerName').val();
     let password = $('#registerPassword').val();
     let confirmPassword = $('#registerConfirmPassword').val();
+    let userId =  $(".loginUserId").val();
+//    console.log(userId);
+
+
+
+
     //validate the input//
     if (name.length == 0) {
         alert('Please add name!');
@@ -226,7 +233,9 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
         const newUserObject = {
             name: name,
             password: password
+//            userId: userId
         };
+        console.log(newUserObject);
         // create ajax call to register the user//
         $.ajax({
             type: 'POST',
@@ -237,6 +246,9 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
         })
         //if registation is successful
             .done(function (result) {
+            loginUserId = result._id;
+            $(".loginUserId").val(getUserId(loginUserId));
+            console.log(userId);
             alert('Thanks for registering! You may now login with your username and password.');
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -257,7 +269,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
 //nav item
 $(document).on("click", ".jsHomeNav", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -266,10 +278,9 @@ $(document).on("click", ".jsHomeNav", function (event) {
     $(".homeScreenGoals").hide();
 });
 //nav item
-//should i have my budget nav option show strictly the budget section and the budget form underneath, or only the budget form?
 $(document).on("click", ".jsBudgetNav", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -313,7 +324,7 @@ $(document).on("click", ".jsCopyGoalButton", function (event) {
 //edit goal icon button
 $(document).on("click", ".jsEditGoalButton", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -324,7 +335,7 @@ $(document).on("click", ".jsEditGoalButton", function (event) {
 //delete goal icon button
 $(document).on("click", ".jsDeleteGoalButton", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -335,7 +346,7 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
 //copy budget icon button
 $(document).on("click", ".jsCopyBudgetButton", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -346,7 +357,7 @@ $(document).on("click", ".jsCopyBudgetButton", function (event) {
 //edit budget icon button
 $(document).on("click", ".jsEditBudgetButton", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -357,7 +368,7 @@ $(document).on("click", ".jsEditBudgetButton", function (event) {
 //delete budget icon button
 $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -426,50 +437,50 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".homeScreenGoals").show();
 });
 
-$(document).on("click", "#saveBudgetForm", function (event) {
-    event.preventDefault();
-    let createBudgetID = $(this).parent().parent().parent().find('.createBudgetID').val();
-
-    let createBudgetDescription = $(this).parent().parent().parent().find('.createBudgetDescription').val();
-    let createBudgetDate = $(this).parent().parent().parent().find('.createBudgetDate').val();
-    let createBudgetBudgeted = $(this).parent().parent().parent().find('.createBudgetBudgeted').val();
-    let createBudgetActual = $(this).parent().parent().parent().find('.createBudgetActual').val();
-    let createBudgetType = $(this).parent().parent().parent().find('.createBudgetType').val();
-
-    const createBudgetObject = {
-        description: createBudgetDescription,
-        date: createBudgetDate,
-        budgeted: createBudgetBudgeted,
-        actual: createBudgetActual,
-        type: createBudgetType
-    };
-    // create ajax call to save the recipe//
-    $.ajax({
-        type: 'PUT',
-        url: '/recipes/' + createBudgetID,
-        dataType: 'json',
-        data: JSON.stringify(createBudgetObject),
-        contentType: 'application/json'
-    })
-    //if save is successful
-        .done(function (result) {
-        displayBudgets(loginUserId);
-        alert('Transaction has been saved');
-        $(".introScreen").show();
-        $(".quickView").hide();
-        $(".loginScreen").hide();
-        $(".registerScreen").hide();
-        $(".homeScreen").show();
-        $(".homeScreenBudget").hide();
-        $(".homeScreenGoals").hide();
-    })
-    //if save fails
-        .fail(function (jqXHR, error, errorThrown) {
-        console.log(jqXHR);
-        console.log(error);
-        console.log(errorThrown);
-    });
-});
+//$(document).on("click", "#saveBudgetForm", function (event) {
+//    event.preventDefault();
+//    let createBudgetID = $(this).parent().parent().parent().find('.createBudgetID').val();
+//
+//    let createBudgetDescription = $(this).parent().parent().parent().find('.createBudgetDescription').val();
+//    let createBudgetDate = $(this).parent().parent().parent().find('.createBudgetDate').val();
+//    let createBudgetBudgeted = $(this).parent().parent().parent().find('.createBudgetBudgeted').val();
+//    let createBudgetActual = $(this).parent().parent().parent().find('.createBudgetActual').val();
+//    let createBudgetType = $(this).parent().parent().parent().find('.createBudgetType').val();
+//
+//    const createBudgetObject = {
+//        description: createBudgetDescription,
+//        date: createBudgetDate,
+//        budgeted: createBudgetBudgeted,
+//        actual: createBudgetActual,
+//        type: createBudgetType
+//    };
+//    // create ajax call to save the recipe//
+//    $.ajax({
+//        type: 'PUT',
+//        url: '/recipes/' + createBudgetID,
+//        dataType: 'json',
+//        data: JSON.stringify(createBudgetObject),
+//        contentType: 'application/json'
+//    })
+//    //if save is successful
+//        .done(function (result) {
+//        displayBudgets(loginUserId);
+//        alert('Transaction has been saved');
+//        $(".introScreen").show();
+//        $(".quickView").hide();
+//        $(".loginScreen").hide();
+//        $(".registerScreen").hide();
+//        $(".homeScreen").show();
+//        $(".homeScreenBudget").hide();
+//        $(".homeScreenGoals").hide();
+//    })
+//    //if save fails
+//        .fail(function (jqXHR, error, errorThrown) {
+//        console.log(jqXHR);
+//        console.log(error);
+//        console.log(errorThrown);
+//    });
+//});
 
 //$(document).on("click", ".deleteAnchor", function (event) {
 //    event.preventDefault();
@@ -541,6 +552,7 @@ $(document).on("click", "#saveBudgetForm", function (event) {
         //if budget creation is successful
             .done(function (result) {
             displayBudgets(userIdHidden);
+            console.log(result);
             $(".introScreen").show();
             $(".quickView").hide();
             $(".loginScreen").hide();

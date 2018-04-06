@@ -93,6 +93,7 @@ app.post('/users/create', (req, res) => {
     //get name,email,password from the body object
     let name = req.body.name;
     let password = req.body.password;
+    let userId = req.body._id;
     //exludes spaces from email and passwords
     password = password.trim();
     //generate encryption key
@@ -129,13 +130,15 @@ app.post('/users/create', (req, res) => {
     });
 });
 
-// signing in a user
+// logging in a user
 app.post('/users/signin', function (req, res) {
-    const email = req.body.email;
+    const name = req.body.name;
     const password = req.body.password;
-    User
-        .findOne({
-        email: req.body.email
+    const userId = req.body.userId;
+
+    User.findOne({
+        name: req.body.name,
+        userId: req.body._id
     }, function (err, items) {
         if (err) {
             return res.status(500).json({
