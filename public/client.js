@@ -28,48 +28,48 @@ function displayBudgets(userId) {
     });
 }
 
-function displayRecipeFromEdamam(dataFromApi) {
-    var buildTheHtmlOutput = "";
-    console.log(dataFromApi);
-    if (dataFromApi.hits.length == 0) {
-        buildTheHtmlOutput += 'no results found';
-    } else {
-        $.each(dataFromApi.hits, function (dataKey, dataValue) {
-            buildTheHtmlOutput += '<li class="searchRecipeResultOption">';
-            buildTheHtmlOutput += '<div class="object">';
-            buildTheHtmlOutput += '<a class="searchRecipeResultsLink" href="#">';
-            buildTheHtmlOutput += '<span class="searchRecipeImgContainer">';
-            buildTheHtmlOutput += '<img class="searchRecipeImg" src="' + dataValue.recipe.image + '" alt="pastarecipeLink">';
-            buildTheHtmlOutput += '</span>';
-            buildTheHtmlOutput += '</a>';
-            buildTheHtmlOutput += '</div>';
-
-            buildTheHtmlOutput += '<h3 class="resultsTitle">' + dataValue.recipe.label + '</h3>';
-
-            buildTheHtmlOutput += '<div class="data">';
-            buildTheHtmlOutput += '<a class="cal" href="#">';
-            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.calories.toFixed(2) + '</span><br />';
-            buildTheHtmlOutput += '<span class="info"> calories</span>';
-            buildTheHtmlOutput += '</a>';
-            buildTheHtmlOutput += '<a class="ing" href="#">';
-            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.ingredients.length + '</span><br />';
-            buildTheHtmlOutput += '<span class="info"> ingredients</span>';
-            buildTheHtmlOutput += '</a>';
-            buildTheHtmlOutput += '</div>';
-
-            buildTheHtmlOutput += '<form class="addBRecipeFromAPI">';
-            buildTheHtmlOutput += '<div class="addButton">';
-            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIName" value="' + dataValue.recipe.label + '">';
-            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIIngredients" value="' + dataValue.recipe.ingredientLines.toString() + '">';
-            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIImage" value="' + dataValue.recipe.image + '">';
-            buildTheHtmlOutput += '<button type="submit" class="addSuccessButton green jsSuccessButton">Add</button>';
-            buildTheHtmlOutput += '</div>';
-            buildTheHtmlOutput += '</form>';
-            buildTheHtmlOutput += '</li>';
-        })
-    }
-    $(".resultsList").html(buildTheHtmlOutput);
-};
+//function displayRecipeFromEdamam(dataFromApi) {
+//    var buildTheHtmlOutput = "";
+//    console.log(dataFromApi);
+//    if (dataFromApi.hits.length == 0) {
+//        buildTheHtmlOutput += 'no results found';
+//    } else {
+//        $.each(dataFromApi.hits, function (dataKey, dataValue) {
+//            buildTheHtmlOutput += '<li class="searchRecipeResultOption">';
+//            buildTheHtmlOutput += '<div class="object">';
+//            buildTheHtmlOutput += '<a class="searchRecipeResultsLink" href="#">';
+//            buildTheHtmlOutput += '<span class="searchRecipeImgContainer">';
+//            buildTheHtmlOutput += '<img class="searchRecipeImg" src="' + dataValue.recipe.image + '" alt="pastarecipeLink">';
+//            buildTheHtmlOutput += '</span>';
+//            buildTheHtmlOutput += '</a>';
+//            buildTheHtmlOutput += '</div>';
+//
+//            buildTheHtmlOutput += '<h3 class="resultsTitle">' + dataValue.recipe.label + '</h3>';
+//
+//            buildTheHtmlOutput += '<div class="data">';
+//            buildTheHtmlOutput += '<a class="cal" href="#">';
+//            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.calories.toFixed(2) + '</span><br />';
+//            buildTheHtmlOutput += '<span class="info"> calories</span>';
+//            buildTheHtmlOutput += '</a>';
+//            buildTheHtmlOutput += '<a class="ing" href="#">';
+//            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.ingredients.length + '</span><br />';
+//            buildTheHtmlOutput += '<span class="info"> ingredients</span>';
+//            buildTheHtmlOutput += '</a>';
+//            buildTheHtmlOutput += '</div>';
+//
+//            buildTheHtmlOutput += '<form class="addBRecipeFromAPI">';
+//            buildTheHtmlOutput += '<div class="addButton">';
+//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIName" value="' + dataValue.recipe.label + '">';
+//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIIngredients" value="' + dataValue.recipe.ingredientLines.toString() + '">';
+//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIImage" value="' + dataValue.recipe.image + '">';
+//            buildTheHtmlOutput += '<button type="submit" class="addSuccessButton green jsSuccessButton">Add</button>';
+//            buildTheHtmlOutput += '</div>';
+//            buildTheHtmlOutput += '</form>';
+//            buildTheHtmlOutput += '</li>';
+//        })
+//    }
+//    $(".resultsList").html(buildTheHtmlOutput);
+//};
 
 function displayRecipeResult(dataOutput) {
     var buildTheHtmlOutput = "";
@@ -83,6 +83,45 @@ function displayRecipeResult(dataOutput) {
     })
     $(".recipeSnippetContainer").html(buildTheHtmlOutput);
 };
+
+function displayFinancialGoalResult(dataOutput) {
+    var buildTheHtmlOutput = "";
+    $.each(dataOutput, function (dataKey, dataValue) {
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-thumbs-down + ' ' + negative + 'typeIcon"></i>' + Wedding Honeymoon + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + 03/01/2018 + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + $2000.00 + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + $200.00 + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + -$1800.00 + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">';
+        buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
+        buildTheHtmlOutput += '</div>';
+    })
+    $(".row").html(buildTheHtmlOutput);
+};
+
+
+
+<div class="row">
+    <div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>Wedding Honeymoon</div>
+        <div class="cellTrans">03/01/2018</div>
+<div class="cellTrans">$2000.00</div>
+<div class="cellTrans">$200.00</div>
+<div class="cellTrans negative">-$1800.00</div>
+<div class="cellTrans">
+    <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
+        <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
+            <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
+                </div>
+</div>
+
+
+
+
+
+
+
 
 function displayRecipeDetailsResult(dataFromApi) {
     var buildTheHtmlOutput = "";
@@ -163,6 +202,7 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
     //get input from the user//
     let name = $('#loginFirstName').val();
     let password = $('#loginPassword').val();
+    let userId = $('.loginUserId').val();
     //validate the input//
     if (name.length == 0) {
         alert('Please add name!');
@@ -172,8 +212,10 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
         //if input is valid; sign in the user//
         const loginUserObject = {
             name: name,
-            password: password
+            password: password,
+            userId: loginUserId
         };
+        console.log(loginUserObject);
         // create ajax call to sign in the user//
         $.ajax({
             type: 'POST',
@@ -215,8 +257,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     let name = $('#registerName').val();
     let password = $('#registerPassword').val();
     let confirmPassword = $('#registerConfirmPassword').val();
-    let userId =  $(".loginUserId").val();
-//    console.log(userId);
+    let userId = document.getElementById("myHiddenField").setAttribute('value', '${event._id}');
 
 
 
@@ -228,12 +269,14 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
         alert('Please add password!');
     } else if (password !== confirmPassword) {
         alert('Passwords must match!');
+    } else if (userId !== $`{event._id}`) {
+        alert('hello');
     } else {
         //if input is valid; register the user//
         const newUserObject = {
             name: name,
-            password: password
-//            userId: userId
+            password: password,
+            userId: userId
         };
         console.log(newUserObject);
         // create ajax call to register the user//
@@ -247,8 +290,10 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
         //if registation is successful
             .done(function (result) {
             loginUserId = result._id;
-            $(".loginUserId").val(getUserId(loginUserId));
-            console.log(userId);
+            $(".loginUserId").val(loginUserId);
+//            userId.setAttribute('value', '${loginUserId}');
+            console.log(result);
+//            console.log(result);
             alert('Thanks for registering! You may now login with your username and password.');
             $(".introScreen").hide();
             $(".quickView").hide();

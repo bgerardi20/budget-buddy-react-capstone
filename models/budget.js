@@ -3,25 +3,25 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const recipeSchema = new mongoose.Schema({
-    title: {
+const budgetSchema = new mongoose.Schema({
+    descritpion: {
         type: String,
         required: false
     },
-    ingredients: {
-        type: String,
+    date: {
+        type: Number,
         required: false
     },
-    image: {
-        type: String,
+    budgeted: {
+        type: Number,
         required: false
     },
-    directions: {
-        type: String,
+    actual: {
+        type: Number,
         required: false
     },
-    notes: {
-        type: String,
+    difference: {
+        type: Number,
         required: false
     },
     userId: {
@@ -30,6 +30,6 @@ const recipeSchema = new mongoose.Schema({
     }
 });
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
+const Budget = mongoose.model('Budget', budgetSchema);
 
-module.exports = Recipe;
+module.exports = Budget;

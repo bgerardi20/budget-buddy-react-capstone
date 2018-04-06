@@ -1,5 +1,5 @@
 const User = require('./models/user');
-const Recipe = require('./models/recipe');
+const Goal = require('./models/goal');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
