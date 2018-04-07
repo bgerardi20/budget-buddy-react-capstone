@@ -58,15 +58,15 @@ var getFromEdamam = function (searchTerm) {
     unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
         .header("Accept", "application/json")
         .end(function (result) {
-        //success scenario
-        if (result.ok) {
-            emitter.emit('end', result.body);
-        }
-        //failure scenario
-        else {
-            emitter.emit('error', result.code);
-        }
-    });
+            //success scenario
+            if (result.ok) {
+                emitter.emit('end', result.body);
+            }
+            //failure scenario
+            else {
+                emitter.emit('error', result.code);
+            }
+        });
     return emitter;
 };
 
@@ -115,7 +115,6 @@ app.post('/users/create', (req, res) => {
             User.create({
                 name,
                 password: hash,
-                userId
             }, (err, item) => {
                 //if theres an error saving user to db
                 if (err) {
@@ -211,35 +210,73 @@ app.put('/recipes/:id', function (req, res) {
     });
     Recipe
         .findByIdAndUpdate(req.params.id, {
-        $set: toUpdate
-    }).exec().then(function (achievement) {
-        return res.status(204).end();
-    }).catch(function (err) {
-        return res.status(500).json({
-            message: 'Internal Server Error'
+            $set: toUpdate
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
         });
-    });
 });
 
 // GET ------------------------------------
 
-// get recipes saved to username
-app.get('/recipes/:userId', function (req, res) {
-    Recipe
+// get names from db
+app.get('/check-registration-name/:firstName', function (req, res) {
+    User
         .find({
-        userId: req.params.userId
-    })
-        .then(function (recipes) {
-        res.json({
-            recipes
-        });
-    })
+            name: req.params.firstName
+        })
+        .then(function (users) {
+            res.json({
+                users
+            });
+        })
         .catch(function (err) {
-        console.error(err);
-        res.status(500).json({
-            message: 'Internal server error'
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
         });
-    });
+});
+
+// get budgets from db
+app.get('/budgets/:userId', function (req, res) {
+    Budget
+        .find({
+            userId: req.params.userId
+        })
+        .then(function (budgets) {
+            res.json({
+                budgets
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+// get goals from db
+app.get('/budgets/:userId', function (req, res) {
+    Budget
+        .find({
+            userId: req.params.userId
+        })
+        .then(function (budgets) {
+            res.json({
+                budgets
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
 });
 
 

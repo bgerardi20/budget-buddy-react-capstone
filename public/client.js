@@ -1,9 +1,9 @@
 function titleCase(str) {
-    return str.split(' ').map(function(val){
+    return str.split(' ').map(function (val) {
         return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
     }).join(' ');
 }
-
+//UNDER BUDGET, OVER BUDGET, EVEN
 function budgetCondtionalChecker() {
     let totalActual = "";
     let totalBudgeted = "";
@@ -22,14 +22,25 @@ function budgetCondtionalChecker() {
         $(".budgetConditionalOptionsEven").show();
     };
 }
-
+//Difference column
 function budgetCalculator() {
     let actual = $('.budgetActual').val()
     let budgeted = $('.budgetBudgeted').val()
 
     let difference = budgeted - actual;
-    return(difference);
+    return (difference);
 };
+//green, red, or yellow font
+function colorChooser(num) {
+    if (num > 0) {
+        num.addClass(positive)
+    } else if (num < 0) {
+        num.addClass(negative)
+    } else {
+        num.addClass(middle)
+    }
+}
+
 
 
 
@@ -38,40 +49,42 @@ let loginUserName = "";
 let loginUserId = "";
 
 function displayBudgets(userId) {
+    console.log(userId);
     $.ajax({
-        type: "GET",
-        url: '/budgets/' + userId,
-        dataType: 'json',
-    })
+            type: "GET",
+            url: '/budgets/' + userId,
+            dataType: 'json',
+        })
         .done(function (dataOutput) {
-        //displays the external api json object in the console
-        displayBudgetResult(dataOutput.budget);
-//        displayRecipeResult(dataOutput.recipes);
-//        displayRecipeDetailsResult(dataOutput.recipes);
-    })
+            //displays the external api json object in the console
+            displayBudgetResult(dataOutput.budget);
+            //        displayRecipeResult(dataOutput.recipes);
+            //        displayRecipeDetailsResult(dataOutput.recipes);
+        })
         .fail(function (jqXHR, error, errorThrown) {
-        console.log(jqXHR);
-        console.log(error);
-        console.log(errorThrown);
-    });
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 }
+
 function displayGoals(userId) {
     $.ajax({
-        type: "GET",
-        url: '/goals/' + userId,
-        dataType: 'json',
-    })
+            type: "GET",
+            url: '/goals/' + userId,
+            dataType: 'json',
+        })
         .done(function (dataOutput) {
-        //displays the external api json object in the console
-        displayFinancialGoalResult(dataOutput.goal);
-//        displayRecipeResult(dataOutput.recipes);
-//        displayRecipeDetailsResult(dataOutput.recipes);
-    })
+            //displays the external api json object in the console
+            displayFinancialGoalResult(dataOutput.goal);
+            //        displayRecipeResult(dataOutput.recipes);
+            //        displayRecipeDetailsResult(dataOutput.recipes);
+        })
         .fail(function (jqXHR, error, errorThrown) {
-        console.log(jqXHR);
-        console.log(error);
-        console.log(errorThrown);
-    });
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 }
 
 
@@ -94,7 +107,7 @@ function displayFinancialGoalResult(dataOutput) {
     $.each(dataOutput, function (dataKey, dataValue) {
         buildTheHtmlOutput += '<div class="row">';
 
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-thumbs-down + 'typeIcon' + negative + '"></i>' + dataValue.descritpion + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa - thumbs - down + 'typeIcon' + negative + '"></i>' + dataValue.descritpion + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
@@ -116,7 +129,7 @@ function displayBudgetResult(dataOutput) {
     $.each(dataOutput, function (dataKey, dataValue) {
         buildTheHtmlOutput += '<div class="row">';
 
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-level-up-alt + 'typeIcon' + positive + '"></i>' + dataValue.descritpion + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa - level - up - alt + 'typeIcon' + positive + '"></i>' + dataValue.descritpion + '</div>';
 
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
@@ -171,103 +184,6 @@ function displayFinancialGoalTotalResult(dataOutput) {
 
 
 
-//function displayRecipeFromEdamam(dataFromApi) {
-//    var buildTheHtmlOutput = "";
-//    console.log(dataFromApi);
-//    if (dataFromApi.hits.length == 0) {
-//        buildTheHtmlOutput += 'no results found';
-//    } else {
-//        $.each(dataFromApi.hits, function (dataKey, dataValue) {
-//            buildTheHtmlOutput += '<li class="searchRecipeResultOption">';
-//            buildTheHtmlOutput += '<div class="object">';
-//            buildTheHtmlOutput += '<a class="searchRecipeResultsLink" href="#">';
-//            buildTheHtmlOutput += '<span class="searchRecipeImgContainer">';
-//            buildTheHtmlOutput += '<img class="searchRecipeImg" src="' + dataValue.recipe.image + '" alt="pastarecipeLink">';
-//            buildTheHtmlOutput += '</span>';
-//            buildTheHtmlOutput += '</a>';
-//            buildTheHtmlOutput += '</div>';
-//
-//            buildTheHtmlOutput += '<h3 class="resultsTitle">' + dataValue.recipe.label + '</h3>';
-//
-//            buildTheHtmlOutput += '<div class="data">';
-//            buildTheHtmlOutput += '<a class="cal" href="#">';
-//            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.calories.toFixed(2) + '</span><br />';
-//            buildTheHtmlOutput += '<span class="info"> calories</span>';
-//            buildTheHtmlOutput += '</a>';
-//            buildTheHtmlOutput += '<a class="ing" href="#">';
-//            buildTheHtmlOutput += '<span class="num">' + dataValue.recipe.ingredients.length + '</span><br />';
-//            buildTheHtmlOutput += '<span class="info"> ingredients</span>';
-//            buildTheHtmlOutput += '</a>';
-//            buildTheHtmlOutput += '</div>';
-//
-//            buildTheHtmlOutput += '<form class="addBRecipeFromAPI">';
-//            buildTheHtmlOutput += '<div class="addButton">';
-//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIName" value="' + dataValue.recipe.label + '">';
-//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIIngredients" value="' + dataValue.recipe.ingredientLines.toString() + '">';
-//            buildTheHtmlOutput += '<input type="hidden" class="addBRecipeFromAPIImage" value="' + dataValue.recipe.image + '">';
-//            buildTheHtmlOutput += '<button type="submit" class="addSuccessButton green jsSuccessButton">Add</button>';
-//            buildTheHtmlOutput += '</div>';
-//            buildTheHtmlOutput += '</form>';
-//            buildTheHtmlOutput += '</li>';
-//        })
-//    }
-//    $(".resultsList").html(buildTheHtmlOutput);
-//};
-
-//function displayRecipeResult(dataOutput) {
-//    var buildTheHtmlOutput = "";
-//    $.each(dataOutput, function (dataKey, dataValue) {
-//        buildTheHtmlOutput += '<a class="recipeLink" href="#">';
-//        buildTheHtmlOutput += '<div class="recipeImgContainer">';
-//        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
-//        buildTheHtmlOutput += '</div>';
-//        buildTheHtmlOutput += '<h2 class="recipeTitle">' + dataValue.title + '</h2>';
-//        buildTheHtmlOutput += '</a>';
-//    })
-//    $(".recipeSnippetContainer").html(buildTheHtmlOutput);
-//};
-
-//function displayRecipeDetailsResult(dataFromApi) {
-//    var buildTheHtmlOutput = "";
-//    $.each(dataFromApi, function (dataKey, dataValue) {
-//        buildTheHtmlOutput += '<ul class="recipeInsideContainer" id="">';
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
-//        buildTheHtmlOutput += '</li>';
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += '<h2 class="chosenTitle">' + dataValue.title + '</h2>';
-//        buildTheHtmlOutput += '</li >';
-//
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += '<div class="createSections">';
-//        buildTheHtmlOutput += '<label class="createLabel" for="ingredients">Ingredients:</label>';
-//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeIngredients" type="text" name="ingredients" required>' + dataValue.ingredients + '</textarea>';
-//        buildTheHtmlOutput += '</div>';
-//        buildTheHtmlOutput += '</li>';
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += ' <div class="createSections">';
-//        buildTheHtmlOutput += '<label class="createLabel" for="directions">Directions:</label>';
-//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeDirections" type="text" name="directions" >' + dataValue.directions + '</textarea>';
-//        buildTheHtmlOutput += '</div>';
-//        buildTheHtmlOutput += '</li>';
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += '<div class="createSections">';
-//        buildTheHtmlOutput += '<label class="createLabel" for="notes">Notes:</label>';
-//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeNotes" type="text" name="notes" >' + dataValue.notes + '</textarea>';
-//        buildTheHtmlOutput += '</div>';
-//        buildTheHtmlOutput += '</li>';
-//
-//        buildTheHtmlOutput += '<li>';
-//        buildTheHtmlOutput += '<div class="recipeButtonContainer">';
-//        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
-//        buildTheHtmlOutput += '<button type="button" class="recipeButton green saveAnchor" >Save</button>';
-//        buildTheHtmlOutput += '<button type="button" class="recipeButton red deleteAnchor">Delete</button>';
-//        buildTheHtmlOutput += '</div>';
-//        buildTheHtmlOutput += '</li>';
-//        buildTheHtmlOutput += '</ul>';
-//    })
-//    $(".recipeOutsideContainer").html(buildTheHtmlOutput);
-//};
 
 $(document).ready(function () {
     $(".introScreen").show();
@@ -322,35 +238,35 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
         console.log(loginUserObject);
         // create ajax call to sign in the user//
         $.ajax({
-            type: 'POST',
-            url: '/users/signin',
-            dataType: 'json',
-            data: JSON.stringify(loginUserObject),
-            contentType: 'application/json'
-        })
-        //if sign in is successful
+                type: 'POST',
+                url: '/users/signin',
+                dataType: 'json',
+                data: JSON.stringify(loginUserObject),
+                contentType: 'application/json'
+            })
+            //if sign in is successful
             .done(function (result) {
-            loginUserName = result.name;
-            loginUserId = result._id;
-            displayBudgets(loginUserId);
-            $(".resultTitle span").text(titleCase(result.name) + "'s ");
-            $(".loginUserId").val(loginUserId);
-            $(".loginUserName").val(loginUserName);
-            console.log(loginUserId);
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-        })
-        //if sign in fails
+                loginUserName = result.name;
+                loginUserId = result._id;
+                displayBudgets(loginUserId);
+                $(".resultTitle span").text(titleCase(result.name) + "'s ");
+                $(".loginUserId").val(loginUserId);
+                $(".loginUserName").val(loginUserName);
+                console.log(loginUserId);
+                $(".introScreen").hide();
+                $(".quickView").hide();
+                $(".loginScreen").hide();
+                $(".registerScreen").hide();
+                $(".homeScreen").show();
+                $(".homeScreenBudget").hide();
+                $(".homeScreenGoals").hide();
+            })
+            //if sign in fails
             .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
     };
 
 });
@@ -361,8 +277,6 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     let name = $('#registerName').val();
     let password = $('#registerPassword').val();
     let confirmPassword = $('#registerConfirmPassword').val();
-    let userId = document.getElementById("myHiddenField").setAttribute('value', '${event._id}');
-
 
 
 
@@ -373,46 +287,61 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
         alert('Please add password!');
     } else if (password !== confirmPassword) {
         alert('Passwords must match!');
-    } else if (userId !== $`{event._id}`) {
-        alert('hello');
     } else {
-        //if input is valid; register the user//
-        const newUserObject = {
-            name: name,
-            password: password,
-            userId: userId
-        };
-        console.log(newUserObject);
-        // create ajax call to register the user//
+        //check if user is duplicated
         $.ajax({
-            type: 'POST',
-            url: '/users/create',
-            dataType: 'json',
-            data: JSON.stringify(newUserObject),
-            contentType: 'application/json'
-        })
-        //if registation is successful
-            .done(function (result) {
-            loginUserId = result._id;
-            $(".loginUserId").val(loginUserId);
-//            userId.setAttribute('value', '${loginUserId}');
-            console.log(result);
-//            console.log(result);
-            alert('Thanks for registering! You may now login with your username and password.');
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").show();
-            $(".registerScreen").hide();
-            $(".homeScreen").hide();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-        })
-        //if registration fails
+                type: "GET",
+                url: '/check-registration-name/' + name,
+                dataType: 'json',
+            })
+            .done(function (dataOutput) {
+                //displays the external api json object in the console
+                console.log(dataOutput);
+                if (dataOutput.users.length > 0) {
+                    alert('Duplicated first name, try a different name');
+                } else {
+                    //if input is valid; register the user//
+                    const newUserObject = {
+                        name: name,
+                        password: password
+                    };
+                    console.log(newUserObject);
+                    // create ajax call to register the user//
+                    $.ajax({
+                            type: 'POST',
+                            url: '/users/create',
+                            dataType: 'json',
+                            data: JSON.stringify(newUserObject),
+                            contentType: 'application/json'
+                        })
+                        //if registation is successful
+                        .done(function (result) {
+                            loginUserId = result._id;
+                            $(".loginUserId").val(loginUserId);
+                            console.log(result);
+                            alert('Thanks for registering! You may now login with your username and password.');
+                            $(".introScreen").hide();
+                            $(".quickView").hide();
+                            $(".loginScreen").show();
+                            $(".registerScreen").hide();
+                            $(".homeScreen").hide();
+                            $(".homeScreenBudget").hide();
+                            $(".homeScreenGoals").hide();
+                        })
+                        //if registration fails
+                        .fail(function (jqXHR, error, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(error);
+                            console.log(errorThrown);
+                        });
+                }
+            })
             .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+
     };
 });
 //nav item
@@ -692,30 +621,30 @@ $(document).on("click", "#saveBudgetForm", function (event) {
         };
         // create ajax call to create the new recipe//
         $.ajax({
-            type: 'POST',
-            url: '/recipes/create',
-            dataType: 'json',
-            data: JSON.stringify(newBudgetObject),
-            contentType: 'application/json'
-        })
-        //if budget creation is successful
+                type: 'POST',
+                url: '/recipes/create',
+                dataType: 'json',
+                data: JSON.stringify(newBudgetObject),
+                contentType: 'application/json'
+            })
+            //if budget creation is successful
             .done(function (result) {
-            displayBudgets(userIdHidden);
-            console.log(result);
-            $(".introScreen").show();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-        })
-        //if recipe creation fails
+                displayBudgets(userIdHidden);
+                console.log(result);
+                $(".introScreen").show();
+                $(".quickView").hide();
+                $(".loginScreen").hide();
+                $(".registerScreen").hide();
+                $(".homeScreen").show();
+                $(".homeScreenBudget").hide();
+                $(".homeScreenGoals").hide();
+            })
+            //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
     };
 });
 
@@ -741,22 +670,22 @@ $(document).on("click", ".jsSuccessButton", function (event) {
     };
     // create ajax call to add recipe to library//
     $.ajax({
-        type: 'POST',
-        url: '/recipes/create',
-        dataType: 'json',
-        data: JSON.stringify(newRecipeObject),
-        contentType: 'application/json'
-    })
-    //if add is successful
+            type: 'POST',
+            url: '/recipes/create',
+            dataType: 'json',
+            data: JSON.stringify(newRecipeObject),
+            contentType: 'application/json'
+        })
+        //if add is successful
         .done(function (result) {
-        displayBudgets(userIdHidden);
-    })
-    //if add fails
+            displayBudgets(userIdHidden);
+        })
+        //if add fails
         .fail(function (jqXHR, error, errorThrown) {
-        console.log(jqXHR);
-        console.log(error);
-        console.log(errorThrown);
-    });
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 
 });
 

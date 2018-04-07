@@ -20,10 +20,6 @@ const budgetSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    difference: {
-        type: Number,
-        required: false
-    },
     userId: {
         type: String,
         required: false
