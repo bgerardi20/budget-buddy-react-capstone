@@ -1,5 +1,6 @@
 const User = require('./models/user');
 const Goal = require('./models/goal');
+const Budget = require('./models/budget');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -114,6 +115,7 @@ app.post('/users/create', (req, res) => {
             User.create({
                 name,
                 password: hash,
+                userId
             }, (err, item) => {
                 //if theres an error saving user to db
                 if (err) {
@@ -134,11 +136,11 @@ app.post('/users/create', (req, res) => {
 app.post('/users/signin', function (req, res) {
     const name = req.body.name;
     const password = req.body.password;
-    const userId = req.body.userId;
+    const userId = req.body._id;
 
     User.findOne({
         name: req.body.name,
-        userId: req.body._id
+        userId: this._id
     }, function (err, items) {
         if (err) {
             return res.status(500).json({
@@ -168,21 +170,21 @@ app.post('/users/signin', function (req, res) {
     });
 });
 
-// creating a new recipe
-app.post('/recipes/create', (req, res) => {
-    let title = req.body.title;
-    let ingredients = req.body.ingredients;
-    let image = req.body.image;
-    let directions = req.body.directions;
-    let notes = req.body.notes;
+// creating a new goal
+app.post('/goal/create', (req, res) => {
+    let descritpion = req.body.title;
+    let date = req.body.ingredients;
+    let budgeted = req.body.image;
+    let actual = req.body.directions;
+    let difference = req.body.notes;
     let userId = req.body.userId;
 
-    Recipe.create({
-        title,
-        ingredients,
-        image,
-        directions,
-        notes,
+    Goal.create({
+        descritpion,
+        date,
+        budgeted,
+        actual,
+        difference,
         userId
     }, (err, item) => {
         if (err) {

@@ -4,6 +4,33 @@ function titleCase(str) {
     }).join(' ');
 }
 
+function budgetCondtionalChecker() {
+    let totalActual = "";
+    let totalBudgeted = "";
+
+    if (totalBudgeted > totalActual) {
+        $(".budgetConditionalOptionsPositive").show();
+        $(".budgetConditionalOptionsNegative").hide();
+        $(".budgetConditionalOptionsEven").hide();
+    } else if (totalBudgeted < totalActual) {
+        $(".budgetConditionalOptionsPositive").hide();
+        $(".budgetConditionalOptionsNegative").show();
+        $(".budgetConditionalOptionsEven").hide();
+    } else if (totalBudgeted === totalActual) {
+        $(".budgetConditionalOptionsPositive").hide();
+        $(".budgetConditionalOptionsNegative").hide();
+        $(".budgetConditionalOptionsEven").show();
+    };
+}
+
+function budgetCalculator() {
+    let actual = $('.budgetActual').val()
+    let budgeted = $('.budgetBudgeted').val()
+
+    let difference = budgeted - actual;
+    return(difference);
+};
+
 
 
 //define objects variables functions
@@ -18,8 +45,9 @@ function displayBudgets(userId) {
     })
         .done(function (dataOutput) {
         //displays the external api json object in the console
-        displayRecipeResult(dataOutput.recipes);
-        displayRecipeDetailsResult(dataOutput.recipes);
+        displayBudgetResult(dataOutput.budget);
+//        displayRecipeResult(dataOutput.recipes);
+//        displayRecipeDetailsResult(dataOutput.recipes);
     })
         .fail(function (jqXHR, error, errorThrown) {
         console.log(jqXHR);
@@ -27,6 +55,121 @@ function displayBudgets(userId) {
         console.log(errorThrown);
     });
 }
+function displayGoals(userId) {
+    $.ajax({
+        type: "GET",
+        url: '/goals/' + userId,
+        dataType: 'json',
+    })
+        .done(function (dataOutput) {
+        //displays the external api json object in the console
+        displayFinancialGoalResult(dataOutput.goal);
+//        displayRecipeResult(dataOutput.recipes);
+//        displayRecipeDetailsResult(dataOutput.recipes);
+    })
+        .fail(function (jqXHR, error, errorThrown) {
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
+}
+
+
+
+//function displayRecipeResult(dataOutput) {
+//    var buildTheHtmlOutput = "";
+//    $.each(dataOutput, function (dataKey, dataValue) {
+//        buildTheHtmlOutput += '<a class="recipeLink" href="#">';
+//        buildTheHtmlOutput += '<div class="recipeImgContainer">';
+//        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '<h2 class="recipeTitle">' + dataValue.title + '</h2>';
+//        buildTheHtmlOutput += '</a>';
+//    })
+//    $(".recipeSnippetContainer").html(buildTheHtmlOutput);
+//};
+
+function displayFinancialGoalResult(dataOutput) {
+    var buildTheHtmlOutput = "";
+    $.each(dataOutput, function (dataKey, dataValue) {
+        buildTheHtmlOutput += '<div class="row">';
+
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-thumbs-down + 'typeIcon' + negative + '"></i>' + dataValue.descritpion + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans">';
+        buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
+        buildTheHtmlOutput += '</div>';
+
+        buildTheHtmlOutput += '</div>';
+    })
+    $(".welcomeContainer").html(buildTheHtmlOutput);
+};
+
+function displayBudgetResult(dataOutput) {
+    var buildTheHtmlOutput = "";
+    $.each(dataOutput, function (dataKey, dataValue) {
+        buildTheHtmlOutput += '<div class="row">';
+
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-level-up-alt + 'typeIcon' + positive + '"></i>' + dataValue.descritpion + '</div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans">';
+        buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
+        buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
+        buildTheHtmlOutput += '</div>';
+
+        buildTheHtmlOutput += '</div>';
+    })
+    $(".budgetOutterContainer").html(buildTheHtmlOutput);
+};
+
+
+
+function displayBudgetTotalResult(dataOutput) {
+    var buildTheHtmlOutput = "";
+    $.each(dataOutput, function (dataKey, dataValue) {
+        buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    })
+    $("#budgetTotal").html(buildTheHtmlOutput);
+};
+
+function displayFinancialGoalTotalResult(dataOutput) {
+    var buildTheHtmlOutput = "";
+    $.each(dataOutput, function (dataKey, dataValue) {
+        buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    })
+    $("#goalTotal").html(buildTheHtmlOutput);
+};
+
+
+
+
+
 
 //function displayRecipeFromEdamam(dataFromApi) {
 //    var buildTheHtmlOutput = "";
@@ -71,99 +214,60 @@ function displayBudgets(userId) {
 //    $(".resultsList").html(buildTheHtmlOutput);
 //};
 
-function displayRecipeResult(dataOutput) {
-    var buildTheHtmlOutput = "";
-    $.each(dataOutput, function (dataKey, dataValue) {
-        buildTheHtmlOutput += '<a class="recipeLink" href="#">';
-        buildTheHtmlOutput += '<div class="recipeImgContainer">';
-        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '<h2 class="recipeTitle">' + dataValue.title + '</h2>';
-        buildTheHtmlOutput += '</a>';
-    })
-    $(".recipeSnippetContainer").html(buildTheHtmlOutput);
-};
+//function displayRecipeResult(dataOutput) {
+//    var buildTheHtmlOutput = "";
+//    $.each(dataOutput, function (dataKey, dataValue) {
+//        buildTheHtmlOutput += '<a class="recipeLink" href="#">';
+//        buildTheHtmlOutput += '<div class="recipeImgContainer">';
+//        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '<h2 class="recipeTitle">' + dataValue.title + '</h2>';
+//        buildTheHtmlOutput += '</a>';
+//    })
+//    $(".recipeSnippetContainer").html(buildTheHtmlOutput);
+//};
 
-function displayFinancialGoalResult(dataOutput) {
-    var buildTheHtmlOutput = "";
-    $.each(dataOutput, function (dataKey, dataValue) {
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas' + fa-thumbs-down + ' ' + negative + 'typeIcon"></i>' + Wedding Honeymoon + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + 03/01/2018 + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + $2000.00 + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + $200.00 + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + -$1800.00 + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">';
-        buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
-        buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
-        buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
-        buildTheHtmlOutput += '</div>';
-    })
-    $(".row").html(buildTheHtmlOutput);
-};
-
-
-
-<div class="row">
-    <div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>Wedding Honeymoon</div>
-        <div class="cellTrans">03/01/2018</div>
-<div class="cellTrans">$2000.00</div>
-<div class="cellTrans">$200.00</div>
-<div class="cellTrans negative">-$1800.00</div>
-<div class="cellTrans">
-    <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-        <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-            <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                </div>
-</div>
-
-
-
-
-
-
-
-
-function displayRecipeDetailsResult(dataFromApi) {
-    var buildTheHtmlOutput = "";
-    $.each(dataFromApi, function (dataKey, dataValue) {
-        buildTheHtmlOutput += '<ul class="recipeInsideContainer" id="">';
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
-        buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<h2 class="chosenTitle">' + dataValue.title + '</h2>';
-        buildTheHtmlOutput += '</li >';
-
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<div class="createSections">';
-        buildTheHtmlOutput += '<label class="createLabel" for="ingredients">Ingredients:</label>';
-        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeIngredients" type="text" name="ingredients" required>' + dataValue.ingredients + '</textarea>';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += ' <div class="createSections">';
-        buildTheHtmlOutput += '<label class="createLabel" for="directions">Directions:</label>';
-        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeDirections" type="text" name="directions" >' + dataValue.directions + '</textarea>';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<div class="createSections">';
-        buildTheHtmlOutput += '<label class="createLabel" for="notes">Notes:</label>';
-        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeNotes" type="text" name="notes" >' + dataValue.notes + '</textarea>';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '</li>';
-
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<div class="recipeButtonContainer">';
-        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
-        buildTheHtmlOutput += '<button type="button" class="recipeButton green saveAnchor" >Save</button>';
-        buildTheHtmlOutput += '<button type="button" class="recipeButton red deleteAnchor">Delete</button>';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '</ul>';
-    })
-    $(".recipeOutsideContainer").html(buildTheHtmlOutput);
-};
+//function displayRecipeDetailsResult(dataFromApi) {
+//    var buildTheHtmlOutput = "";
+//    $.each(dataFromApi, function (dataKey, dataValue) {
+//        buildTheHtmlOutput += '<ul class="recipeInsideContainer" id="">';
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += '<img class="recipeImg" src="' + dataValue.image + '" alt="' + dataValue.title + '">';
+//        buildTheHtmlOutput += '</li>';
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += '<h2 class="chosenTitle">' + dataValue.title + '</h2>';
+//        buildTheHtmlOutput += '</li >';
+//
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += '<div class="createSections">';
+//        buildTheHtmlOutput += '<label class="createLabel" for="ingredients">Ingredients:</label>';
+//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeIngredients" type="text" name="ingredients" required>' + dataValue.ingredients + '</textarea>';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '</li>';
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += ' <div class="createSections">';
+//        buildTheHtmlOutput += '<label class="createLabel" for="directions">Directions:</label>';
+//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeDirections" type="text" name="directions" >' + dataValue.directions + '</textarea>';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '</li>';
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += '<div class="createSections">';
+//        buildTheHtmlOutput += '<label class="createLabel" for="notes">Notes:</label>';
+//        buildTheHtmlOutput += '<textarea class="createInput modifyRecipeNotes" type="text" name="notes" >' + dataValue.notes + '</textarea>';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '</li>';
+//
+//        buildTheHtmlOutput += '<li>';
+//        buildTheHtmlOutput += '<div class="recipeButtonContainer">';
+//        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
+//        buildTheHtmlOutput += '<button type="button" class="recipeButton green saveAnchor" >Save</button>';
+//        buildTheHtmlOutput += '<button type="button" class="recipeButton red deleteAnchor">Delete</button>';
+//        buildTheHtmlOutput += '</div>';
+//        buildTheHtmlOutput += '</li>';
+//        buildTheHtmlOutput += '</ul>';
+//    })
+//    $(".recipeOutsideContainer").html(buildTheHtmlOutput);
+//};
 
 $(document).ready(function () {
     $(".introScreen").show();

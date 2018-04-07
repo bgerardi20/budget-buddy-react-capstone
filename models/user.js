@@ -12,9 +12,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    userId: {
+    _id: {
         type: String,
-        required: yes
+        required: false
     }
 });
 
