@@ -215,7 +215,8 @@ footer {
 
 }
 
-.budgetOutterContainer, .homeScreen {
+.budgetOutterContainer,
+.homeScreen {
     margin-top: 4rem;
 }
 
@@ -303,7 +304,7 @@ footer {
     margin: 1rem;
     padding-left: 0.7rem;
     padding-right: 0.7rem;
-/*    text-decoration-line: underline;*/
+    /*    text-decoration-line: underline;*/
     text-decoration-color: #395D79;
     font-size: 20px;
 }
@@ -355,9 +356,9 @@ footer {
 }
 
 .budgetTotalContainer {
-        font-size: 19px;
-        font-weight: bolder;
-    }
+    font-size: 19px;
+    font-weight: bolder;
+}
 
 
 .tableIcons {
@@ -447,7 +448,7 @@ footer {
 
 .budgetConditionalOptions {
     font-size: 3rem;
-/*    color: #214662;*/
+    /*    color: #214662;*/
 }
 
 .middle {
@@ -460,7 +461,8 @@ footer {
 .transactionOutterContainer,
 .goalsOutterContainer,
 .budgetForms {
-    width: 35%;
+    width: 50%;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -522,7 +524,8 @@ footer {
         width: 23%;
     }
 
-    .formButton, #budgetType {
+    .formButton,
+    #budgetType {
         width: 95%;
     }
 
@@ -587,7 +590,8 @@ footer {
         width: 30%;
     }
 
-    .formButton, #budgetType {
+    .formButton,
+    #budgetType {
         width: 95%;
     }
 
@@ -638,7 +642,8 @@ footer {
         padding: 1.5rem 2rem;
     }
 
-    .homeSections, .budgetInnerContainer {
+    .homeSections,
+    .budgetInnerContainer {
         width: 95%;
     }
 
@@ -679,7 +684,8 @@ footer {
         font-size: 1.35rem;
     }
 
-    .logoHolder, .navList {
+    .logoHolder,
+    .navList {
         width: 100%;
     }
 
@@ -693,7 +699,11 @@ footer {
         font-size: 17px
     }
 
-    .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
+    .loginInnerContainer,
+    .innerRegisterBox,
+    .transactionOutterContainer,
+    .goalsOutterContainer,
+    .budgetForms {
         width: 85%;
     }
 
@@ -720,7 +730,9 @@ footer {
     }
 
 
-    #quickViewBudget, #quickViewTrans, #quickViewGoals {
+    #quickViewBudget,
+    #quickViewTrans,
+    #quickViewGoals {
         width: 33.3%;
         display: inline-block;
         padding-top: 4rem;
@@ -749,7 +761,8 @@ footer {
         font-size: 13.1px;
     }
 
-    #budgetTitle, .homeSectionsTitle {
+    #budgetTitle,
+    .homeSectionsTitle {
         font-size: 2.5rem;
     }
 
@@ -816,7 +829,8 @@ footer {
         margin-bottom: 10px;
     }
 
-    .formButton, #budgetType {
+    .formButton,
+    #budgetType {
         width: 100%;
     }
 
@@ -827,11 +841,16 @@ footer {
         padding-right: 0.5rem;
     }
 
-    .loginInnerContainer, .innerRegisterBox, .transactionOutterContainer, .goalsOutterContainer, .budgetForms {
+    .loginInnerContainer,
+    .innerRegisterBox,
+    .transactionOutterContainer,
+    .goalsOutterContainer,
+    .budgetForms {
         width: 90%;
     }
 
-    .firstWelcomeMessage, .secondWelcomeMessage {
+    .firstWelcomeMessage,
+    .secondWelcomeMessage {
         margin: 0rem;
     }
 
@@ -841,7 +860,9 @@ footer {
         opacity: 0.3;
     }
 
-    #quickViewBudget, #quickViewTrans, #quickViewGoals {
+    #quickViewBudget,
+    #quickViewTrans,
+    #quickViewGoals {
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
@@ -891,8 +912,3 @@ footer {
 
 
 }
-
-
-
-
-

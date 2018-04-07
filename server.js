@@ -175,7 +175,6 @@ app.post('/budget/create', (req, res) => {
     let date = req.body.date;
     let budgeted = req.body.budgeted;
     let actual = req.body.actual;
-//    let difference = budgeted - actual;
     let type = req.body.type;
     let userId = req.body.userId;
 
@@ -184,7 +183,6 @@ app.post('/budget/create', (req, res) => {
         date,
         budgeted,
         actual,
-//        difference,
         userId
     }, (err, item) => {
         if (err) {
@@ -206,7 +204,6 @@ app.post('/goal/create', (req, res) => {
     let date = req.body.date;
     let budgeted = req.body.budgeted;
     let actual = req.body.actual;
-//    let difference = ;
     let userId = req.body.userId;
 
     Goal.create({
@@ -214,7 +211,6 @@ app.post('/goal/create', (req, res) => {
         date,
         budgeted,
         actual,
-//        difference,
         userId
     }, (err, item) => {
         if (err) {
