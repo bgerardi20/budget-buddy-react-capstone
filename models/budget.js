@@ -9,7 +9,7 @@ const budgetSchema = new mongoose.Schema({
         required: false
     },
     date: {
-        type: Number,
+        type: Date,
         required: false
     },
     budgeted: {
@@ -19,6 +19,11 @@ const budgetSchema = new mongoose.Schema({
     actual: {
         type: Number,
         required: false
+    },
+    //String or array?
+    type: {
+        type: String,
+        required: true
     },
     userId: {
         type: String,

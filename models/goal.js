@@ -9,7 +9,7 @@ const goalSchema = new mongoose.Schema({
         required: false
     },
     date: {
-        type: Number,
+        type: Date,
         required: false
     },
     budgeted: {
@@ -17,10 +17,6 @@ const goalSchema = new mongoose.Schema({
         required: false
     },
     actual: {
-        type: Number,
-        required: false
-    },
-    difference: {
         type: Number,
         required: false
     },

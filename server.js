@@ -169,13 +169,44 @@ app.post('/users/signin', function (req, res) {
     });
 });
 
+// creating a new budget
+app.post('/budget/create', (req, res) => {
+    let descritpion = req.body.descritpion;
+    let date = req.body.date;
+    let budgeted = req.body.budgeted;
+    let actual = req.body.actual;
+//    let difference = budgeted - actual;
+    let type = req.body.type;
+    let userId = req.body.userId;
+
+    Budget.create({
+        descritpion,
+        date,
+        budgeted,
+        actual,
+//        difference,
+        userId
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            return res.json(item);
+        }
+    });
+});
+
+
+
 // creating a new goal
 app.post('/goal/create', (req, res) => {
-    let descritpion = req.body.title;
-    let date = req.body.ingredients;
-    let budgeted = req.body.image;
-    let actual = req.body.directions;
-    let difference = req.body.notes;
+    let descritpion = req.body.descritpion;
+    let date = req.body.date;
+    let budgeted = req.body.budgeted;
+    let actual = req.body.actual;
+//    let difference = ;
     let userId = req.body.userId;
 
     Goal.create({
@@ -183,7 +214,7 @@ app.post('/goal/create', (req, res) => {
         date,
         budgeted,
         actual,
-        difference,
+//        difference,
         userId
     }, (err, item) => {
         if (err) {
@@ -261,14 +292,14 @@ app.get('/budgets/:userId', function (req, res) {
 });
 
 // get goals from db
-app.get('/budgets/:userId', function (req, res) {
-    Budget
+app.get('/goals/:userId', function (req, res) {
+    Goal
         .find({
             userId: req.params.userId
         })
-        .then(function (budgets) {
+        .then(function (goals) {
             res.json({
-                budgets
+                goals
             });
         })
         .catch(function (err) {
