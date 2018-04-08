@@ -61,24 +61,24 @@ function colorChooser(num) {
 //};
 
 
-function dateFormater() {
-    var date = new Date();
-    var dd = date.getDate();
-    var mm = date.getMonth() + 1;
-    var yyyy = date.getFullYear();
-
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-
-    date = mm + '/' + dd + '/' + yyyy;
-    console.log(date)
-
-};
+//function dateFormater() {
+//    var date = new Date();
+//    var dd = date.getDate();
+//    var mm = date.getMonth() + 1;
+//    var yyyy = date.getFullYear();
+//
+//    if (dd < 10) {
+//        dd = '0' + dd
+//    }
+//
+//    if (mm < 10) {
+//        mm = '0' + mm
+//    }
+//
+//    date = mm + '/' + dd + '/' + yyyy;
+//    console.log(date)
+//
+//};
 
 
 //function dateConverter() {
@@ -101,8 +101,25 @@ function dateFormater() {
 //    date = mm + '/' + dd + '/' + yyyy;
 //    console.log(date)
 //};
+//
+//var goalBudgetTotal = document.querySelectorAll('#budgetedGoal').val();
+//var goalActualTotal = document.querySelectorAll('#actualGoal').val();
+//var goalDifferenceTotal = goalActualTotal - goalBudgetTotal
+//
+//function goalActualAdder() {
+//    var buildTheHtmlOutput = "";
+//    var goalActual = "";
+//    var i;
+//    for (i = 0; i < goalActual.length; i++) {
+//        buildTheHtmlOutput += goalActual[i] + "<br>";
+//    }
+//    console.log(buildTheHtmlOutput);
+//}
 
-
+//$.each(result.goals.actual function (dataKey, dataValue) {
+//    console.log(dataValue);
+////    buildTheHtmlOutput += buildTheHtmlOutput += '<div class="cellTrans" id="goalActualTotal" value="">' +  + '</div>';
+//});
 
 //define objects variables functions
 let loginUserName = "";
@@ -118,6 +135,7 @@ function displayBudgets(userId) {
             dataType: 'json',
         })
         .done(function (dataOutput) {
+            console.log(dataOutput);
             //displays the external api json object in the console
             displayBudgetResult(dataOutput.budgets);
         })
@@ -150,8 +168,6 @@ function displayGoals(userId) {
 
 //goal html output
 function displayFinancialGoalResult(dataOutput) {
-    console.log(dataOutput);
-
     var buildTheHtmlOutput = "";
     buildTheHtmlOutput += '<div class="row rowTitle">';
     buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
@@ -162,10 +178,10 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
     $.each(dataOutput, function (dataKey, dataValue) {
-
+        console.log(dataKey);
         buildTheHtmlOutput += '<div class="row">';
 
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down typeIcon negative"></i>' + dataValue.descritpion + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down typeIcon negative"></i>' + dataValue.description + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '</div>';
@@ -182,28 +198,37 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="goalTotal">';
     buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans"></div>';
-    buildTheHtmlOutput += '<div class="cellTrans"></div>';
-    buildTheHtmlOutput += '<div class="cellTrans negative"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans" id="goalBudgetedTotal"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans" id="goalActualTotal"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal"></div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
     buildTheHtmlOutput += '</div>';
+
     $(".homeSectionsTable").html(buildTheHtmlOutput);
-    //    $(".goalDate").datepicker("option", "altFormat", "yy-mm-dd");
-    //    console.log(dataValue.date);
 };
 
 //budget html output
 function displayBudgetResult(dataOutput) {
     var buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += '<div class="row rowTitle">';
+    buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">Date</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">Budgeted</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">Actual</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">Difference</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
+    buildTheHtmlOutput += '</div>';
     $.each(dataOutput, function (dataKey, dataValue) {
+        console.log(dataKey);
         buildTheHtmlOutput += '<div class="row">';
 
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.descritpion + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
 
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans negative">' + dataValue.difference + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans negative">' + (dataValue.actual - dataValue.budgeted) + '</div>';
 
         buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
@@ -212,43 +237,20 @@ function displayBudgetResult(dataOutput) {
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '</div>';
+
     })
-    $(".budgetOutterContainer").html(buildTheHtmlOutput);
+    buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="budgetTotal">';
+    buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
+    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    buildTheHtmlOutput += '<div class="cellTrans negative"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    buildTheHtmlOutput += '</div>';
+
+
+    $(".table").html(buildTheHtmlOutput);
 };
-
-//budget totals html output
-function displayBudgetTotalResult(dataOutput) {
-    var buildTheHtmlOutput = "";
-    $.each(dataOutput, function (dataKey, dataValue) {
-        buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
-
-        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    })
-    $("#budgetTotal").html(buildTheHtmlOutput);
-};
-
-//goal totals html output
-function displayFinancialGoalTotalResult(dataOutput) {
-    var buildTheHtmlOutput = "";
-    $.each(dataOutput, function (dataKey, dataValue) {
-        buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
-
-        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans' + negative + '">' + dataValue.difference + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    })
-    $("#goalTotal").html(buildTheHtmlOutput);
-};
-
-
 
 $(document).ready(function () {
     $(".introScreen").show();
@@ -316,12 +318,11 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
             .done(function (result) {
                 loginUserName = result.name;
                 loginUserId = result._id;
-                //                displayBudgets(loginUserId);
-                //                displayGoals(loginUserId);
+                displayBudgets(loginUserId);
+                displayGoals(loginUserId);
                 $(".resultTitle span").text(titleCase(result.name) + "'s ");
                 $(".loginUserId").val(loginUserId);
                 $(".loginUserName").val(loginUserName);
-                //                console.log(loginUserId);
                 $(".introScreen").hide();
                 $(".quickView").hide();
                 $(".loginScreen").hide();
@@ -386,7 +387,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                         .done(function (result) {
                             loginUserId = result._id;
                             $(".loginUserId").val(loginUserId);
-                            console.log(result);
+                            //                            console.log(result);
                             alert('Thanks for registering! You may now login with your username and password.');
                             $(".introScreen").hide();
                             $(".quickView").hide();
@@ -558,7 +559,7 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".homeScreenGoals").show();
 });
 
-//display budgets
+//create budgets for user
 $(document).on("click", "#saveBudgetForm", function (event) {
     event.preventDefault();
     //get input from the user//
@@ -567,7 +568,7 @@ $(document).on("click", "#saveBudgetForm", function (event) {
     let budgeted = $('#budgetBudgeted').val();
     let actual = $('#budgetActual').val();
     let type = $('#budgetType').val();
-    let userIdHidden = $('.loggedInUser').val();
+    let userIdHidden = $('.loginUserId').val();
     //validate the input//
     if (description.length == 0) {
         alert('Please add a description!');
@@ -592,7 +593,7 @@ $(document).on("click", "#saveBudgetForm", function (event) {
         // create ajax call to create the new recipe//
         $.ajax({
                 type: 'POST',
-                url: '/budgets/create',
+                url: '/budget/create',
                 dataType: 'json',
                 data: JSON.stringify(newBudgetObject),
                 contentType: 'application/json'
@@ -622,14 +623,13 @@ $(document).on("click", "#saveBudgetForm", function (event) {
 $(document).on("click", "#saveGoalForm", function (event) {
     event.preventDefault();
     //get input from the user//
-    let descritpion = $('#goalDescription').val();
-    let date = $("#goalDate").datepicker("option", "dateFormat", $(this).val());
+    let description = $('#goalDescription').val();
+    let date = $("#goalDate").val();
     let budgeted = $('#budgetedGoal').val();
     let actual = $('#actualGoal').val();
     let userIdHidden = $('.loginUserId').val();
-    console.log(userIdHidden);
     //validate the input//
-    if (descritpion.length == 0) {
+    if (description.length == 0) {
         alert('Please add a description!');
     } else if (date.length == 0) {
         alert('Please add a date!');
@@ -640,7 +640,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
     } else {
         //if input is valid; create the new recipe//
         const newGoalObject = {
-            descritpion: descritpion,
+            description: description,
             date: date,
             budgeted: budgeted,
             actual: actual,

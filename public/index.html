@@ -7,8 +7,8 @@
     <title>Budget Buddy</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto:700" rel="stylesheet">
-    <link href="css/jquery.terminal-1.14.0.min.css" rel="stylesheet" />
-    <!--<link href="jquery-ui.css" rel="stylesheet">-->
+    <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/css/jquery.terminal.min.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -325,6 +325,7 @@
 
                 <div class="expenseContainer">
                     <div class="table">
+                        <!--
                         <div class="row rowTitle">
                             <div class="cellTrans">Descritpion</div>
                             <div class="cellTrans">Date</div>
@@ -333,8 +334,10 @@
                             <div class="cellTrans">Difference</div>
                             <div class="cellTrans">Action</div>
                         </div>
+-->
+                        <!--
                         <div class="row">
-                            <!--
+
                             <div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>Paycheck</div>
                             <div class="cellTrans">03/01/2018</div>
                             <div class="cellTrans">$200.00</div>
@@ -345,8 +348,9 @@
                                 <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
                                 <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
                             </div>
--->
+
                         </div>
+-->
                         <!--
                         <div class="row">
                             <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Gas Bill</div>
@@ -385,6 +389,7 @@
                             </div>
                         </div>
 -->
+                        <!--
                         <div class="row budgetTotalContainer" id="budgetTotal">
                             <div class="cellTrans">Totals</div>
                             <div class="cellTrans"> </div>
@@ -393,6 +398,7 @@
                             <div class="cellTrans negative"></div>
                             <div class="cellTrans"> </div>
                         </div>
+-->
                     </div>
                 </div>
 
@@ -428,7 +434,7 @@
                     </div>
                     <div class="formGroup">
                         <label class="label" for="date">Date</label>
-                        <input class="formControl" id="budgetDate" type="date" value="2018-03-07" placeholder="03/01/2018" name="date" required>
+                        <input class="formControl" id="budgetDate" type="string" value="2018-03-07" placeholder="03/01/2018" name="date" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="budgeted">Budgeted</label>
@@ -456,7 +462,6 @@
 
     </main>
 
-
     <main class="homeScreenGoals">
         <section class="financialGoals">
             <div class="goalsOutterContainer">
@@ -471,8 +476,8 @@
                             <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
                         </div>
                         <div class="formGroup">
-                            <label class="label" for="goalDate">Date</label>
-                            <input class="formControl" id="goalDate" type="date" value="2018-03-07" placeholder="03/07/2018" name="date" required>
+                            <label class="label" for="date">Date</label>
+                            <input class="formControl" id="goalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
                         </div>
                         <div class="formGroup">
                             <label class="label" for="budgetedGoal">Budgeted</label>
@@ -500,14 +505,9 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-
-    <script src="js/jquery.terminal-1.14.0.min.js"></script>
-    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>-->
-    <!--
-<script src="external/jquery/jquery.js"></script>
-<script src="jquery-ui.js"></script>
--->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/js/jquery.terminal.min.js"></script>-->
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="client.js"></script>
 </body>

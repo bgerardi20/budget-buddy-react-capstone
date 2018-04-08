@@ -171,7 +171,7 @@ app.post('/users/signin', function (req, res) {
 
 // creating a new budget
 app.post('/budget/create', (req, res) => {
-    let descritpion = req.body.descritpion;
+    let description = req.body.description;
     let date = req.body.date;
     let budgeted = req.body.budgeted;
     let actual = req.body.actual;
@@ -179,10 +179,11 @@ app.post('/budget/create', (req, res) => {
     let userId = req.body.userId;
 
     Budget.create({
-        descritpion,
+        description,
         date,
         budgeted,
         actual,
+        type,
         userId
     }, (err, item) => {
         if (err) {
@@ -200,14 +201,14 @@ app.post('/budget/create', (req, res) => {
 
 // creating a new goal
 app.post('/goal/create', (req, res) => {
-    let descritpion = req.body.descritpion;
+    let description = req.body.description;
     let date = req.body.date;
     let budgeted = req.body.budgeted;
     let actual = req.body.actual;
     let userId = req.body.userId;
 
     Goal.create({
-        descritpion,
+        description,
         date,
         budgeted,
         actual,

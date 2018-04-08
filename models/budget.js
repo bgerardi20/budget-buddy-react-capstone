@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const budgetSchema = new mongoose.Schema({
-    descritpion: {
+    description: {
         type: String,
         required: false
     },
