@@ -600,13 +600,6 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             //if budget creation is successful
             .done(function (result) {
                 displayBudgets(userIdHidden);
-                $(function () {
-                    $("#goalDate").datepicker();
-                    $(".optionsForm").on("submit", function () {
-                        $("#goalDate").datepicker("option", "dateFormat", $(this).val());
-                    });
-                    console.log($("#goalDate").val());
-                });
                 console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();
@@ -630,7 +623,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
     event.preventDefault();
     //get input from the user//
     let descritpion = $('#goalDescription').val();
-    let date = $('#goalDate').val();
+    let date = $("#goalDate").datepicker("option", "dateFormat", $(this).val());
     let budgeted = $('#budgetedGoal').val();
     let actual = $('#actualGoal').val();
     let userIdHidden = $('.loginUserId').val();
@@ -663,7 +656,6 @@ $(document).on("click", "#saveGoalForm", function (event) {
             })
             //if budget creation is successful
             .done(function (result) {
-                console.log(result);
                 displayGoals(userIdHidden);
                 console.log(result);
                 $(".introScreen").hide();
