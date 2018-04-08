@@ -3,7 +3,7 @@ function titleCase(str) {
     return str.split(' ').map(function (val) {
         return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
     }).join(' ');
-}
+};
 //UNDER BUDGET, OVER BUDGET, EVEN
 function budgetCondtionalChecker() {
     let totalActual = "";
@@ -22,7 +22,7 @@ function budgetCondtionalChecker() {
         $(".budgetConditionalOptionsNegative").hide();
         $(".budgetConditionalOptionsEven").show();
     };
-}
+};
 
 //green, red, or yellow font
 function colorChooser(num) {
@@ -33,7 +33,75 @@ function colorChooser(num) {
     } else {
         num.addClass(middle)
     }
-}
+};
+
+//function dateFormater() {
+//    var date = new Date();
+//    var dd = date.getDate();
+//    var mm = date.getMonth() + 1;
+//    var yyyy = date.getFullYear();
+//
+//    if (dd < 10) {
+//        dd = '0' + dd
+//    }
+//
+//    if (mm < 10) {
+//        mm = '0' + mm
+//    }
+//
+//    date = mm + '/' + dd + '/' + yyyy;
+//    document.write(date);
+//
+//};
+
+//function dateConverter() {
+//    let date = $('#goalDate').val();
+//    let formatedDate = date.dateFormater();
+//    console.log(formatedDate);
+//};
+
+
+function dateFormater() {
+    var date = new Date();
+    var dd = date.getDate();
+    var mm = date.getMonth() + 1;
+    var yyyy = date.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    date = mm + '/' + dd + '/' + yyyy;
+    console.log(date)
+
+};
+
+
+//function dateConverter() {
+//    let date = $('#goalDate').val();
+//    //        let formatedDate = date.dateFormater();
+//    //        console.log(formatedDate);
+//
+//    let dd = date.getDate();
+//    let mm = date.getMonth() + 1;
+//    let yyyy = date.getFullYear();
+//
+//    if (dd < 10) {
+//        dd = '0' + dd
+//    }
+//
+//    if (mm < 10) {
+//        mm = '0' + mm
+//    }
+//
+//    date = mm + '/' + dd + '/' + yyyy;
+//    console.log(date)
+//};
+
 
 
 //define objects variables functions
@@ -83,6 +151,7 @@ function displayGoals(userId) {
 //goal html output
 function displayFinancialGoalResult(dataOutput) {
     console.log(dataOutput);
+
     var buildTheHtmlOutput = "";
     buildTheHtmlOutput += '<div class="row rowTitle">';
     buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
@@ -93,6 +162,7 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
     $.each(dataOutput, function (dataKey, dataValue) {
+
         buildTheHtmlOutput += '<div class="row">';
 
         buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down typeIcon negative"></i>' + dataValue.descritpion + '</div>';
@@ -118,6 +188,8 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
     buildTheHtmlOutput += '</div>';
     $(".homeSectionsTable").html(buildTheHtmlOutput);
+    //    $(".goalDate").datepicker("option", "altFormat", "yy-mm-dd");
+    //    console.log(dataValue.date);
 };
 
 //budget html output
@@ -528,6 +600,13 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             //if budget creation is successful
             .done(function (result) {
                 displayBudgets(userIdHidden);
+                $(function () {
+                    $("#goalDate").datepicker();
+                    $(".optionsForm").on("submit", function () {
+                        $("#goalDate").datepicker("option", "dateFormat", $(this).val());
+                    });
+                    console.log($("#goalDate").val());
+                });
                 console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();

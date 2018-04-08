@@ -53,22 +53,22 @@ function closeServer() {
 }
 
 // external API call
-var getFromEdamam = function (searchTerm) {
-    var emitter = new events.EventEmitter();
-    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
-        .header("Accept", "application/json")
-        .end(function (result) {
-            //success scenario
-            if (result.ok) {
-                emitter.emit('end', result.body);
-            }
-            //failure scenario
-            else {
-                emitter.emit('error', result.code);
-            }
-        });
-    return emitter;
-};
+//var getFromEdamam = function (searchTerm) {
+//    var emitter = new events.EventEmitter();
+//    unirest.get("https://api.edamam.com/search?q=" + searchTerm + "&app_id=5097ae44&app_key=a080dbf283c1fc79a3f91ba9fc627c1c&from=0&to=30")
+//        .header("Accept", "application/json")
+//        .end(function (result) {
+//            //success scenario
+//            if (result.ok) {
+//                emitter.emit('end', result.body);
+//            }
+//            //failure scenario
+//            else {
+//                emitter.emit('error', result.code);
+//            }
+//        });
+//    return emitter;
+//};
 
 // local API endpoints
 app.get('/get-recipes-from-edamam/:name', function (req, res) {
