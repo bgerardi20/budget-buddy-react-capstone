@@ -9,15 +9,15 @@ const goalSchema = new mongoose.Schema({
         required: false
     },
     date: {
-        type: Date,
+        type: String,
         required: false
     },
     budgeted: {
-        type: Number,
+        type: String,
         required: false
     },
     actual: {
-        type: Number,
+        type: String,
         required: false
     },
     userId: {

@@ -180,12 +180,21 @@ function displayFinancialGoalResult(dataOutput) {
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataKey);
         buildTheHtmlOutput += '<div class="row">';
-
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down typeIcon negative"></i>' + dataValue.description + '</div>';
+        if ((dataValue.actual) - (dataValue.budgeted) >= 0) {
+            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
+        } else {
+            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
+        }
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
+        //        buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        if ((dataValue.actual - dataValue.budgeted) >= 0) {
+            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        } else if ((dataValue.actual - dataValue.budgeted) < 0) {
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        }
+
 
         buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
@@ -207,6 +216,12 @@ function displayFinancialGoalResult(dataOutput) {
     $(".homeSectionsTable").html(buildTheHtmlOutput);
 };
 
+//if ((dataValue.actual - dataValue.budgeted) >= 0) {
+//    buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+//} else if ((dataValue.actual - dataValue.budgeted) < 0) {
+//    buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+//}
+
 //budget html output
 function displayBudgetResult(dataOutput) {
     var buildTheHtmlOutput = "";
@@ -222,13 +237,24 @@ function displayBudgetResult(dataOutput) {
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataKey);
         buildTheHtmlOutput += '<div class="row">';
-
-        buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
+        if (dataValue.type == 'expense') {
+            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>' + dataValue.description + '</div>';
+        } else {
+            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
+        }
 
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.budgeted + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.actual + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans negative">' + (dataValue.actual - dataValue.budgeted) + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
+        //        buildTheHtmlOutput += '<div class="cellTrans negative">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        if ((dataValue.budgeted - dataValue.actual) > 0 || dataValue.type == 'expense') {
+            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
+        } else if ((dataValue.budgeted - dataValue.actual) < 0) {
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
+        } else {
+            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
+        }
+
 
         buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
@@ -618,6 +644,7 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             });
     };
 });
+
 
 //create goals for user
 $(document).on("click", "#saveGoalForm", function (event) {
