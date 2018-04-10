@@ -87,7 +87,7 @@ function displayGoals(userId) {
             console.log(errorThrown);
         });
 }
-
+//adding value to each input option!!!
 //goal html output
 function displayFinancialGoalResult(dataOutput) {
     var buildTheHtmlOutput = "";
@@ -100,11 +100,9 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataKey);
-
-        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
-
+        console.log(dataValue);
         buildTheHtmlOutput += '<div class="row">';
+        buildTheHtmlOutput += '<input class="loggedInUser" type="hidden" id="modifyGoalRecipeID" value="' + dataValue._id + '">';
         if ((dataValue.actual) - (dataValue.budgeted) >= 0) {
             buildTheHtmlOutput += '<div class="cellTrans modifyDescription"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
         } else {
@@ -138,6 +136,45 @@ function displayFinancialGoalResult(dataOutput) {
 
     $(".homeSectionsTable").html(buildTheHtmlOutput);
 };
+//edited goal output
+function displayEditedGoalForm(dataOutput) {
+    var buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += '<form class="jsEditedGoalForm" method="POST">';
+    buildTheHtmlOutput += '<h2 class="loginTitle">Edit Goal</h2>';
+    $.each(dataOutput, function (dataKey, dataValue) {
+        console.log(dataValue);
+
+        buildTheHtmlOutput += '<input class="loggedInUser" id="modifyGoalRecipeID" type="hidden" value="' + dataValue._id + '"><br>';
+
+        buildTheHtmlOutput += '<div class="demoContainer">';
+        buildTheHtmlOutput += '<div class="formGroup">';
+        buildTheHtmlOutput += '<label class="label" for="goalDescription">Description</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editGoalDescription" type="text" name="description" value="' + dataValue.description + '" required>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '<div class="formGroup">';
+        buildTheHtmlOutput += '<label class="label" for="date">Date</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editGoalDate" type="string" name="date" value="' + dataValue.date + '" required>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '<div class="formGroup">';
+        buildTheHtmlOutput += '<label class="label" for="budgetedGoal">Budgeted</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetedGoal" type="number" name="budgeted" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.budgeted + '" required>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '<div class="formGroup">';
+        buildTheHtmlOutput += '<label class="label" for="actualGoal">Actual</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editActualGoal" type="number" name="actual" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.actual + '" required>';
+        buildTheHtmlOutput += '</div>';
+    });
+    buildTheHtmlOutput += '<div class="formButtonsContainer">';
+    buildTheHtmlOutput += '<button class="formButton" id="editSaveGoalForm" type="submit">Save</button>';
+    buildTheHtmlOutput += '<button class="formButton" id="editCancelGoalForm" type="submit">Cancel</button>';
+    buildTheHtmlOutput += '</div>';
+    buildTheHtmlOutput += '</div>';
+    buildTheHtmlOutput += '</form>';
+
+
+    $(".editedGoalsOutterContainer").html(buildTheHtmlOutput);
+};
 
 //budget html output
 function displayBudgetResult(dataOutput) {
@@ -154,9 +191,9 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '</div>';
 
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataKey);
+        console.log(dataValue);
 
-        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
+        buildTheHtmlOutput += '<input type="hidden" class="modifyBudgetRecipeID" value="' + dataValue._id + '">';
         buildTheHtmlOutput += '<input type="hidden" class="modifyBudgetType" value="' + dataValue.type + '">';
 
         buildTheHtmlOutput += '<div class="row">';
@@ -210,6 +247,8 @@ $(document).ready(function () {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //login button
@@ -222,6 +261,8 @@ $(document).on("click", ".jsLoginButton", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //register button
@@ -234,6 +275,8 @@ $(document).on("click", ".jsRegisterButton", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //user loging in
@@ -280,6 +323,8 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
                 $(".homeScreen").show();
                 $(".homeScreenBudget").hide();
                 $(".homeScreenGoals").hide();
+                $(".editHomeScreenBudget").hide();
+                $(".editHomeScreenGoals").hide();
             })
             //if sign in fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -346,6 +391,8 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                             $(".homeScreen").hide();
                             $(".homeScreenBudget").hide();
                             $(".homeScreenGoals").hide();
+                            $(".editHomeScreenBudget").hide();
+                            $(".editHomeScreenGoals").hide();
                         })
                         //if registration fails
                         .fail(function (jqXHR, error, errorThrown) {
@@ -374,6 +421,8 @@ $(document).on("click", ".jsHomeNav", function (event) {
     $(".homeScreen").show();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //nav item
@@ -386,6 +435,8 @@ $(document).on("click", ".jsBudgetNav", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").show();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //nav item
@@ -398,6 +449,8 @@ $(document).on("click", ".jsGoalNav", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").show();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //nav item
@@ -410,6 +463,8 @@ $(document).on("click", ".jsLogoutNav", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //copy goal icon button
@@ -422,34 +477,45 @@ $(document).on("click", ".jsCopyGoalButton", function (event) {
     $(".homeScreen").show();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //edit goal icon button
 $(document).on("click", ".tableTriggerGoalButton", function (event) {
     event.preventDefault();
 
-    let selectedGoal = $(this).parent().parent().parent().find(".modifyRecipeID").val();
-    console.log(selectedGoal);
+
+    let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
+
+    let selectedDescription = $(this).parent().parent().find("#budgetDescription").val();
+    let selectedDate = $(this).parent().parent().find(".modifyDate").val();
+    let selectedBudgeted = $(this).parent().parent().find(".modifyBudgeted").val();
+    let selectedActual = $(this).parent().parent().find(".modifyActual").val();
+    console.log(selectedDescription);
     //get endpoint to take selected goal from aboce and find all the goals which have the same id(selectedGoal)
     //new endpoint in server and in here
     //prepopulate the form
     //new displayGoals fucntion
     $.ajax({
             type: "GET",
-            url: '/goal/' + selectedGoal,
+            url: '/goals/' + selectedGoal,
             dataType: 'json',
         })
         .done(function (dataOutput) {
             console.log(dataOutput);
             //displays the external api json object in the console
-            displayFinancialGoalResult(dataOutput.goals);
+            displayGoals(loginUserId);
+            displayEditedGoalForm(dataOutput);
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
             $(".registerScreen").hide();
             $(".homeScreen").hide();
             $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").show();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").show();
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -469,6 +535,8 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
     $(".homeScreen").show();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //copy budget icon button
@@ -481,6 +549,8 @@ $(document).on("click", ".jsCopyBudgetButton", function (event) {
     $(".homeScreen").show();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //edit budget icon button
@@ -493,6 +563,8 @@ $(document).on("click", ".jsEditBudgetButton", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").show();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //delete budget icon button
@@ -505,6 +577,8 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     $(".homeScreen").show();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //add budget transaction form button
@@ -517,6 +591,8 @@ $(document).on("click", "#addBudgetFormButton", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").show();
     $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 
 });
 
@@ -530,6 +606,8 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".homeScreen").hide();
     $(".homeScreenBudget").hide();
     $(".homeScreenGoals").show();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //create budgets for user
@@ -582,6 +660,8 @@ $(document).on("click", "#saveBudgetForm", function (event) {
                 $(".homeScreen").show();
                 $(".homeScreenBudget").hide();
                 $(".homeScreenGoals").hide();
+                $(".editHomeScreenBudget").hide();
+                $(".editHomeScreenGoals").hide();
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -639,6 +719,8 @@ $(document).on("click", "#saveGoalForm", function (event) {
                 $(".homeScreen").show();
                 $(".homeScreenBudget").hide();
                 $(".homeScreenGoals").hide();
+                $(".editHomeScreenBudget").hide();
+                $(".editHomeScreenGoals").hide();
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -650,49 +732,51 @@ $(document).on("click", "#saveGoalForm", function (event) {
 });
 
 //modify goal
-$(document).on("click", "#editSaveGoalForm", function (event) {
-    event.preventDefault();
-    let modifyGoalId = $(this).parent().parent().parent().find('#editGoalMyHiddenField').val();
-
-    let modifyGoalDescription = $(this).parent().parent().parent().find('.modifyDescription').val();
-    let modifyGoalDate = $(this).parent().parent().parent().find('.modifyDate').val();
-    let modifyGoalBudgeted = $(this).parent().parent().parent().find('.modifyBudgeted').val();
-    let modifyGoalActual = $(this).parent().parent().parent().find('.modifyActual').val();
-
-    const modifyGoalObject = {
-        description: modifyGoalDescription,
-        date: modifyGoalDate,
-        budgeted: modifyGoalBudgeted,
-        actual: modifyGoalActual
-    };
-    // create ajax call to save the recipe//
-    //goals or goal????//
-    $.ajax({
-            type: 'PUT',
-            url: '/goals/' + modifyGoalId,
-            dataType: 'json',
-            data: JSON.stringify(modifyGoalObject),
-            contentType: 'application/json'
-        })
-        //if save is successful
-        .done(function (result) {
-            displayGoals(loginUserId);
-            alert('goal has been saved');
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-        })
-        //if save fails
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-});
+//$(document).on("click", "#editSaveGoalForm", function (event) {
+//    event.preventDefault();
+//    let modifyGoalId = $(this).parent().parent().parent().find('#editGoalMyHiddenField').val();
+//
+//    let modifyGoalDescription = $(this).parent().parent().parent().find('.modifyDescription').val();
+//    let modifyGoalDate = $(this).parent().parent().parent().find('.modifyDate').val();
+//    let modifyGoalBudgeted = $(this).parent().parent().parent().find('.modifyBudgeted').val();
+//    let modifyGoalActual = $(this).parent().parent().parent().find('.modifyActual').val();
+//
+//    const modifyGoalObject = {
+//        description: modifyGoalDescription,
+//        date: modifyGoalDate,
+//        budgeted: modifyGoalBudgeted,
+//        actual: modifyGoalActual
+//    };
+//    // create ajax call to save the recipe//
+//    //goals or goal????//
+//    $.ajax({
+//            type: 'PUT',
+//            url: '/goals/' + modifyGoalId,
+//            dataType: 'json',
+//            data: JSON.stringify(modifyGoalObject),
+//            contentType: 'application/json'
+//        })
+//        //if save is successful
+//        .done(function (result) {
+//            displayGoals(loginUserId);
+//            alert('goal has been saved');
+//            $(".introScreen").hide();
+//            $(".quickView").hide();
+//            $(".loginScreen").hide();
+//            $(".registerScreen").hide();
+//            $(".homeScreen").show();
+//            $(".homeScreenBudget").hide();
+//            $(".homeScreenGoals").hide();
+//            $(".editHomeScreenBudget").hide();
+//            $(".editHomeScreenGoals").hide();
+//        })
+//        //if save fails
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        });
+//});
 
 //modify(edited) goal
 //$(document).on("click", ".editSaveGoalForm", function (event) {
@@ -776,6 +860,9 @@ $(document).on("click", ".jsEditBudgetButton", function (event) {
             $(".homeScreen").show();
             $(".homeScreenBudget").hide();
             $(".homeScreenGoals").hide();
+
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -822,6 +909,8 @@ $(document).on("click", ".editSaveBudgetForm", function (event) {
             $(".homeScreen").show();
             $(".homeScreenBudget").hide();
             $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -853,6 +942,8 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
             $(".homeScreen").show();
             $(".homeScreenBudget").hide();
             $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -884,6 +975,8 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
             $(".homeScreen").show();
             $(".homeScreenBudget").hide();
             $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
         })
 
         .fail(function (jqXHR, error, errorThrown) {

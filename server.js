@@ -329,10 +329,10 @@ app.get('/goals/:userId', function (req, res) {
 });
 
 //get goal to be updated
-app.get('/goal/:selectedGoal', function (req, res) {
+app.get('/goals/:userId', function (req, res) {
     Goal
         .find({
-            userId: req.params._id
+            selectedGoal: req.params._id
         })
         .then(function (goal) {
             res.json({

@@ -549,15 +549,16 @@
 
     <main class="editHomeScreenGoals">
         <section class="financialGoals">
-            <div class="goalsOutterContainer">
+            <div class="editedGoalsOutterContainer">
 
-                <form class="optionsForm" method="POST">
+                <form class="jsEditedGoalForm" method="POST">
 
-                    <h2 class="loginTitle"> Edit Goal</h2>
-
-                    <input class="loggedInUser" id="editGoalMyHiddenField" type="hidden" value=""><br>
+                    <h2 class="loginTitle">Edit Goal</h2>
 
                     <div class="demoContainer">
+                        <div class="formGroup">
+                            <input class="loggedInUser" id="editGoalMyHiddenField" type="hidden" value=""><br>
+                        </div>
                         <div class="formGroup">
                             <label class="label" for="goalDescription">Description</label>
                             <input class="formControl" id="editGoalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
