@@ -157,16 +157,17 @@ function displayBudgetResult(dataOutput) {
         console.log(dataKey);
 
         buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
+        buildTheHtmlOutput += '<input type="hidden" class="modifyBudgetType" value="' + dataValue.type + '">';
 
         buildTheHtmlOutput += '<div class="row">';
         if (dataValue.type == 'expense') {
-            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetDescription"><i class="fas fa-level-down-alt typeIcon negative"></i>' + dataValue.description + '</div>';
         } else {
-            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetDescription"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
         }
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgetDate">' + dataValue.date + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgetBudgeted">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgetActual">$' + dataValue.actual + '.00</div>';
         if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual > 0)) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
         } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual < 0)) {
@@ -673,38 +674,40 @@ $(document).on("click", ".jsEditGoalButton", function (event) {
 //modify budget
 $(document).on("click", ".jsEditBudgetButton", function (event) {
     event.preventDefault();
-    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+    let modifyRecipeId = $(this).parent().parent().parent().find('.modifyRecipeID').val();
 
-    let modifyRecipeIngredients = $(this).parent().parent().parent().find('.modifyRecipeIngredients').val();
-    let modifyRecipeDirections = $(this).parent().parent().parent().find('.modifyRecipeDirections').val();
-    let modifyRecipeNotes = $(this).parent().parent().parent().find('.modifyRecipeNotes').val();
+    let modifyBudgetDescription = $(this).parent().parent().parent().find('.modifyBudgetDescription').val();
+    let modifyBudgetDate = $(this).parent().parent().parent().find('.modifyBudgetDate').val();
+    let modifyBudgetBudgeted = $(this).parent().parent().parent().find('.modifyBudgetBudgeted').val();
+    let modifyBudgetActual = $(this).parent().parent().parent().find('.modifyBudgetActual').val();
+    let modifyBudgetType = $(this).parent().parent().parent().find('.modifyBudgetType').val();
 
     const modifyRecipeObject = {
-        ingredients: modifyRecipeIngredients,
-        directions: modifyRecipeDirections,
-        notes: modifyRecipeNotes
+        description: modifyBudgetDescription,
+        date: modifyBudgetDate,
+        budgeted: modifyBudgetBudgeted,
+        actual: modifyBudgetActual,
+        type: modifyBudgetType
     };
     // create ajax call to save the recipe//
     $.ajax({
             type: 'PUT',
-            url: '/recipes/' + modifyRecipeID,
+            url: '/budgets/' + modifyRecipeId,
             dataType: 'json',
             data: JSON.stringify(modifyRecipeObject),
             contentType: 'application/json'
         })
         //if save is successful
         .done(function (result) {
-            displayRecipes(loginUserId);
-            alert('recipe has been saved');
+            displayBudgets(loginUserId);
+            alert('budget has been saved');
             $(".introScreen").hide();
-            $(".signInScreen").hide();
-            $(".createUsernameScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
             $(".homeScreen").show();
-            $(".searchScreen").hide();
-            $(".createRecipeScreen").hide();
-            $(".ingredientsContainer").hide();
-            $(".modsList").hide();
-            $(".addEdamamScreen").hide();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -721,7 +724,7 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
 
     $.ajax({
             type: 'DELETE',
-            url: '/recipes/' + modifyRecipeID,
+            url: '/goals/' + modifyRecipeID,
             dataType: 'json',
             contentType: 'application/json'
         })
@@ -730,14 +733,12 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
             displayRecipes(loginUserId);
             alert('recipe has been deleted');
             $(".introScreen").hide();
-            $(".signInScreen").hide();
-            $(".createUsernameScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
             $(".homeScreen").show();
-            $(".searchScreen").hide();
-            $(".createRecipeScreen").hide();
-            $(".ingredientsContainer").hide();
-            $(".modsList").hide();
-            $(".addEdamamScreen").hide();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -754,7 +755,7 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
 
     $.ajax({
             type: 'DELETE',
-            url: '/recipes/' + modifyRecipeID,
+            url: '/budgets/' + modifyRecipeID,
             dataType: 'json',
             contentType: 'application/json'
         })
@@ -763,14 +764,12 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
             displayRecipes(loginUserId);
             alert('recipe has been deleted');
             $(".introScreen").hide();
-            $(".signInScreen").hide();
-            $(".createUsernameScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
             $(".homeScreen").show();
-            $(".searchScreen").hide();
-            $(".createRecipeScreen").hide();
-            $(".ingredientsContainer").hide();
-            $(".modsList").hide();
-            $(".addEdamamScreen").hide();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
         })
 
         .fail(function (jqXHR, error, errorThrown) {

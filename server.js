@@ -248,6 +248,27 @@ app.put('/goals/:id', function (req, res) {
         });
 });
 
+// update budget
+app.put('/budgets/:id', function (req, res) {
+    let toUpdate = {};
+    let updateableFields = ['description', 'date', 'budgeted', 'actual', 'type'];
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+    Budget
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
 // GET ------------------------------------
 
 // get names from db
@@ -310,9 +331,20 @@ app.get('/goals/:userId', function (req, res) {
 
 // DELETE ----------------------------------------
 
-//delete recipe from library
-app.delete('/recipes/:id', function (req, res) {
-    Recipe.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+//delete goals from library
+app.delete('/goals/:id', function (req, res) {
+    Goal.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+//delete budgets from library
+app.delete('/budgets/:id', function (req, res) {
+    Budget.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
