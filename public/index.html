@@ -462,6 +462,55 @@
 
     </main>
 
+    <main class="editHomeScreenBudget">
+
+
+
+        <!-------------------------- Hidden Until "add" button is clicked --------------------------------->
+        <div class="budgetForms">
+
+            <form class="optionsForm" method="POST">
+
+                <h2 class="loginTitle">Edit Expense/Income</h2>
+
+                <div class="demoContainer">
+
+                    <input class="loggedInUser" id="editBudgetMyHiddenField" type="hidden" value=""><br>
+
+                    <div class="formGroup">
+                        <label class="label" for="description">Description</label>
+                        <input class="formControl" id="editBudgetDescription" type="text" placeholder="Wedding" name="description" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="date">Date</label>
+                        <input class="formControl" id="editBudgetDate" type="string" value="2018-03-07" placeholder="03/01/2018" name="date" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="budgeted">Budgeted</label>
+                        <input class="formControl" id="editBudgetBudgeted" type="number" placeholder="$200.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="actual">Actual</label>
+                        <input class="formControl" id="editBudgetActual" type="number" placeholder="$400.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="type">Type</label>
+                        <select id="editBudgetType" name="type" required>
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+                    <div class="formButtonsContainer">
+                        <button class="formButton" id="editSaveBudgetForm" type="submit">Save</button>
+                        <button class="formButton" id="editCancelBudgetForm" type="submit">Cancel</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </main>
+
     <main class="homeScreenGoals">
         <section class="financialGoals">
             <div class="goalsOutterContainer">
@@ -490,6 +539,44 @@
                         <div class="formButtonsContainer">
                             <button class="formButton" id="saveGoalForm" type="submit">Add</button>
                             <button class="formButton" id="cancelGoalForm" type="submit">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <main class="editHomeScreenGoals">
+        <section class="financialGoals">
+            <div class="goalsOutterContainer">
+
+                <form class="optionsForm" method="POST">
+
+                    <h2 class="loginTitle"> Edit Goal</h2>
+
+                    <input class="loggedInUser" id="editGoalMyHiddenField" type="hidden" value=""><br>
+
+                    <div class="demoContainer">
+                        <div class="formGroup">
+                            <label class="label" for="goalDescription">Description</label>
+                            <input class="formControl" id="editGoalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
+                        </div>
+                        <div class="formGroup">
+                            <label class="label" for="date">Date</label>
+                            <input class="formControl" id="editGoalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
+                        </div>
+                        <div class="formGroup">
+                            <label class="label" for="budgetedGoal">Budgeted</label>
+                            <input class="formControl" id="editBudgetedGoal" type="number" placeholder="$2,000.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                        </div>
+                        <div class="formGroup">
+                            <label class="label" for="actualGoal">Actual</label>
+                            <input class="formControl" id="editActualGoal" type="number" placeholder="$200.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                        </div>
+                        <div class="formButtonsContainer">
+                            <button class="formButton" id="editSaveGoalForm" type="submit">Save</button>
+                            <button class="formButton" id="editCancelGoalForm" type="submit">Cancel</button>
                         </div>
                     </div>
                 </form>
