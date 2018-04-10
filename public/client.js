@@ -234,6 +234,7 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Difference</div>';
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
+
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataKey);
         buildTheHtmlOutput += '<div class="row">';
@@ -247,24 +248,28 @@ function displayBudgetResult(dataOutput) {
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
         //        buildTheHtmlOutput += '<div class="cellTrans negative">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-        if ((dataValue.budgeted - dataValue.actual) > 0 || dataValue.type == 'expense') {
+
+        if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual > 0)) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
-        } else if ((dataValue.budgeted - dataValue.actual) < 0) {
+        } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual < 0)) {
             buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
-        } else {
+        } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual == 0)) {
             buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
+        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted > 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted < 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted == 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         }
 
-
-        buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '</div>';
-
-    })
+    });
     buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="budgetTotal">';
     buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
