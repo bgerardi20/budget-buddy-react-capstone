@@ -227,16 +227,16 @@ app.post('/goal/create', (req, res) => {
 
 // PUT --------------------------------------
 
-// update recipe
-app.put('/recipes/:id', function (req, res) {
+// update goal
+app.put('/goals/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['ingredients', 'directions', 'notes'];
+    let updateableFields = ['description', 'date', 'budgeted', 'actual'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
-    Recipe
+    Goal
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
         }).exec().then(function (achievement) {

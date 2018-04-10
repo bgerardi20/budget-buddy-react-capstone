@@ -24,83 +24,8 @@ function budgetCondtionalChecker() {
     };
 };
 
-//green, red, or yellow font
-function colorChooser(num) {
-    if (num > 0) {
-        num.addClass(positive)
-    } else if (num < 0) {
-        num.addClass(negative)
-    } else {
-        num.addClass(middle)
-    }
-};
-
-//function dateFormater() {
-//    var date = new Date();
-//    var dd = date.getDate();
-//    var mm = date.getMonth() + 1;
-//    var yyyy = date.getFullYear();
-//
-//    if (dd < 10) {
-//        dd = '0' + dd
-//    }
-//
-//    if (mm < 10) {
-//        mm = '0' + mm
-//    }
-//
-//    date = mm + '/' + dd + '/' + yyyy;
-//    document.write(date);
-//
-//};
-
-//function dateConverter() {
-//    let date = $('#goalDate').val();
-//    let formatedDate = date.dateFormater();
-//    console.log(formatedDate);
-//};
 
 
-//function dateFormater() {
-//    var date = new Date();
-//    var dd = date.getDate();
-//    var mm = date.getMonth() + 1;
-//    var yyyy = date.getFullYear();
-//
-//    if (dd < 10) {
-//        dd = '0' + dd
-//    }
-//
-//    if (mm < 10) {
-//        mm = '0' + mm
-//    }
-//
-//    date = mm + '/' + dd + '/' + yyyy;
-//    console.log(date)
-//
-//};
-
-
-//function dateConverter() {
-//    let date = $('#goalDate').val();
-//    //        let formatedDate = date.dateFormater();
-//    //        console.log(formatedDate);
-//
-//    let dd = date.getDate();
-//    let mm = date.getMonth() + 1;
-//    let yyyy = date.getFullYear();
-//
-//    if (dd < 10) {
-//        dd = '0' + dd
-//    }
-//
-//    if (mm < 10) {
-//        mm = '0' + mm
-//    }
-//
-//    date = mm + '/' + dd + '/' + yyyy;
-//    console.log(date)
-//};
 //
 //var goalBudgetTotal = document.querySelectorAll('#budgetedGoal').val();
 //var goalActualTotal = document.querySelectorAll('#actualGoal').val();
@@ -116,10 +41,7 @@ function colorChooser(num) {
 //    console.log(buildTheHtmlOutput);
 //}
 
-//$.each(result.goals.actual function (dataKey, dataValue) {
-//    console.log(dataValue);
-////    buildTheHtmlOutput += buildTheHtmlOutput += '<div class="cellTrans" id="goalActualTotal" value="">' +  + '</div>';
-//});
+
 
 //define objects variables functions
 let loginUserName = "";
@@ -179,23 +101,23 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '</div>';
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataKey);
+
+        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
+
         buildTheHtmlOutput += '<div class="row">';
         if ((dataValue.actual) - (dataValue.budgeted) >= 0) {
-            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyDescription"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
         } else {
-            buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyDescription"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
         }
-        buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
-        buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
-        //        buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyDate">' + dataValue.date + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyActual">$' + dataValue.actual + '.00</div>';
         if ((dataValue.actual - dataValue.budgeted) >= 0) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         } else if ((dataValue.actual - dataValue.budgeted) < 0) {
             buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         }
-
-
         buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
@@ -213,17 +135,13 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
     buildTheHtmlOutput += '</div>';
 
+
     $(".homeSectionsTable").html(buildTheHtmlOutput);
 };
 
-//if ((dataValue.actual - dataValue.budgeted) >= 0) {
-//    buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-//} else if ((dataValue.actual - dataValue.budgeted) < 0) {
-//    buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-//}
-
 //budget html output
 function displayBudgetResult(dataOutput) {
+
     var buildTheHtmlOutput = "";
 
     buildTheHtmlOutput += '<div class="row rowTitle">';
@@ -237,18 +155,18 @@ function displayBudgetResult(dataOutput) {
 
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataKey);
+
+        buildTheHtmlOutput += '<input type="hidden" class="modifyRecipeID" value="' + dataValue._id + '">';
+
         buildTheHtmlOutput += '<div class="row">';
         if (dataValue.type == 'expense') {
             buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>' + dataValue.description + '</div>';
         } else {
             buildTheHtmlOutput += '<div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
         }
-
         buildTheHtmlOutput += '<div class="cellTrans">' + dataValue.date + '</div>';
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.budgeted + '.00</div>';
         buildTheHtmlOutput += '<div class="cellTrans">$' + dataValue.actual + '.00</div>';
-        //        buildTheHtmlOutput += '<div class="cellTrans negative">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-
         if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual > 0)) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
         } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual < 0)) {
@@ -472,7 +390,7 @@ $(document).on("click", ".jsBudgetNav", function (event) {
 //nav item
 $(document).on("click", ".jsGoalNav", function (event) {
     event.preventDefault();
-    $(".introScreen").show();
+    $(".introScreen").hide();
     $(".quickView").hide();
     $(".loginScreen").hide();
     $(".registerScreen").hide();
@@ -707,6 +625,163 @@ $(document).on("click", "#saveGoalForm", function (event) {
     };
 });
 
+//modify goal
+$(document).on("click", ".jsEditGoalButton", function (event) {
+    event.preventDefault();
+    let modifyGoalId = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+
+    let modifyGoalDescription = $(this).parent().parent().parent().find('.modifyDescription').val();
+    let modifyGoalDate = $(this).parent().parent().parent().find('.modifyDate').val();
+    let modifyGoalBudgeted = $(this).parent().parent().parent().find('.modifyBudgeted').val();
+    let modifyGoalActual = $(this).parent().parent().parent().find('.modifyActual').val();
+
+    const modifyGoalObject = {
+        description: modifyGoalDescription,
+        date: modifyGoalDate,
+        budgeted: modifyGoalBudgeted,
+        actual: modifyGoalActual
+    };
+    // create ajax call to save the recipe//
+    //goals or goal????//
+    $.ajax({
+            type: 'PUT',
+            url: '/goals/' + modifyGoalId,
+            dataType: 'json',
+            data: JSON.stringify(modifyGoalObject),
+            contentType: 'application/json'
+        })
+        //if save is successful
+        .done(function (result) {
+            displayGoals(loginUserId);
+            alert('goal has been saved');
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").show();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+        })
+        //if save fails
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+//modify budget
+$(document).on("click", ".jsEditBudgetButton", function (event) {
+    event.preventDefault();
+    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+
+    let modifyRecipeIngredients = $(this).parent().parent().parent().find('.modifyRecipeIngredients').val();
+    let modifyRecipeDirections = $(this).parent().parent().parent().find('.modifyRecipeDirections').val();
+    let modifyRecipeNotes = $(this).parent().parent().parent().find('.modifyRecipeNotes').val();
+
+    const modifyRecipeObject = {
+        ingredients: modifyRecipeIngredients,
+        directions: modifyRecipeDirections,
+        notes: modifyRecipeNotes
+    };
+    // create ajax call to save the recipe//
+    $.ajax({
+            type: 'PUT',
+            url: '/recipes/' + modifyRecipeID,
+            dataType: 'json',
+            data: JSON.stringify(modifyRecipeObject),
+            contentType: 'application/json'
+        })
+        //if save is successful
+        .done(function (result) {
+            displayRecipes(loginUserId);
+            alert('recipe has been saved');
+            $(".introScreen").hide();
+            $(".signInScreen").hide();
+            $(".createUsernameScreen").hide();
+            $(".homeScreen").show();
+            $(".searchScreen").hide();
+            $(".createRecipeScreen").hide();
+            $(".ingredientsContainer").hide();
+            $(".modsList").hide();
+            $(".addEdamamScreen").hide();
+        })
+        //if save fails
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+//delete goal
+$(document).on("click", ".jsDeleteGoalButton", function (event) {
+    event.preventDefault();
+    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+
+    $.ajax({
+            type: 'DELETE',
+            url: '/recipes/' + modifyRecipeID,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+
+        .done(function (result) {
+            displayRecipes(loginUserId);
+            alert('recipe has been deleted');
+            $(".introScreen").hide();
+            $(".signInScreen").hide();
+            $(".createUsernameScreen").hide();
+            $(".homeScreen").show();
+            $(".searchScreen").hide();
+            $(".createRecipeScreen").hide();
+            $(".ingredientsContainer").hide();
+            $(".modsList").hide();
+            $(".addEdamamScreen").hide();
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+//delete budget
+$(document).on("click", ".jsDeleteBudgetButton", function (event) {
+    event.preventDefault();
+    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+
+    $.ajax({
+            type: 'DELETE',
+            url: '/recipes/' + modifyRecipeID,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+
+        .done(function (result) {
+            displayRecipes(loginUserId);
+            alert('recipe has been deleted');
+            $(".introScreen").hide();
+            $(".signInScreen").hide();
+            $(".createUsernameScreen").hide();
+            $(".homeScreen").show();
+            $(".searchScreen").hide();
+            $(".createRecipeScreen").hide();
+            $(".ingredientsContainer").hide();
+            $(".modsList").hide();
+            $(".addEdamamScreen").hide();
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+
+
 //$(document).on("click", ".jsSuccessButton", function (event) {
 //    event.preventDefault();
 //    //get input from the user//
@@ -757,39 +832,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
 //    $(".homeScreenBudget").hide();
 //    $(".homeScreenGoals").hide();
 //});
-//
-//$(document).on("click", ".logoHolder", function (event) {
-//    event.preventDefault();
-//    $(".introScreen").hide();
-//    $(".quickView").show();
-//    $(".loginScreen").hide();
-//    $(".registerScreen").hide();
-//    $(".homeScreen").hide();
-//    $(".homeScreenBudget").hide();
-//    $(".homeScreenGoals").hide();
-//});
-//
-//$(document).on("click", "#failButton", function (event) {
-//    event.preventDefault();
-//    $(".introScreen").hide();
-//    $(".quickView").show();
-//    $(".loginScreen").hide();
-//    $(".registerScreen").hide();
-//    $(".homeScreen").hide();
-//    $(".homeScreenBudget").hide();
-//    $(".homeScreenGoals").hide();
-//});
-//
-//$(document).on("click", ".searchRecipeResultOption", function (event) {
-//    event.preventDefault();
-//    $(".introScreen").hide();
-//    $(".quickView").show();
-//    $(".loginScreen").hide();
-//    $(".registerScreen").hide();
-//    $(".homeScreen").hide();
-//    $(".homeScreenBudget").hide();
-//    $(".homeScreenGoals").hide();
-//});
+
 //
 //$(document).on("click", "#saveBudgetForm", function (event) {
 //    event.preventDefault();
