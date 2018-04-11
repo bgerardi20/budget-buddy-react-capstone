@@ -426,7 +426,8 @@ h4 .logos {
     padding-bottom: 10px;
 }
 
-#budgetType {
+#budgetType,
+#editBudgetType {
     background-color: #FFD5BF;
     color: #395D79;
     font-size: 20px;
@@ -443,6 +444,9 @@ h4 .logos {
     color: ##395D79;
 }
 
+#editBudgetType::placeholder {
+    color: ##395D79;
+}
 
 .faces {
     color: #214662;
@@ -464,7 +468,8 @@ h4 .logos {
 .transactionOutterContainer,
 .goalsOutterContainer,
 .budgetForms,
-.editedGoalsOutterContainer {
+.editedGoalsOutterContainer,
+.editBudgetForms {
     width: 70%;
     max-width: 800px;
     margin-left: auto;
@@ -529,7 +534,8 @@ h4 .logos {
     }
 
     .formButton,
-    #budgetType {
+    #budgetType,
+    #editBudgetType {
         width: 95%;
     }
 
@@ -538,7 +544,9 @@ h4 .logos {
     .innerRegisterBox,
     .transactionOutterContainer,
     .goalsOutterContainer,
-    .budgetForms {
+    .budgetForms,
+    .editedGoalsOutterContainer,
+    .editBudgetForms {
         width: 60%;
     }
 
@@ -595,7 +603,8 @@ h4 .logos {
     }
 
     .formButton,
-    #budgetType {
+    #budgetType,
+    #editBudgetType {
         width: 95%;
     }
 
@@ -613,7 +622,9 @@ h4 .logos {
     .innerRegisterBox,
     .transactionOutterContainer,
     .goalsOutterContainer,
-    .budgetForms {
+    .budgetForms,
+    .editedGoalsOutterContainer,
+    .editBudgetForms {
         width: 75%;
     }
 
@@ -707,7 +718,9 @@ h4 .logos {
     .innerRegisterBox,
     .transactionOutterContainer,
     .goalsOutterContainer,
-    .budgetForms {
+    .budgetForms,
+    .editedGoalsOutterContainer,
+    .editBudgetForms {
         width: 85%;
     }
 
@@ -834,7 +847,8 @@ h4 .logos {
     }
 
     .formButton,
-    #budgetType {
+    #budgetType,
+    #editBudgetType {
         width: 100%;
     }
 
@@ -849,7 +863,9 @@ h4 .logos {
     .innerRegisterBox,
     .transactionOutterContainer,
     .goalsOutterContainer,
-    .budgetForms {
+    .budgetForms,
+    .editedGoalsOutterContainer,
+    .editBudgetForms {
         width: 90%;
     }
 

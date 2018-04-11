@@ -250,7 +250,7 @@ app.put('/goal/:goalId', function (req, res) {
 });
 
 // update budget
-app.put('/budgets/:id', function (req, res) {
+app.put('/budget/:budgetId', function (req, res) {
     let toUpdate = {};
     let updateableFields = ['description', 'date', 'budgeted', 'actual', 'type'];
     updateableFields.forEach(function (field) {
@@ -258,8 +258,9 @@ app.put('/budgets/:id', function (req, res) {
             toUpdate[field] = req.body[field];
         }
     });
+    console.log(toUpdate)
     Budget
-        .findByIdAndUpdate(req.params.id, {
+        .findByIdAndUpdate(req.params.budgetId, {
             $set: toUpdate
         }).exec().then(function (achievement) {
             return res.status(204).end();
@@ -350,15 +351,15 @@ app.get('/goal/:id', function (req, res) {
 });
 
 //get budget to be updated
-app.get('/goal/:id', function (req, res) {
-
-    Goal
-        .findOne({
-            id: req.params._id
+app.get('/budget/:id', function (req, res) {
+    console.log(req.params.id);
+    Budget
+        .find({
+            _id: req.params.id
         })
-        .then(function (goal) {
+        .then(function (budget) {
             res.json({
-                goal
+                budget
             });
         })
         .catch(function (err) {
