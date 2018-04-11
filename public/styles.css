@@ -463,8 +463,9 @@ h4 .logos {
 .innerRegisterBox,
 .transactionOutterContainer,
 .goalsOutterContainer,
-.budgetForms {
-    width: 50%;
+.budgetForms,
+.editedGoalsOutterContainer {
+    width: 70%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;

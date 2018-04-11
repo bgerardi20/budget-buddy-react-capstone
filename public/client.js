@@ -46,6 +46,13 @@ function budgetCondtionalChecker() {
 //define objects variables functions
 let loginUserName = "";
 let loginUserId = "";
+let goalId = "";
+
+let selectedDescription = "";
+let selectedDate = "";
+let selectedBudgeted = "";
+let selectedActual = "";
+
 
 
 //display users budgets
@@ -87,7 +94,33 @@ function displayGoals(userId) {
             console.log(errorThrown);
         });
 }
+//display goal to edit
+function displayGoalEdited(userId) {
+    let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
+
+    const modifyGoalObject = {
+        userId: selectedGoal,
+
+    };
+    console.log(modifyGoalObject);
+    $.ajax({
+            type: "GET",
+            url: '/goal-edit/' + userId,
+            dataType: 'json',
+        })
+        .done(function (dataOutput) {
+            console.log(dataOutput);
+            //displays the external api json object in the console
+            displayEditedGoalForm(dataOutput.goal);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
 //adding value to each input option!!!
+//look at user rergistration for loginUserId
 //goal html output
 function displayFinancialGoalResult(dataOutput) {
     var buildTheHtmlOutput = "";
@@ -104,13 +137,13 @@ function displayFinancialGoalResult(dataOutput) {
         buildTheHtmlOutput += '<div class="row">';
         buildTheHtmlOutput += '<input class="loggedInUser" type="hidden" id="modifyGoalRecipeID" value="' + dataValue._id + '">';
         if ((dataValue.actual) - (dataValue.budgeted) >= 0) {
-            buildTheHtmlOutput += '<div class="cellTrans modifyDescription"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyDescription" value="' + dataValue.description + '"><i class="fas fa-thumbs-up positive typeIcon"></i>' + dataValue.description + '</div>';
         } else {
-            buildTheHtmlOutput += '<div class="cellTrans modifyDescription"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
+            buildTheHtmlOutput += '<div class="cellTrans modifyDescription" value="' + dataValue.description + '"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
         }
-        buildTheHtmlOutput += '<div class="cellTrans modifyDate">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted">$' + dataValue.budgeted + '.00</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyActual">$' + dataValue.actual + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyDate" value="' + dataValue.date + '">' + dataValue.date + '</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted" value="' + dataValue.budgeted + '">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyActual" value="' + dataValue.actual + '">$' + dataValue.actual + '.00</div>';
         if ((dataValue.actual - dataValue.budgeted) >= 0) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         } else if ((dataValue.actual - dataValue.budgeted) < 0) {
@@ -158,11 +191,11 @@ function displayEditedGoalForm(dataOutput) {
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="budgetedGoal">Budgeted</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetedGoal" type="number" name="budgeted" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.budgeted + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetedGoal" type="string" name="budgeted" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.budgeted + '" required>';
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="actualGoal">Actual</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editActualGoal" type="number" name="actual" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.actual + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editActualGoal" type="string" name="actual" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.actual + '" required>';
         buildTheHtmlOutput += '</div>';
     });
     buildTheHtmlOutput += '<div class="formButtonsContainer">';
@@ -481,32 +514,28 @@ $(document).on("click", ".jsCopyGoalButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
+
+//
+
+//get endpoint to take selected goal from aboce and find all the goals which have the same id(selectedGoal)
+//new endpoint in server and in here
+//prepopulate the form
+//new displayGoals fucntion
 //edit goal icon button
 $(document).on("click", ".tableTriggerGoalButton", function (event) {
     event.preventDefault();
 
-
     let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
 
-    let selectedDescription = $(this).parent().parent().find("#budgetDescription").val();
-    let selectedDate = $(this).parent().parent().find(".modifyDate").val();
-    let selectedBudgeted = $(this).parent().parent().find(".modifyBudgeted").val();
-    let selectedActual = $(this).parent().parent().find(".modifyActual").val();
-    console.log(selectedDescription);
-    //get endpoint to take selected goal from aboce and find all the goals which have the same id(selectedGoal)
-    //new endpoint in server and in here
-    //prepopulate the form
-    //new displayGoals fucntion
+    console.log(selectedGoal);
     $.ajax({
             type: "GET",
-            url: '/goals/' + selectedGoal,
+            url: '/goal/' + selectedGoal,
             dataType: 'json',
         })
-        .done(function (dataOutput) {
-            console.log(dataOutput);
-            //displays the external api json object in the console
-            displayGoals(loginUserId);
-            displayEditedGoalForm(dataOutput);
+        .done(function (results) {
+            console.log(results);
+            displayEditedGoalForm(results);
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
@@ -826,7 +855,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
 //modify budget
 $(document).on("click", ".jsEditBudgetButton", function (event) {
     event.preventDefault();
-    let modifyRecipeId = $(this).parent().parent().parent().find('.modifyRecipeID').val();
+    let modifyRecipeId = $(this).parent().parent().parent().find('#editGoalMyHiddenField').val();
 
     let modifyBudgetDescription = $(this).parent().parent().parent().find('.modifyBudgetDescription').val();
     let modifyBudgetDate = $(this).parent().parent().parent().find('.modifyBudgetDate').val();
@@ -875,7 +904,7 @@ $(document).on("click", ".jsEditBudgetButton", function (event) {
 //modify(edited) budget
 $(document).on("click", ".editSaveBudgetForm", function (event) {
     event.preventDefault();
-    let modifyRecipeId = $(this).parent().parent().parent().find('#seditBudgetMyHiddenField').val();
+    let modifyRecipeId = $(this).parent().parent().parent().find('#editBudgetMyHiddenField').val();
 
     let modifyBudgetDescription = $(this).parent().parent().parent().find('#editBudgetDescription').val();
     let modifyBudgetDate = $(this).parent().parent().parent().find('#editBudgetDate').val();

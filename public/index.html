@@ -175,17 +175,17 @@
 
     <main class="homeScreen">
 
-        <section class="welcomeContainer">
-            <div class="homeSections">
-                <div class="homeSectionsInfo">
+        <section class="homeSections">
 
-                    <h1 class="homeSectionsTitle">
-                        <i class="fas fa-tasks logos" id="goals"></i> Financial Goals
-                    </h1>
+            <div class="homeSectionsInfo">
 
+                <h1 class="homeSectionsTitle">
+                    <i class="fas fa-tasks logos" id="goals"></i> Financial Goals
+                </h1>
 
-                    <div class="homeSectionsTable">
-                        <!--
+                <div class="homeSectionsTable">
+
+                    <!--
                         <div class="row rowTitle">
                             <div class="cellTrans">Descritpion</div>
                             <div class="cellTrans">Date</div>
@@ -194,8 +194,8 @@
                             <div class="cellTrans">Difference</div>
                             <div class="cellTrans">Action</div>
                         </div>
--->
-                        <!--
+
+
                         <div class="row">
 
                             <div class="cellTrans">
@@ -213,8 +213,8 @@
                             </div>
 
                         </div>
--->
-                        <!--
+
+
                         <div class="row">
                             <div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>Pay Off Debt</div>
                             <div class="cellTrans">03/01/2018</div>
@@ -275,8 +275,8 @@
                                 <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
                             </div>
                         </div>
--->
-                        <!--
+
+
                         <div class="row budgetTotalContainer" id="goalTotal">
                             <div class="cellTrans">Totals</div>
                             <div class="cellTrans"> </div>
@@ -286,14 +286,15 @@
                             <div class="cellTrans"> </div>
                         </div>
 -->
-                    </div>
-
-                    <button class="homeSectionsButton" id="addGoalFormButton" type="submit">Add</button>
 
                 </div>
-            </div>
 
+                <button class="homeSectionsButton" id="addGoalFormButton" type="submit">Add</button>
+
+            </div>
         </section>
+
+
 
         <section class="budgetOutterContainer">
 
@@ -325,6 +326,7 @@
 
                 <div class="expenseContainer">
                     <div class="table">
+
                         <!--
                         <div class="row rowTitle">
                             <div class="cellTrans">Descritpion</div>
@@ -334,8 +336,8 @@
                             <div class="cellTrans">Difference</div>
                             <div class="cellTrans">Action</div>
                         </div>
--->
-                        <!--
+
+
                         <div class="row">
 
                             <div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>Paycheck</div>
@@ -350,8 +352,8 @@
                             </div>
 
                         </div>
--->
-                        <!--
+
+
                         <div class="row">
                             <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Gas Bill</div>
                             <div class="cellTrans">03/01/2018</div>
@@ -388,8 +390,8 @@
                                 <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
                             </div>
                         </div>
--->
-                        <!--
+
+
                         <div class="row budgetTotalContainer" id="budgetTotal">
                             <div class="cellTrans">Totals</div>
                             <div class="cellTrans"> </div>
@@ -399,6 +401,7 @@
                             <div class="cellTrans"> </div>
                         </div>
 -->
+
                     </div>
                 </div>
 
@@ -415,9 +418,6 @@
 
     <main class="homeScreenBudget">
 
-
-
-        <!-------------------------- Hidden Until "add" button is clicked --------------------------------->
         <div class="budgetForms">
 
             <form class="optionsForm" method="POST">
@@ -464,9 +464,6 @@
 
     <main class="editHomeScreenBudget">
 
-
-
-        <!-------------------------- Hidden Until "add" button is clicked --------------------------------->
         <div class="budgetForms">
 
             <form class="optionsForm" method="POST">
@@ -512,39 +509,42 @@
     </main>
 
     <main class="homeScreenGoals">
-        <section class="financialGoals">
-            <div class="goalsOutterContainer">
 
-                <form class="optionsForm" method="POST">
+        <div class="goalsOutterContainer">
 
-                    <h2 class="loginTitle">Goal</h2>
+            <form class="optionsForm" method="POST">
 
-                    <div class="demoContainer">
-                        <div class="formGroup">
-                            <label class="label" for="goalDescription">Description</label>
-                            <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="date">Date</label>
-                            <input class="formControl" id="goalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="budgetedGoal">Budgeted</label>
-                            <input class="formControl" id="budgetedGoal" type="number" placeholder="$2,000.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="actualGoal">Actual</label>
-                            <input class="formControl" id="actualGoal" type="number" placeholder="$200.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
-                        </div>
-                        <div class="formButtonsContainer">
-                            <button class="formButton" id="saveGoalForm" type="submit">Add</button>
-                            <button class="formButton" id="cancelGoalForm" type="submit">Cancel</button>
-                        </div>
+                <h2 class="loginTitle">Goal</h2>
+
+                <div class="demoContainer">
+                    <div class="formGroup">
+                        <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
                     </div>
-                </form>
+                    <div class="formGroup">
+                        <label class="label" for="goalDescription">Description</label>
+                        <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="date">Date</label>
+                        <input class="formControl" id="goalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="budgetedGoal">Budgeted</label>
+                        <input class="formControl" id="budgetedGoal" type="number" placeholder="$2,000.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                    </div>
+                    <div class="formGroup">
+                        <label class="label" for="actualGoal">Actual</label>
+                        <input class="formControl" id="actualGoal" type="number" placeholder="$200.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                    </div>
+                    <div class="formButtonsContainer">
+                        <button class="formButton" id="saveGoalForm" type="submit">Add</button>
+                        <button class="formButton" id="cancelGoalForm" type="submit">Cancel</button>
+                    </div>
+                </div>
+            </form>
 
-            </div>
-        </section>
+        </div>
+
     </main>
 
     <main class="editHomeScreenGoals">
@@ -557,7 +557,7 @@
 
                     <div class="demoContainer">
                         <div class="formGroup">
-                            <input class="loggedInUser" id="editGoalMyHiddenField" type="hidden" value=""><br>
+                            <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
                         </div>
                         <div class="formGroup">
                             <label class="label" for="goalDescription">Description</label>
@@ -594,8 +594,10 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/js/jquery.terminal.min.js"></script>-->
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+-->
 
     <script src="client.js"></script>
 </body>

@@ -228,7 +228,7 @@ app.post('/goal/create', (req, res) => {
 // PUT --------------------------------------
 
 // update goal
-app.put('/goals/:id', function (req, res) {
+app.put('/goal/:userId', function (req, res) {
     let toUpdate = {};
     let updateableFields = ['description', 'date', 'budgeted', 'actual'];
     updateableFields.forEach(function (field) {
@@ -237,7 +237,7 @@ app.put('/goals/:id', function (req, res) {
         }
     });
     Goal
-        .findByIdAndUpdate(req.params.id, {
+        .findByIdAndUpdate(req.params.userId, {
             $set: toUpdate
         }).exec().then(function (achievement) {
             return res.status(204).end();
@@ -328,11 +328,31 @@ app.get('/goals/:userId', function (req, res) {
         });
 });
 
+//// get goal to be updated
+//app.get('/goal-edit/:userId', function (req, res) {
+//    Goal
+//        .findOne({
+//            userId: req.params.userId
+//        })
+//        .then(function (goal) {
+//            res.json({
+//                goal
+//            });
+//        })
+//        .catch(function (err) {
+//            console.error(err);
+//            res.status(500).json({
+//                message: 'Internal server error'
+//            });
+//        });
+//});
+
 //get goal to be updated
-app.get('/goals/:userId', function (req, res) {
+app.get('/goal/:id', function (req, res) {
+
     Goal
-        .find({
-            selectedGoal: req.params._id
+        .findOne({
+            id: req.params._id
         })
         .then(function (goal) {
             res.json({
