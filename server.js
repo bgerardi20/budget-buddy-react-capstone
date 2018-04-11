@@ -228,7 +228,7 @@ app.post('/goal/create', (req, res) => {
 // PUT --------------------------------------
 
 // update goal
-app.put('/goal/:userId', function (req, res) {
+app.put('/goal/:goalId', function (req, res) {
     let toUpdate = {};
     let updateableFields = ['description', 'date', 'budgeted', 'actual'];
     updateableFields.forEach(function (field) {
@@ -237,7 +237,7 @@ app.put('/goal/:userId', function (req, res) {
         }
     });
     Goal
-        .findByIdAndUpdate(req.params.userId, {
+        .findByIdAndUpdate(req.params.goalId, {
             $set: toUpdate
         }).exec().then(function (achievement) {
             return res.status(204).end();
@@ -328,26 +328,27 @@ app.get('/goals/:userId', function (req, res) {
         });
 });
 
-//// get goal to be updated
-//app.get('/goal-edit/:userId', function (req, res) {
-//    Goal
-//        .findOne({
-//            userId: req.params.userId
-//        })
-//        .then(function (goal) {
-//            res.json({
-//                goal
-//            });
-//        })
-//        .catch(function (err) {
-//            console.error(err);
-//            res.status(500).json({
-//                message: 'Internal server error'
-//            });
-//        });
-//});
-
 //get goal to be updated
+app.get('/goal/:id', function (req, res) {
+
+    Goal
+        .findOne({
+            id: req.params._id
+        })
+        .then(function (goal) {
+            res.json({
+                goal
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+//get budget to be updated
 app.get('/goal/:id', function (req, res) {
 
     Goal

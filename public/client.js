@@ -48,12 +48,6 @@ let loginUserName = "";
 let loginUserId = "";
 let goalId = "";
 
-let selectedDescription = "";
-let selectedDate = "";
-let selectedBudgeted = "";
-let selectedActual = "";
-
-
 
 //display users budgets
 function displayBudgets(userId) {
@@ -95,30 +89,30 @@ function displayGoals(userId) {
         });
 }
 //display goal to edit
-function displayGoalEdited(userId) {
-    let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
-
-    const modifyGoalObject = {
-        userId: selectedGoal,
-
-    };
-    console.log(modifyGoalObject);
-    $.ajax({
-            type: "GET",
-            url: '/goal-edit/' + userId,
-            dataType: 'json',
-        })
-        .done(function (dataOutput) {
-            console.log(dataOutput);
-            //displays the external api json object in the console
-            displayEditedGoalForm(dataOutput.goal);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-}
+//function displayGoalEdited(userId) {
+//    let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
+//
+//    const modifyGoalObject = {
+//        userId: selectedGoal,
+//
+//    };
+//    console.log(modifyGoalObject);
+//    $.ajax({
+//            type: "GET",
+//            url: '/goal-edit/' + userId,
+//            dataType: 'json',
+//        })
+//        .done(function (dataOutput) {
+//            console.log(dataOutput);
+//            //displays the external api json object in the console
+//            displayEditedGoalForm(dataOutput.goal);
+//        })
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        });
+//}
 //adding value to each input option!!!
 //look at user rergistration for loginUserId
 //goal html output
@@ -514,13 +508,6 @@ $(document).on("click", ".jsCopyGoalButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-
-//
-
-//get endpoint to take selected goal from aboce and find all the goals which have the same id(selectedGoal)
-//new endpoint in server and in here
-//prepopulate the form
-//new displayGoals fucntion
 //edit goal icon button
 $(document).on("click", ".tableTriggerGoalButton", function (event) {
     event.preventDefault();
@@ -585,15 +572,34 @@ $(document).on("click", ".jsCopyBudgetButton", function (event) {
 //edit budget icon button
 $(document).on("click", ".jsEditBudgetButton", function (event) {
     event.preventDefault();
-    $(".introScreen").hide();
-    $(".quickView").hide();
-    $(".loginScreen").hide();
-    $(".registerScreen").hide();
-    $(".homeScreen").hide();
-    $(".homeScreenBudget").show();
-    $(".homeScreenGoals").hide();
-    $(".editHomeScreenBudget").hide();
-    $(".editHomeScreenGoals").hide();
+
+    let selectedGoal = $(this).parent().parent().find("#modifyGoalRecipeID").val();
+
+    console.log(selectedGoal);
+    $.ajax({
+            type: "GET",
+            url: '/goal/' + selectedGoal,
+            dataType: 'json',
+        })
+        .done(function (results) {
+            console.log(results);
+            displayEditedGoalForm(results);
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").hide();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").show();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
 });
 
 //delete budget icon button
@@ -808,49 +814,52 @@ $(document).on("click", "#saveGoalForm", function (event) {
 //});
 
 //modify(edited) goal
-//$(document).on("click", ".editSaveGoalForm", function (event) {
-//    event.preventDefault();
-//    let modifyGoalId = $(this).parent().parent().parent().find('.modifyRecipeID').val();
-//
-//    let modifyGoalDescription = $(this).parent().parent().parent().find('.modifyDescription').val();
-//    let modifyGoalDate = $(this).parent().parent().parent().find('.modifyDate').val();
-//    let modifyGoalBudgeted = $(this).parent().parent().parent().find('.modifyBudgeted').val();
-//    let modifyGoalActual = $(this).parent().parent().parent().find('.modifyActual').val();
-//
-//    const modifyGoalObject = {
-//        description: modifyGoalDescription,
-//        date: modifyGoalDate,
-//        budgeted: modifyGoalBudgeted,
-//        actual: modifyGoalActual
-//    };
-//    // create ajax call to save the recipe//
-//    //goals or goal????//
-//    $.ajax({
-//            type: 'PUT',
-//            url: '/goals/' + modifyGoalId,
-//            dataType: 'json',
-//            data: JSON.stringify(modifyGoalObject),
-//            contentType: 'application/json'
-//        })
-//        //if save is successful
-//        .done(function (result) {
-//            displayGoals(loginUserId);
-//            alert('goal has been saved');
-//            $(".introScreen").hide();
-//            $(".quickView").hide();
-//            $(".loginScreen").hide();
-//            $(".registerScreen").hide();
-//            $(".homeScreen").show();
-//            $(".homeScreenBudget").hide();
-//            $(".homeScreenGoals").hide();
-//        })
-//        //if save fails
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        });
-//});
+$(document).on("click", ".editSaveGoalForm", function (event) {
+    event.preventDefault();
+    let modifyGoalId = $('#modifyGoalRecipeID').val();
+
+    let modifyGoalDescription = $('#editGoalDescription').val();
+    let modifyGoalDate = $('#editGoalDate').val();
+    let modifyGoalBudgeted = $('#editGoalDate').val();
+    let modifyGoalActual = $('#editActualGoal').val();
+
+    const modifyGoalObject = {
+        description: modifyGoalDescription,
+        date: modifyGoalDate,
+        budgeted: modifyGoalBudgeted,
+        actual: modifyGoalActual,
+        goalId: modifyGoalId
+    };
+    // create ajax call to save the recipe//
+    //goals or goal????//
+    $.ajax({
+            type: 'PUT',
+            url: '/goal/' + modifyGoalId,
+            dataType: 'json',
+            data: JSON.stringify(modifyGoalObject),
+            contentType: 'application/json'
+        })
+        //if save is successful
+        .done(function (result) {
+            displayGoals(loginUserId);
+            alert('goal has been saved');
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").show();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
+        })
+        //if save fails
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
 
 //modify budget
 $(document).on("click", ".jsEditBudgetButton", function (event) {
