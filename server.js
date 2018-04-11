@@ -236,6 +236,7 @@ app.put('/goal/:goalId', function (req, res) {
             toUpdate[field] = req.body[field];
         }
     });
+    console.log(toUpdate);
     Goal
         .findByIdAndUpdate(req.params.goalId, {
             $set: toUpdate
@@ -330,10 +331,10 @@ app.get('/goals/:userId', function (req, res) {
 
 //get goal to be updated
 app.get('/goal/:id', function (req, res) {
-
+    //    console.log(req.params.id);
     Goal
         .findOne({
-            id: req.params._id
+            _id: req.params.id
         })
         .then(function (goal) {
             res.json({

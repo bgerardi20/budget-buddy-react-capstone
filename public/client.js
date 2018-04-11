@@ -184,12 +184,12 @@ function displayEditedGoalForm(dataOutput) {
         buildTheHtmlOutput += '<input class="formControl" id="editGoalDate" type="string" name="date" value="' + dataValue.date + '" required>';
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="formGroup">';
-        buildTheHtmlOutput += '<label class="label" for="budgetedGoal">Budgeted</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetedGoal" type="string" name="budgeted" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.budgeted + '" required>';
+        buildTheHtmlOutput += '<label class="label" for="budgetedGoal">Budgeted($)</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetedGoal" type="string" name="budgeted" min="0.00" max="100,000.00" step="1.00" value="' + dataValue.budgeted + '" required>';
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="formGroup">';
-        buildTheHtmlOutput += '<label class="label" for="actualGoal">Actual</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editActualGoal" type="string" name="actual" min="0.00" max="100,000.00" step="1.00" value="$' + dataValue.actual + '" required>';
+        buildTheHtmlOutput += '<label class="label" for="actualGoal">Actual($)</label>';
+        buildTheHtmlOutput += '<input class="formControl" id="editActualGoal" type="string" name="actual" min="0.00" max="100,000.00" step="1.00" value="' + dataValue.actual + '" required>';
         buildTheHtmlOutput += '</div>';
     });
     buildTheHtmlOutput += '<div class="formButtonsContainer">';
@@ -814,13 +814,13 @@ $(document).on("click", "#saveGoalForm", function (event) {
 //});
 
 //modify(edited) goal
-$(document).on("click", ".editSaveGoalForm", function (event) {
+$(document).on("click", "#editSaveGoalForm", function (event) {
     event.preventDefault();
-    let modifyGoalId = $('#modifyGoalRecipeID').val();
+    let modifyGoalId = $(this).parent().parent().parent().find("#modifyGoalRecipeID").val();
 
     let modifyGoalDescription = $('#editGoalDescription').val();
     let modifyGoalDate = $('#editGoalDate').val();
-    let modifyGoalBudgeted = $('#editGoalDate').val();
+    let modifyGoalBudgeted = $('#editBudgetedGoal').val();
     let modifyGoalActual = $('#editActualGoal').val();
 
     const modifyGoalObject = {
@@ -830,6 +830,7 @@ $(document).on("click", ".editSaveGoalForm", function (event) {
         actual: modifyGoalActual,
         goalId: modifyGoalId
     };
+    console.log(modifyGoalObject);
     // create ajax call to save the recipe//
     //goals or goal????//
     $.ajax({
