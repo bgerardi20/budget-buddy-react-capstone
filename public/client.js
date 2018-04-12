@@ -280,7 +280,7 @@ function displayEditedBudgetForm(dataOutput) {
 
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="type">Type</label>';
-        buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue.type + '" required>';
+        buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue.type + '">';
         buildTheHtmlOutput += '<option value="expense">Expense</option>';
         buildTheHtmlOutput += '<option value="income">Income</option>';
         buildTheHtmlOutput += '</select>';
@@ -852,7 +852,7 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
 //modify(edited) budget
 $(document).on("click", ".editSaveBudgetForm", function (event) {
     event.preventDefault();
-    let modifyBudgetId = $(this).parent().parent().parent().find('#modifyBudgetId').val();
+    let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
 
     let modifyBudgetDescription = $('#editBudgetDescription').val();
     let modifyBudgetDate = $('#editBudgetDate').val();

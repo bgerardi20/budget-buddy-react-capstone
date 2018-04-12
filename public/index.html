@@ -425,9 +425,9 @@
                 <h2 class="loginTitle">Expense/Income</h2>
 
                 <div class="demoContainer">
-
-                    <input class="loggedInUser" id="myHiddenField" type="hidden" value=""><br>
-
+                    <div class="formGroup">
+                        <input class="loggedInUser" id="myHiddenField" type="hidden" value=""><br>
+                    </div>
                     <div class="formGroup">
                         <label class="label" for="description">Description</label>
                         <input class="formControl" id="budgetDescription" type="text" placeholder="Wedding" name="description" required>
@@ -438,11 +438,11 @@
                     </div>
                     <div class="formGroup">
                         <label class="label" for="budgeted">Budgeted</label>
-                        <input class="formControl" id="budgetBudgeted" type="number" placeholder="$200.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="budgetBudgeted" type="string" placeholder="$200.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="actual">Actual</label>
-                        <input class="formControl" id="budgetActual" type="number" placeholder="$400.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="budgetActual" type="string" placeholder="$400.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="type">Type</label>
@@ -466,7 +466,7 @@
 
         <div class="editBudgetForms">
 
-<!--
+            <!--
             <form class="optionsForm" method="POST">
 
                 <h2 class="loginTitle">Edit Expense/Income</h2>
@@ -551,9 +551,9 @@
 
     <main class="editHomeScreenGoals">
 
-            <div class="editedGoalsOutterContainer">
+        <div class="editedGoalsOutterContainer">
 
-<!--
+            <!--
                 <form class="jsEditedGoalForm" method="POST">
 
                     <h2 class="loginTitle">Edit Goal</h2>
@@ -586,7 +586,7 @@
                 </form>
 -->
 
-            </div>
+        </div>
 
     </main>
 
