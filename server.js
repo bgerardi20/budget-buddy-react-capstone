@@ -251,6 +251,7 @@ app.put('/goal/:goalId', function (req, res) {
 
 // update budget
 app.put('/budget/:budgetId', function (req, res) {
+    console.log("update budget");
     let toUpdate = {};
     let updateableFields = ['description', 'date', 'budgeted', 'actual', 'type'];
     updateableFields.forEach(function (field) {
@@ -352,7 +353,7 @@ app.get('/goal/:id', function (req, res) {
 
 //get budget to be updated
 app.get('/budget/:id', function (req, res) {
-    console.log(req.params.id);
+    //    console.log(req.params.id);
     Budget
         .find({
             _id: req.params.id

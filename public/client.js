@@ -4,32 +4,26 @@ function titleCase(str) {
         return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
     }).join(' ');
 };
-//UNDER BUDGET, OVER BUDGET, EVEN
-function budgetCondtionalChecker() {
-    let totalActual = "";
-    let totalBudgeted = "";
-
-    if (totalBudgeted > totalActual) {
-        $(".budgetConditionalOptionsPositive").show();
-        $(".budgetConditionalOptionsNegative").hide();
-        $(".budgetConditionalOptionsEven").hide();
-    } else if (totalBudgeted < totalActual) {
-        $(".budgetConditionalOptionsPositive").hide();
-        $(".budgetConditionalOptionsNegative").show();
-        $(".budgetConditionalOptionsEven").hide();
-    } else if (totalBudgeted === totalActual) {
-        $(".budgetConditionalOptionsPositive").hide();
-        $(".budgetConditionalOptionsNegative").hide();
-        $(".budgetConditionalOptionsEven").show();
-    };
-};
-
-
-
+////UNDER BUDGET, OVER BUDGET, EVEN
+//function budgetCondtionalChecker() {
+//    let totalActual = "";
+//    let totalBudgeted = "";
 //
-//var goalBudgetTotal = document.querySelectorAll('#budgetedGoal').val();
-//var goalActualTotal = document.querySelectorAll('#actualGoal').val();
-//var goalDifferenceTotal = goalActualTotal - goalBudgetTotal
+//    if (totalBudgeted > totalActual) {
+//        $(".budgetConditionalOptionsPositive").show();
+//        $(".budgetConditionalOptionsNegative").hide();
+//        $(".budgetConditionalOptionsEven").hide();
+//    } else if (totalBudgeted < totalActual) {
+//        $(".budgetConditionalOptionsPositive").hide();
+//        $(".budgetConditionalOptionsNegative").show();
+//        $(".budgetConditionalOptionsEven").hide();
+//    } else if (totalBudgeted === totalActual) {
+//        $(".budgetConditionalOptionsPositive").hide();
+//        $(".budgetConditionalOptionsNegative").hide();
+//        $(".budgetConditionalOptionsEven").show();
+//    };
+//};
+
 //
 //function goalActualAdder() {
 //    var buildTheHtmlOutput = "";
@@ -47,6 +41,10 @@ function budgetCondtionalChecker() {
 let loginUserName = "";
 let loginUserId = "";
 let goalId = "";
+let budgetId = "";
+var goalBudgetTotal = "";
+var goalActualTotal = "";
+var goalDifferenceTotal = "";
 
 
 //display users budgets
@@ -254,33 +252,34 @@ function displayEditedBudgetForm(dataOutput) {
 
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataValue);
+        console.log(dataValue.description);
 
-        buildTheHtmlOutput += '<input class="loggedInUser" id="modifyBudgetId" type="hidden" value="' + dataValue._id + '"><br>';
+        buildTheHtmlOutput += '<input class="loggedInUser" id="modifyBudgetId" type="hidden" value="' + dataValue[0]._id + '"><br>';
 
         buildTheHtmlOutput += '<div class="demoContainer">';
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="description">Description</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetDescription" type="text"  name="description" value="' + dataValue.description + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetDescription" type="text"  name="description" value="' + dataValue[0].description + '" required>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="date">Date</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetDate" type="string"  name="date" value="' + dataValue.date + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetDate" type="string"  name="date" value="' + dataValue[0].date + '" required>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="budgeted">Budgeted($)</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetBudgeted" type="string"  name="budgeted" min="0.00" max="100,000.00" step="1.00" value="' + dataValue.budgeted + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetBudgeted" type="string"  name="budgeted" min="0.00" max="100,000.00" step="1.00" value="' + dataValue[0].budgeted + '" required>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="actual">Actual($)</label>';
-        buildTheHtmlOutput += '<input class="formControl" id="editBudgetActual" type="string"  name="actual" min="0.00" max="100,000.00" step="1.00" value="' + dataValue.actual + '" required>';
+        buildTheHtmlOutput += '<input class="formControl" id="editBudgetActual" type="string"  name="actual" min="0.00" max="100,000.00" step="1.00" value="' + dataValue[0].actual + '" required>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="type">Type</label>';
-        buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue.type + '">';
+        buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue[0].type + '">';
         buildTheHtmlOutput += '<option value="expense">Expense</option>';
         buildTheHtmlOutput += '<option value="income">Income</option>';
         buildTheHtmlOutput += '</select>';
@@ -850,9 +849,9 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
 });
 
 //modify(edited) budget
-$(document).on("click", ".editSaveBudgetForm", function (event) {
+$(document).on("click", "#editSaveBudgetForm", function (event) {
     event.preventDefault();
-    let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
+    let modifyBudgetId = $(this).parent().parent().parent().find('#modifyBudgetId').val();
 
     let modifyBudgetDescription = $('#editBudgetDescription').val();
     let modifyBudgetDate = $('#editBudgetDate').val();
@@ -868,6 +867,7 @@ $(document).on("click", ".editSaveBudgetForm", function (event) {
         type: modifyBudgetType,
         budgetId: modifyBudgetId
     };
+    console.log(modifyBudgetObject);
     // create ajax call to save the recipe//
     $.ajax({
             type: 'PUT',
@@ -878,17 +878,19 @@ $(document).on("click", ".editSaveBudgetForm", function (event) {
         })
         //if save is successful
         .done(function (result) {
-            displayBudgets(loginUserId);
-            alert('budget has been saved');
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-            $(".editHomeScreenBudget").hide();
-            $(".editHomeScreenGoals").hide();
+
+            console.log(result);
+                        displayBudgets(loginUserId);
+                        alert('budget has been saved');
+                        $(".introScreen").hide();
+                        $(".quickView").hide();
+                        $(".loginScreen").hide();
+                        $(".registerScreen").hide();
+                        $(".homeScreen").show();
+                        $(".homeScreenBudget").hide();
+                        $(".homeScreenGoals").hide();
+                        $(".editHomeScreenBudget").hide();
+                        $(".editHomeScreenGoals").hide();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
