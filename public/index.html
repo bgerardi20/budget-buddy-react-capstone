@@ -7,7 +7,6 @@
     <title>Budget Buddy</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto:700" rel="stylesheet">
-    <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/css/jquery.terminal.min.css" rel="stylesheet" />-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <link rel="stylesheet" href="./styles.css">
@@ -298,116 +297,122 @@
 
         <section class="budgetOutterContainer">
 
+
             <div class="budgetInnerContainer">
 
-                <h1 id="budgetTitle"><i class="fas fa-balance-scale logos"></i> Monthly Budgets</h1>
-                <select class="jsSelectMonth">
-                    <option value="january">January 2018 ()</option>
-                    <option value="february">February 2018 ()</option>
-                    <option value="march">March 2018 ()</option>
-                    <option value="april">April 2018 ()</option>
-                    <option value="may">May 2018 ()</option>
-                    <option value="june">June 2018 ()</option>
-                    <option value="july">July 2018 ()</option>
-                    <option value="august">August 2018 ()</option>
-                    <option value="september">September 2018 ()</option>
-                    <option value="october">October 2018 ()</option>
-                    <option value="november">November 2018 ()</option>
-                    <option value="december">December 2018 ()</option>
-                </select>
+                <div class="monthlyBudgetTotals">
+                    <!--
+                    <h1 id="budgetTitle"><i class="fas fa-balance-scale logos"></i> Monthly Budgets</h1>
 
-                <div id="budgetConditionalContainer">
-                    <h2 id="budgetConditionalTitle">You are..</h2>
-                    <h4 class="budgetConditionalOptionsPositive positive">UNDER BUDGET</h4>
-                    <h4 class="budgetConditionalOptionsNegative negative">OVER BUDGET</h4>
-                    <h4 class="budgetConditionalOptionsEven middle">EVEN</h4>
+
+                    <select class="jsSelectMonth">
+                        <option id="january" value="january">January 2018 ()</option>
+                        <option id="february" value="february">February 2018 ()</option>
+                        <option id="march" value="march">March 2018 ()</option>
+                        <option id="april" value="april">April 2018 ()</option>
+                        <option id="may" value="may">May 2018 ()</option>
+                        <option id="june" value="june">June 2018 ()</option>
+                        <option id="july" value="july">July 2018 ()</option>
+                        <option id="august" value="august">August 2018 ()</option>
+                        <option id="september" value="september">September 2018 ()</option>
+                        <option id="october" value="october">October 2018 ()</option>
+                        <option id="november" value="november">November 2018 ()</option>
+                        <option id="december" value="december">December 2018 ()</option>
+                    </select>
+
+                    <div id="budgetConditionalContainer">
+                        <h2 id="budgetConditionalTitle">You are..</h2>
+                        <h4 class="budgetConditionalOptionsPositive positive">UNDER BUDGET</h4>
+                        <h4 class="budgetConditionalOptionsNegative negative">OVER BUDGET</h4>
+                        <h4 class="budgetConditionalOptionsEven middle">EVEN</h4>
+                    </div>
+-->
                 </div>
-
 
                 <div class="expenseContainer">
                     <div class="table">
 
+
                         <!--
-                        <div class="row rowTitle">
-                            <div class="cellTrans">Descritpion</div>
-                            <div class="cellTrans">Date</div>
-                            <div class="cellTrans">Budgeted</div>
-                            <div class="cellTrans">Actual</div>
-                            <div class="cellTrans">Difference</div>
-                            <div class="cellTrans">Action</div>
-                        </div>
+        <div class="row rowTitle">
+            <div class="cellTrans">Descritpion</div>
+            <div class="cellTrans">Date</div>
+            <div class="cellTrans">Budgeted</div>
+            <div class="cellTrans">Actual</div>
+            <div class="cellTrans">Difference</div>
+            <div class="cellTrans">Action</div>
+        </div>
 
 
-                        <div class="row">
+        <div class="row">
 
-                            <div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>Paycheck</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$200.00</div>
-                            <div class="cellTrans">$200.00</div>
-                            <div class="cellTrans positive">$0.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
+            <div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>Paycheck</div>
+            <div class="cellTrans">03/01/2018</div>
+            <div class="cellTrans">$200.00</div>
+            <div class="cellTrans">$200.00</div>
+            <div class="cellTrans positive">$0.00</div>
+            <div class="cellTrans">
+                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
+                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
+                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
+            </div>
 
-                        </div>
-
-
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Gas Bill</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$90.00</div>
-                            <div class="cellTrans">$100.00</div>
-                            <div class="cellTrans negative">-$10.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Dog Food</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$50.00</div>
-                            <div class="cellTrans">$45.00</div>
-                            <div class="cellTrans positive">+$5.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Groceries</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$250.00</div>
-                            <div class="cellTrans">$250.00</div>
-                            <div class="cellTrans positive">$0.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
+        </div>
+        <div class="row">
+            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Gas Bill</div>
+            <div class="cellTrans">03/01/2018</div>
+            <div class="cellTrans">$90.00</div>
+            <div class="cellTrans">$100.00</div>
+            <div class="cellTrans negative">-$10.00</div>
+            <div class="cellTrans">
+                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
+                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
+                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Dog Food</div>
+            <div class="cellTrans">03/01/2018</div>
+            <div class="cellTrans">$50.00</div>
+            <div class="cellTrans">$45.00</div>
+            <div class="cellTrans positive">+$5.00</div>
+            <div class="cellTrans">
+                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
+                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
+                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Groceries</div>
+            <div class="cellTrans">03/01/2018</div>
+            <div class="cellTrans">$250.00</div>
+            <div class="cellTrans">$250.00</div>
+            <div class="cellTrans positive">$0.00</div>
+            <div class="cellTrans">
+                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
+                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
+                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
+            </div>
+        </div>
 
 
-                        <div class="row budgetTotalContainer" id="budgetTotal">
-                            <div class="cellTrans">Totals</div>
-                            <div class="cellTrans"> </div>
-                            <div class="cellTrans"></div>
-                            <div class="cellTrans"></div>
-                            <div class="cellTrans negative"></div>
-                            <div class="cellTrans"> </div>
-                        </div>
+        <div class="row budgetTotalContainer" id="budgetTotal">
+            <div class="cellTrans">Totals</div>
+            <div class="cellTrans"> </div>
+            <div class="cellTrans"></div>
+            <div class="cellTrans"></div>
+            <div class="cellTrans negative"></div>
+            <div class="cellTrans"> </div>
+        </div>
 -->
-
                     </div>
                 </div>
+
 
                 <button class="homeSectionsButton" id="addBudgetFormButton" type="submit">Add </button>
 
             </div>
+
 
         </section>
 

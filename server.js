@@ -376,7 +376,8 @@ app.get('/budget/:id', function (req, res) {
 
 //delete goals from library
 app.delete('/goals/:id', function (req, res) {
-    Goal.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+    console.log(req.params.id);
+    Goal.findByIdAndRemove(req.params.id).exec().then(function (goal) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
@@ -387,7 +388,8 @@ app.delete('/goals/:id', function (req, res) {
 
 //delete budgets from library
 app.delete('/budgets/:id', function (req, res) {
-    Budget.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+    console.log(req.params.id);
+    Budget.findByIdAndRemove(req.params.id).exec().then(function (budget) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({

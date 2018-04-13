@@ -42,9 +42,17 @@ let loginUserName = "";
 let loginUserId = "";
 let goalId = "";
 let budgetId = "";
-var goalBudgetTotal = "";
-var goalActualTotal = "";
-var goalDifferenceTotal = "";
+
+let date = new Date();
+let currentMonth = date.getMonth();
+if (currentMonth < 9) {
+    currentMonth = "0" + (currentMonth + 1);
+} else {
+    currentMonth = (currentMonth + 1);
+}
+let currentYear = date.getFullYear();
+
+
 
 
 //display users budgets
@@ -90,6 +98,7 @@ function displayGoals(userId) {
 //goal html output
 function displayFinancialGoalResult(dataOutput) {
     var buildTheHtmlOutput = "";
+
     buildTheHtmlOutput += '<div class="row rowTitle">';
     buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
     buildTheHtmlOutput += '<div class="cellTrans">Date</div>';
@@ -98,8 +107,20 @@ function displayFinancialGoalResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Difference</div>';
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
+
+    let goalBudgetTotal = 0;
+    let goalActualTotal = 0;
+    let goalDifferenceTotal = 0;
+
+
+
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataValue);
+
+        goalBudgetTotal = goalBudgetTotal + parseFloat(dataValue.budgeted);
+        goalActualTotal = goalActualTotal + parseFloat(dataValue.actual);
+        goalDifferenceTotal = goalDifferenceTotal + parseFloat(dataValue.actual - dataValue.budgeted);
+
         buildTheHtmlOutput += '<div class="row">';
         buildTheHtmlOutput += '<input class="loggedInUser" type="hidden" id="modifyGoalId" value="' + dataValue._id + '">';
         if ((dataValue.actual) - (dataValue.budgeted) >= 0) {
@@ -108,7 +129,7 @@ function displayFinancialGoalResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans modifyDescription" value="' + dataValue.description + '"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
         }
         buildTheHtmlOutput += '<div class="cellTrans modifyDate" value="' + dataValue.date + '">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted" value="' + dataValue.budgeted + '">$' + dataValue.budgeted + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted" value="' + dataValue.budgeted + '">$' + dataValue.budgeted + '.00 </div>';
         buildTheHtmlOutput += '<div class="cellTrans modifyActual" value="' + dataValue.actual + '">$' + dataValue.actual + '.00</div>';
         if ((dataValue.actual - dataValue.budgeted) >= 0) {
             buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
@@ -116,20 +137,25 @@ function displayFinancialGoalResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         }
         buildTheHtmlOutput += '<div class="cellTrans">';
-        buildTheHtmlOutput += '<a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="tableTriggerGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
         buildTheHtmlOutput += '</div>';
 
         buildTheHtmlOutput += '</div>';
     });
+
     buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="goalTotal">';
     buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans" id="goalBudgetedTotal"></div>';
-    buildTheHtmlOutput += '<div class="cellTrans" id="goalActualTotal"></div>';
-    buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans" id="goalBudgetedTotal">$' + goalBudgetTotal.toFixed(2) + '</div>';
+    buildTheHtmlOutput += '<div class="cellTrans" id="goalActualTotal">$' + goalActualTotal.toFixed(2) + '</div>';
+    if ((goalActualTotal - goalBudgetTotal) >= 0) {
+        buildTheHtmlOutput += '<div class="cellTrans positive" id="goalTotal">$' + goalDifferenceTotal.toFixed(2) + '</div>';
+    } else if ((goalActualTotal - goalBudgetTotal) < 0) {
+        buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal">$' + goalDifferenceTotal.toFixed(2) + '</div>';
+    }
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
+    buildTheHtmlOutput += '</div>';
     buildTheHtmlOutput += '</div>';
 
 
@@ -179,10 +205,97 @@ function displayEditedGoalForm(dataOutput) {
     $(".editedGoalsOutterContainer").html(buildTheHtmlOutput);
 };
 
+
+//budget monthly budget totals and conditional statement
+function displayMonthlyBudgetTotals(dataOutput) {
+    var buildTheHtmlOutput = "";
+
+    <
+    h1 id = "budgetTitle" > < i class = "fas fa-balance-scale logos" > < /i> Monthly Budgets</h
+    1 >
+        $.each(dataOutput, function (dataKey, dataValue) {
+            console.log(dataValue);
+
+            <
+            select class = "jsSelectMonth" >
+                <
+                option id = "january"
+            value = "january" > January 2018() < /option> <
+            option id = "february"
+            value = "february" > February 2018() < /option> <
+            option id = "march"
+            value = "march" > March 2018() < /option> <
+            option id = "april"
+            value = "april" > April 2018() < /option> <
+            option id = "may"
+            value = "may" > May 2018() < /option> <
+            option id = "june"
+            value = "june" > June 2018() < /option> <
+            option id = "july"
+            value = "july" > July 2018() < /option> <
+            option id = "august"
+            value = "august" > August 2018() < /option> <
+            option id = "september"
+            value = "september" > September 2018() < /option> <
+            option id = "october"
+            value = "october" > October 2018() < /option> <
+            option id = "november"
+            value = "november" > November 2018() < /option> <
+            option id = "december"
+            value = "december" > December 2018() < /option> < /
+            select >
+
+
+        });
+
+    <
+    div id = "budgetConditionalContainer" >
+        <
+        h2 id = "budgetConditionalTitle" > You are.. < /h2> <
+    h4 class = "budgetConditionalOptionsPositive positive" > UNDER BUDGET < /h4> <
+    h4 class = "budgetConditionalOptionsNegative negative" > OVER BUDGET < /h4> <
+    h4 class = "budgetConditionalOptionsEven middle" > EVEN < /h4> < /
+    div >
+
+        $(".monthlyBudgetTotals").html(buildTheHtmlOutput);
+};
+
+
+
 //budget html output
 function displayBudgetResult(dataOutput) {
 
     var buildTheHtmlOutput = "";
+
+    //    buildTheHtmlOutput += '<h1 id="budgetTitle"><i class="fas fa-balance-scale logos"></i> Monthly Budgets</h1>';
+    //
+    //    buildTheHtmlOutput += '<select class="jsSelectMonth">';
+    //    buildTheHtmlOutput += '<option value="january">January 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="february">February 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="march">March 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="april">April 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="may">May 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="june">June 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="july">July 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="august">August 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="september">September 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="october">October 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="november">November 2018 ()</option>';
+    //    buildTheHtmlOutput += '<option value="december">December 2018 ()</option>';
+    //    buildTheHtmlOutput += '</select>';
+    //
+    //
+    //    buildTheHtmlOutput += '<div id = "budgetConditionalContainer" >';
+    //    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle" > You are.. < /h2>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive" > UNDER BUDGET < /h4>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative" > OVER BUDGET < /h4>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle" > EVEN < /h4>';
+    //    buildTheHtmlOutput += '< /div >';
+    //
+    //
+    //    buildTheHtmlOutput += '<div class = "expenseContainer" >';
+    //
+    //    buildTheHtmlOutput += '<div class = "table" >';
 
     buildTheHtmlOutput += '<div class="row rowTitle">';
     buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
@@ -193,8 +306,16 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans">Action</div>';
     buildTheHtmlOutput += '</div>';
 
+    let budgetBudgetTotal = 0;
+    let budgetActualTotal = 0;
+    let budgetDifferenceTotal = 0;
+
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataValue);
+
+        budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
+        budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
+        budgetDifferenceTotal = budgetDifferenceTotal + parseFloat(dataValue.budgeted - dataValue.actual);
 
         buildTheHtmlOutput += '<div class="row">';
 
@@ -233,9 +354,13 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="budgetTotal">';
     buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans negative"></div>';
+    buildTheHtmlOutput += '<div class="cellTrans">' + budgetBudgetTotal.toFixed(2) + '</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">' + budgetActualTotal.toFixed(2) + ' </div>';
+    if ((budgetActualTotal - budgetBudgetTotal) >= 0) {
+        buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal">$' + budgetDifferenceTotal.toFixed(2) + '</div>';
+    } else if ((budgetActualTotal - budgetBudgetTotal) < 0) {
+        buildTheHtmlOutput += '<div class="cellTrans positive" id="goalTotal">$' + budgetDifferenceTotal.toFixed(2) + '</div>';
+    }
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
     buildTheHtmlOutput += '</div>';
 
@@ -299,6 +424,8 @@ function displayEditedBudgetForm(dataOutput) {
 
 
 $(document).ready(function () {
+
+    console.log(currentMonth, currentYear);
     $(".introScreen").show();
     $(".quickView").show();
     $(".loginScreen").hide();
@@ -880,17 +1007,17 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
         .done(function (result) {
 
             console.log(result);
-                        displayBudgets(loginUserId);
-                        alert('budget has been saved');
-                        $(".introScreen").hide();
-                        $(".quickView").hide();
-                        $(".loginScreen").hide();
-                        $(".registerScreen").hide();
-                        $(".homeScreen").show();
-                        $(".homeScreenBudget").hide();
-                        $(".homeScreenGoals").hide();
-                        $(".editHomeScreenBudget").hide();
-                        $(".editHomeScreenGoals").hide();
+            displayBudgets(loginUserId);
+            alert('budget has been saved');
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").show();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -903,18 +1030,18 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
 //delete goal
 $(document).on("click", ".jsDeleteGoalButton", function (event) {
     event.preventDefault();
-    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
-
+    let modifyGoalId = $(this).parent().parent().parent().find('#modifyGoalId').val();
+    console.log(modifyGoalId);
     $.ajax({
             type: 'DELETE',
-            url: '/goals/' + modifyRecipeID,
+            url: '/goals/' + modifyGoalId,
             dataType: 'json',
             contentType: 'application/json'
         })
 
         .done(function (result) {
-            displayRecipes(loginUserId);
-            alert('recipe has been deleted');
+            displayGoals(loginUserId);
+            alert('entry has been deleted');
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
@@ -936,18 +1063,18 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
 //delete budget
 $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     event.preventDefault();
-    let modifyRecipeID = $(this).parent().parent().parent().find('.modifyRecipeID').val();
-
+    let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
+    console.log(modifyBudgetId);
     $.ajax({
             type: 'DELETE',
-            url: '/budgets/' + modifyRecipeID,
+            url: '/budgets/' + modifyBudgetId,
             dataType: 'json',
             contentType: 'application/json'
         })
 
         .done(function (result) {
-            displayRecipes(loginUserId);
-            alert('recipe has been deleted');
+            displayBudgets(loginUserId);
+            alert('entry has been deleted');
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
@@ -969,13 +1096,25 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
 
 
 
-//$(document).on("click", ".jsSelectMonth", function (event) {
-//    event.preventDefault();
-//    $(".introScreen").hide();
-//    $(".quickView").show();
-//    $(".loginScreen").hide();
-//    $(".registerScreen").hide();
-//    $(".homeScreen").hide();
-//    $(".homeScreenBudget").hide();
-//    $(".homeScreenGoals").hide();
-//});
+$(document).on("click", ".jsSelectMonth", function (event) {
+    event.preventDefault();
+    let budgetDifferenceTotal = $(this).parent().find('.jsSelectMonth option').val();;
+
+    if (budgetDifferenceTotal > 0) {
+        $("#budgetConditionalTitle").show();
+        $(".budgetConditionalOptionsPositive").show();
+        $(".budgetConditionalOptionsNegative").hide();
+        $(".budgetConditionalOptionsEven").hide();
+    } else if (budgetDifferenceTotal < 0) {
+        $("#budgetConditionalTitle").show();
+        $(".budgetConditionalOptionsPositive").hide();
+        $(".budgetConditionalOptionsNegative").show();
+        $(".budgetConditionalOptionsEven").hide();
+    } else {
+        $("#budgetConditionalTitle").show();
+        $(".budgetConditionalOptionsPositive").hide();
+        $(".budgetConditionalOptionsNegative").hide();
+        $(".budgetConditionalOptionsEven").show();
+    }
+
+});
