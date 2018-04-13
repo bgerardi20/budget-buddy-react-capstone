@@ -14,14 +14,19 @@ let goalId = "";
 let budgetId = "";
 
 let date = new Date();
-let currentMonth = date.getMonth();
-if (currentMonth < 9) {
-    currentMonth = "0" + (currentMonth + 1);
-} else {
-    currentMonth = (currentMonth + 1);
-}
+let currentMonth = addLeadingZeroToMonthNumbers(date.getMonth());
+
 let currentYear = date.getFullYear();
 
+
+function addLeadingZeroToMonthNumbers(monthNumber) {
+    if (monthNumber < 9) {
+        monthNumber = "0" + (monthNumber + 1);
+    } else {
+        monthNumber = (monthNumber + 1);
+    }
+    return monthNumber;
+}
 
 
 $('select').change(function (month) {
@@ -223,31 +228,57 @@ function displayEditedGoalForm(dataOutput) {
 
 
 //budget monthly budget totals and conditional statement
-function displayMonthlyBudgetTotals(dataOutput) {
-    var buildTheHtmlOutput = "";
-
-    buildTheHtmlOutput += '<h1 id = "budgetTitle" > < i class = "fas fa-balance-scale logos" > < /i> Monthly Budgets</h1>';
-
-    $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
-
-        buildTheHtmlOutput += '<select class = "jsSelectMonth" >';
-        buildTheHtmlOutput += '<option class="jan" id = "january" value = "01" > January(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="feb" id = "february" value = "02" > February(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="mar" id = "march" value = "03" > March(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="apr" id = "april" value = "04" > April(' + +') selected< /option>';
-        buildTheHtmlOutput += '<option class="may" id = "may" value = "05" > May(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="jun" id = "june" value = "06" > June(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="jul" id = "july" value = "07" > July(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="aug" id = "august" value = "08" > August(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="sep" id = "september" value = "09" > September(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="oct" id = "october" value = "10" > October(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="nov" id = "november" value = "11" > November(' + +') < /option>';
-        buildTheHtmlOutput += '<option class="dec" id = "december" value = "12" > December(' + +') < /option>';
-        buildTheHtmlOutput += '< /select >';
+function prePopulateDateDropDown(inputDate) {
+    console.log(inputDate);
 
 
-    });
+
+    let inputDateArray = inputDate.split("-");
+    let inputDateYear = inputDateArray[0];
+    let inputDateMonth = inputDateArray[1];
+    console.log(inputDateArray, inputDateYear, (parseInt(inputDateMonth) + 6));
+
+    let buildTheHtmlOutput = "";
+    buildTheHtmlOutput += '<h1 id = "budgetTitle"> <i class = "fas fa-balance-scale logos"> </i> Monthly Budgets</h1>';
+    buildTheHtmlOutput += '<select class = "jsSelectMonth" >';
+
+    for (let thisMonth = (parseInt(inputDateMonth) - 12); thisMonth <= (parseInt(inputDateMonth) + 12); thisMonth++) {
+        let thisDisplayMonth = 0;
+        let thisDisplayYear = parseInt(inputDateYear);
+        if (thisMonth == 0) {
+            thisDisplayMonth = 12;
+            thisDisplayYear = parseInt(inputDateYear) - 1;
+        } else if (thisMonth < 0) {
+            thisDisplayMonth = 12 + thisMonth;
+            thisDisplayYear = parseInt(inputDateYear) - 1;
+        } else if (thisMonth >= 13) {
+            thisDisplayMonth = thisMonth - 12;
+            thisDisplayYear = parseInt(inputDateYear) + 1;
+        } else {
+            thisDisplayMonth = thisMonth;
+        }
+        console.log(thisMonth, inputDateYear, thisDisplayMonth, thisDisplayYear);
+        buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + thisDisplayMonth + '" > ' + thisDisplayYear + '-' + thisDisplayMonth + ' < /option>';
+        //        console.log(addLeadingZeroToMonthNumbers(thisMonth));
+    }
+
+
+
+
+
+
+    //for loop for the last 6-12 months
+    //    $.each(dataOutput, function (dataKey, dataValue) {
+    //        console.log(dataValue);
+    //        buildTheHtmlOutput += '<option value = "2018-01" > January(' + +') < /option>';
+    //    });
+
+    //current month
+    buildTheHtmlOutput += '<option value = "' + inputDate + '" > ' + inputDate + ' < /option>';
+    //for loop for the next 6-12 months
+
+
+    buildTheHtmlOutput += '</select >';
 
     buildTheHtmlOutput += '<div id = "budgetConditionalContainer" >';
     buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle" > You are.. < /h2>';
@@ -434,6 +465,8 @@ $(document).ready(function () {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+
+    prePopulateDateDropDown(currentYear + "-" + currentMonth);
 });
 
 //login button
