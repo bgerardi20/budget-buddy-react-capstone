@@ -312,6 +312,24 @@ app.get('/budgets/:userId', function (req, res) {
         });
 });
 
+app.get('/budget-by-month/:userId/:date', function (req, res) {
+    Budget
+        .find({
+            userId: req.params.userId
+        })
+        .then(function (budgets) {
+            res.json({
+                budgets
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
 // get goals from db
 app.get('/goals/:userId', function (req, res) {
     Goal

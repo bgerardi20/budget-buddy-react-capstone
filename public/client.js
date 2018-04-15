@@ -29,51 +29,6 @@ function addLeadingZeroToMonthNumbers(monthNumber) {
 }
 
 
-//$('select').change(function (month) {
-//    let selectedMonth = $('.jsSelectMonth option:selected').val();
-//    let date = new Date();
-//    let currentMonth = date.getMonth();
-//    if (currentMonth < 9) {
-//        currentMonth = "0" + (currentMonth + 1);
-//    } else {
-//        currentMonth = (currentMonth + 1);
-//    }
-//    let tableMonth = $('.row').val(currentMonth);
-//    console.log(currentMonth);
-//
-//    if (tableMonth == '01') {
-//        tableMonth.addClass('jan')
-//    } else if (tableMonth == '02') {
-//        tableMonth.addClass('feb')
-//    } else if (tableMonth == '03') {
-//        tableMonth.addClass('mar')
-//    } else if (tableMonth == '04') {
-//        tableMonth.addClass('apr')
-//    } else if (tableMonth == '05') {
-//        tableMonth.addClass('may')
-//    } else if (tableMonth == '06') {
-//        tableMonth.addClass('jun')
-//    } else if (tableMonth == '07') {
-//        tableMonth.addClass('jul')
-//    } else if (tableMonth == '08') {
-//        tableMonth.addClass('aug')
-//    } else if (tableMonth == '08') {
-//        tableMonth.addClass('sep')
-//    } else if (tableMonth == '10') {
-//        tableMonth.addClass('oct')
-//    } else if (tableMonth == '11') {
-//        tableMonth.addClass('nov')
-//    } else if (tableMonth == '12') {
-//        tableMonth.addClass('dec')
-//    }
-//    //value of one rows "difference" amount
-//    let selectedMonthAmount = $('.table div:nth-child(7)').val()
-//    //value of all the rows "difference" amount
-//    let totalMonthCombinded = '';
-//    totalMonthCombinded = totalMonthCombinded + selectedMonthTotal;
-//
-//});
-
 
 
 //display users budgets
@@ -226,12 +181,41 @@ function displayEditedGoalForm(dataOutput) {
     $(".editedGoalsOutterContainer").html(buildTheHtmlOutput);
 };
 
+function convertMonthNumberToMonthWord(monthNumber) {
+    let monthWord = "";
+    if (monthNumber == 1) {
+        monthWord = "January";
+    } else if (monthNumber == 2) {
+        monthWord = "February";
+    } else if (monthNumber == 3) {
+        monthWord = "March";
+    } else if (monthNumber == 4) {
+        monthWord = "April";
+    } else if (monthNumber == 5) {
+        monthWord = "May";
+    } else if (monthNumber == 6) {
+        monthWord = "June";
+    } else if (monthNumber == 7) {
+        monthWord = "July";
+    } else if (monthNumber == 8) {
+        monthWord = "August";
+    } else if (monthNumber == 9) {
+        monthWord = "September";
+    } else if (monthNumber == 10) {
+        monthWord = "October";
+    } else if (monthNumber == 11) {
+        monthWord = "November";
+    } else {
+        monthWord = "December";
+    }
+
+    return monthWord;
+
+}
+
 
 //budget monthly budget totals and conditional statement
 function prePopulateDateDropDown(inputDate) {
-    console.log(inputDate);
-
-
 
     let inputDateArray = inputDate.split("-");
     let inputDateYear = inputDateArray[0];
@@ -242,7 +226,11 @@ function prePopulateDateDropDown(inputDate) {
     buildTheHtmlOutput += '<h1 id = "budgetTitle"> <i class = "fas fa-balance-scale logos"> </i> Monthly Budgets</h1>';
     buildTheHtmlOutput += '<select class = "jsSelectMonth" >';
 
+
+    //    for loop for the last 6 months and the next 6 months
     for (let thisMonth = (parseInt(inputDateMonth) - 12); thisMonth <= (parseInt(inputDateMonth) + 12); thisMonth++) {
+
+        //convert the display month and year from the automaticaly generated values above
         let thisDisplayMonth = 0;
         let thisDisplayYear = parseInt(inputDateYear);
         if (thisMonth == 0) {
@@ -257,39 +245,54 @@ function prePopulateDateDropDown(inputDate) {
         } else {
             thisDisplayMonth = thisMonth;
         }
-        console.log(thisMonth, inputDateYear, thisDisplayMonth, thisDisplayYear);
-        buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + thisDisplayMonth + '" > ' + thisDisplayYear + '-' + thisDisplayMonth + ' < /option>';
-        //        console.log(addLeadingZeroToMonthNumbers(thisMonth));
+
+        //        select the current month in the dropp down
+        if ((thisDisplayYear == date.getFullYear()) && (thisDisplayMonth == (parseInt(date.getMonth()) + 1))) {
+            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers(thisDisplayMonth) + '" selected>';
+        } else {
+            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers(thisDisplayMonth) + '" >';
+        }
+        buildTheHtmlOutput += convertMonthNumberToMonthWord(thisDisplayMonth) + ' ' + thisDisplayYear;
+        buildTheHtmlOutput += '</option>';
     }
 
+    buildTheHtmlOutput += '</select>';
 
-
-
-
-
-    //for loop for the last 6-12 months
-    //    $.each(dataOutput, function (dataKey, dataValue) {
-    //        console.log(dataValue);
-    //        buildTheHtmlOutput += '<option value = "2018-01" > January(' + +') < /option>';
-    //    });
-
-    //current month
-    buildTheHtmlOutput += '<option value = "' + inputDate + '" > ' + inputDate + ' < /option>';
-    //for loop for the next 6-12 months
-
-
-    buildTheHtmlOutput += '</select >';
-
-    buildTheHtmlOutput += '<div id = "budgetConditionalContainer" >';
-    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle" > You are.. < /h2>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive" > UNDER BUDGET < /h4>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative" > OVER BUDGET < /h4>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle" > EVEN < /h4>';
-    buildTheHtmlOutput += '< /div >';
+    buildTheHtmlOutput += '<div id = "budgetConditionalContainer">';
+    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle"> You are.. </h2>';
+    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive"> UNDER BUDGET </h4>';
+    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative"> OVER BUDGET </h4>';
+    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle"> EVEN </h4>';
+    buildTheHtmlOutput += '</div>';
 
     $(".monthlyBudgetTotals").html(buildTheHtmlOutput);
 };
 
+function displayBudgetByMonth(userId, month) {
+    console.log(userId, month);
+    $.ajax({
+            type: "GET",
+            url: '/budget-by-month/' + userId + '/' + month,
+            dataType: 'json',
+        })
+        .done(function (dataOutput) {
+            console.log(dataOutput);
+            //displays the external api json object in the console
+            displayBudgetResult(dataOutput.budgets);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+//when another month is slected from the dropp down; show budget related to that month
+$(document).on('change', '.jsSelectMonth', function (event) {
+    event.preventDefault();
+    let userId = $(".loginUserId").val();
+    displayBudgetByMonth(userId, this.value);
+})
 
 
 //budget html output
@@ -1096,25 +1099,25 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
 
 
 
-$(document).on("change", ".jsSelectMonth", function (event) {
-    event.preventDefault();
-    let budgetDifferenceTotal = $(this).parent().find('.jsSelectMonth option:selected').val();;
-    console.log(budgetDifferenceTotal);
-    if (budgetDifferenceTotal > 0) {
-        $("#budgetConditionalTitle").show();
-        $(".budgetConditionalOptionsPositive").show();
-        $(".budgetConditionalOptionsNegative").hide();
-        $(".budgetConditionalOptionsEven").hide();
-    } else if (budgetDifferenceTotal < 0) {
-        $("#budgetConditionalTitle").show();
-        $(".budgetConditionalOptionsPositive").hide();
-        $(".budgetConditionalOptionsNegative").show();
-        $(".budgetConditionalOptionsEven").hide();
-    } else {
-        $("#budgetConditionalTitle").show();
-        $(".budgetConditionalOptionsPositive").hide();
-        $(".budgetConditionalOptionsNegative").hide();
-        $(".budgetConditionalOptionsEven").show();
-    }
-
-});
+//$(document).on("change", ".jsSelectMonth", function (event) {
+//    event.preventDefault();
+//    let budgetDifferenceTotal = $(this).parent().find('.jsSelectMonth option:selected').val();;
+//    console.log(budgetDifferenceTotal);
+//    if (budgetDifferenceTotal > 0) {
+//        $("#budgetConditionalTitle").show();
+//        $(".budgetConditionalOptionsPositive").show();
+//        $(".budgetConditionalOptionsNegative").hide();
+//        $(".budgetConditionalOptionsEven").hide();
+//    } else if (budgetDifferenceTotal < 0) {
+//        $("#budgetConditionalTitle").show();
+//        $(".budgetConditionalOptionsPositive").hide();
+//        $(".budgetConditionalOptionsNegative").show();
+//        $(".budgetConditionalOptionsEven").hide();
+//    } else {
+//        $("#budgetConditionalTitle").show();
+//        $(".budgetConditionalOptionsPositive").hide();
+//        $(".budgetConditionalOptionsNegative").hide();
+//        $(".budgetConditionalOptionsEven").show();
+//    }
+//
+//});
