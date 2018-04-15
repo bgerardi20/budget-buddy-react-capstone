@@ -69,7 +69,7 @@ h2 {
 }
 
 button {
-    width: 13%;
+    width: 17%;
     line-height: 30px;
     background-color: #395D79;
     border: 1px solid #4E4E4E;
@@ -96,7 +96,7 @@ form {
     margin-right: auto;
     margin-bottom: 2rem;
     color: #BC6F51;
-    padding: 5rem;
+    padding: 4rem;
     border-radius: 25px;
 }
 
@@ -116,9 +116,9 @@ i {
 
 label {
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     display: block;
-    margin-left: 1.8rem;
+    margin-left: 2.7rem;
     margin-bottom: 1px;
     padding-bottom: 3px;
     text-align: left;
@@ -127,8 +127,8 @@ label {
 input {
     background-color: #FFD5BF;
     color: #395D79;
-    /* text-shadow: 0.2px 0.2px #395D79; */
-    font-size: 20px;
+    text-shadow: 0.2px 0.2px #395D79;
+    font-size: 22px;
     text-align: left;
     line-height: 30px;
     padding: 3px;
@@ -142,9 +142,11 @@ input::placeholder {
     color: ##395D79;
 }
 
-strong {
-    color: #395D79;
+/*
+input[type="hidden"] {
+    display: none;
 }
+*/
 
 select {
     border: 1px solid black;
@@ -154,6 +156,12 @@ select {
 
 footer {
     padding: 1rem;
+}
+
+.footer:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #395D79;
+
 }
 
 h4 .logos {
@@ -175,6 +183,16 @@ h4 .logos {
     width: 100%;
     overflow-x: auto;
     border: 1px solid black
+}
+
+.loginMessage strong {
+    text-decoration: none;
+}
+
+.loginLink {
+    color: #395D79;
+    text-decoration: underline;
+    text-decoration-color: #395D79;
 }
 
 .row {
@@ -213,8 +231,8 @@ h4 .logos {
 }
 
 .loginTitle {
-    margin-top: -3rem;
-    margin-bottom: 3rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
     font-size: 2.5rem;
 
 }
@@ -229,11 +247,15 @@ h4 .logos {
 }
 
 .demoContainer {
+    /*
     margin-right: auto;
     margin-left: auto;
+*/
     border: 1px solid #395D79;
-    padding: 1.5rem 4rem;
+    padding: 2rem 3rem;
 }
+
+
 
 .homeSectionsInfo {
     background-color: #FFF6DD;
@@ -264,6 +286,8 @@ h4 .logos {
     margin-bottom: 1rem;
 }
 
+.formIcons {}
+
 
 
 
@@ -279,6 +303,7 @@ h4 .logos {
     padding: 3px;
     border: 1px solid #4E4E4E;
     border-radius: 3px;
+    width: 22%;
 }
 
 .logoHolder,
@@ -288,7 +313,7 @@ h4 .logos {
 }
 
 .logoHolder {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: 4rem;
 }
 
@@ -328,10 +353,9 @@ h4 .logos {
     margin-left: auto;
     margin-right: auto;
     border-right: 2px solid #FFD1BF;
-    padding-right: 0.7rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    width: 15%;
+    width: 20%;
     color: #395D79;
 }
 
@@ -350,6 +374,7 @@ h4 .logos {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    margin-top: 4rem;
 }
 
 .firstWelcomeMessage,
@@ -522,7 +547,7 @@ h4 .logos {
 @media only screen and (max-width: 1024px) {
 
     label {
-        margin-left: 0.6rem;
+        margin-left: 0.7rem;
     }
 
     input {
@@ -547,7 +572,7 @@ h4 .logos {
     .budgetForms,
     .editedGoalsOutterContainer,
     .editBudgetForms {
-        width: 60%;
+        width: 65%;
     }
 
     .homeSections {
@@ -595,7 +620,7 @@ h4 .logos {
     }
 
     label {
-        margin-left: 0.6rem;
+        margin-left: 0.7rem;
     }
 
     button {
@@ -684,15 +709,11 @@ h4 .logos {
     }
 
     form {
-        padding: 3.5rem;
-    }
-
-    span {
-        font-size: 4rem;
+        padding: 2rem;
     }
 
     label {
-        margin-left: 0.5rem;
+        margin-left: 0.6rem;
     }
 
     select {
@@ -702,6 +723,11 @@ h4 .logos {
     .logoHolder,
     .navList {
         width: 100%;
+    }
+
+    .quickView span {
+        font-size: 4rem;
+        color: #395D79;
     }
 
     .logoHolder {
@@ -721,7 +747,7 @@ h4 .logos {
     .budgetForms,
     .editedGoalsOutterContainer,
     .editBudgetForms {
-        width: 85%;
+        width: 90%;
     }
 
     .demoContainer {
@@ -730,8 +756,8 @@ h4 .logos {
 
     .loginTitle {
         margin-top: 0rem;
-        margin-bottom: 2rem;
-        font-size: 1.9rem;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
 
     }
 
@@ -774,8 +800,9 @@ h4 .logos {
     }
 
     .tableIcons {
-        padding: 1px;
-        font-size: 13.1px;
+        padding: 5px;
+        font-size: 23px;
+        display: block;
     }
 
     #budgetTitle,
@@ -816,6 +843,10 @@ h4 .logos {
         padding: 1.5rem;
     }
 
+    form .logos {
+        display: block;
+    }
+
     input {
         width: 100%;
         font-size: 18px;
@@ -824,12 +855,8 @@ h4 .logos {
     }
 
     label {
-        margin-left: 0.1rem;
+        margin-left: 0.2rem;
         font-size: 18px;
-    }
-
-    span {
-        font-size: 3.5rem;
     }
 
     select {
@@ -837,7 +864,7 @@ h4 .logos {
     }
 
     .navOptions {
-        width: 23%;
+        width: 24%;
         font-size: 12px;
     }
 
@@ -892,8 +919,12 @@ h4 .logos {
     }
 
     .tableIcons {
-        padding: 0.2px;
-        font-size: 13px;
+        padding: 6px;
+        font-size: 20px;
+    }
+
+    .loginTitle {
+        font-size: 2rem;
     }
 
     .homeSectionsTitle {

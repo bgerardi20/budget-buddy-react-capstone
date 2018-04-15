@@ -29,50 +29,50 @@ function addLeadingZeroToMonthNumbers(monthNumber) {
 }
 
 
-$('select').change(function (month) {
-    let selectedMonth = $('.jsSelectMonth option:selected').val();
-    let date = new Date();
-    let currentMonth = date.getMonth();
-    if (currentMonth < 9) {
-        currentMonth = "0" + (currentMonth + 1);
-    } else {
-        currentMonth = (currentMonth + 1);
-    }
-    let tableMonth = $('.row').val(currentMonth);
-    console.log(currentMonth);
-
-    if (tableMonth == '01') {
-        tableMonth.addClass('jan')
-    } else if (tableMonth == '02') {
-        tableMonth.addClass('feb')
-    } else if (tableMonth == '03') {
-        tableMonth.addClass('mar')
-    } else if (tableMonth == '04') {
-        tableMonth.addClass('apr')
-    } else if (tableMonth == '05') {
-        tableMonth.addClass('may')
-    } else if (tableMonth == '06') {
-        tableMonth.addClass('jun')
-    } else if (tableMonth == '07') {
-        tableMonth.addClass('jul')
-    } else if (tableMonth == '08') {
-        tableMonth.addClass('aug')
-    } else if (tableMonth == '08') {
-        tableMonth.addClass('sep')
-    } else if (tableMonth == '10') {
-        tableMonth.addClass('oct')
-    } else if (tableMonth == '11') {
-        tableMonth.addClass('nov')
-    } else if (tableMonth == '12') {
-        tableMonth.addClass('dec')
-    }
-    //value of one rows "difference" amount
-    let selectedMonthAmount = $('.table div:nth-child(7)').val()
-    //value of all the rows "difference" amount
-    let totalMonthCombinded = '';
-    totalMonthCombinded = totalMonthCombinded + selectedMonthTotal;
-
-});
+//$('select').change(function (month) {
+//    let selectedMonth = $('.jsSelectMonth option:selected').val();
+//    let date = new Date();
+//    let currentMonth = date.getMonth();
+//    if (currentMonth < 9) {
+//        currentMonth = "0" + (currentMonth + 1);
+//    } else {
+//        currentMonth = (currentMonth + 1);
+//    }
+//    let tableMonth = $('.row').val(currentMonth);
+//    console.log(currentMonth);
+//
+//    if (tableMonth == '01') {
+//        tableMonth.addClass('jan')
+//    } else if (tableMonth == '02') {
+//        tableMonth.addClass('feb')
+//    } else if (tableMonth == '03') {
+//        tableMonth.addClass('mar')
+//    } else if (tableMonth == '04') {
+//        tableMonth.addClass('apr')
+//    } else if (tableMonth == '05') {
+//        tableMonth.addClass('may')
+//    } else if (tableMonth == '06') {
+//        tableMonth.addClass('jun')
+//    } else if (tableMonth == '07') {
+//        tableMonth.addClass('jul')
+//    } else if (tableMonth == '08') {
+//        tableMonth.addClass('aug')
+//    } else if (tableMonth == '08') {
+//        tableMonth.addClass('sep')
+//    } else if (tableMonth == '10') {
+//        tableMonth.addClass('oct')
+//    } else if (tableMonth == '11') {
+//        tableMonth.addClass('nov')
+//    } else if (tableMonth == '12') {
+//        tableMonth.addClass('dec')
+//    }
+//    //value of one rows "difference" amount
+//    let selectedMonthAmount = $('.table div:nth-child(7)').val()
+//    //value of all the rows "difference" amount
+//    let totalMonthCombinded = '';
+//    totalMonthCombinded = totalMonthCombinded + selectedMonthTotal;
+//
+//});
 
 
 
@@ -188,7 +188,7 @@ function displayEditedGoalForm(dataOutput) {
     var buildTheHtmlOutput = "";
 
     buildTheHtmlOutput += '<form class="jsEditedGoalForm" method="POST">';
-    buildTheHtmlOutput += '<h2 class="loginTitle">Edit Goal</h2>';
+    buildTheHtmlOutput += '<h2 class="loginTitle"><i class="fas fa-tasks logos formIcons"></i> Edit Goal</h2>';
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataValue);
 
@@ -297,36 +297,6 @@ function displayBudgetResult(dataOutput) {
 
     var buildTheHtmlOutput = "";
 
-    //    buildTheHtmlOutput += '<h1 id="budgetTitle"><i class="fas fa-balance-scale logos"></i> Monthly Budgets</h1>';
-    //
-    //    buildTheHtmlOutput += '<select class="jsSelectMonth">';
-    //    buildTheHtmlOutput += '<option value="january">January 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="february">February 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="march">March 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="april">April 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="may">May 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="june">June 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="july">July 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="august">August 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="september">September 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="october">October 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="november">November 2018 ()</option>';
-    //    buildTheHtmlOutput += '<option value="december">December 2018 ()</option>';
-    //    buildTheHtmlOutput += '</select>';
-    //
-    //
-    //    buildTheHtmlOutput += '<div id = "budgetConditionalContainer" >';
-    //    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle" > You are.. < /h2>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive" > UNDER BUDGET < /h4>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative" > OVER BUDGET < /h4>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle" > EVEN < /h4>';
-    //    buildTheHtmlOutput += '< /div >';
-    //
-    //
-    //    buildTheHtmlOutput += '<div class = "expenseContainer" >';
-    //
-    //    buildTheHtmlOutput += '<div class = "table" >';
-
     buildTheHtmlOutput += '<div class="row rowTitle">';
     buildTheHtmlOutput += '<div class="cellTrans">Descritpion</div>';
     buildTheHtmlOutput += '<div class="cellTrans">Date</div>';
@@ -403,7 +373,7 @@ function displayEditedBudgetForm(dataOutput) {
     var buildTheHtmlOutput = "";
 
     buildTheHtmlOutput += '<form class="optionsForm" method="POST">';
-    buildTheHtmlOutput += '<h2 class="loginTitle">Edit Expense/Income</h2>';
+    buildTheHtmlOutput += '<h2 class="loginTitle"><i class="fas fa-balance-scale logos"></i> Edit Budget</h2>';
 
     $.each(dataOutput, function (dataKey, dataValue) {
         console.log(dataValue);
@@ -600,7 +570,6 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                         .done(function (result) {
                             loginUserId = result._id;
                             $(".loginUserId").val(loginUserId);
-                            //                            console.log(result);
                             alert('Thanks for registering! You may now login with your username and password.');
                             $(".introScreen").hide();
                             $(".quickView").hide();
@@ -977,7 +946,6 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
     };
     console.log(modifyGoalObject);
     // create ajax call to save the recipe//
-    //goals or goal????//
     $.ajax({
             type: 'PUT',
             url: '/goal/' + modifyGoalId,
@@ -1128,10 +1096,10 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
 
 
 
-$(document).on("click", ".jsSelectMonth", function (event) {
+$(document).on("change", ".jsSelectMonth", function (event) {
     event.preventDefault();
     let budgetDifferenceTotal = $(this).parent().find('.jsSelectMonth option:selected').val();;
-
+    console.log(budgetDifferenceTotal);
     if (budgetDifferenceTotal > 0) {
         $("#budgetConditionalTitle").show();
         $(".budgetConditionalOptionsPositive").show();

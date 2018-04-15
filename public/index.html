@@ -24,7 +24,7 @@
         <nav class="navContainer">
 
             <div class="logoHolder">
-                <h2 class="resultTitle"><span>Budget</span>Buddy</h2>
+                <h2 class="resultTitle"><span>Budget</span> Buddy</h2>
             </div>
 
             <div class="navList">
@@ -106,17 +106,12 @@
 
                 <form class="loginform" method="POST" autocomplete="off">
 
-                    <!--
-                    <input class="loginUserId" type="hidden" value="{ loginUserId }">
-                    <input class="loginUserName" type="hidden" value="">
--->
-
                     <h2 class="loginTitle">Welcome Back Buddy</h2>
 
                     <div class="demoContainer">
                         <h3 class="loginSubTitle">Demo Login:</h3>
-                        <h4 class="loginMessage">First Name: <strong>Demo</strong></h4>
-                        <h4 class="loginMessage">Password: <strong>user123</strong></h4>
+                        <h4 class="loginMessage">First Name: <strong class="loginLink">Demo</strong></h4>
+                        <h4 class="loginMessage">Password: <strong class="loginLink">user123</strong></h4>
 
                         <div class="formGroup">
                             <label class="label" for="firstName">First Name</label>
@@ -145,7 +140,7 @@
 
                     <h2 class="loginTitle">Register</h2>
                     <div class="demoContainer">
-                        <h4 class="loginMessage">Choose <strong>"Login"</strong> for demo version</h4>
+                        <h4 class="loginMessage">Choose <strong><a href="" class="loginLink">Login</a></strong> for demo version</h4>
 
 
                         <input class="loginUserId" type="hidden" value="">
@@ -179,7 +174,7 @@
             <div class="homeSectionsInfo">
 
                 <h1 class="homeSectionsTitle">
-                    <i class="fas fa-tasks logos" id="goals"></i> Financial Goals
+                    <i class="fas fa-tasks logos"></i> Financial Goals
                 </h1>
 
                 <div class="homeSectionsTable">
@@ -429,12 +424,10 @@
 
             <form class="optionsForm" method="POST">
 
-                <h2 class="loginTitle">Expense/Income</h2>
+                <h2 class="loginTitle"><i class="fas fa-balance-scale logos"></i> Add to Budget</h2>
+                <input class="loggedInUser" id="myHiddenField" type="hidden" value=""><br>
 
                 <div class="demoContainer">
-                    <div class="formGroup">
-                        <input class="loggedInUser" id="myHiddenField" type="hidden" value=""><br>
-                    </div>
                     <div class="formGroup">
                         <label class="label" for="description">Description</label>
                         <input class="formControl" id="budgetDescription" type="text" placeholder="Wedding" name="description" required>
@@ -523,12 +516,10 @@
 
             <form class="optionsForm" method="POST">
 
-                <h2 class="loginTitle">Goal</h2>
+                <h2 class="loginTitle"><i class="fas fa-tasks logos formIcons"></i> Add Goal</h2>
+                <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
 
                 <div class="demoContainer">
-                    <div class="formGroup">
-                        <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
-                    </div>
                     <div class="formGroup">
                         <label class="label" for="goalDescription">Description</label>
                         <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
