@@ -313,11 +313,25 @@ app.get('/budgets/:userId', function (req, res) {
 });
 
 app.get('/budget-by-month/:userId/:date', function (req, res) {
+    console.log(req.params.userId, req.params.date);
+    let dateStringToSearch = req.params.date;
+    console.log(dateStringToSearch);
+
+    //search for a date starting with the know year and month and having any day in that month
+    //more details about Mongo search LIKE : https://chartio.com/resources/tutorials/how-to-use-a-sql-like-statement-in-mongodb/
     Budget
         .find({
-            userId: req.params.userId
+            userId: req.params.userId,
+            date: {
+                //where the date is not bigger than 31 of the selected month
+                $lt: req.params.date + "-31",
+                //where the date is not smaller than 01 of the selected month
+                $gte: req.params.date + "-01"
+            }
         })
+        .sort('date')
         .then(function (budgets) {
+            console.log(budgets)
             res.json({
                 budgets
             });

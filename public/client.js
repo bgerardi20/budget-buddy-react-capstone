@@ -217,6 +217,8 @@ function convertMonthNumberToMonthWord(monthNumber) {
 //budget monthly budget totals and conditional statement
 function prePopulateDateDropDown(inputDate) {
 
+    let userId = $(".loginUserId").val();
+
     let inputDateArray = inputDate.split("-");
     let inputDateYear = inputDateArray[0];
     let inputDateMonth = inputDateArray[1];
@@ -248,12 +250,14 @@ function prePopulateDateDropDown(inputDate) {
 
         //        select the current month in the dropp down
         if ((thisDisplayYear == date.getFullYear()) && (thisDisplayMonth == (parseInt(date.getMonth()) + 1))) {
-            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers(thisDisplayMonth) + '" selected>';
+            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '" id = "select-' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '" selected>';
         } else {
-            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers(thisDisplayMonth) + '" >';
+            buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '"  id = "select-' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '">';
         }
         buildTheHtmlOutput += convertMonthNumberToMonthWord(thisDisplayMonth) + ' ' + thisDisplayYear;
+
         buildTheHtmlOutput += '</option>';
+        getDifferenceByUserByMonth(userId, (thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1))));
     }
 
     buildTheHtmlOutput += '</select>';
@@ -268,15 +272,40 @@ function prePopulateDateDropDown(inputDate) {
     $(".monthlyBudgetTotals").html(buildTheHtmlOutput);
 };
 
-function displayBudgetByMonth(userId, month) {
-    console.log(userId, month);
+function getDifferenceByUserByMonth(userId, date) {
+
     $.ajax({
             type: "GET",
-            url: '/budget-by-month/' + userId + '/' + month,
+            url: '/budget-by-month/' + userId + '/' + date,
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
+            //        console.log(dataOutput);
+            displayDifferenceByUserByMonth(dataOutput);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function displayDifferenceByUserByMonth(dataOutput) {
+    console.log(dataOutput);
+    let existingText = $("#select-2017-05").text();
+    $("#select-2018-04").text(existingText + " hi");
+    return 23;
+}
+
+function displayBudgetByMonth(userId, date) {
+    //    console.log(userId, date);
+    $.ajax({
+            type: "GET",
+            url: '/budget-by-month/' + userId + '/' + date,
+            dataType: 'json',
+        })
+        .done(function (dataOutput) {
+            //            console.log(dataOutput);
             //displays the external api json object in the console
             displayBudgetResult(dataOutput.budgets);
         })
@@ -314,7 +343,7 @@ function displayBudgetResult(dataOutput) {
     let budgetDifferenceTotal = 0;
 
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
+        //        console.log(dataValue);
 
         budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
         budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
@@ -439,7 +468,9 @@ $(document).ready(function () {
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
 
-    prePopulateDateDropDown(currentYear + "-" + currentMonth);
+
+
+
 });
 
 //login button
@@ -507,6 +538,14 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
                 $(".resultTitle span").text(titleCase(result.name) + "'s ");
                 $(".loginUserId").val(loginUserId);
                 $(".loginUserName").val(loginUserName);
+
+                prePopulateDateDropDown(currentYear + "-" + currentMonth);
+
+
+                //prepopulate the budget table with the current month values for the loggedin user
+                displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
+
+
                 $(".introScreen").hide();
                 $(".quickView").hide();
                 $(".loginScreen").hide();
