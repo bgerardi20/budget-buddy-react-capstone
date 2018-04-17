@@ -28,9 +28,6 @@ function addLeadingZeroToMonthNumbers(monthNumber) {
     return monthNumber;
 }
 
-
-
-
 //display users budgets
 function displayBudgets(userId) {
     console.log(userId);
@@ -262,12 +259,13 @@ function prePopulateDateDropDown(inputDate) {
 
     buildTheHtmlOutput += '</select>';
 
-    buildTheHtmlOutput += '<div id = "budgetConditionalContainer">';
-    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle"> You are.. </h2>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive"> UNDER BUDGET </h4>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative"> OVER BUDGET </h4>';
-    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle"> EVEN </h4>';
-    buildTheHtmlOutput += '</div>';
+    //display you are over or under budget
+    //    buildTheHtmlOutput += '<div id = "budgetConditionalContainer" class="">';
+    //    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle"> You are.. </h2>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive"> UNDER BUDGET </h4>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative"> OVER BUDGET </h4>';
+    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle"> EVEN </h4>';
+    //    buildTheHtmlOutput += '</div>';
 
     $(".monthlyBudgetTotals").html(buildTheHtmlOutput);
 };
@@ -281,7 +279,7 @@ function getDifferenceByUserByMonth(userId, date) {
         })
         .done(function (dataOutput) {
             //        console.log(dataOutput);
-            displayDifferenceByUserByMonth(dataOutput);
+            displayDifferenceByUserByMonth(dataOutput.budgets, date);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -290,11 +288,42 @@ function getDifferenceByUserByMonth(userId, date) {
         });
 }
 
-function displayDifferenceByUserByMonth(dataOutput) {
-    console.log(dataOutput);
-    let existingText = $("#select-2017-05").text();
-    $("#select-2018-04").text(existingText + " (hi)");
-    return 23;
+function displayDifferenceByUserByMonth(dataOutput, date) {
+    //    console.log(dataOutput);
+    //define a value for the total difference per month
+    let monthTotalDifference = 0;
+    //    parse the results object
+    $.each(dataOutput, function (dataKey, dataValue) {
+        //if the data is income create the month difference as actual - budgeted
+        if (dataValue.type == "income") {
+            monthTotalDifference += parseFloat(dataValue.actual) - parseFloat(dataValue.budgeted);
+        }
+        //if the data is expense create the month difference as budgeted - actual
+        else {
+            monthTotalDifference += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
+        }
+    });
+    console.log(monthTotalDifference);
+    //get the existing value of the select
+    let existingText = $("#select-" + date).text();
+    //and add the total difference per month to it
+    $("#select-" + date).text(existingText + " (" + monthTotalDifference.toFixed(2) + ")");
+
+    //display you are over or under budget
+    //    $("#budgetConditionalContainer h4").hide();
+    //    if (monthTotalDifference > 0) {
+    //                $("." + date + " .budgetConditionalOptionsPositive").show();
+    //        $(".budgetConditionalOptionsPositive").show();
+    //    } else if (monthTotalDifference < 0) {
+    //                $("." + date + " .budgetConditionalOptionsNegative").show();
+    //        $(" .budgetConditionalOptionsNegative").show();
+    //    } else if (monthTotalDifference == 0) {
+    //                $("." + date + " .budgetConditionalOptionsEven").show();
+    //        $(" .budgetConditionalOptionsEven").show();
+    //    } else {
+    //                $("#budgetConditionalContainer h4").hide();
+    //    }
+    //        monthTotalDifference = 0;
 }
 
 
@@ -323,6 +352,9 @@ function displayBudgetByMonth(userId, date) {
 $(document).on('change', '.jsSelectMonth', function (event) {
     event.preventDefault();
     let userId = $(".loginUserId").val();
+    //display you are over or under budget
+    //    $("#budgetConditionalContainer").attr('class', '');
+    //    $("#budgetConditionalContainer").addClass(this.value);
     displayBudgetByMonth(userId, this.value);
 })
 
@@ -350,7 +382,7 @@ function displayBudgetResult(dataOutput) {
 
         budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
         budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
-        budgetDifferenceTotal = budgetDifferenceTotal + parseFloat(dataValue.budgeted - dataValue.actual);
+
 
         buildTheHtmlOutput += '<div class="row">';
 
@@ -379,6 +411,12 @@ function displayBudgetResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
         }
 
+        if (dataValue.type === 'expense') {
+            budgetDifferenceTotal += parseFloat(dataValue.budgeted - dataValue.actual);
+        } else {
+            budgetDifferenceTotal += parseFloat(dataValue.actual - dataValue.budgeted);
+        }
+
         buildTheHtmlOutput += '<a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="tableTriggerBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
@@ -391,9 +429,9 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
     buildTheHtmlOutput += '<div class="cellTrans">' + budgetBudgetTotal.toFixed(2) + '</div>';
     buildTheHtmlOutput += '<div class="cellTrans">' + budgetActualTotal.toFixed(2) + ' </div>';
-    if ((budgetActualTotal - budgetBudgetTotal) >= 0) {
+    if (budgetDifferenceTotal < 0) {
         buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal">$' + budgetDifferenceTotal.toFixed(2) + '</div>';
-    } else if ((budgetActualTotal - budgetBudgetTotal) < 0) {
+    } else if (budgetDifferenceTotal >= 0) {
         buildTheHtmlOutput += '<div class="cellTrans positive" id="goalTotal">$' + budgetDifferenceTotal.toFixed(2) + '</div>';
     }
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
@@ -476,7 +514,7 @@ $(document).ready(function () {
 
 });
 
-//login button
+//LOGIN button
 $(document).on("click", ".jsLoginButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -490,7 +528,7 @@ $(document).on("click", ".jsLoginButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//register button
+//REGISTER button
 $(document).on("click", ".jsRegisterButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -504,7 +542,7 @@ $(document).on("click", ".jsRegisterButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//user loging in
+//user LOGGING IN API
 $(document).on("click", ".jsSubmitloginButton", function (event) {
     event.preventDefault();
     //get input from the user//
@@ -569,7 +607,7 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
 
 });
 
-//user registration
+//user REGISTERING API
 $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     event.preventDefault();
     //get input from the user//
@@ -643,7 +681,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     };
 });
 
-//nav item
+//NAV item (HOME)
 $(document).on("click", ".jsHomeNav", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -657,7 +695,7 @@ $(document).on("click", ".jsHomeNav", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//nav item
+//NAV item (BUDGET)
 $(document).on("click", ".jsBudgetNav", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -671,7 +709,7 @@ $(document).on("click", ".jsBudgetNav", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//nav item
+//NAV item (GOAL)
 $(document).on("click", ".jsGoalNav", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -685,7 +723,7 @@ $(document).on("click", ".jsGoalNav", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//nav item
+//NAV item (LOGOUT)
 $(document).on("click", ".jsLogoutNav", function (event) {
     event.preventDefault();
     $(".introScreen").show();
@@ -699,7 +737,7 @@ $(document).on("click", ".jsLogoutNav", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//copy goal icon button
+//COPY GOAL ICON button
 $(document).on("click", ".jsCopyGoalButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -713,7 +751,7 @@ $(document).on("click", ".jsCopyGoalButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//edit goal icon button
+//EDIT GOAL ICON button API
 $(document).on("click", ".tableTriggerGoalButton", function (event) {
     event.preventDefault();
 
@@ -746,7 +784,7 @@ $(document).on("click", ".tableTriggerGoalButton", function (event) {
 
 });
 
-//delete goal icon button
+//DELETE GOAL ICON button
 $(document).on("click", ".jsDeleteGoalButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -760,7 +798,7 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//copy budget icon button
+//COPY BUDGET ICON button
 $(document).on("click", ".jsCopyBudgetButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -774,7 +812,7 @@ $(document).on("click", ".jsCopyBudgetButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//edit budget icon button
+//EDIT BUDGET ICON button API
 $(document).on("click", ".tableTriggerBudgetButton", function (event) {
     event.preventDefault();
 
@@ -808,7 +846,7 @@ $(document).on("click", ".tableTriggerBudgetButton", function (event) {
 
 });
 
-//delete budget icon button
+//DELETE BUDGET ICON button
 $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -822,7 +860,7 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//add budget transaction form button
+//ADD BUDGET transaction FORM button
 $(document).on("click", "#addBudgetFormButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -837,7 +875,7 @@ $(document).on("click", "#addBudgetFormButton", function (event) {
 
 });
 
-//add goal form button
+//ADD GOAL FORM button
 $(document).on("click", "#addGoalFormButton", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -851,7 +889,7 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//create budgets for user
+//CREATE BUDGETS for user API
 $(document).on("click", "#saveBudgetForm", function (event) {
     event.preventDefault();
     //get input from the user//
@@ -913,7 +951,59 @@ $(document).on("click", "#saveBudgetForm", function (event) {
     };
 });
 
-//cancel button when adding budget item
+//EDIT BUDGET API
+$(document).on("click", "#editSaveBudgetForm", function (event) {
+    event.preventDefault();
+    let modifyBudgetId = $(this).parent().parent().parent().find('#modifyBudgetId').val();
+
+    let modifyBudgetDescription = $('#editBudgetDescription').val();
+    let modifyBudgetDate = $('#editBudgetDate').val();
+    let modifyBudgetBudgeted = $('#editBudgetBudgeted').val();
+    let modifyBudgetActual = $('#editBudgetActual').val();
+    let modifyBudgetType = $('#editBudgetType').val();
+
+    const modifyBudgetObject = {
+        description: modifyBudgetDescription,
+        date: modifyBudgetDate,
+        budgeted: modifyBudgetBudgeted,
+        actual: modifyBudgetActual,
+        type: modifyBudgetType,
+        budgetId: modifyBudgetId
+    };
+    console.log(modifyBudgetObject);
+    // create ajax call to save the recipe//
+    $.ajax({
+            type: 'PUT',
+            url: '/budget/' + modifyBudgetId,
+            dataType: 'json',
+            data: JSON.stringify(modifyBudgetObject),
+            contentType: 'application/json'
+        })
+        //if save is successful
+        .done(function (result) {
+
+            console.log(result);
+            displayBudgets(loginUserId);
+            alert('budget has been saved');
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").show();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
+        })
+        //if save fails
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+//CANCEL button when ADDING BUDGET item
 $(document).on("click", "#cancelBudgetForm", function (event) {
     event.preventDefault();
     $(".introScreen").hide();
@@ -927,7 +1017,40 @@ $(document).on("click", "#cancelBudgetForm", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//create goals for user
+//DELETE BUDGET API
+$(document).on("click", ".jsDeleteBudgetButton", function (event) {
+    event.preventDefault();
+    let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
+    console.log(modifyBudgetId);
+    $.ajax({
+            type: 'DELETE',
+            url: '/budgets/' + modifyBudgetId,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+
+        .done(function (result) {
+            displayBudgets(loginUserId);
+            alert('entry has been deleted');
+            $(".introScreen").hide();
+            $(".quickView").hide();
+            $(".loginScreen").hide();
+            $(".registerScreen").hide();
+            $(".homeScreen").show();
+            $(".homeScreenBudget").hide();
+            $(".homeScreenGoals").hide();
+            $(".editHomeScreenBudget").hide();
+            $(".editHomeScreenGoals").hide();
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+//CREATE GOALS for user API
 $(document).on("click", "#saveGoalForm", function (event) {
     event.preventDefault();
     //get input from the user//
@@ -985,21 +1108,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
     };
 });
 
-//cancel button when adding budget item
-$(document).on("click", "#cancelGoalForm", function (event) {
-    event.preventDefault();
-    $(".introScreen").hide();
-    $(".quickView").hide();
-    $(".loginScreen").hide();
-    $(".registerScreen").hide();
-    $(".homeScreen").show();
-    $(".homeScreenBudget").hide();
-    $(".homeScreenGoals").hide();
-    $(".editHomeScreenBudget").hide();
-    $(".editHomeScreenGoals").hide();
-});
-
-//modify(edited) goal
+//EDIT GOALS API
 $(document).on("click", "#editSaveGoalForm", function (event) {
     event.preventDefault();
     let modifyGoalId = $(this).parent().parent().parent().find("#modifyGoalId").val();
@@ -1047,59 +1156,21 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
         });
 });
 
-//modify(edited) budget
-$(document).on("click", "#editSaveBudgetForm", function (event) {
+//CANCEL button when ADDING GOAL item
+$(document).on("click", "#cancelGoalForm", function (event) {
     event.preventDefault();
-    let modifyBudgetId = $(this).parent().parent().parent().find('#modifyBudgetId').val();
-
-    let modifyBudgetDescription = $('#editBudgetDescription').val();
-    let modifyBudgetDate = $('#editBudgetDate').val();
-    let modifyBudgetBudgeted = $('#editBudgetBudgeted').val();
-    let modifyBudgetActual = $('#editBudgetActual').val();
-    let modifyBudgetType = $('#editBudgetType').val();
-
-    const modifyBudgetObject = {
-        description: modifyBudgetDescription,
-        date: modifyBudgetDate,
-        budgeted: modifyBudgetBudgeted,
-        actual: modifyBudgetActual,
-        type: modifyBudgetType,
-        budgetId: modifyBudgetId
-    };
-    console.log(modifyBudgetObject);
-    // create ajax call to save the recipe//
-    $.ajax({
-            type: 'PUT',
-            url: '/budget/' + modifyBudgetId,
-            dataType: 'json',
-            data: JSON.stringify(modifyBudgetObject),
-            contentType: 'application/json'
-        })
-        //if save is successful
-        .done(function (result) {
-
-            console.log(result);
-            displayBudgets(loginUserId);
-            alert('budget has been saved');
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-            $(".editHomeScreenBudget").hide();
-            $(".editHomeScreenGoals").hide();
-        })
-        //if save fails
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").hide();
+    $(".registerScreen").hide();
+    $(".homeScreen").show();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
-//delete goal
+//DELETE GOAL API
 $(document).on("click", ".jsDeleteGoalButton", function (event) {
     event.preventDefault();
     let modifyGoalId = $(this).parent().parent().parent().find('#modifyGoalId').val();
@@ -1132,42 +1203,7 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
         });
 });
 
-//delete budget
-$(document).on("click", ".jsDeleteBudgetButton", function (event) {
-    event.preventDefault();
-    let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
-    console.log(modifyBudgetId);
-    $.ajax({
-            type: 'DELETE',
-            url: '/budgets/' + modifyBudgetId,
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-
-        .done(function (result) {
-            displayBudgets(loginUserId);
-            alert('entry has been deleted');
-            $(".introScreen").hide();
-            $(".quickView").hide();
-            $(".loginScreen").hide();
-            $(".registerScreen").hide();
-            $(".homeScreen").show();
-            $(".homeScreenBudget").hide();
-            $(".homeScreenGoals").hide();
-            $(".editHomeScreenBudget").hide();
-            $(".editHomeScreenGoals").hide();
-        })
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-});
-
-
-
-
+//show UNDER, OVER, EVEN condiotnal for specific months budget
 //$(document).on("change", ".jsSelectMonth", function (event) {
 //    event.preventDefault();
 //    let budgetDifferenceTotal = $(this).parent().find('.jsSelectMonth option:selected').val();;
