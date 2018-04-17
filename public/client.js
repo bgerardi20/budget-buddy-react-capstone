@@ -293,9 +293,12 @@ function getDifferenceByUserByMonth(userId, date) {
 function displayDifferenceByUserByMonth(dataOutput) {
     console.log(dataOutput);
     let existingText = $("#select-2017-05").text();
-    $("#select-2018-04").text(existingText + " hi");
+    $("#select-2018-04").text(existingText + " (hi)");
     return 23;
 }
+
+
+
 
 function displayBudgetByMonth(userId, date) {
     //    console.log(userId, date);
@@ -910,6 +913,19 @@ $(document).on("click", "#saveBudgetForm", function (event) {
     };
 });
 
+//cancel button when adding budget item
+$(document).on("click", "#cancelBudgetForm", function (event) {
+    event.preventDefault();
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").hide();
+    $(".registerScreen").hide();
+    $(".homeScreen").show();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
+});
 
 //create goals for user
 $(document).on("click", "#saveGoalForm", function (event) {
@@ -967,6 +983,20 @@ $(document).on("click", "#saveGoalForm", function (event) {
                 console.log(errorThrown);
             });
     };
+});
+
+//cancel button when adding budget item
+$(document).on("click", "#cancelGoalForm", function (event) {
+    event.preventDefault();
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").hide();
+    $(".registerScreen").hide();
+    $(".homeScreen").show();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //modify(edited) goal
