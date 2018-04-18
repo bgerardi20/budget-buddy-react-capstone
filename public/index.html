@@ -15,11 +15,6 @@
 <body>
 
     <header class="headerContainer">
-        <!--
-
-        <input class="loginUserId" type="hidden" value="">
-        <input class="loginUserName" type="hidden" value="">
--->
 
         <nav class="navContainer">
 
@@ -48,6 +43,41 @@
                         <i class="fas fa-sign-out-alt logos"></i> Logout
                     </h4>
                 </a>
+            </div>
+
+        </nav>
+
+        <nav class="preLoginNavContainer">
+
+            <div class="logoHolder">
+                <h2 class="resultTitle"><span>Budget</span> Buddy</h2>
+            </div>
+
+            <div class="navList">
+                <a href="" class="navOptions jsSignIn">
+                    <h4>
+                        <i class="fas fa-home logos"></i> Sign In
+                    </h4>
+                </a>
+
+                <a href="" class="navOptions jsRegister">
+                    <h4>
+                        <i class="fas fa-balance-scale logos"></i> Register
+                    </h4>
+                </a>
+                <!--
+                <a href="" class="navOptions jsGoalNav">
+                    <h4>
+                        <i class="fas fa-tasks logos"></i> Goal
+                    </h4>
+                </a>
+                <a href="" class="navOptions jsLogoutNav">
+                    <h4>
+                        <i class="fas fa-sign-out-alt logos"></i> Logout
+                    </h4>
+                </a>
+-->
+
             </div>
 
         </nav>
@@ -112,7 +142,7 @@
                         <h3 class="loginSubTitle">Demo Login:</h3>
                         <h4 class="loginMessage">First Name: <strong class="loginLink">Demo</strong></h4>
                         <h4 class="loginMessage">Password: <strong class="loginLink">user123</strong></h4>
-
+                        <!---------------------------------------take out value before turning in!!!!!!---------------------------------------->
                         <div class="formGroup">
                             <label class="label" for="firstName">First Name</label>
                             <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="Demo" required>
@@ -155,7 +185,7 @@
                         </div>
                         <div class="formGroup">
                             <label class="label" for="confirmPassword">Confirm Password</label>
-                            <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Password" name="confirmPassword" value="" required>
+                            <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" value="" required>
                         </div>
 
                         <button class="formButton jsSubmitRegisterButton" type="submit">Register</button>
@@ -426,7 +456,7 @@
 
         <div class="budgetForms">
 
-            <form class="optionsForm" method="POST">
+            <form class="optionsForm" id="myBudgetForm" method="POST">
 
                 <h2 class="loginTitle"><i class="fas fa-balance-scale logos"></i> Add to Budget</h2>
                 <input class="loggedInUser" id="myHiddenField" type="hidden" value=""><br>
@@ -438,15 +468,15 @@
                     </div>
                     <div class="formGroup">
                         <label class="label" for="date">Date</label>
-                        <input class="formControl" id="budgetDate" type="string" value="2018-03-07" placeholder="03/01/2018" name="date" required>
+                        <input class="formControl" id="budgetDate" type="string" placeholder="YYYY-MM-DD" name="date" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="budgeted">Budgeted</label>
-                        <input class="formControl" id="budgetBudgeted" type="string" placeholder="$200.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="budgetBudgeted" type="number" placeholder="200" name="budgeted" min="0.00" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="actual">Actual</label>
-                        <input class="formControl" id="budgetActual" type="string" placeholder="$400.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="budgetActual" type="number" placeholder="400" name="actual" min="0.00" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="type">Type</label>
@@ -518,7 +548,7 @@
 
         <div class="goalsOutterContainer">
 
-            <form class="optionsForm" method="POST">
+            <form class="optionsForm" id="myGoalForm" method="POST">
 
                 <h2 class="loginTitle"><i class="fas fa-tasks logos formIcons"></i> Add Goal</h2>
                 <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
@@ -530,15 +560,15 @@
                     </div>
                     <div class="formGroup">
                         <label class="label" for="date">Date</label>
-                        <input class="formControl" id="goalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
+                        <input class="formControl" id="goalDate" type="string" placeholder="YYYY-MM-DD" name="date" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="budgetedGoal">Budgeted</label>
-                        <input class="formControl" id="budgetedGoal" type="number" placeholder="$2,000.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="budgetedGoal" type="number" placeholder="2,000" name="budgeted" min="0" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
                         <label class="label" for="actualGoal">Actual</label>
-                        <input class="formControl" id="actualGoal" type="number" placeholder="$200.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
+                        <input class="formControl" id="actualGoal" type="number" placeholder="200" name="actual" min="0" max="100,000,000" step="1" required>
                     </div>
                     <div class="formButtonsContainer">
                         <button class="formButton" id="saveGoalForm" type="submit">Add</button>

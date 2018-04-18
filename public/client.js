@@ -28,6 +28,38 @@ function addLeadingZeroToMonthNumbers(monthNumber) {
     return monthNumber;
 }
 
+function convertMonthNumberToMonthWord(monthNumber) {
+    let monthWord = "";
+    if (monthNumber == 1) {
+        monthWord = "January";
+    } else if (monthNumber == 2) {
+        monthWord = "February";
+    } else if (monthNumber == 3) {
+        monthWord = "March";
+    } else if (monthNumber == 4) {
+        monthWord = "April";
+    } else if (monthNumber == 5) {
+        monthWord = "May";
+    } else if (monthNumber == 6) {
+        monthWord = "June";
+    } else if (monthNumber == 7) {
+        monthWord = "July";
+    } else if (monthNumber == 8) {
+        monthWord = "August";
+    } else if (monthNumber == 9) {
+        monthWord = "September";
+    } else if (monthNumber == 10) {
+        monthWord = "October";
+    } else if (monthNumber == 11) {
+        monthWord = "November";
+    } else {
+        monthWord = "December";
+    }
+
+    return monthWord;
+
+}
+
 //display users budgets
 function displayBudgets(userId) {
     console.log(userId);
@@ -178,37 +210,6 @@ function displayEditedGoalForm(dataOutput) {
     $(".editedGoalsOutterContainer").html(buildTheHtmlOutput);
 };
 
-function convertMonthNumberToMonthWord(monthNumber) {
-    let monthWord = "";
-    if (monthNumber == 1) {
-        monthWord = "January";
-    } else if (monthNumber == 2) {
-        monthWord = "February";
-    } else if (monthNumber == 3) {
-        monthWord = "March";
-    } else if (monthNumber == 4) {
-        monthWord = "April";
-    } else if (monthNumber == 5) {
-        monthWord = "May";
-    } else if (monthNumber == 6) {
-        monthWord = "June";
-    } else if (monthNumber == 7) {
-        monthWord = "July";
-    } else if (monthNumber == 8) {
-        monthWord = "August";
-    } else if (monthNumber == 9) {
-        monthWord = "September";
-    } else if (monthNumber == 10) {
-        monthWord = "October";
-    } else if (monthNumber == 11) {
-        monthWord = "November";
-    } else {
-        monthWord = "December";
-    }
-
-    return monthWord;
-
-}
 
 //budget monthly budget totals and conditional statement
 function prePopulateDateDropDown(inputDate) {
@@ -294,8 +295,6 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
     //    parse the results object
     $.each(dataOutput, function (dataKey, dataValue) {
         //if the data is income create the month difference as actual - budgeted
-
-
         if (dataValue.type == "income") {
             monthTotalDifference += parseFloat(dataValue.actual) - parseFloat(dataValue.budgeted);
         }
@@ -303,9 +302,6 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
         else {
             monthTotalDifference += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
         }
-
-
-
     });
     console.log(monthTotalDifference);
     //get the existing value of the select
@@ -329,9 +325,6 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
     //    }
     //        monthTotalDifference = 0;
 }
-
-
-
 
 function displayBudgetByMonth(userId, date) {
     //    console.log(userId, date);
@@ -430,7 +423,6 @@ function displayBudgetResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
         }
 
-
         //continously adding the values together for actual and  budgeted
         if (dataValue.type === 'expense') {
             budgetDifferenceTotal += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
@@ -443,7 +435,6 @@ function displayBudgetResult(dataOutput) {
         }
 
         console.log(budgetDifferenceTotal);
-        //        buildTheHtmlOutput += '<a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="tableTriggerBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
         buildTheHtmlOutput += '</div>';
@@ -504,8 +495,11 @@ function displayEditedBudgetForm(dataOutput) {
         buildTheHtmlOutput += '<div class="formGroup">';
         buildTheHtmlOutput += '<label class="label" for="type">Type</label>';
         buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue[0].type + '">';
-        buildTheHtmlOutput += '<option value="expense">Expense</option>';
-        buildTheHtmlOutput += '<option value="income">Income</option>';
+        if (dataValue[0].type == "expense") {
+            buildTheHtmlOutput += '<option value="expense" selected>Expense</option>';
+        } else {
+            buildTheHtmlOutput += '<option value="income" selected>Income</option>';
+        }
         buildTheHtmlOutput += '</select>';
         buildTheHtmlOutput += '</div>';
     });
@@ -534,10 +528,8 @@ $(document).ready(function () {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-
-
-
-
+    $(".preLoginNavContainer").show();
+    $(".navContainer").hide();
 });
 
 //LOGIN button
@@ -552,6 +544,8 @@ $(document).on("click", ".jsLoginButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").show();
+    $(".navContainer").hide();
 });
 
 //REGISTER button
@@ -566,6 +560,8 @@ $(document).on("click", ".jsRegisterButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").show();
+    $(".navContainer").hide();
 });
 
 //user LOGGING IN API
@@ -605,14 +601,9 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
                 $(".resultTitle span").text(titleCase(result.name) + "'s ");
                 $(".loginUserId").val(loginUserId);
                 $(".loginUserName").val(loginUserName);
-
                 prePopulateDateDropDown(currentYear + "-" + currentMonth);
-
-
                 //prepopulate the budget table with the current month values for the loggedin user
-                displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
-
-
+                displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth)
                 $(".introScreen").hide();
                 $(".quickView").hide();
                 $(".loginScreen").hide();
@@ -622,6 +613,8 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
+                $(".preLoginNavContainer").hide();
+                $(".navContainer").show();
             })
             //if sign in fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -689,6 +682,8 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                             $(".homeScreenGoals").hide();
                             $(".editHomeScreenBudget").hide();
                             $(".editHomeScreenGoals").hide();
+                            $(".preLoginNavContainer").show();
+                            $(".navContainer").hide();
                         })
                         //if registration fails
                         .fail(function (jqXHR, error, errorThrown) {
@@ -719,6 +714,8 @@ $(document).on("click", ".jsHomeNav", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 });
 
 //NAV item (BUDGET)
@@ -733,6 +730,8 @@ $(document).on("click", ".jsBudgetNav", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 });
 
 //NAV item (GOAL)
@@ -747,13 +746,20 @@ $(document).on("click", ".jsGoalNav", function (event) {
     $(".homeScreenGoals").show();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 });
 
 //NAV item (LOGOUT)
 $(document).on("click", ".jsLogoutNav", function (event) {
     event.preventDefault();
+    loginUserName = "";
+    loginUserId = "";
     $(".introScreen").show();
     $(".quickView").show();
+    $(".preLoginNavContainer").show();
+    $(".navContainer").hide();
+
     $(".loginScreen").hide();
     $(".registerScreen").hide();
     $(".homeScreen").hide();
@@ -761,6 +767,7 @@ $(document).on("click", ".jsLogoutNav", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+
 });
 
 //EDIT GOAL ICON button API
@@ -787,6 +794,8 @@ $(document).on("click", ".tableTriggerGoalButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").show();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -808,20 +817,8 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-});
-
-//COPY BUDGET ICON button
-$(document).on("click", ".jsCopyBudgetButton", function (event) {
-    event.preventDefault();
-    $(".introScreen").hide();
-    $(".quickView").hide();
-    $(".loginScreen").hide();
-    $(".registerScreen").hide();
-    $(".homeScreen").show();
-    $(".homeScreenBudget").hide();
-    $(".homeScreenGoals").hide();
-    $(".editHomeScreenBudget").hide();
-    $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 });
 
 //EDIT BUDGET ICON button API
@@ -849,6 +846,8 @@ $(document).on("click", ".tableTriggerBudgetButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").show();
             $(".editHomeScreenGoals").hide();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -870,6 +869,8 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 
 });
 
@@ -885,6 +886,8 @@ $(document).on("click", "#addBudgetFormButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 
 });
 
@@ -900,6 +903,8 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".homeScreenGoals").show();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
 });
 
 //CREATE BUDGETS for user API
@@ -944,8 +949,9 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             //if budget creation is successful
             .done(function (result) {
                 //                displayBudgets(userIdHidden);
-                displayBudgetByMonth(userIdHidden);
-                //                prePopulateDateDropDown;
+                //                displayBudgetByMonth(userIdHidden);
+                displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
+                prePopulateDateDropDown(currentYear + "-" + currentMonth);
                 console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();
@@ -956,6 +962,11 @@ $(document).on("click", "#saveBudgetForm", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
+            $(".preLoginNavContainer").hide();
+            $(".navContainer").show();
+
+                $('#myBudgetForm')[0].reset();
+
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -999,7 +1010,9 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
 
             console.log(result);
             //            displayBudgets(loginUserId);
-            displayBudgetByMonth(loginUserId);
+            //            displayBudgetByMonth(loginUserId);
+            displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
+            prePopulateDateDropDown(currentYear + "-" + currentMonth);
             alert('budget has been saved');
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -1010,6 +1023,8 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -1031,6 +1046,25 @@ $(document).on("click", "#cancelBudgetForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
+    displayBudgetByMonth;
+});
+
+//CANCEL button when ADDING BUDGET item from edited form
+$(document).on("click", "#editCancelBudgetForm", function (event) {
+    event.preventDefault();
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").hide();
+    $(".registerScreen").hide();
+    $(".homeScreen").show();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
     displayBudgetByMonth;
 });
 
@@ -1047,7 +1081,9 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
         })
 
         .done(function (result) {
-            displayBudgets(loginUserId);
+            //            displayBudgets(loginUserId);
+            //        getDifferenceByUserByMonth()
+            displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
             //            displayBudgetByMonth(currentMonth, currentYear);
             //            displayBudgetByMonth(loginUserId);
             alert('entry has been deleted');
@@ -1060,6 +1096,8 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -1117,6 +1155,11 @@ $(document).on("click", "#saveGoalForm", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
+            $(".preLoginNavContainer").hide();
+            $(".navContainer").show();
+
+                $('#myGoalForm')[0].reset();
+
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -1166,6 +1209,8 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -1187,6 +1232,26 @@ $(document).on("click", "#cancelGoalForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
+    displayBudgetByMonth;
+});
+
+//CANCEL button when ADDING GOAL item from edited form
+$(document).on("click", "#editCancelGoalForm", function (event) {
+    event.preventDefault();
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").hide();
+    $(".registerScreen").hide();
+    $(".homeScreen").show();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
+    $(".preLoginNavContainer").hide();
+    $(".navContainer").show();
+    displayBudgetByMonth;
 });
 
 //DELETE GOAL API
@@ -1213,6 +1278,8 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
+        $(".preLoginNavContainer").hide();
+        $(".navContainer").show();
         })
 
         .fail(function (jqXHR, error, errorThrown) {
