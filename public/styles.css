@@ -189,6 +189,11 @@ h4 .logos {
     text-decoration: none;
 }
 
+.monthlyBudgetTotals {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
 .loginLink {
     color: #395D79;
     text-decoration: underline;

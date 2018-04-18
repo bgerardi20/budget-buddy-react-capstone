@@ -210,7 +210,6 @@ function convertMonthNumberToMonthWord(monthNumber) {
 
 }
 
-
 //budget monthly budget totals and conditional statement
 function prePopulateDateDropDown(inputDate) {
 
@@ -295,6 +294,8 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
     //    parse the results object
     $.each(dataOutput, function (dataKey, dataValue) {
         //if the data is income create the month difference as actual - budgeted
+
+
         if (dataValue.type == "income") {
             monthTotalDifference += parseFloat(dataValue.actual) - parseFloat(dataValue.budgeted);
         }
@@ -302,6 +303,9 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
         else {
             monthTotalDifference += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
         }
+
+
+
     });
     console.log(monthTotalDifference);
     //get the existing value of the select
@@ -377,12 +381,16 @@ function displayBudgetResult(dataOutput) {
     let budgetActualTotal = 0;
     let budgetDifferenceTotal = 0;
 
+    let budgetIncomeBudgetTotal = 0;
+    let budgetIncomeActualTotal = 0;
+    let budgetExpenseBudgetTotal = 0;
+    let budgetExpenseActualTotal = 0;
+    let combinedBudgetedTotal = 0;
+    let combinedActualTotal = 0;
+
+
     $.each(dataOutput, function (dataKey, dataValue) {
-        //        console.log(dataValue);
-
-        budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
-        budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
-
+        console.log(dataValue);
 
         buildTheHtmlOutput += '<div class="row">';
 
@@ -395,29 +403,47 @@ function displayBudgetResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans modifyBudgetDescription"><i class="fas fa-level-up-alt typeIcon positive"></i>' + dataValue.description + '</div>';
         }
         buildTheHtmlOutput += '<div class="cellTrans modifyBudgetDate">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyBudgetBudgeted">$' + dataValue.budgeted + '.00</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyBudgetActual">$' + dataValue.actual + '.00</div>';
-        if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual > 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
-        } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual < 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
-        } else if (dataValue.type === 'expense' && (dataValue.budgeted - dataValue.actual == 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.budgeted - dataValue.actual) + '.00</div>';
-        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted > 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted < 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-        } else if (dataValue.type === 'income' && (dataValue.actual - dataValue.budgeted == 0)) {
-            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
-        }
-
+        //budgeted amount
         if (dataValue.type === 'expense') {
-            budgetDifferenceTotal += parseFloat(dataValue.budgeted - dataValue.actual);
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetBudgeted">$' + dataValue.budgeted + '</div>';
         } else {
-            budgetDifferenceTotal += parseFloat(dataValue.actual - dataValue.budgeted);
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetBudgeted">$' + dataValue.budgeted + '</div>';
+        }
+        //actual amount
+        if (dataValue.type === 'expense') {
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetActual">$' + dataValue.actual + '</div>';
+        } else {
+            buildTheHtmlOutput += '<div class="cellTrans modifyBudgetActual">$' + dataValue.actual + '</div>';
+        }
+        //difference between budgeted and actual
+        if (dataValue.type === 'expense' && ((dataValue.budgeted - dataValue.actual) < 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.budgeted - dataValue.actual).toFixed(2) + '</div>';
+        } else if (dataValue.type === 'expense' && ((dataValue.budgeted - dataValue.actual) > 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.budgeted - dataValue.actual).toFixed(2) + '</div>';
+        } else if (dataValue.type === 'expense' && ((dataValue.budgeted - dataValue.actual) == 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.budgeted - dataValue.actual).toFixed(2) + '</div>';
+        } else if (dataValue.type === 'income' && ((dataValue.actual - dataValue.budgeted) > 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans  positive ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
+        } else if (dataValue.type === 'income' && ((dataValue.actual - dataValue.budgeted) < 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
+        } else if (dataValue.type === 'income' && ((dataValue.actual - dataValue.budgeted) == 0)) {
+            buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
         }
 
-        buildTheHtmlOutput += '<a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
+
+        //continously adding the values together for actual and  budgeted
+        if (dataValue.type === 'expense') {
+            budgetDifferenceTotal += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
+            budgetBudgetTotal = budgetBudgetTotal - parseFloat(dataValue.budgeted);
+            budgetActualTotal = budgetActualTotal - parseFloat(dataValue.actual);
+        } else {
+            budgetDifferenceTotal += parseFloat(dataValue.actual) - parseFloat(dataValue.budgeted);
+            budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
+            budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
+        }
+
+        console.log(budgetDifferenceTotal);
+        //        buildTheHtmlOutput += '<a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="tableTriggerBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
         buildTheHtmlOutput += '</div>';
@@ -427,7 +453,7 @@ function displayBudgetResult(dataOutput) {
     buildTheHtmlOutput += '<div class="row budgetTotalContainer" id="budgetTotal">';
     buildTheHtmlOutput += '<div class="cellTrans">Totals</div>';
     buildTheHtmlOutput += '<div class="cellTrans"> </div>';
-    buildTheHtmlOutput += '<div class="cellTrans">' + budgetBudgetTotal.toFixed(2) + '</div>';
+    buildTheHtmlOutput += '<div class="cellTrans">-(' + budgetBudgetTotal.toFixed(2) + ')</div>';
     buildTheHtmlOutput += '<div class="cellTrans">' + budgetActualTotal.toFixed(2) + ' </div>';
     if (budgetDifferenceTotal < 0) {
         buildTheHtmlOutput += '<div class="cellTrans negative" id="goalTotal">$' + budgetDifferenceTotal.toFixed(2) + '</div>';
@@ -737,20 +763,6 @@ $(document).on("click", ".jsLogoutNav", function (event) {
     $(".editHomeScreenGoals").hide();
 });
 
-//COPY GOAL ICON button
-$(document).on("click", ".jsCopyGoalButton", function (event) {
-    event.preventDefault();
-    $(".introScreen").hide();
-    $(".quickView").hide();
-    $(".loginScreen").hide();
-    $(".registerScreen").hide();
-    $(".homeScreen").show();
-    $(".homeScreenBudget").hide();
-    $(".homeScreenGoals").hide();
-    $(".editHomeScreenBudget").hide();
-    $(".editHomeScreenGoals").hide();
-});
-
 //EDIT GOAL ICON button API
 $(document).on("click", ".tableTriggerGoalButton", function (event) {
     event.preventDefault();
@@ -858,6 +870,7 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+
 });
 
 //ADD BUDGET transaction FORM button
@@ -930,7 +943,9 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             })
             //if budget creation is successful
             .done(function (result) {
-                displayBudgets(userIdHidden);
+                //                displayBudgets(userIdHidden);
+                displayBudgetByMonth(userIdHidden);
+                //                prePopulateDateDropDown;
                 console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();
@@ -983,7 +998,8 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
         .done(function (result) {
 
             console.log(result);
-            displayBudgets(loginUserId);
+            //            displayBudgets(loginUserId);
+            displayBudgetByMonth(loginUserId);
             alert('budget has been saved');
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -1015,6 +1031,7 @@ $(document).on("click", "#cancelBudgetForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
+    displayBudgetByMonth;
 });
 
 //DELETE BUDGET API
@@ -1031,6 +1048,8 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
 
         .done(function (result) {
             displayBudgets(loginUserId);
+            //            displayBudgetByMonth(currentMonth, currentYear);
+            //            displayBudgetByMonth(loginUserId);
             alert('entry has been deleted');
             $(".introScreen").hide();
             $(".quickView").hide();
