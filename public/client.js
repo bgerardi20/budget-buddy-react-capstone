@@ -5,20 +5,18 @@ function titleCase(str) {
     }).join(' ');
 };
 
-
-
 //define objects variables functions
 let loginUserName = "";
 let loginUserId = "";
+
 let goalId = "";
 let budgetId = "";
 
 let date = new Date();
 let currentMonth = addLeadingZeroToMonthNumbers(date.getMonth());
-
 let currentYear = date.getFullYear();
 
-
+//functions
 function addLeadingZeroToMonthNumbers(monthNumber) {
     if (monthNumber < 9) {
         monthNumber = "0" + (monthNumber + 1);
@@ -57,19 +55,28 @@ function convertMonthNumberToMonthWord(monthNumber) {
     }
 
     return monthWord;
-
 }
+
+function isValidDate(dateString) {
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateString.match(regEx)) return false; // Invalid format
+    var d = new Date(dateString);
+    if (!d.getTime() && d.getTime() !== 0) return false; // Invalid date
+    return d.toISOString().slice(0, 10) === dateString;
+}
+
+
 
 //display users budgets
 function displayBudgets(userId) {
-    console.log(userId);
+    //    console.log(userId);
     $.ajax({
             type: "GET",
             url: '/budgets/' + userId,
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
+            //            console.log(dataOutput);
             //displays the external api json object in the console
             displayBudgetResult(dataOutput.budgets);
         })
@@ -82,14 +89,14 @@ function displayBudgets(userId) {
 
 //display users goals
 function displayGoals(userId) {
-    console.log(userId);
+    //    console.log(userId);
     $.ajax({
             type: "GET",
             url: '/goals/' + userId,
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            console.log(dataOutput);
+            //            console.log(dataOutput);
             //displays the external api json object in the console
             displayFinancialGoalResult(dataOutput.goals);
         })
@@ -117,11 +124,8 @@ function displayFinancialGoalResult(dataOutput) {
     let goalActualTotal = 0;
     let goalDifferenceTotal = 0;
 
-
-
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
-
+        //        console.log(dataValue);
         goalBudgetTotal = goalBudgetTotal + parseFloat(dataValue.budgeted);
         goalActualTotal = goalActualTotal + parseFloat(dataValue.actual);
         goalDifferenceTotal = goalDifferenceTotal + parseFloat(dataValue.actual - dataValue.budgeted);
@@ -134,12 +138,12 @@ function displayFinancialGoalResult(dataOutput) {
             buildTheHtmlOutput += '<div class="cellTrans modifyDescription" value="' + dataValue.description + '"><i class="fas fa-thumbs-down negative typeIcon"></i>' + dataValue.description + '</div>';
         }
         buildTheHtmlOutput += '<div class="cellTrans modifyDate" value="' + dataValue.date + '">' + dataValue.date + '</div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted" value="' + dataValue.budgeted + '">$' + dataValue.budgeted + '.00 </div>';
-        buildTheHtmlOutput += '<div class="cellTrans modifyActual" value="' + dataValue.actual + '">$' + dataValue.actual + '.00</div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyBudgeted" value="' + dataValue.budgeted + '">$' + dataValue.budgeted + ' </div>';
+        buildTheHtmlOutput += '<div class="cellTrans modifyActual" value="' + dataValue.actual + '">$' + dataValue.actual + '</div>';
         if ((dataValue.actual - dataValue.budgeted) >= 0) {
-            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+            buildTheHtmlOutput += '<div class="cellTrans positive ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
         } else if ((dataValue.actual - dataValue.budgeted) < 0) {
-            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted) + '.00</div>';
+            buildTheHtmlOutput += '<div class="cellTrans negative ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
         }
         buildTheHtmlOutput += '<div class="cellTrans">';
         buildTheHtmlOutput += '<a class="tableTriggerGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
@@ -174,7 +178,7 @@ function displayEditedGoalForm(dataOutput) {
     buildTheHtmlOutput += '<form class="jsEditedGoalForm" method="POST">';
     buildTheHtmlOutput += '<h2 class="loginTitle"><i class="fas fa-tasks logos formIcons"></i> Edit Goal</h2>';
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
+        //        console.log(dataValue);
 
         buildTheHtmlOutput += '<input class="loggedInUser" id="modifyGoalId" type="hidden" value="' + dataValue._id + '"><br>';
 
@@ -210,25 +214,19 @@ function displayEditedGoalForm(dataOutput) {
     $(".editedGoalsOutterContainer").html(buildTheHtmlOutput);
 };
 
-
-//budget monthly budget totals and conditional statement
+//monthly budget totals and conditional statement
 function prePopulateDateDropDown(inputDate) {
-
     let userId = $(".loginUserId").val();
-
     let inputDateArray = inputDate.split("-");
     let inputDateYear = inputDateArray[0];
     let inputDateMonth = inputDateArray[1];
-    console.log(inputDateArray, inputDateYear, (parseInt(inputDateMonth) + 6));
-
+    //    console.log(inputDateArray, inputDateYear, (parseInt(inputDateMonth) + 6));
     let buildTheHtmlOutput = "";
+
     buildTheHtmlOutput += '<h1 id = "budgetTitle"> <i class = "fas fa-balance-scale logos"> </i> Monthly Budgets</h1>';
     buildTheHtmlOutput += '<select class = "jsSelectMonth" >';
-
-
     //    for loop for the last 6 months and the next 6 months
     for (let thisMonth = (parseInt(inputDateMonth) - 12); thisMonth <= (parseInt(inputDateMonth) + 12); thisMonth++) {
-
         //convert the display month and year from the automaticaly generated values above
         let thisDisplayMonth = 0;
         let thisDisplayYear = parseInt(inputDateYear);
@@ -244,7 +242,6 @@ function prePopulateDateDropDown(inputDate) {
         } else {
             thisDisplayMonth = thisMonth;
         }
-
         //        select the current month in the dropp down
         if ((thisDisplayYear == date.getFullYear()) && (thisDisplayMonth == (parseInt(date.getMonth()) + 1))) {
             buildTheHtmlOutput += '<option value = "' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '" id = "select-' + thisDisplayYear + '-' + addLeadingZeroToMonthNumbers((thisDisplayMonth - 1)) + '" selected>';
@@ -259,19 +256,10 @@ function prePopulateDateDropDown(inputDate) {
 
     buildTheHtmlOutput += '</select>';
 
-    //display you are over or under budget
-    //    buildTheHtmlOutput += '<div id = "budgetConditionalContainer" class="">';
-    //    buildTheHtmlOutput += '<h2 id = "budgetConditionalTitle"> You are.. </h2>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsPositive positive"> UNDER BUDGET </h4>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsNegative negative"> OVER BUDGET </h4>';
-    //    buildTheHtmlOutput += '<h4 class = "budgetConditionalOptionsEven middle"> EVEN </h4>';
-    //    buildTheHtmlOutput += '</div>';
-
     $(".monthlyBudgetTotals").html(buildTheHtmlOutput);
 };
 
 function getDifferenceByUserByMonth(userId, date) {
-
     $.ajax({
             type: "GET",
             url: '/budget-by-month/' + userId + '/' + date,
@@ -303,27 +291,12 @@ function displayDifferenceByUserByMonth(dataOutput, date) {
             monthTotalDifference += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
         }
     });
-    console.log(monthTotalDifference);
+    //    console.log(monthTotalDifference);
     //get the existing value of the select
     let existingText = $("#select-" + date).text();
     //and add the total difference per month to it
     $("#select-" + date).text(existingText + " (" + monthTotalDifference.toFixed(2) + ")");
 
-    //display you are over or under budget
-    //    $("#budgetConditionalContainer h4").hide();
-    //    if (monthTotalDifference > 0) {
-    //                $("." + date + " .budgetConditionalOptionsPositive").show();
-    //        $(".budgetConditionalOptionsPositive").show();
-    //    } else if (monthTotalDifference < 0) {
-    //                $("." + date + " .budgetConditionalOptionsNegative").show();
-    //        $(" .budgetConditionalOptionsNegative").show();
-    //    } else if (monthTotalDifference == 0) {
-    //                $("." + date + " .budgetConditionalOptionsEven").show();
-    //        $(" .budgetConditionalOptionsEven").show();
-    //    } else {
-    //                $("#budgetConditionalContainer h4").hide();
-    //    }
-    //        monthTotalDifference = 0;
 }
 
 function displayBudgetByMonth(userId, date) {
@@ -350,8 +323,6 @@ $(document).on('change', '.jsSelectMonth', function (event) {
     event.preventDefault();
     let userId = $(".loginUserId").val();
     //display you are over or under budget
-    //    $("#budgetConditionalContainer").attr('class', '');
-    //    $("#budgetConditionalContainer").addClass(this.value);
     displayBudgetByMonth(userId, this.value);
 })
 
@@ -374,17 +345,8 @@ function displayBudgetResult(dataOutput) {
     let budgetActualTotal = 0;
     let budgetDifferenceTotal = 0;
 
-    let budgetIncomeBudgetTotal = 0;
-    let budgetIncomeActualTotal = 0;
-    let budgetExpenseBudgetTotal = 0;
-    let budgetExpenseActualTotal = 0;
-    let combinedBudgetedTotal = 0;
-    let combinedActualTotal = 0;
-
-
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
-
+        //        console.log(dataValue);
         buildTheHtmlOutput += '<div class="row">';
 
         buildTheHtmlOutput += '<input type="hidden" id="modifyBudgetId" value="' + dataValue._id + '">';
@@ -422,7 +384,6 @@ function displayBudgetResult(dataOutput) {
         } else if (dataValue.type === 'income' && ((dataValue.actual - dataValue.budgeted) == 0)) {
             buildTheHtmlOutput += '<div class="cellTrans middle ">$' + (dataValue.actual - dataValue.budgeted).toFixed(2) + '</div>';
         }
-
         //continously adding the values together for actual and  budgeted
         if (dataValue.type === 'expense') {
             budgetDifferenceTotal += parseFloat(dataValue.budgeted) - parseFloat(dataValue.actual);
@@ -433,8 +394,7 @@ function displayBudgetResult(dataOutput) {
             budgetBudgetTotal = budgetBudgetTotal + parseFloat(dataValue.budgeted);
             budgetActualTotal = budgetActualTotal + parseFloat(dataValue.actual);
         }
-
-        console.log(budgetDifferenceTotal);
+        //        console.log(budgetDifferenceTotal);
         buildTheHtmlOutput += '<a class="tableTriggerBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>';
         buildTheHtmlOutput += '<a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>';
         buildTheHtmlOutput += '</div>';
@@ -466,8 +426,8 @@ function displayEditedBudgetForm(dataOutput) {
     buildTheHtmlOutput += '<h2 class="loginTitle"><i class="fas fa-balance-scale logos"></i> Edit Budget</h2>';
 
     $.each(dataOutput, function (dataKey, dataValue) {
-        console.log(dataValue);
-        console.log(dataValue.description);
+        //        console.log(dataValue);
+        //        console.log(dataValue.description);
 
         buildTheHtmlOutput += '<input class="loggedInUser" id="modifyBudgetId" type="hidden" value="' + dataValue[0]._id + '"><br>';
 
@@ -497,7 +457,9 @@ function displayEditedBudgetForm(dataOutput) {
         buildTheHtmlOutput += '<select id="editBudgetType" type="string" name="type" value="' + dataValue[0].type + '">';
         if (dataValue[0].type == "expense") {
             buildTheHtmlOutput += '<option value="expense" selected>Expense</option>';
+            buildTheHtmlOutput += '<option value="income">Income</option>';
         } else {
+            buildTheHtmlOutput += '<option value="expense">Expense</option>';
             buildTheHtmlOutput += '<option value="income" selected>Income</option>';
         }
         buildTheHtmlOutput += '</select>';
@@ -517,8 +479,7 @@ function displayEditedBudgetForm(dataOutput) {
 
 
 $(document).ready(function () {
-
-    console.log(currentMonth, currentYear);
+    //    console.log(currentMonth, currentYear);
     $(".introScreen").show();
     $(".quickView").show();
     $(".loginScreen").hide();
@@ -528,8 +489,7 @@ $(document).ready(function () {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").show();
-    $(".navContainer").hide();
+    $(".navList").hide();
 });
 
 //LOGIN button
@@ -544,8 +504,20 @@ $(document).on("click", ".jsLoginButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").show();
-    $(".navContainer").hide();
+});
+
+//LOGIN link button
+$(document).on("click", ".loginLink", function (event) {
+    event.preventDefault();
+    $(".introScreen").hide();
+    $(".quickView").hide();
+    $(".loginScreen").show();
+    $(".registerScreen").hide();
+    $(".homeScreen").hide();
+    $(".homeScreenBudget").hide();
+    $(".homeScreenGoals").hide();
+    $(".editHomeScreenBudget").hide();
+    $(".editHomeScreenGoals").hide();
 });
 
 //REGISTER button
@@ -560,8 +532,6 @@ $(document).on("click", ".jsRegisterButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").show();
-    $(".navContainer").hide();
 });
 
 //user LOGGING IN API
@@ -583,7 +553,7 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
             password: password,
             userId: loginUserId
         };
-        console.log(loginUserObject);
+        //        console.log(loginUserObject);
         // create ajax call to sign in the user//
         $.ajax({
                 type: 'POST',
@@ -594,6 +564,7 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
             })
             //if sign in is successful
             .done(function (result) {
+                $(".navList").show();
                 loginUserName = result.name;
                 loginUserId = result._id;
                 displayBudgets(loginUserId);
@@ -613,8 +584,6 @@ $(document).on("click", ".jsSubmitloginButton", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
-                $(".preLoginNavContainer").hide();
-                $(".navContainer").show();
             })
             //if sign in fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -633,7 +602,6 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
     let name = $('#registerName').val();
     let password = $('#registerPassword').val();
     let confirmPassword = $('#registerConfirmPassword').val();
-
     //validate the input//
     if (name.length == 0) {
         alert('Please add name!');
@@ -650,7 +618,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
             })
             .done(function (dataOutput) {
                 //displays the external api json object in the console
-                console.log(dataOutput);
+                //                console.log(dataOutput);
                 if (dataOutput.users.length > 0) {
                     alert('Duplicated first name, try a different name');
                 } else {
@@ -659,7 +627,7 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                         name: name,
                         password: password
                     };
-                    console.log(newUserObject);
+                    //                    console.log(newUserObject);
                     // create ajax call to register the user//
                     $.ajax({
                             type: 'POST',
@@ -682,8 +650,6 @@ $(document).on("click", ".jsSubmitRegisterButton", function (event) {
                             $(".homeScreenGoals").hide();
                             $(".editHomeScreenBudget").hide();
                             $(".editHomeScreenGoals").hide();
-                            $(".preLoginNavContainer").show();
-                            $(".navContainer").hide();
                         })
                         //if registration fails
                         .fail(function (jqXHR, error, errorThrown) {
@@ -714,8 +680,6 @@ $(document).on("click", ".jsHomeNav", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
 });
 
 //NAV item (BUDGET)
@@ -730,8 +694,6 @@ $(document).on("click", ".jsBudgetNav", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
 });
 
 //NAV item (GOAL)
@@ -746,28 +708,12 @@ $(document).on("click", ".jsGoalNav", function (event) {
     $(".homeScreenGoals").show();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
 });
 
 //NAV item (LOGOUT)
 $(document).on("click", ".jsLogoutNav", function (event) {
     event.preventDefault();
-    loginUserName = "";
-    loginUserId = "";
-    $(".introScreen").show();
-    $(".quickView").show();
-    $(".preLoginNavContainer").show();
-    $(".navContainer").hide();
-
-    $(".loginScreen").hide();
-    $(".registerScreen").hide();
-    $(".homeScreen").hide();
-    $(".homeScreenBudget").hide();
-    $(".homeScreenGoals").hide();
-    $(".editHomeScreenBudget").hide();
-    $(".editHomeScreenGoals").hide();
-
+    location.reload();
 });
 
 //EDIT GOAL ICON button API
@@ -776,14 +722,14 @@ $(document).on("click", ".tableTriggerGoalButton", function (event) {
 
     let selectedGoal = $(this).parent().parent().find("#modifyGoalId").val();
 
-    console.log(selectedGoal);
+    //    console.log(selectedGoal);
     $.ajax({
             type: "GET",
             url: '/goal/' + selectedGoal,
             dataType: 'json',
         })
         .done(function (results) {
-            console.log(results);
+            //            console.log(results);
             displayEditedGoalForm(results);
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -794,8 +740,7 @@ $(document).on("click", ".tableTriggerGoalButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").show();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -817,8 +762,6 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
 });
 
 //EDIT BUDGET ICON button API
@@ -826,16 +769,14 @@ $(document).on("click", ".tableTriggerBudgetButton", function (event) {
     event.preventDefault();
 
     let selectedBudget = $(this).parent().find("#modifyBudgetId").val();
-
-
-    console.log(selectedBudget);
+    //    console.log(selectedBudget);
     $.ajax({
             type: "GET",
             url: '/budget/' + selectedBudget,
             dataType: 'json',
         })
         .done(function (results) {
-            console.log(results);
+            //            console.log(results);
             displayEditedBudgetForm(results);
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -846,8 +787,6 @@ $(document).on("click", ".tableTriggerBudgetButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").show();
             $(".editHomeScreenGoals").hide();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -869,9 +808,6 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
-
 });
 
 //ADD BUDGET transaction FORM button
@@ -886,9 +822,6 @@ $(document).on("click", "#addBudgetFormButton", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
-
 });
 
 //ADD GOAL FORM button
@@ -903,8 +836,6 @@ $(document).on("click", "#addGoalFormButton", function (event) {
     $(".homeScreenGoals").show();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
 });
 
 //CREATE BUDGETS for user API
@@ -922,6 +853,8 @@ $(document).on("click", "#saveBudgetForm", function (event) {
         alert('Please add a description!');
     } else if (date.length == 0) {
         alert('Please add a date!');
+    } else if (isValidDate(date) == false) {
+        alert('Please add a valid date (format YYYY-MM-DD)!');
     } else if (budgeted.length == 0) {
         alert('Please add a budget amount!');
     } else if (actual.length == 0) {
@@ -948,11 +881,9 @@ $(document).on("click", "#saveBudgetForm", function (event) {
             })
             //if budget creation is successful
             .done(function (result) {
-                //                displayBudgets(userIdHidden);
-                //                displayBudgetByMonth(userIdHidden);
                 displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
                 prePopulateDateDropDown(currentYear + "-" + currentMonth);
-                console.log(result);
+                //                console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();
                 $(".loginScreen").hide();
@@ -962,11 +893,7 @@ $(document).on("click", "#saveBudgetForm", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
-            $(".preLoginNavContainer").hide();
-            $(".navContainer").show();
-
                 $('#myBudgetForm')[0].reset();
-
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -981,7 +908,6 @@ $(document).on("click", "#saveBudgetForm", function (event) {
 $(document).on("click", "#editSaveBudgetForm", function (event) {
     event.preventDefault();
     let modifyBudgetId = $(this).parent().parent().parent().find('#modifyBudgetId').val();
-
     let modifyBudgetDescription = $('#editBudgetDescription').val();
     let modifyBudgetDate = $('#editBudgetDate').val();
     let modifyBudgetBudgeted = $('#editBudgetBudgeted').val();
@@ -996,7 +922,7 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
         type: modifyBudgetType,
         budgetId: modifyBudgetId
     };
-    console.log(modifyBudgetObject);
+    //    console.log(modifyBudgetObject);
     // create ajax call to save the recipe//
     $.ajax({
             type: 'PUT',
@@ -1007,13 +933,10 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
         })
         //if save is successful
         .done(function (result) {
-
-            console.log(result);
-            //            displayBudgets(loginUserId);
-            //            displayBudgetByMonth(loginUserId);
+            //            console.log(result);
             displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
             prePopulateDateDropDown(currentYear + "-" + currentMonth);
-            alert('budget has been saved');
+            alert('Budget has been saved');
             $(".introScreen").hide();
             $(".quickView").hide();
             $(".loginScreen").hide();
@@ -1023,8 +946,7 @@ $(document).on("click", "#editSaveBudgetForm", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
+
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -1046,8 +968,6 @@ $(document).on("click", "#cancelBudgetForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
     displayBudgetByMonth;
 });
 
@@ -1063,8 +983,6 @@ $(document).on("click", "#editCancelBudgetForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
     displayBudgetByMonth;
 });
 
@@ -1072,20 +990,15 @@ $(document).on("click", "#editCancelBudgetForm", function (event) {
 $(document).on("click", ".jsDeleteBudgetButton", function (event) {
     event.preventDefault();
     let modifyBudgetId = $(this).parent().find('#modifyBudgetId').val();
-    console.log(modifyBudgetId);
+    //    console.log(modifyBudgetId);
     $.ajax({
             type: 'DELETE',
             url: '/budgets/' + modifyBudgetId,
             dataType: 'json',
             contentType: 'application/json'
         })
-
         .done(function (result) {
-            //            displayBudgets(loginUserId);
-            //        getDifferenceByUserByMonth()
             displayBudgetByMonth(loginUserId, currentYear + "-" + currentMonth);
-            //            displayBudgetByMonth(currentMonth, currentYear);
-            //            displayBudgetByMonth(loginUserId);
             alert('entry has been deleted');
             $(".introScreen").hide();
             $(".quickView").hide();
@@ -1096,10 +1009,7 @@ $(document).on("click", ".jsDeleteBudgetButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
         })
-
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
@@ -1121,6 +1031,8 @@ $(document).on("click", "#saveGoalForm", function (event) {
         alert('Please add a description!');
     } else if (date.length == 0) {
         alert('Please add a date!');
+    } else if (isValidDate(date) == false) {
+        alert('Please add a valid date (format YYYY-MM-DD)!');
     } else if (budgeted.length == 0) {
         alert('Please add a budget amount!');
     } else if (actual.length == 0) {
@@ -1145,7 +1057,6 @@ $(document).on("click", "#saveGoalForm", function (event) {
             //if budget creation is successful
             .done(function (result) {
                 displayGoals(userIdHidden);
-                console.log(result);
                 $(".introScreen").hide();
                 $(".quickView").hide();
                 $(".loginScreen").hide();
@@ -1155,11 +1066,7 @@ $(document).on("click", "#saveGoalForm", function (event) {
                 $(".homeScreenGoals").hide();
                 $(".editHomeScreenBudget").hide();
                 $(".editHomeScreenGoals").hide();
-            $(".preLoginNavContainer").hide();
-            $(".navContainer").show();
-
                 $('#myGoalForm')[0].reset();
-
             })
             //if recipe creation fails
             .fail(function (jqXHR, error, errorThrown) {
@@ -1174,7 +1081,6 @@ $(document).on("click", "#saveGoalForm", function (event) {
 $(document).on("click", "#editSaveGoalForm", function (event) {
     event.preventDefault();
     let modifyGoalId = $(this).parent().parent().parent().find("#modifyGoalId").val();
-
     let modifyGoalDescription = $('#editGoalDescription').val();
     let modifyGoalDate = $('#editGoalDate').val();
     let modifyGoalBudgeted = $('#editBudgetedGoal').val();
@@ -1187,7 +1093,7 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
         actual: modifyGoalActual,
         goalId: modifyGoalId
     };
-    console.log(modifyGoalObject);
+    //    console.log(modifyGoalObject);
     // create ajax call to save the recipe//
     $.ajax({
             type: 'PUT',
@@ -1209,8 +1115,7 @@ $(document).on("click", "#editSaveGoalForm", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
+
         })
         //if save fails
         .fail(function (jqXHR, error, errorThrown) {
@@ -1232,8 +1137,6 @@ $(document).on("click", "#cancelGoalForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
     displayBudgetByMonth;
 });
 
@@ -1249,8 +1152,6 @@ $(document).on("click", "#editCancelGoalForm", function (event) {
     $(".homeScreenGoals").hide();
     $(".editHomeScreenBudget").hide();
     $(".editHomeScreenGoals").hide();
-    $(".preLoginNavContainer").hide();
-    $(".navContainer").show();
     displayBudgetByMonth;
 });
 
@@ -1258,14 +1159,13 @@ $(document).on("click", "#editCancelGoalForm", function (event) {
 $(document).on("click", ".jsDeleteGoalButton", function (event) {
     event.preventDefault();
     let modifyGoalId = $(this).parent().parent().parent().find('#modifyGoalId').val();
-    console.log(modifyGoalId);
+    //    console.log(modifyGoalId);
     $.ajax({
             type: 'DELETE',
             url: '/goals/' + modifyGoalId,
             dataType: 'json',
             contentType: 'application/json'
         })
-
         .done(function (result) {
             displayGoals(loginUserId);
             alert('entry has been deleted');
@@ -1278,8 +1178,6 @@ $(document).on("click", ".jsDeleteGoalButton", function (event) {
             $(".homeScreenGoals").hide();
             $(".editHomeScreenBudget").hide();
             $(".editHomeScreenGoals").hide();
-        $(".preLoginNavContainer").hide();
-        $(".navContainer").show();
         })
 
         .fail(function (jqXHR, error, errorThrown) {

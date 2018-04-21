@@ -156,6 +156,7 @@ select {
 
 footer {
     padding: 1rem;
+    margin-top: 11rem;
 }
 
 .footer:hover {
@@ -578,6 +579,8 @@ h4 .logos {
     .editedGoalsOutterContainer,
     .editBudgetForms {
         width: 65%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .homeSections {
@@ -648,6 +651,10 @@ h4 .logos {
         font-size: 18px;
     }
 
+    .resultTitle {
+        font-size: 3rem;
+    }
+
     .loginInnerContainer,
     .innerRegisterBox,
     .transactionOutterContainer,
@@ -656,6 +663,8 @@ h4 .logos {
     .editedGoalsOutterContainer,
     .editBudgetForms {
         width: 75%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .cellTrans {
@@ -667,7 +676,7 @@ h4 .logos {
 
     .logoHolder {
         margin-top: 0rem;
-        margin-bottom: 0rem;
+        margin-bottom: 1rem;
         display: inline-block;
         width: 100%;
     }
@@ -725,6 +734,12 @@ h4 .logos {
         font-size: 1.35rem;
     }
 
+    footer {
+        border-top: 3px solid white;
+        padding: 1rem;
+        padding-top: 2rem;
+    }
+
     .logoHolder,
     .navList {
         width: 100%;
@@ -745,6 +760,10 @@ h4 .logos {
         font-size: 17px
     }
 
+    .welcomeMessage {
+        top: 27%;
+    }
+
     .loginInnerContainer,
     .innerRegisterBox,
     .transactionOutterContainer,
@@ -753,6 +772,8 @@ h4 .logos {
     .editedGoalsOutterContainer,
     .editBudgetForms {
         width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .demoContainer {
@@ -829,7 +850,7 @@ h4 .logos {
 @media only screen and (max-width: 320px) {
 
     button {
-        width: 40%;
+        width: 43%;
         line-height: 27px;
         font-size: 18px;
         padding: 2px;
@@ -868,9 +889,21 @@ h4 .logos {
         font-size: 1.1rem;
     }
 
+    footer {
+        padding-top: 3rem;
+    }
+
     .navOptions {
         width: 24%;
         font-size: 12px;
+    }
+
+    .resultTitle {
+        font-size: 2.5rem;
+    }
+
+    .welcomeMessage {
+        top: 22%;
     }
 
     .logos {
@@ -903,7 +936,7 @@ h4 .logos {
 
     .firstWelcomeMessage,
     .secondWelcomeMessage {
-        margin: 0rem;
+        margin: 1rem;
     }
 
     .loginLogo {
@@ -962,8 +995,8 @@ h4 .logos {
     }
 
     .footerIcon {
-        margin-left: 2px;
-        margin-right: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
 
