@@ -43,6 +43,9 @@
     -o-padding-end: 0px;
 }
 
+@font-face {font-family: Poppins; src: url(“embedded-fonts/Poppins.ttf”); format(“true type”); }
+@font-face {font-family: Roboto; src: url(“embedded-fonts/Roboto.ttf”); format(“true type”); }
+
 body {
     background-size: cover;
     text-align: center;
