@@ -1,4 +1,4 @@
-# recipe-node-capstone
+# budget-buddy-capstone
 The purpose of this app is to make budgeting fun, by helping the user plan their financial goals, and track their expenses in order to meet those goals.
 
 
@@ -47,13 +47,13 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 * As a user I want to have a clear understanding of the sites purpose in order to create some financial goals, and be able to achieve those goals by budgeting and tracking expenses.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/intro-page.JPG)
 
-* As a user I want to be able to view my finaces in a clear and organzied way.
+* As a user I want to be able to view my finacial informarion in a clear and organzied way.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/home-page.JPG)
 
 * As a user I want to be able to create a budget for the month, to help keep me on track when trying to save money.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/budget-page.JPG)
 
-* As a user I want to input the info i want for my budget.
+* As a user I want to input the infomation i want for my budget.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/budget-form-page.JPG)
 
 * As a user I want to view my monthly totals in a quick and organized way on the main screen.
