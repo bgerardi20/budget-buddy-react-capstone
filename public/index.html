@@ -69,19 +69,19 @@
         <div class="quickViewContainer">
 
             <ul class="quickViewList">
-                <li class="quickViewOptions" id="quickViewBudget">
+                <li id="quickViewBudget">
                     <h2 class="quickViewTitle">Set Monthly Budgets</h2>
                     <span>
                         <i class="fas fa-balance-scale quickViewIcon"></i>
                     </span>
                 </li>
-                <li class="quickViewOptions" id="quickViewTrans">
+                <li id="quickViewTrans">
                     <h2 class="quickViewTitle">Track Transactions</h2>
                     <span>
                         <i class="far fa-credit-card quickViewIcon"></i>
                     </span>
                 </li>
-                <li class="quickViewOptions" id="quickViewGoals">
+                <li id="quickViewGoals">
                     <h2 class="quickViewTitle">Set Financial Goals</h2>
                     <span>
                         <i class="fas fa-tasks quickViewIcon"></i>
@@ -109,11 +109,11 @@
                         <h4 class="loginMessage">Password: <strong class="loginLink">user123</strong></h4>
 
                         <div class="formGroup">
-                            <label class="label" for="firstName">First Name</label>
+                            <label for="firstName">First Name</label>
                             <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="" required>
                         </div>
                         <div class="formGroup">
-                            <label class="label" for="password">Password</label>
+                            <label for="password">Password</label>
                             <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="" required>
                         </div>
 
@@ -141,15 +141,15 @@
                         <input class="loginUserId" type="hidden" value="">
 
                         <div class="formGroup">
-                            <label class="label" for="firstName">First Name</label>
+                            <label for="firstName">First Name</label>
                             <input class="formControl" id="registerName" type="text" placeholder="First Name" name="firstName" value="" required>
                         </div>
                         <div class="formGroup">
-                            <label class="label" for="password">Password</label>
+                            <label for="password">Password</label>
                             <input class="formControl" id="registerPassword" type="password" placeholder="Password" name="password" value="" required>
                         </div>
                         <div class="formGroup">
-                            <label class="label" for="confirmPassword">Confirm Password</label>
+                            <label for="confirmPassword">Confirm Password</label>
                             <input class="formControl" id="registerConfirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" value="" required>
                         </div>
 
@@ -231,23 +231,23 @@
 
                 <div class="demoContainer">
                     <div class="formGroup">
-                        <label class="label" for="description">Description</label>
+                        <label for="description">Description</label>
                         <input class="formControl" id="budgetDescription" type="text" placeholder="Wedding" name="description" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="date">Date</label>
+                        <label for="date">Date</label>
                         <input class="formControl" id="budgetDate" type="string" placeholder="YYYY-MM-DD" name="date" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="budgeted">Budgeted</label>
+                        <label for="budgeted">Budgeted</label>
                         <input class="formControl" id="budgetBudgeted" type="number" placeholder="200" name="budgeted" min="0.00" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="actual">Actual</label>
+                        <label for="actual">Actual</label>
                         <input class="formControl" id="budgetActual" type="number" placeholder="400" name="actual" min="0.00" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="type">Type</label>
+                        <label for="type">Type</label>
                         <select id="budgetType" name="type" required>
                             <option value="expense">Expense</option>
                             <option value="income">Income</option>
@@ -284,19 +284,19 @@
 
                 <div class="demoContainer">
                     <div class="formGroup">
-                        <label class="label" for="goalDescription">Description</label>
+                        <label for="goalDescription">Description</label>
                         <input class="formControl" id="goalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="date">Date</label>
+                        <label for="date">Date</label>
                         <input class="formControl" id="goalDate" type="string" placeholder="YYYY-MM-DD" name="date" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="budgetedGoal">Budgeted</label>
+                        <label for="budgetedGoal">Budgeted</label>
                         <input class="formControl" id="budgetedGoal" type="number" placeholder="2,000" name="budgeted" min="0" max="100,000,000" step="1" required>
                     </div>
                     <div class="formGroup">
-                        <label class="label" for="actualGoal">Actual</label>
+                        <label for="actualGoal">Actual</label>
                         <input class="formControl" id="actualGoal" type="number" placeholder="200" name="actual" min="0" max="100,000,000" step="1" required>
                     </div>
                     <div class="formButtonsContainer">

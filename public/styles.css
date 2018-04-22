@@ -50,22 +50,34 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-li {
-    list-style-type: none;
+nav {
+    background-color: #FFF6DD;
 }
 
 h1 {
     font-size: 4rem;
     color: #395D79;
     font-family: 'Roboto', sans-serif;
-    /*    text-shadow: 1px 1px #E4EAEF;*/
 }
 
 h2 {
     font-size: 2rem;
     color: #395D79;
     font-family: 'Roboto', sans-serif;
-    /*    text-shadow: 1px 1px #E4EAEF;*/
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    text-shadow: 1px 1px #88A0B2;
+    color: #FFD1BF;
+}
+
+main {
+    width: 100%;
+    display: block;
 }
 
 button {
@@ -81,15 +93,12 @@ button {
     margin: 3px;
 }
 
-main {
-    width: 100%;
-    display: block;
-    /* margin-bottom: 1rem; */
+li {
+    list-style-type: none;
 }
 
 form {
     background-color: #FFF6DD;
-    /* opacity: 0.9; */
     width: 100%;
     margin-top: 2rem;
     margin-left: auto;
@@ -100,19 +109,6 @@ form {
     border-radius: 25px;
 }
 
-a {
-    text-decoration: none;
-}
-
-nav {
-    background-color: #FFF6DD;
-}
-
-
-i {
-    text-shadow: 1px 1px #88A0B2;
-    color: #FFD1BF;
-}
 
 label {
     font-family: 'Roboto', sans-serif;
@@ -142,12 +138,6 @@ input::placeholder {
     color: ##395D79;
 }
 
-/*
-input[type="hidden"] {
-    display: none;
-}
-*/
-
 select {
     border: 1px solid black;
     font-size: 1.5rem;
@@ -156,160 +146,21 @@ select {
 
 footer {
     padding: 1rem;
-    margin-top: 11rem;
 }
 
-.footer:hover {
+footer:hover {
     text-decoration-line: underline;
     text-decoration-color: #395D79;
-
 }
 
 h4 .logos {
     font-size: 15px;
 }
 
-.loginLogo {
-    width: 100%;
-    height: 500px;
-    opacity: 0.3;
-}
+.navContainer {
+    border-bottom: 3px solid white;
+    line-height: 10px;
 
-.homeScreen {
-    text-align: none;
-}
-
-.table,
-.homeSectionsTable {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid black
-}
-
-.loginMessage strong {
-    text-decoration: none;
-}
-
-.monthlyBudgetTotals {
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.loginLink {
-    color: #395D79;
-    text-decoration: underline;
-    text-decoration-color: #395D79;
-}
-
-.row {
-    display: table-row;
-    font-size: 14px;
-    width: 100%;
-}
-
-.rowTitle {
-    font-size: 20px;
-    color: #BC6F51;
-}
-
-.cellTrans {
-    width: 18.65%;
-    padding: 1rem;
-    border-right: 1px solid black;
-    vertical-align: middle;
-    display: table-cell;
-}
-
-.cellTrans:last-child {
-    border-right: none;
-}
-
-.rowTitle .cellTrans {
-    border-bottom: 1px solid black;
-}
-
-.budgetTotalContainer .cellTrans {
-    border-top: 1px solid black;
-}
-
-.cellTrans a {
-    display: inline-block;
-}
-
-.loginTitle {
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-
-}
-
-.budgetOutterContainer,
-.homeScreen {
-    margin-top: 4rem;
-}
-
-.formButton {
-    width: 85%;
-}
-
-.demoContainer {
-    /*
-    margin-right: auto;
-    margin-left: auto;
-*/
-    border: 1px solid #395D79;
-    padding: 2rem 3rem;
-}
-
-
-
-.homeSectionsInfo {
-    background-color: #FFF6DD;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 25px;
-}
-
-.loginMessage {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.loginSubTitle {
-    font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    color: #395D79;
-}
-
-.registerScreen {
-    margin-top: 2rem;
-
-}
-
-.formGroup {
-    margin-bottom: 1rem;
-}
-
-.formIcons {}
-
-
-
-
-.homeSectionsTitle {
-    margin: 2rem;
-    padding: 1rem;
-}
-
-.homeSectionsButton {
-    line-height: 30px;
-    font-size: 20px;
-    margin: 2rem;
-    padding: 3px;
-    border: 1px solid #4E4E4E;
-    border-radius: 3px;
-    width: 22%;
 }
 
 .logoHolder,
@@ -323,34 +174,12 @@ h4 .logos {
     margin-bottom: 4rem;
 }
 
+.resultTitle {
+    font-size: 2.5rem;
+}
+
 .navList {
     vertical-align: middle;
-
-}
-
-.logos {
-    display: inline;
-    color: #395D79;
-}
-
-.footer {
-    color: #395D79;
-    margin: 1rem;
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
-    /*    text-decoration-line: underline;*/
-    text-decoration-color: #395D79;
-    font-size: 20px;
-}
-
-.footerIcon {
-    color: #395D79;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.welcome {
-    width: 5rem;
 }
 
 .navOptions {
@@ -369,9 +198,15 @@ h4 .logos {
     border-right: none;
 }
 
-.navContainer {
-    border-bottom: 3px solid white;
-    line-height: 10px;
+.logos {
+    display: inline;
+    color: #395D79;
+}
+
+.loginLogo {
+    width: 100%;
+    height: 500px;
+    opacity: 0.3;
 }
 
 .welcomeMessage {
@@ -389,33 +224,18 @@ h4 .logos {
     padding: 1rem;
 }
 
-.budgetTotalContainer {
-    font-size: 19px;
-    font-weight: bolder;
-}
-
-
-.tableIcons {
-    display: inline-block;
+.quickView span {
+    font-size: 10rem;
     color: #395D79;
-    padding: 15px 5px;
-    font-size: 21.5px;
 }
 
-.typeIcon {
-    padding-right: 5px;
-    font-size: 12px;
-    vertical-align: middle;
+#quickViewBudget {
+    background-color: #214662;
+    width: 100%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: block;
 }
-
-.positive {
-    color: green;
-}
-
-.negative {
-    color: red;
-}
-
 
 .quickViewTitle {
     display: block;
@@ -425,14 +245,6 @@ h4 .logos {
 
 .quickViewIcon {
     text-shadow: 4px 4px #4E4E4E;
-}
-
-#quickViewBudget {
-    background-color: #214662;
-    width: 100%;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    display: block;
 }
 
 #quickViewTrans {
@@ -451,10 +263,190 @@ h4 .logos {
     display: block;
 }
 
-#budgetConditionalTitle {
+.loginInnerContainer,
+.innerRegisterBox,
+.transactionOutterContainer,
+.goalsOutterContainer,
+.budgetForms,
+.editedGoalsOutterContainer,
+.editBudgetForms {
+    width: 70%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginTitle {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.demoContainer {
+    border: 1px solid #395D79;
+    padding: 2rem 3rem;
+}
+
+.loginSubTitle {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #395D79;
+}
+
+.loginMessage {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.loginMessage strong {
+    text-decoration: none;
+}
+
+.loginLink {
+    color: #395D79;
+    text-decoration: underline;
+    text-decoration-color: #395D79;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formButton {
+    width: 85%;
+}
+
+.registerScreen {
+    margin-top: 2rem;
+}
+
+.homeScreen {
+    text-align: none;
+}
+
+.homeSections {
+    display: block;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeSectionsInfo {
+    background-color: #FFF6DD;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 25px;
+}
+
+.homeSectionsTitle {
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.table,
+.homeSectionsTable {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid black
+}
+
+.homeSectionsButton {
+    line-height: 30px;
+    font-size: 20px;
+    margin: 2rem;
+    padding: 3px;
+    border: 1px solid #4E4E4E;
+    border-radius: 3px;
+    width: 22%;
+}
+
+.budgetOutterContainer,
+.homeScreen {
+    margin-top: 4rem;
+}
+
+.monthlyBudgetTotals {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.budgetInnerContainer {
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #FFF6DD;
+    width: 85%;
+    border-radius: 25px;
+}
+
+.rowTitle {
+    font-size: 20px;
     color: #BC6F51;
-    font-size: 30px;
-    padding-bottom: 10px;
+}
+
+.rowTitle .cellTrans {
+    border-bottom: 1px solid black;
+}
+
+.row {
+    display: table-row;
+    font-size: 14px;
+    width: 100%;
+}
+
+.cellTrans {
+    width: 18.65%;
+    padding: 1rem;
+    border-right: 1px solid black;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.cellTrans:last-child {
+    border-right: none;
+}
+
+.cellTrans a {
+    display: inline-block;
+}
+
+.budgetTotalContainer {
+    font-size: 19px;
+    font-weight: bolder;
+}
+
+.budgetTotalContainer .cellTrans {
+    border-top: 1px solid black;
+}
+
+.tableIcons {
+    display: inline-block;
+    color: #395D79;
+    padding: 15px 3px;
+    font-size: 18.5px;
+}
+
+.typeIcon {
+    padding-right: 5px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.middle {
+    color: orange;
 }
 
 #budgetType,
@@ -479,71 +471,25 @@ h4 .logos {
     color: ##395D79;
 }
 
-.faces {
-    color: #214662;
-    padding-right: 5px;
-}
-
-.budgetConditionalOptions {
-    font-size: 3rem;
-    /*    color: #214662;*/
-}
-
-.middle {
-    color: orange;
-}
-
-
-.loginInnerContainer,
-.innerRegisterBox,
-.transactionOutterContainer,
-.goalsOutterContainer,
-.budgetForms,
-.editedGoalsOutterContainer,
-.editBudgetForms {
-    width: 70%;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.homeSections {
-    display: block;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.budgetInnerContainer {
-    margin-bottom: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 3rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    background-color: #FFF6DD;
-    width: 75%;
-    border-radius: 25px;
-}
-
 .homeScreenBudget {
     margin-top: 1rem;
 }
 
-#budgetConditionalContainer {
-    margin: 1rem;
-    padding: 1rem;
-}
-
-.resultTitle {
-    font-size: 2.5rem;
-}
-
-.quickView span {
-    font-size: 10rem;
+.footer {
     color: #395D79;
+    margin: 1rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    text-decoration-color: #395D79;
+    font-size: 20px;
 }
+
+.footerIcon {
+    color: #395D79;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 
 
 
@@ -551,6 +497,10 @@ h4 .logos {
 /*media queries*/
 
 @media only screen and (max-width: 1024px) {
+
+    button {
+        width: 23%;
+    }
 
     label {
         margin-left: 0.7rem;
@@ -560,16 +510,9 @@ h4 .logos {
         width: 95%;
     }
 
-    button {
+    .navOptions {
         width: 23%;
     }
-
-    .formButton,
-    #budgetType,
-    #editBudgetType {
-        width: 95%;
-    }
-
 
     .loginInnerContainer,
     .innerRegisterBox,
@@ -583,11 +526,23 @@ h4 .logos {
         margin-right: auto;
     }
 
+    .formButton,
+    #budgetType,
+    #editBudgetType {
+        width: 95%;
+    }
+
     .homeSections {
         width: 98%;
     }
 
     .homeSectionsInfo {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .budgetInnerContainer {
+        width: 98%;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
@@ -603,16 +558,6 @@ h4 .logos {
         font-size: 15px;
     }
 
-    .budgetInnerContainer {
-        width: 98%;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-
-    .navOptions {
-        width: 23%;
-    }
-
 }
 
 
@@ -623,55 +568,22 @@ h4 .logos {
         font-size: 3.5rem;
     }
 
-    input {
-        width: 95%;
+    button {
+        width: 30%;
     }
 
     label {
         margin-left: 0.7rem;
     }
 
-    button {
-        width: 30%;
-    }
-
-    .formButton,
-    #budgetType,
-    #editBudgetType {
+    input {
         width: 95%;
     }
 
-    .footer {
-        font-size: 20px;
-    }
-
-    .navOptions {
-        padding-right: 0.5rem;
-        width: 21%;
-        font-size: 18px;
-    }
-
-    .resultTitle {
-        font-size: 3rem;
-    }
-
-    .loginInnerContainer,
-    .innerRegisterBox,
-    .transactionOutterContainer,
-    .goalsOutterContainer,
-    .budgetForms,
-    .editedGoalsOutterContainer,
-    .editBudgetForms {
-        width: 75%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .cellTrans {
-        width: 16%;
-        border-right: 0.5px solid black;
+    .navContainer {
+        border-bottom: 3px solid white;
+        line-height: normal;
         padding-top: 1rem;
-        padding-bottom: 1rem;
     }
 
     .logoHolder {
@@ -681,10 +593,8 @@ h4 .logos {
         width: 100%;
     }
 
-    .navContainer {
-        border-bottom: 3px solid white;
-        line-height: normal;
-        padding-top: 1rem;
+    .resultTitle {
+        font-size: 3rem;
     }
 
     .navList {
@@ -692,8 +602,33 @@ h4 .logos {
         width: 100%;
     }
 
+    .navOptions {
+        padding-right: 0.5rem;
+        width: 21%;
+        font-size: 18px;
+    }
+
+    .loginInnerContainer,
+    .innerRegisterBox,
+    .transactionOutterContainer,
+    .goalsOutterContainer,
+    .budgetForms,
+    .editedGoalsOutterContainer,
+    .editBudgetForms {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
     .demoContainer {
         padding: 1.5rem 2rem;
+    }
+
+    .formButton,
+    #budgetType,
+    #editBudgetType {
+        width: 95%;
     }
 
     .homeSections,
@@ -701,7 +636,17 @@ h4 .logos {
         width: 95%;
     }
 
+    .cellTrans {
+        width: 16%;
+        border-right: 0.5px solid black;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 
+
+    .footer {
+        font-size: 20px;
+    }
 
 }
 
@@ -740,14 +685,15 @@ h4 .logos {
         padding-top: 2rem;
     }
 
+    .navContainer {
+        border-bottom: 3px solid white;
+        line-height: 0px;
+        padding-top: 1rem;
+    }
+
     .logoHolder,
     .navList {
         width: 100%;
-    }
-
-    .quickView span {
-        font-size: 4rem;
-        color: #395D79;
     }
 
     .logoHolder {
@@ -762,6 +708,35 @@ h4 .logos {
 
     .welcomeMessage {
         top: 27%;
+    }
+
+    .quickView span {
+        font-size: 4rem;
+        color: #395D79;
+    }
+
+    .quickViewContainer {
+        margin-top: -.5rem;
+    }
+
+    .quickViewList {
+        font-size: 0;
+        width: 100%;
+    }
+
+    #quickViewBudget,
+    #quickViewTrans,
+    #quickViewGoals {
+        width: 33.3%;
+        display: inline-block;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .loginTitle {
+        margin-top: 0rem;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
     }
 
     .loginInnerContainer,
@@ -780,45 +755,13 @@ h4 .logos {
         padding: 1.5rem 1rem;
     }
 
-    .loginTitle {
-        margin-top: 0rem;
-        margin-bottom: 1rem;
-        font-size: 2.5rem;
-
-    }
-
-    .navContainer {
-        border-bottom: 3px solid white;
-        line-height: 0px;
-        padding-top: 1rem;
-    }
-
-    .quickViewList {
-        font-size: 0;
-        width: 100%;
-    }
-
-
-    #quickViewBudget,
-    #quickViewTrans,
-    #quickViewGoals {
-        width: 33.3%;
-        display: inline-block;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-
-
-    .quickViewContainer {
-        margin-top: -.5rem;
-    }
-
-    .footer {
-        font-size: 18px;
-    }
-
     .homeSectionsButton {
         width: 50%;
+    }
+
+    #budgetTitle,
+    .homeSectionsTitle {
+        font-size: 2.5rem;
     }
 
     .row {
@@ -831,16 +774,10 @@ h4 .logos {
         display: block;
     }
 
-    #budgetTitle,
-    .homeSectionsTitle {
-        font-size: 2.5rem;
+
+    .footer {
+        font-size: 18px;
     }
-
-    .budgetConditionalOptions {
-        font-size: 2rem;
-    }
-
-
 
 }
 
@@ -848,14 +785,6 @@ h4 .logos {
 /*iPhone portrait*/
 
 @media only screen and (max-width: 320px) {
-
-    button {
-        width: 43%;
-        line-height: 27px;
-        font-size: 18px;
-        padding: 2px;
-        margin: 1px;
-    }
 
     h1 {
         font-size: 2.4rem;
@@ -865,12 +794,21 @@ h4 .logos {
         font-size: 1rem;
     }
 
+    button {
+        width: 43%;
+        line-height: 27px;
+        font-size: 18px;
+        padding: 2px;
+        margin: 1px;
+    }
+
     form {
         padding: 1.5rem;
     }
 
-    form .logos {
-        display: block;
+    label {
+        margin-left: 0.2rem;
+        font-size: 18px;
     }
 
     input {
@@ -878,11 +816,6 @@ h4 .logos {
         font-size: 18px;
         line-height: 27px;
         padding: 2px;
-    }
-
-    label {
-        margin-left: 0.2rem;
-        font-size: 18px;
     }
 
     select {
@@ -893,35 +826,22 @@ h4 .logos {
         padding-top: 3rem;
     }
 
-    .navOptions {
-        width: 24%;
-        font-size: 12px;
+    form .logos {
+        display: block;
     }
 
     .resultTitle {
         font-size: 2.5rem;
     }
 
-    .welcomeMessage {
-        top: 22%;
+    .navOptions {
+        width: 24%;
+        font-size: 12px;
     }
 
     .logos {
         display: inline;
         margin-bottom: 10px;
-    }
-
-    .formButton,
-    #budgetType,
-    #editBudgetType {
-        width: 100%;
-    }
-
-    .footer {
-        margin: 0rem;
-        font-size: 15px;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
     }
 
     .loginInnerContainer,
@@ -934,15 +854,23 @@ h4 .logos {
         width: 90%;
     }
 
-    .firstWelcomeMessage,
-    .secondWelcomeMessage {
-        margin: 1rem;
+    .loginTitle {
+        font-size: 2rem;
     }
 
     .loginLogo {
         width: 100%;
         height: 400px;
         opacity: 0.3;
+    }
+
+    .welcomeMessage {
+        top: 22%;
+    }
+
+    .firstWelcomeMessage,
+    .secondWelcomeMessage {
+        margin: 1rem;
     }
 
     #quickViewBudget,
@@ -952,17 +880,10 @@ h4 .logos {
         padding-bottom: 5rem;
     }
 
-    .row {
-        font-size: 15px;
-    }
-
-    .tableIcons {
-        padding: 6px;
-        font-size: 20px;
-    }
-
-    .loginTitle {
-        font-size: 2rem;
+    .formButton,
+    #budgetType,
+    #editBudgetType {
+        width: 100%;
     }
 
     .homeSectionsTitle {
@@ -974,6 +895,10 @@ h4 .logos {
         font-size: 2rem;
     }
 
+    .homeSectionsButton {
+        width: 65%;
+    }
+
     #budgetTitle {
         margin: -10px;
         margin-bottom: 0.05rem;
@@ -982,22 +907,25 @@ h4 .logos {
         font-size: 1.9rem;
     }
 
-    #budgetConditionalTitle {
-        font-size: 1.3rem;
+    .row {
+        font-size: 15px;
     }
 
-    .budgetConditionalOptions {
-        font-size: 1.7rem;
+    .tableIcons {
+        padding: 6px;
+        font-size: 20px;
     }
 
-    .homeSectionsButton {
-        width: 65%;
+    .footer {
+        margin: 0rem;
+        font-size: 15px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     .footerIcon {
         margin-left: 5px;
         margin-right: 5px;
     }
-
 
 }
