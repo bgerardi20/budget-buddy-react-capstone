@@ -178,3 +178,6 @@ The app is responsive and optimized for both desktop and mobile viewing and use.
 
 ####
 *Add functionality to show if user is "under budget, over budget, or even" for whatever month he chooses to view.
+
+####
+*Add functionality button that allows user to copy a budget item to auto-populate in every month

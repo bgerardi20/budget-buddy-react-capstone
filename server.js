@@ -204,7 +204,7 @@ app.put('/goal/:goalId', function (req, res) {
             toUpdate[field] = req.body[field];
         }
     });
-    console.log(toUpdate);
+//    console.log(toUpdate);
     Goal
         .findByIdAndUpdate(req.params.goalId, {
             $set: toUpdate
@@ -219,7 +219,7 @@ app.put('/goal/:goalId', function (req, res) {
 
 // update budget
 app.put('/budget/:budgetId', function (req, res) {
-    console.log("update budget");
+//    console.log("update budget");
     let toUpdate = {};
     let updateableFields = ['description', 'date', 'budgeted', 'actual', 'type'];
     updateableFields.forEach(function (field) {
@@ -227,7 +227,7 @@ app.put('/budget/:budgetId', function (req, res) {
             toUpdate[field] = req.body[field];
         }
     });
-    console.log(toUpdate)
+//    console.log(toUpdate)
     Budget
         .findByIdAndUpdate(req.params.budgetId, {
             $set: toUpdate
@@ -281,9 +281,9 @@ app.get('/budgets/:userId', function (req, res) {
 });
 
 app.get('/budget-by-month/:userId/:date', function (req, res) {
-    console.log(req.params.userId, req.params.date);
+//    console.log(req.params.userId, req.params.date);
     let dateStringToSearch = req.params.date;
-    console.log(dateStringToSearch);
+//    console.log(dateStringToSearch);
 
     //search for a date starting with the know year and month and having any day in that month
     //more details about Mongo search LIKE : https://chartio.com/resources/tutorials/how-to-use-a-sql-like-statement-in-mongodb/
@@ -299,7 +299,7 @@ app.get('/budget-by-month/:userId/:date', function (req, res) {
         })
         .sort('date')
         .then(function (budgets) {
-            console.log(budgets)
+//            console.log(budgets)
             res.json({
                 budgets
             });
@@ -376,7 +376,7 @@ app.get('/budget/:id', function (req, res) {
 
 //delete goals from library
 app.delete('/goals/:id', function (req, res) {
-    console.log(req.params.id);
+//    console.log(req.params.id);
     Goal.findByIdAndRemove(req.params.id).exec().then(function (goal) {
         return res.status(204).end();
     }).catch(function (err) {
@@ -388,7 +388,7 @@ app.delete('/goals/:id', function (req, res) {
 
 //delete budgets from library
 app.delete('/budgets/:id', function (req, res) {
-    console.log(req.params.id);
+//    console.log(req.params.id);
     Budget.findByIdAndRemove(req.params.id).exec().then(function (budget) {
         return res.status(204).end();
     }).catch(function (err) {
