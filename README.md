@@ -5,56 +5,43 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 # MVP workflow
 
 ### Intro Screen
-* -->
-* ---->
-* ------>
+* -->Intro statement explaining the purpose of the app.
+* ---->Buttons to login/register.
+* ------>Preview Icons to show what the app can do.
 ### Login Screen
-* -->
-* ---->
-* ------>
+* -->Login form with name and password.
+* ---->Button to login that takes you to user home page.
+* ------>Demo Option available with credentials posted above the form.
 ### Register Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
+* -->Link to login page for demo option
+* ---->Register form with name, password, and confirm password as inputs.
+* ------>Register button that takes you to login page.
 ### Home Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
-### Add Budget Item Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
-### Add Goal Item Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
+* -->Financial Goals section with a table displaying all goals.
+* ---->Add button to add a new goal item to your table, which takes you to the add goal page.
+* ------>Edit/Delete options on each item; edit button takes you to the edit goal page.
+* -------->Monthly Budgets section with a table displaying all budgets for a specific month.
+* ---------->Add button to add a new budget item to your table, which takes you to the add budget page.
+* ------------>Edit/Delete options on each item; edit button takes you to the edit budget page.
+* ------------->Select Option to view budget for a different month, which holds the months total budget amount in parenthesis, for a quick view.
+### Add Budget Item Screen/Nav Budget Option
+* --> Budget Form with description, date, budgeted, actual, and type as input options. All are required.
+* ---->Button to add budget to the monthly budget that fits the inputed date; then displays the home screen with updated budget
+* ------>Cancel button to abort adding a budget item, and return to home screen.
+### Add Goal Item Screen/Nav Goal Option
+* --> Financial Goal Form with description, date, budgeted, and actual as input options. All are required.
+* ---->Button to add goal to the goal table; then displays the home screen with updated goal table.
+* ------>Cancel button to abort adding a goal item, and return to home screen.
 ### Edit Budget Item Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
+* --> Budget Form with description, date, budgeted, actual, and type as input options, with the original input of selected budget. All are required.
+* ---->Button to add newly edited budget to the monthly budget that fits the inputed date; then displays the home screen with updated budget
+* ------>Cancel button to abort editing a budget item, and return to home screen.
 ### Edit Goal Item Screen
-* -->
-* ---->
-* ------>
-* -------->
-* ---------->
-* ------------>
-
+* --> Financial Goal Form with description, date, budgeted, and actual as input options, with original input of selected goal. All are required.
+* ---->Button to add goal to the financial goals table; then displays the home screen with updated budget
+* ------>Cancel button to abort editing a goal item, and return to home screen.
+### Nav Option Logout
+* -->Clears all infomation, and returns user to intro screen.
 
 # User Stories
 * As a user I want to have a clear understanding of the sites purpose in order to create some financial goals, and be able to achieve those goals by budgeting and tracking expenses.
@@ -66,22 +53,22 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 * As a user I want to be able to create a budget for the month, to help keep me on track when trying to save money.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/budget-page.JPG)
 
-* As a user I want to
+* As a user I want to input the info i want for my budget.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/budget-form-page.JPG)
 
-* As a user I want to
+* As a user I want to view my monthly totals in a quick and organized way on the main screen.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/budget-quick-view-page.JPG)
 
-* As a user I want to
+* As a user I want to view my financial goals, and track how close i am to them.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/goals-page.JPG)
 
-* As a user I want to
+* As a user I want to login to the budget buddy app, in a clear and organized way.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/login-page.JPG)
 
-* As a user I want to
+* As a user I want to register an account with the budget buddy app, in a quick and easy way.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/sign-up.JPG)
 
-* As a user I want to
+* As a user I want to track my monthly unexpected transactions, to better manage my spending.
 ![Use Case](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/transaction-page.JPG)
 
 
