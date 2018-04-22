@@ -35,19 +35,21 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 
 
 # Screenshots
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/intro-screen-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/login-screen-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/register-screen-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/home-screen-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/add-budget-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/add-goal-screenshot.png)
 
-![Screenshot]()
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/edit-budget-screenshot.png)
+
+![Screenshot](https://github.com/bgerardi20/budget-buddy-react-capstone/blob/master/github-images/edit-goal-screenshot.png)
 
 
 # Working Prototype

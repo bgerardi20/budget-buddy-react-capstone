@@ -47,43 +47,6 @@
 
         </nav>
 
-        <!--
-<nav class="preLoginNavContainer">
-
-    <div class="logoHolder">
-        <h2 class="resultTitle"><span>Budget</span> Buddy</h2>
-    </div>
-
-    <div class="navList">
-        <a href="" class="navOptions jsSignIn">
-            <h4>
-                <i class="fas fa-home logos"></i> Sign In
-            </h4>
-        </a>
-
-        <a href="" class="navOptions jsRegister">
-            <h4>
-                <i class="fas fa-balance-scale logos"></i> Register
-            </h4>
-        </a>
-
-        <a href="" class="navOptions jsGoalNav">
-            <h4>
-                <i class="fas fa-tasks logos"></i> Goal
-            </h4>
-        </a>
-        <a href="" class="navOptions jsLogoutNav">
-            <h4>
-                <i class="fas fa-sign-out-alt logos"></i> Logout
-            </h4>
-        </a>
-
-
-    </div>
-
-</nav>
--->
-
     </header>
 
     <main class="introScreen">
@@ -144,14 +107,14 @@
                         <h3 class="loginSubTitle">Demo Login:</h3>
                         <h4 class="loginMessage">First Name: <strong class="loginLink">Demo</strong></h4>
                         <h4 class="loginMessage">Password: <strong class="loginLink">user123</strong></h4>
-                        <!---------------------------------------take out value before turning in!!!!!!---------------------------------------->
+
                         <div class="formGroup">
                             <label class="label" for="firstName">First Name</label>
-                            <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="Demo" required>
+                            <input class="loginInput" id="loginFirstName" type="text" placeholder="First Name" name="firstName" value="" required>
                         </div>
                         <div class="formGroup">
                             <label class="label" for="password">Password</label>
-                            <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="user123" required>
+                            <input class="loginInput" id="loginPassword" type="password" placeholder="Password" name="password" value="" required>
                         </div>
 
                         <button class="formButton jsSubmitloginButton" type="submit">Login</button>
@@ -211,107 +174,6 @@
 
                 <div class="homeSectionsTable">
 
-                    <!--
-                        <div class="row rowTitle">
-                            <div class="cellTrans">Descritpion</div>
-                            <div class="cellTrans">Date</div>
-                            <div class="cellTrans">Budgeted</div>
-                            <div class="cellTrans">Actual</div>
-                            <div class="cellTrans">Difference</div>
-                            <div class="cellTrans">Action</div>
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="cellTrans">
-                                <i class="fas fa-thumbs-down typeIcon negative"></i>
-                                Wedding Honeymoon
-                            </div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$2000.00</div>
-                            <div class="cellTrans">$200.00</div>
-                            <div class="cellTrans negative">-$1800.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>Pay Off Debt</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$900.00</div>
-                            <div class="cellTrans">$100.00</div>
-                            <div class="cellTrans negative">-$800.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-thumbs-down negative typeIcon"></i>New Xbox Game</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$50.00</div>
-                            <div class="cellTrans">$45.00</div>
-                            <div class="cellTrans negative">-$5.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-thumbs-up positive typeIcon"></i>Summer Vacation</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$250.00</div>
-                            <div class="cellTrans">$250.00</div>
-                            <div class="cellTrans positive">$0.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-thumbs-up positive typeIcon"></i>Pay Back David</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$50.00</div>
-                            <div class="cellTrans">$50.00</div>
-                            <div class="cellTrans positive">$0.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cellTrans"><i class="fas fa-thumbs-up positive typeIcon"></i>Dallas Cowboys Jersey</div>
-                            <div class="cellTrans">03/01/2018</div>
-                            <div class="cellTrans">$110.00</div>
-                            <div class="cellTrans">$110.00</div>
-                            <div class="cellTrans positive">$0.00</div>
-                            <div class="cellTrans">
-                                <a class="jsCopyGoalButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                                <a class="jsEditGoalButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                                <a class="jsDeleteGoalButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-                            </div>
-                        </div>
-
-
-                        <div class="row budgetTotalContainer" id="goalTotal">
-                            <div class="cellTrans">Totals</div>
-                            <div class="cellTrans"> </div>
-                            <div class="cellTrans"></div>
-                            <div class="cellTrans"></div>
-                            <div class="cellTrans negative"></div>
-                            <div class="cellTrans"> </div>
-                        </div>
--->
 
                 </div>
 
@@ -333,111 +195,15 @@
 
 
                     <select class="jsSelectMonth">
-<!--
-<option value="2018-01">January 2018 ()</option>
-<option value="2018-02">February 2018 ()</option>
-<option value="2018-03">March 2018 ()</option>
-<option value="2018-04">April 2018 ()</option>
-<option value="2018-05">May 2018 ()</option>
-<option value="2018-06">June 2018 ()</option>
--->
-<!--
-<option id="july" value="2018-07">July 2018 ()</option>
-<option id="august" value="2018-08">August 2018 ()</option>
-<option id="2018-01" value="september">September 2018 ()</option>
-<option id="october" value="october">October 2018 ()</option>
-<option id="november" value="november">November 2018 ()</option>
-<option id="december" value="december">December 2018 ()</option>
--->
+
                     </select>
 
-                    <!--
-<div id="budgetConditionalContainer">
-    <h2 id="budgetConditionalTitle">You are..</h2>
-    <h4 class="budgetConditionalOptionsPositive positive">UNDER BUDGET</h4>
-    <h4 class="budgetConditionalOptionsNegative negative">OVER BUDGET</h4>
-    <h4 class="budgetConditionalOptionsEven middle">EVEN</h4>
-</div>
--->
 
                 </div>
 
                 <div class="expenseContainer">
                     <div class="table">
 
-
-                        <!--
-        <div class="row rowTitle">
-            <div class="cellTrans">Descritpion</div>
-            <div class="cellTrans">Date</div>
-            <div class="cellTrans">Budgeted</div>
-            <div class="cellTrans">Actual</div>
-            <div class="cellTrans">Difference</div>
-            <div class="cellTrans">Action</div>
-        </div>
-
-
-        <div class="row">
-
-            <div class="cellTrans"><i class="fas fa-level-up-alt typeIcon positive"></i>Paycheck</div>
-            <div class="cellTrans">03/01/2018</div>
-            <div class="cellTrans">$200.00</div>
-            <div class="cellTrans">$200.00</div>
-            <div class="cellTrans positive">$0.00</div>
-            <div class="cellTrans">
-                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Gas Bill</div>
-            <div class="cellTrans">03/01/2018</div>
-            <div class="cellTrans">$90.00</div>
-            <div class="cellTrans">$100.00</div>
-            <div class="cellTrans negative">-$10.00</div>
-            <div class="cellTrans">
-                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Dog Food</div>
-            <div class="cellTrans">03/01/2018</div>
-            <div class="cellTrans">$50.00</div>
-            <div class="cellTrans">$45.00</div>
-            <div class="cellTrans positive">+$5.00</div>
-            <div class="cellTrans">
-                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="cellTrans"><i class="fas fa-level-down-alt typeIcon negative"></i>Groceries</div>
-            <div class="cellTrans">03/01/2018</div>
-            <div class="cellTrans">$250.00</div>
-            <div class="cellTrans">$250.00</div>
-            <div class="cellTrans positive">$0.00</div>
-            <div class="cellTrans">
-                <a class="jsCopyBudgetButton" href=""><i class="fas fa-copy tableIcons"></i></a>
-                <a class="jsEditBudgetButton" href=""><i class="fas fa-pen-square tableIcons"></i></a>
-                <a class="jsDeleteBudgetButton" href=""><i class="fas fa-trash-alt tableIcons"></i></a>
-            </div>
-        </div>
-
-
-        <div class="row budgetTotalContainer" id="budgetTotal">
-            <div class="cellTrans">Totals</div>
-            <div class="cellTrans"> </div>
-            <div class="cellTrans"></div>
-            <div class="cellTrans"></div>
-            <div class="cellTrans negative"></div>
-            <div class="cellTrans"> </div>
-        </div>
--->
                     </div>
                 </div>
 
@@ -502,45 +268,6 @@
 
         <div class="editBudgetForms">
 
-            <!--
-            <form class="optionsForm" method="POST">
-
-                <h2 class="loginTitle">Edit Expense/Income</h2>
-
-                <div class="demoContainer">
-
-                    <input class="loggedInUser" id="editBudgetMyHiddenField" type="hidden" value=""><br>
-
-                    <div class="formGroup">
-                        <label class="label" for="description">Description</label>
-                        <input class="formControl" id="editBudgetDescription" type="text" placeholder="Wedding" name="description" required>
-                    </div>
-                    <div class="formGroup">
-                        <label class="label" for="date">Date</label>
-                        <input class="formControl" id="editBudgetDate" type="string" value="2018-03-07" placeholder="03/01/2018" name="date" required>
-                    </div>
-                    <div class="formGroup">
-                        <label class="label" for="budgeted">Budgeted</label>
-                        <input class="formControl" id="editBudgetBudgeted" type="number" placeholder="$200.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
-                    </div>
-                    <div class="formGroup">
-                        <label class="label" for="actual">Actual</label>
-                        <input class="formControl" id="editBudgetActual" type="number" placeholder="$400.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
-                    </div>
-                    <div class="formGroup">
-                        <label class="label" for="type">Type</label>
-                        <select id="editBudgetType" name="type" required>
-                            <option value="expense">Expense</option>
-                            <option value="income">Income</option>
-                        </select>
-                    </div>
-                    <div class="formButtonsContainer">
-                        <button class="formButton" id="editSaveBudgetForm" type="submit">Save</button>
-                        <button class="formButton" id="editCancelBudgetForm" type="submit">Cancel</button>
-                    </div>
-                </div>
-            </form>
--->
 
         </div>
 
@@ -587,38 +314,6 @@
 
         <div class="editedGoalsOutterContainer">
 
-            <!--
-                <form class="jsEditedGoalForm" method="POST">
-
-                    <h2 class="loginTitle">Edit Goal</h2>
-
-                    <div class="demoContainer">
-                        <div class="formGroup">
-                            <input class="loggedInUser editGoalMyHiddenField" type="hidden" value=""><br>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="goalDescription">Description</label>
-                            <input class="formControl" id="editGoalDescription" type="text" placeholder="Wedding Honeymoon" name="description" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="date">Date</label>
-                            <input class="formControl" id="editGoalDate" type="string" value="2018-03-07" placeholder="03/07/2018" name="date" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="budgetedGoal">Budgeted</label>
-                            <input class="formControl" id="editBudgetedGoal" type="number" placeholder="$2,000.00" name="budgeted" min="0.00" max="100,000.00" step="1.00" required>
-                        </div>
-                        <div class="formGroup">
-                            <label class="label" for="actualGoal">Actual</label>
-                            <input class="formControl" id="editActualGoal" type="number" placeholder="$200.00" name="actual" min="0.00" max="100,000.00" step="1.00" required>
-                        </div>
-                        <div class="formButtonsContainer">
-                            <button class="formButton" id="editSaveGoalForm" type="submit">Save</button>
-                            <button class="formButton" id="editCancelGoalForm" type="submit">Cancel</button>
-                        </div>
-                    </div>
-                </form>
--->
 
         </div>
 
