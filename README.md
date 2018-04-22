@@ -91,7 +91,7 @@ The purpose of this app is to make budgeting fun, by helping the user plan their
 
 
 # Working Prototype
-Find a working prototype with Node at https://budget-buddy-react-capstone.herokuapp.com/
+Find a working prototype with Node at https://budget-buddy-react-capstone.herokuapp.com/ and with React at https://bgerardi20.github.io/budget-buddy-react-capstone-react/build
 
 
 # Functionality
@@ -147,6 +147,20 @@ The app is responsive and optimized for both desktop and mobile viewing and use.
 * GET to '/budget/:id' to get budget to be updated by id
 * DELETE to '/goals/:id' to delete a goal item
 * DELETE to '/budgets/:id' to delete a budget item
+
+
+## How to run the app:
+
+### Node command lines
+* npm install ==> install all node modules
+* nodemon server.js ==> run node server
+* npm test ==> run the tests
+
+### React command lines
+* npm install ==> install all node modules
+* npm run build ==> build the react files in the "build" folder
+* npm start ==> run react server on http://127.0.0.1:8080
+* npm test ==> run the tests
 
 
 # Development Roadmap

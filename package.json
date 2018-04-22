@@ -24,7 +24,7 @@
         "bcryptjs": "^2.3.0",
         "body-parser": "^1.15.2",
         "express": "^4.14.0",
-        "jquery.terminal": "^1.14.0",
+        "cors": "^2.8.4",
         "mongod": "^2.0.0",
         "mongodb": "^2.2.9",
         "mongoose": "^4.5.10",

@@ -11,9 +11,10 @@ const events = require('events');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const express = require('express');
 const app = express();
+const cors = require('cors');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
+app.use(cors());
 mongoose.Promise = global.Promise;
 
 // ---------------- RUN/CLOSE SERVER -----------------------------------------------------
