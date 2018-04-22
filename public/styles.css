@@ -660,7 +660,7 @@ h4 .logos {
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     button {
@@ -710,8 +710,14 @@ h4 .logos {
         top: 27%;
     }
 
+    .firstWelcomeMessage, .secondWelcomeMessage {
+        margin: 1rem;
+        margin-top: 5rem;
+        padding: 0rem;
+    }
+
     .quickView span {
-        font-size: 4rem;
+        font-size: 3rem;
         color: #395D79;
     }
 
@@ -729,8 +735,8 @@ h4 .logos {
     #quickViewGoals {
         width: 33.3%;
         display: inline-block;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 
     .loginTitle {
@@ -776,7 +782,9 @@ h4 .logos {
 
 
     .footer {
-        font-size: 18px;
+        font-size: 15px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
 }
