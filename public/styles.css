@@ -171,8 +171,9 @@ h4 .logos {
 }
 
 .logoHolder {
-    margin-top: 1.5rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    vertical-align: middle;
 }
 
 .resultTitle {
